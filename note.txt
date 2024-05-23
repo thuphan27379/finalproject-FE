@@ -1,0 +1,16 @@
+admin
+
+https://www.youtube.com/watch?v=IjTJIcVzevc&list=PLDxCaNaYIuUlG5ZqoQzFE27CUOoQvOqnQ&index=4
+
+
+https://mui.com/material-ui/getting-started/templates/dashboard/
+https://github.com/mui/material-ui/tree/v5.15.11/docs/data/material/getting-started/templates/dashboard
+
+minimal
+https://mui.com/store/items/minimal-dashboard-free/
+
+login
+phanthachminhthu@gmail.com
+123456
+
+https://app.swaggerhub.com/apis-docs/dhminh1024/CoderComm/1.0.0#/Auth/loginWithEmail
