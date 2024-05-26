@@ -9,13 +9,8 @@ import { isValidToken } from "../utils/jwt";
 //// all about authentication ////
 // init value
 const initialState = {
-<<<<<<< HEAD
-  isInitialized: false, //first render yet?, stay login when refresh page, lay thong tin trong local storage
-  isAuthenticated: false, //login yet?
-=======
   isInitialized: false,
   isAuthenticated: false,
->>>>>>> 5580e5d7533b101092ad6f56a8a828c2ebe0053c
   user: {},
 };
 
@@ -152,7 +147,7 @@ function AuthProvider({ children }) {
 
   // 2. func: register a new account
   const register = async ({ name, email, password }, callback) => {
-    const response = await apiService.post("/users", {
+    const response = await apiService.post("/users/register", {
       name,
       email,
       password,

@@ -11,7 +11,6 @@ export default function RightBar() {
   return (
     <Box
       sx={{
-<<<<<<< HEAD
         color: "#04214a",
         fontWeight: "1000",
         marginTop: "90px",
@@ -25,18 +24,13 @@ export default function RightBar() {
           color: "#04214a",
           fontWeight: "1000",
           width: "240px",
-          paddingRight: "10px", //
+          paddingRight: "10px",
+          // width: "25vw",
+          marginTop: "90px",
         }}
-      >
-=======
-        // width: "25vw",
-        marginTop: "90px",
-      }}
-    >
-      {/* <CssBaseline /> */}
+      ></List>
 
       <List sx={{ color: "#0A3161" }}>
->>>>>>> 5580e5d7533b101092ad6f56a8a828c2ebe0053c
         {[
           "Startup Support Program",
           "Our Projects",
@@ -52,7 +46,6 @@ export default function RightBar() {
           </ListItem>
         ))}
       </List>
-      {/* </Drawer> */}
     </Box>
   );
 }
