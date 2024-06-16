@@ -1,11 +1,9 @@
 import { Card, Stack, Typography, Divider } from "@mui/material";
 import { fNumber } from "../../utils/numberFormat";
 
-import Profile from "C:/Users/Public/finalproject-frontend/src/features/user/Profile.js";
-
-// 1st show how many posts and friends
-function ProfileScorecard({ profile }) {
-  const { postCount, friendCount } = profile; ///////////////////////???????????????
+// 1st card: show how many group or interest or member
+function GroupScorecard() {
+  // const {groupCount, memberCount} = group
 
   // show how many friends and posts
   return (
@@ -29,12 +27,12 @@ function ProfileScorecard({ profile }) {
           divider={<Divider orientation="vertical" flexItem />}
         >
           <Stack width={1} textAlign="center">
-            <Typography variant="h4">{fNumber(friendCount)}</Typography>
+            {/* <Typography variant="h4">{fNumber(friendCount)}</Typography> */}
             <Typography variant="body4">Friends</Typography>
           </Stack>
 
           <Stack width={1} textAlign="center">
-            <Typography variant="h4">{fNumber(postCount)}</Typography>
+            {/* <Typography variant="h4">{fNumber(postCount)}</Typography> */}
             <Typography variant="body4">Posts</Typography>
           </Stack>
         </Stack>
@@ -43,4 +41,4 @@ function ProfileScorecard({ profile }) {
   );
 }
 
-export default ProfileScorecard;
+export default GroupScorecard;

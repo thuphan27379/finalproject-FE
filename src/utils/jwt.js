@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 
-// VALIDATE TOKEN
+// VALIDATE TOKEN AND EXPIRED TIME
 export const isValidToken = (accessToken) => {
   if (!accessToken) {
     return false;

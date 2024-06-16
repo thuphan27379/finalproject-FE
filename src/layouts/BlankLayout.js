@@ -8,20 +8,22 @@ import MainFooter from "./MainFooter";
 // login/register/notfound page
 function BlankLayout() {
   return (
-    <Stack
-      paddingTop={30}
-      minHeight="100vh"
-      justifyContent="center"
-      alignItems="center"
-    >
-      <HomeHeader />
+    <>
+      <Stack
+        paddingTop={30}
+        minHeight="100vh"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <HomeHeader />
 
-      <Outlet />
+        <Outlet />
 
-      <Box sx={{ flexGrow: 1 }} />
+        <Box sx={{ flexGrow: 1 }} />
 
-      <MainFooter />
-    </Stack>
+        <MainFooter />
+      </Stack>
+    </>
   );
 }
 

@@ -69,58 +69,60 @@ function ProfileCover({ profile }) {
 
   //
   return (
-    <RootStyle>
-      <InfoStyle>
-        <Avatar
-          src={avatarUrl}
-          alt={name}
-          sx={{
-            mx: "auto",
-            borderWidth: 2,
-            borderStyle: "solid",
-            borderColor: "common.white",
-            width: { xs: 80, md: 128 },
-            height: { xs: 80, md: 128 },
-          }}
-        />
+    <>
+      <RootStyle>
+        <InfoStyle>
+          <Avatar
+            src={avatarUrl}
+            alt={name}
+            sx={{
+              mx: "auto",
+              borderWidth: 2,
+              borderStyle: "solid",
+              borderColor: "common.white",
+              width: { xs: 80, md: 128 },
+              height: { xs: 80, md: 128 },
+            }}
+          />
 
-        <Box
-          sx={{
-            ml: { md: 3 },
-            mt: { xs: 1, md: 0 },
-            color: "common.white",
-            textAlign: { xs: "center", md: "left" },
-          }}
-        >
-          <Typography variant="h5">{name}</Typography>
+          <Box
+            sx={{
+              ml: { md: 3 },
+              mt: { xs: 1, md: 0 },
+              color: "common.white",
+              textAlign: { xs: "center", md: "left" },
+            }}
+          >
+            <Typography variant="h5">{name}</Typography>
 
-          <Typography sx={{ opacity: 0.72 }}>{jobTitle}</Typography>
+            <Typography sx={{ opacity: 0.72 }}>{jobTitle}</Typography>
 
-          {/* friend status btn */}
-          {friendStatus ? (
-            friendStatus
-          ) : (
-            <ActionButton
-              sx={{ mt: 1 }}
-              currentUserId={currentUserId}
-              targetUserId={targetUserId}
-              friendship={friendship}
-            />
-          )}
+            {/* friend status btn */}
+            {friendStatus ? (
+              friendStatus
+            ) : (
+              <ActionButton
+                sx={{ mt: 1 }}
+                currentUserId={currentUserId}
+                targetUserId={targetUserId}
+                friendship={friendship}
+              />
+            )}
+          </Box>
+        </InfoStyle>
+
+        {/* cover img */}
+        <Box sx={{ overflow: "hidden" }}>
+          <img
+            src={coverUrl}
+            alt="profile cover"
+            width="100%"
+            height="100%"
+            onError={handleError}
+          />
         </Box>
-      </InfoStyle>
-
-      {/* cover img */}
-      <Box sx={{ overflow: "hidden" }}>
-        <img
-          src={coverUrl}
-          alt="profile cover"
-          width="100%"
-          height="100%"
-          onError={handleError}
-        />
-      </Box>
-    </RootStyle>
+      </RootStyle>
+    </>
   );
 }
 

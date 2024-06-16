@@ -164,140 +164,144 @@ function PostCard({ post }) {
 
   //
   return (
-    <Card>
-      <CardHeader
-        disableTypography
-        avatar={
-          <Avatar src={post?.author?.avatarUrl} alt={post?.author?.name} />
-        }
-        title={
-          <Link
-            variant="subtitle2"
-            color="text.primary"
-            component={RouterLink}
-            sx={{ fontWeight: 600 }}
-            to={`/user/${post.author._id}`}
-          >
-            {post?.author?.name}
-          </Link>
-        }
-        subheader={
-          <Typography
-            variant="caption"
-            sx={{ display: "block", color: "text.secondary" }}
-          >
-            {fDate(post.createdAt)}
-          </Typography>
-        }
-        action={
-          <IconButton>
-            <MoreVertIcon onClick={handleClick} sx={{ fontSize: 30 }} />
-          </IconButton>
-        }
-      />
-
-      {/* popover */}
-      <Popover
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-      >
-        <Button sx={{ p: 1, fontSize: 10 }} onClick={handleDelete}>
-          Delete
-        </Button>
-        |
-        <div>
-          <Button sx={{ p: 1, fontSize: 10 }} onClick={handleOpenModal}>
-            Edit
-          </Button>
-
-          {/* popup modal delete & edit */}
-          <Modal
-            open={openModal}
-            onClose={handleCloseModal}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Card
-              sx={{
-                p: 3,
-                width: 500,
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+    <>
+      <Card sx={{ padding: "2px", lineHeight: "1" }}>
+        <CardHeader
+          disableTypography
+          avatar={
+            <Avatar src={post?.author?.avatarUrl} alt={post?.author?.name} />
+          }
+          title={
+            <Link
+              variant="subtitle2"
+              color="text.primary"
+              component={RouterLink}
+              sx={{ fontWeight: 700 }}
+              to={`/user/${post.author._id}`}
             >
-              {/* postForm: edit content */}
-              <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-                <Stack spacing={2}>
-                  <FTextField
-                    // content of the Post, not placeholder?!?!
-                    name="content"
-                    multiline
-                    fullWidth
-                    rows={4}
-                    placeholder={post.content}
-                    sx={{
-                      "& fieldset": {
-                        borderWidth: `1px !important`,
-                        borderColor: alpha("#919EAB", 0.32),
-                      },
-                    }}
-                  />
+              {post?.author?.name}
+            </Link>
+          }
+          subheader={
+            <Typography
+              variant="caption"
+              sx={{ display: "block", color: "text.secondary" }}
+            >
+              {fDate(post.createdAt)}
+            </Typography>
+          }
+          action={
+            <IconButton>
+              <MoreVertIcon onClick={handleClick} sx={{ fontSize: 30 }} />
+            </IconButton>
+          }
+        />
 
-                  {/* form upload image: edit image */}
-                  {/* UPLOAD A FILE: btn choose File  */}
-                  {/* <input type="file" ref={fileInput} onChange={handleFile} /> */}
-                  <FUploadImage
-                    // upload image with the Post, the image of the post?!?!
-                    name="image"
-                    accept="image/*"
-                    maxSize={3145728}
-                    onDrop={handleDrop}
-                  />
+        {/* popover More btn*/}
+        <Popover
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+        >
+          <Button sx={{ p: 1, fontSize: 12 }} onClick={handleDelete}>
+            Delete
+          </Button>
+          |
+          <div>
+            <Button sx={{ p: 1, fontSize: 12 }} onClick={handleOpenModal}>
+              Edit
+            </Button>
 
-                  <Box
-                    // button submit a Post
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "flex-end",
-                    }}
-                  >
-                    <LoadingButton
-                      // loading...
-                      type="cancel"
-                      variant="contained"
-                      size="small"
-                      onClose={handleClose}
-                      // loading={isSubmitting || isLoading}
+            {/* popup modal delete & edit */}
+            <Modal
+              open={openModal}
+              onClose={handleCloseModal}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Card
+                sx={{
+                  p: 3,
+                  width: 500,
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {/* postForm: edit content */}
+                <FormProvider
+                  methods={methods}
+                  onSubmit={handleSubmit(onSubmit)}
+                >
+                  <Stack spacing={2}>
+                    <FTextField
+                      // content of the Post, not placeholder?!?!
+                      name="content"
+                      multiline
+                      fullWidth
+                      rows={4}
+                      placeholder={post.content}
+                      sx={{
+                        "& fieldset": {
+                          borderWidth: `1px !important`,
+                          borderColor: alpha("#919EAB", 0.32),
+                        },
+                      }}
+                    />
+
+                    {/* form upload image: edit image */}
+                    {/* UPLOAD A FILE: btn choose File  */}
+                    {/* <input type="file" ref={fileInput} onChange={handleFile} /> */}
+                    <FUploadImage
+                      // upload image with the Post, the image of the post?!?!
+                      name="image"
+                      accept="image/*"
+                      maxSize={3145728}
+                      onDrop={handleDrop}
+                    />
+
+                    <Box
+                      // button submit a Post
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                      }}
                     >
-                      Cancel
-                    </LoadingButton>
-                    <LoadingButton
-                      // loading...
-                      type="submit"
-                      variant="contained"
-                      size="small"
-                      loading={isSubmitting || isLoading}
-                    >
-                      Edit
-                    </LoadingButton>
-                  </Box>
-                </Stack>
-              </FormProvider>
-            </Card>
-          </Modal>
-        </div>
-      </Popover>
+                      <LoadingButton
+                        // loading...
+                        type="cancel"
+                        variant="outlined"
+                        size="small"
+                        onClose={handleClose}
+                        // loading={isSubmitting || isLoading}
+                      >
+                        Cancel
+                      </LoadingButton>
+                      <LoadingButton
+                        // loading...
+                        type="submit"
+                        variant="outlined"
+                        size="small"
+                        loading={isSubmitting || isLoading}
+                      >
+                        Update
+                      </LoadingButton>
+                    </Box>
+                  </Stack>
+                </FormProvider>
+              </Card>
+            </Modal>
+          </div>
+        </Popover>
 
-      {/* post content */}
-      <Stack spacing={2} sx={{ p: 3 }}>
-        <Typography>{post.content}</Typography>
-        {/* {isEditing && (
+        {/* post content */}
+        <Stack spacing={2} sx={{ pl: 3, pt: 1, pb: 1 }}>
+          <Typography>{post.content}</Typography>
+          {/* {isEditing && (
           <input
             type="text"
             value={editedContent}
@@ -306,25 +310,27 @@ function PostCard({ post }) {
           />
         )} */}
 
-        {/* media */}
-        {post.image && (
-          <Box
-            sx={{
-              borderRadius: 2,
-              overflow: "hidden",
-              height: 300,
-              "& img": { objectFit: "cover", width: 1, height: 1 },
-            }}
-          >
-            <img src={post.image} alt="post" />
-          </Box>
-        )}
-        {/*  */}
-        <PostReaction post={post} />
-        <CommentList postId={post._id} />
-        <CommentForm postId={post._id} />
-      </Stack>
-    </Card>
+          {/* media */}
+          {post.image && (
+            <Box
+              sx={{
+                borderRadius: 1,
+                overflow: "hidden",
+                height: 500,
+                "& img": { objectFit: "scale-down", width: 1, height: 1 },
+              }}
+            >
+              <img src={post.image} alt="post" />
+            </Box>
+          )}
+
+          {/*  */}
+          <PostReaction post={post} />
+          <CommentList postId={post._id} />
+          <CommentForm postId={post._id} />
+        </Stack>
+      </Card>
+    </>
   );
 }
 

@@ -9,37 +9,38 @@ import ListItemText from "@mui/material/ListItemText";
 // LINK TO PAGE
 export default function LeftBar() {
   return (
-    <Box
-      sx={{
-        // width: "25vw",
-        marginTop: "90px",
-        minHeight: "120vh",
-        marginLeft: "-25px",
-      }}
-    >
-      <List
+    <>
+      <Box
         sx={{
-          color: "#04214a",
-          fontWeight: "1000",
-          width: "240px",
-          lineHeight: 1,
+          marginTop: "90px",
+          minHeight: "120vh",
+          marginLeft: "-45px",
         }}
       >
-        {[
-          "Startup Support Program",
-          "Our Projects",
-          "Cooperate with us",
-          "Domains for sale",
-          "Your Domains",
-          "Donate us",
-        ].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+        <List
+          sx={{
+            color: "#04214a",
+            fontWeight: "1000",
+            width: "240px",
+            lineHeight: 1,
+          }}
+        >
+          {[
+            "Startup Support Program",
+            "Our Projects",
+            "Cooperate with us",
+            "Domains for sale",
+            "Your Domains",
+            "Donate us",
+          ].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+    </>
   );
 }

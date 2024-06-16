@@ -8,7 +8,7 @@ import { CssBaseline } from "@mui/material"; //xoa css mac dinh cua MUI
 
 import customizeComponents from "./customizations";
 
-// modul 2.3 .3.7
+// module 2.3 .3.7
 // const themeCustom = createTheme({
 //   palette: {
 //     primary: {
@@ -39,14 +39,14 @@ const SECONDARY = {
   dark: "#04214a",
   contrastText: "#FFF",
 };
-// const SUCCESS = {
-//   lighter: "#E9FCD4",
-//   light: "#AAF27F",
-//   main: "#54D62C",
-//   dark: "#229A16",
-//   darker: "#08660D",
-//   contrastText: "#FFF",
-// };
+const SUCCESS = {
+  lighter: "#E9FCD4",
+  light: "#AAF27F",
+  main: "#54D62C",
+  dark: "#229A16",
+  darker: "#08660D",
+  contrastText: "#FFF",
+};
 const GREY = {
   0: "#FFFFFF",
   100: "#F9FAFB",
@@ -74,7 +74,7 @@ function ThemeProvider({ children }) {
     palette: {
       primary: PRIMARY,
       secondary: SECONDARY,
-      // success: SUCCESS,
+      success: SUCCESS,
       text: { primary: GREY[800], secondary: GREY[600], disabled: GREY[500] },
       background: { paper: "#fff", default: "#fff", neutral: GREY[200] },
       action: {
@@ -104,7 +104,13 @@ function ThemeProvider({ children }) {
     shape: { borderRadius: 8 },
 
     // custom style for all components here
-    components: {},
+    components: {
+      MuiLink: {
+        defaultProps: {
+          underline: "hover",
+        },
+      },
+    },
 
     // responsive //
     breakpoints: {

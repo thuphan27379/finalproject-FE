@@ -16,27 +16,29 @@ function CommentReaction({ comment }) {
 
   //
   return (
-    <Stack direction="row" alignItems="center">
-      {/* LIKE */}
-      <IconButton
-        onClick={() => handleClick("like")}
-        sx={{ color: "primary.main" }}
-      >
-        <ThumbUpRoundedIcon sx={{ fontSize: 20 }} />
-      </IconButton>
-      <Typography variant="body2" mr={1}>
-        {comment?.reactions?.like}
-      </Typography>
+    <>
+      <Stack direction="row" alignItems="center">
+        {/* LIKE */}
+        <IconButton
+          onClick={() => handleClick("like")}
+          sx={{ color: "secondary.main" }}
+        >
+          <ThumbUpRoundedIcon sx={{ fontSize: 18 }} />
+        </IconButton>
+        <Typography variant="h7" mr={1}>
+          {comment?.reactions?.like}
+        </Typography>
 
-      {/* DISLIKE */}
-      <IconButton
-        onClick={() => handleClick("dislike")}
-        sx={{ color: "error.main" }}
-      >
-        <ThumbDownAltRoundedIcon sx={{ fontSize: 20 }} />
-      </IconButton>
-      <Typography variant="body2">{comment?.reactions?.dislike}</Typography>
-    </Stack>
+        {/* DISLIKE */}
+        <IconButton
+          onClick={() => handleClick("dislike")}
+          sx={{ color: "error.main" }}
+        >
+          <ThumbDownAltRoundedIcon sx={{ fontSize: 18 }} />
+        </IconButton>
+        <Typography variant="h7">{comment?.reactions?.dislike}</Typography>
+      </Stack>
+    </>
   );
 }
 

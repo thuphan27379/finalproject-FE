@@ -16,21 +16,23 @@ function PostReaction({ post }) {
 
   //
   return (
-    <Stack direction="row" alignItems="center">
-      {/* LIKE */}
-      <IconButton onClick={() => handleClick("like")}>
-        <ThumbUpRoundedIcon sx={{ fontSize: 20, color: "primary.main" }} />
-      </IconButton>
-      <Typography variant="h6" mr={1}>
-        {post?.reactions?.like}
-      </Typography>
+    <>
+      <Stack direction="row" alignItems="center">
+        {/* LIKE */}
+        <IconButton onClick={() => handleClick("like")}>
+          <ThumbUpRoundedIcon sx={{ fontSize: 18, color: "secondary.main" }} />
+        </IconButton>
+        <Typography variant="h7" mr={1}>
+          {post?.reactions?.like}
+        </Typography>
 
-      {/* DISLIKE */}
-      <IconButton onClick={() => handleClick("dislike")}>
-        <ThumbDownAltRoundedIcon sx={{ fontSize: 20, color: "error.main" }} />
-      </IconButton>
-      <Typography variant="h6">{post?.reactions?.dislike}</Typography>
-    </Stack>
+        {/* DISLIKE */}
+        <IconButton onClick={() => handleClick("dislike")}>
+          <ThumbDownAltRoundedIcon sx={{ fontSize: 18, color: "error.main" }} />
+        </IconButton>
+        <Typography variant="h7">{post?.reactions?.dislike}</Typography>
+      </Stack>
+    </>
   );
 }
 

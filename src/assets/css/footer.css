@@ -1,0 +1,125 @@
+/* page-footer */
+.mainlogo {
+  width: 70px;
+}
+.page-footer {
+  background-color: black;
+  padding: 1rem 1rem;
+  position: relative;
+  padding-left: 0px;
+}
+
+.page-footer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.page-footer,
+.page-footer a {
+  color: white;
+}
+
+.page-footer-logo-col p {
+  margin-top: 0;
+  max-width: 20ch;
+}
+
+.page-footer-legal-text {
+  font-size: var(--type-tiny-font-size);
+  margin: 0;
+}
+
+.footer-nav-heading {
+  font: var(--type-smaller-font-size);
+  margin: 0 0 0.5rem;
+}
+
+.footer-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-nav-item {
+  font-size: var(--type-smaller-font-size);
+}
+
+@media screen and (min-width: 426px) {
+  .page-footer-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: "logo  . " "nav1  nav2" "nav3  nav4" "nav5 nav6" "moz   moz" "legal legal";
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .page-footer-logo-col {
+    grid-area: logo;
+  }
+
+  .page-footer-nav-col-1 {
+    grid-area: nav1;
+  }
+
+  .page-footer-nav-col-2 {
+    grid-area: nav2;
+  }
+
+  .page-footer-nav-col-3 {
+    grid-area: nav3;
+  }
+
+  .page-footer-nav-col-4 {
+    grid-area: nav4;
+  }
+
+  .page-footer-nav-col-5 {
+    grid-area: nav5;
+  }
+
+  .page-footer-app-col {
+    grid-area: app;
+  }
+
+  .page-footer-moz {
+    grid-area: moz;
+  }
+
+  .page-footer-legal {
+    grid-area: legal;
+  }
+
+  .page-footer-app-list {
+    flex-direction: row;
+  }
+
+  .page-footer-app-dl img,
+  .page-footer-app-dl svg {
+    height: 38px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .page-footer-grid {
+    gap: 1rem;
+    grid-template-areas: "logo  nav1  nav2  nav3  nav4" "moz   moz   moz   moz   moz" "legal legal legal legal  . ";
+    grid-template-columns: minmax(260px, 2fr) repeat(4, minmax(0, 1fr));
+  }
+
+  .page-footer-app-list {
+    flex-direction: column;
+  }
+
+  .page-footer-app-dl img,
+  .page-footer-app-dl svg {
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .page-footer-grid {
+    gap: 2.5rem;
+  }
+}

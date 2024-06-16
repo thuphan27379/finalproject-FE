@@ -14,7 +14,7 @@ function Tabs(theme) {
           fontWeight: 600,
           borderTopLeftRadius: theme.shape.borderRadius,
           borderTopRightRadius: theme.shape.borderRadius,
-          textTransform: "capitalize",
+          textTransform: "capitalize", //
           "&.Mui-selected": {
             color: theme.palette.text.primary,
           },

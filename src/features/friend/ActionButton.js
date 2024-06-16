@@ -21,12 +21,12 @@ function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
     <Button
       sx={{ fontSize: "0.6rem", ...sx }}
       size="small"
-      variant="contained"
+      variant="outlined"
+      color="secondary"
       onClick={() => dispatch(sendFriendRequest(targetUserId))}
     >
       Send Request
     </Button>
-    // green
   );
 
   if (!friendship) return btnSendRequest;
@@ -36,51 +36,53 @@ function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
     <Button
       sx={{ fontSize: "0.6rem", ...sx }}
       size="small"
-      variant="contained"
+      variant="outlined"
       color="error"
       onClick={() => dispatch(removeFriend(targetUserId))}
     >
       Unfriend
     </Button>
-    // red
   );
+
   // btn resend
   const btnResend = (
     <Button
       sx={{ fontSize: "0.6rem", ...sx }}
       size="small"
-      variant="contained"
+      variant="outlined"
       onClick={() => dispatch(sendFriendRequest(targetUserId))}
     >
       {friendship.from === currentUserId ? "Resend" : "Send"} Request
     </Button>
   );
+
   // btn cancel request
   const btnCancelRequest = (
     <Button
       sx={{ fontSize: "0.6rem", ...sx }}
       size="small"
-      variant="contained"
+      variant="outlined"
       color="error"
       onClick={() => dispatch(cancelRequest(targetUserId))}
     >
       Cancel Request
     </Button>
-    // red
   );
+
   // btn acceptRequest & declineRequest
   const btnGroupReact = (
-    <Stack direction="row" spacing={1}>
+    <Stack direction="column" spacing={1}>
       <Button
         sx={{ fontSize: "0.6rem", ...sx }}
         size="small"
-        variant="contained"
+        variant="outlined"
         color="success"
         onClick={() => dispatch(acceptRequest(targetUserId))}
       >
         Accept
       </Button>
       <Button
+        sx={{ fontSize: "0.6rem", ...sx }}
         size="small"
         variant="outlined"
         color="error"

@@ -20,6 +20,7 @@ const UpdateUserSchema = yup.object().shape({
 function AccountGeneral() {
   const { user } = useAuth();
   const isLoading = useSelector((state) => state.user.isLoading);
+  const dispatch = useDispatch();
 
   const defaultValues = {
     name: user?.name || "",
@@ -46,8 +47,6 @@ function AccountGeneral() {
     formState: { isSubmitting },
   } = methods;
 
-  const dispatch = useDispatch();
-
   //// drap&drop a image ///////////
   const handleDrop = useCallback(
     (acceptedFiles) => {
@@ -69,80 +68,110 @@ function AccountGeneral() {
     dispatch(updateUserProfile({ userId: user._id, ...data }));
   };
 
-  //
+  // css-xg6xos-MuiContainer-root paddingLeft 24 + 16
   return (
-    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={4}>
-          {/* update avatar */}
-          <Card sx={{ py: 10, px: 3, textAlign: "center" }}>
-            <FUploadAvatar
-              name="avatarUrl"
-              accept="image/*"
-              maxSize={3145728}
-              onDrop={handleDrop}
-              helperText={
-                <Typography
-                  variant="caption"
-                  sx={{
-                    mt: 2,
-                    mx: "auto",
-                    display: "block",
-                    textAlign: "center",
-                    color: "text.secondary",
-                  }}
-                >
-                  Allowed *.jpeg, *.jpg, *.png, *.gif
-                  <br /> max size of {fData(3145728)}
-                </Typography>
-              }
-            />
-          </Card>
-        </Grid>
-
-        {/* update info */}
-        <Grid item xs={12} md={8}>
-          <Card sx={{ p: 3 }}>
-            <Box
+    <>
+      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+        <Grid container spacing={1}>
+          <Grid item xs={12} md={4}>
+            {/* update avatar */}
+            <Card
               sx={{
-                display: "grid",
-                rowGap: 3,
-                columnGap: 2,
-                gridTemplateColumns: {
-                  xs: "repeat(1, 1fr)",
-                  sm: "repeat(2, 1fr)",
-                },
+                py: 4,
+                px: 3,
+                textAlign: "center",
               }}
             >
-              <FTextField name="name" label="Name" />
-              <FTextField name="email" label="Email" />
+              <FUploadAvatar
+                name="avatarUrl"
+                accept="image/*"
+                maxSize={3145728}
+                onDrop={handleDrop}
+                helperText={
+                  <Typography
+                    variant="caption"
+                    sx={{
+                      mt: 2,
+                      mx: "auto",
+                      display: "block",
+                      textAlign: "center",
+                      color: "text.secondary",
+                    }}
+                  >
+                    Allowed *.jpeg, *.jpg, *.png, *.gif
+                    <br /> Max size of {fData(3145728)}
+                  </Typography>
+                }
+              />
+            </Card>
+          </Grid>
 
-              <FTextField name="jobTitle" label="Job Title?" />
-              <FTextField name="company" label="Company?" />
-
-              <FTextField name="phoneNumber" label="Phone Number?" />
-              <FTextField name="address" label="Address?" />
-
-              <FTextField name="city" label="City" />
-              <FTextField name="country" label="Country" />
-            </Box>
-
-            <Stack spacing={3} alignItems="flex-end" sx={{ mt: 3 }}>
-              <FTextField name="coverUrl" label="Home Profile Cover Image?" />
-              <FTextField name="aboutMe" multiline rows={4} label="About Me?" />
-              {/* btn Save */}
-              <LoadingButton
-                type="submit"
-                variant="contained"
-                loading={isSubmitting || isLoading}
+          {/* update info */}
+          <Grid
+            item
+            xs={12}
+            md={8}
+            spacing={2}
+            sx={{
+              "& .css-f3o4t6-MuiPaper-root-MuiCard-root": {
+                margin: "0px",
+              },
+            }}
+          >
+            <Card sx={{ p: 1, m: 1, spacing: 1 }} spacing={2}>
+              <Box
+                sx={{
+                  "& .css-10g9nb3": { rowGap: "10px" },
+                  display: "grid",
+                  rowGap: 2,
+                  columnGap: 2,
+                  gridTemplateColumns: {
+                    xs: "repeat(1, 1fr)",
+                    sm: "repeat(2, 1fr)",
+                  },
+                }}
               >
-                Save Changes
-              </LoadingButton>
-            </Stack>
-          </Card>
+                <FTextField name="name" label="Name" />
+                <FTextField name="email" label="Email" />
+
+                <FTextField name="jobTitle" label="Job Title?" />
+                <FTextField name="company" label="Company?" />
+
+                <FTextField name="phoneNumber" label="Phone Number?" />
+                <FTextField name="address" label="Address?" />
+
+                <FTextField name="city" label="City" />
+                <FTextField name="country" label="Country" />
+              </Box>
+
+              <Stack
+                spacing={1}
+                alignItems="flex-end"
+                sx={{ mt: 2, rowGap: 1 }}
+              >
+                {/* <FTextField name="coverUrl" label="Home Profile Cover Image?" /> */}
+                <FTextField
+                  name="aboutMe"
+                  multiline
+                  rows={4}
+                  label="About Me?"
+                />
+
+                {/* btn Save */}
+                <LoadingButton
+                  sx={{ fontSize: "12px", mt: 0 }}
+                  type="submit"
+                  variant="outlined"
+                  loading={isSubmitting || isLoading}
+                >
+                  Save Changes
+                </LoadingButton>
+              </Stack>
+            </Card>
+          </Grid>
         </Grid>
-      </Grid>
-    </FormProvider>
+      </FormProvider>
+    </>
   );
 }
 

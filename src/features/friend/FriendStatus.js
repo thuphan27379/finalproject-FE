@@ -18,7 +18,7 @@ function FriendStatus({ currentUserId, targetUserId, friendship, sx }) {
         icon={<CheckCircleOutlineRoundedIcon />}
         label="Friend"
         color="success"
-        // màu xanh ð?t chu?i
+        variant="outlined"
       />
     );
   }
@@ -31,7 +31,7 @@ function FriendStatus({ currentUserId, targetUserId, friendship, sx }) {
         icon={<DoNotDisturbAltRoundedIcon />}
         label="Declined"
         color="error"
-        // red
+        variant="outlined"
       />
     );
   }
@@ -46,7 +46,7 @@ function FriendStatus({ currentUserId, targetUserId, friendship, sx }) {
           icon={<MarkEmailReadRoundedIcon />}
           label="Request sent"
           color="warning"
-          // orange
+          variant="outlined"
         />
       );
     } else if (from === targetUserId && to === currentUserId) {
@@ -56,8 +56,8 @@ function FriendStatus({ currentUserId, targetUserId, friendship, sx }) {
           icon={<PauseCircleOutlineRoundedIcon />}
           label="Waiting for response"
           color="warning"
+          variant="outlined"
         />
-        // orange
       );
     }
   }

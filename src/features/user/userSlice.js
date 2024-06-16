@@ -25,13 +25,12 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    // update User Profile
+    // update User Profile Page
     updateUserProfileSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
-      const updatedUser = action.payload;
-      state.updatedProfile = updatedUser;
+      state.updatedProfile = action.payload;
     },
     // get User Success
     getUserSuccess(state, action) {
@@ -59,6 +58,7 @@ export const updateUserProfile =
     instagramLink,
     linkedinLink,
     twitterLink,
+    youtubeLink,
   }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
@@ -75,6 +75,7 @@ export const updateUserProfile =
         instagramLink,
         linkedinLink,
         twitterLink,
+        youtubeLink,
       };
 
       // check & upload

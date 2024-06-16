@@ -3,7 +3,8 @@ import { Link, Card, CardHeader, Stack, Box } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import XIcon from "@mui/icons-material/X";
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 // 3rd a card show info about social link, on the left
 const IconStyle = styled(Box)(({ theme }) => ({
@@ -15,14 +16,20 @@ const IconStyle = styled(Box)(({ theme }) => ({
 }));
 
 function ProfileSocialInfo({ profile }) {
-  const { facebookLink, instagramLink, linkedinLink, twitterLink } = profile;
+  const {
+    facebookLink,
+    instagramLink,
+    linkedinLink,
+    twitterLink,
+    youtubeLink,
+  } = profile;
 
   const SOCIALS = [
     {
       name: "Linkedin",
       icon: (
-        <IconStyle color="#006097">
-          <LinkedInIcon />
+        <IconStyle color=" #0077B5">
+          <LinkedInIcon sx={{ fontSize: 27 }} />
         </IconStyle>
       ),
       href: linkedinLink,
@@ -30,8 +37,8 @@ function ProfileSocialInfo({ profile }) {
     {
       name: "Twitter",
       icon: (
-        <IconStyle color="#1877F2">
-          <TwitterIcon />
+        <IconStyle color="	#1DA1F2">
+          <XIcon />
         </IconStyle>
       ),
       href: twitterLink,
@@ -39,8 +46,8 @@ function ProfileSocialInfo({ profile }) {
     {
       name: "Facebook",
       icon: (
-        <IconStyle color="#1C9CEA">
-          <FacebookIcon />
+        <IconStyle color="#4267B2">
+          <FacebookIcon sx={{ fontSize: 27 }} />
         </IconStyle>
       ),
       href: facebookLink,
@@ -48,29 +55,45 @@ function ProfileSocialInfo({ profile }) {
     {
       name: "Instagram",
       icon: (
-        <IconStyle color="#D7336D">
+        <IconStyle color="#d62976">
           <InstagramIcon />
         </IconStyle>
       ),
       href: instagramLink,
     },
+    {
+      name: "Youtube",
+      icon: (
+        <IconStyle color="#FF0000">
+          <YouTubeIcon sx={{ fontSize: 27 }} />
+        </IconStyle>
+      ),
+      href: youtubeLink,
+    },
   ];
 
   //
   return (
-    <Card>
-      <CardHeader title="Social" />
-      <Stack spacing={2} sx={{ p: 3 }}>
-        {SOCIALS.map((link) => (
-          <Stack key={link.name} direction="row" alignItems="center">
-            {link.icon}
-            <Link component="span" variant="body2" color="text.primary" noWrap>
-              {link.href}
-            </Link>
-          </Stack>
-        ))}
-      </Stack>
-    </Card>
+    <>
+      <Card sx={{ minWidth: "300px", minHeight: "250px" }}>
+        <CardHeader title="Social" sx={{ paddingTop: "10px" }} />
+        <Stack spacing={2} sx={{ p: 2 }}>
+          {SOCIALS.map((link) => (
+            <Stack key={link.name} direction="row" alignItems="center">
+              {link.icon}
+              <Link
+                component="span"
+                variant="body2"
+                color="text.primary"
+                noWrap
+              >
+                {link.href}
+              </Link>
+            </Stack>
+          ))}
+        </Stack>
+      </Card>
+    </>
   );
 }
 

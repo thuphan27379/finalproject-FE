@@ -13,30 +13,33 @@ import MenuItem from "@mui/material/MenuItem";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { Badge, Stack } from "@mui/material";
+import { Badge, Stack, Divider } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import PublicIcon from "@mui/icons-material/Public";
-import useAuth from "../hooks/useAuth";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 
-// menu
+import useAuth from "../hooks/useAuth";
+
+// main menu
 const pages = [
   { label: "About us", path: "" },
   { label: "Projects", path: "" },
   { label: "Domains", path: "" },
   { label: "Startup", path: "" },
+  { label: "Contact us", path: "" },
   { label: "Community", path: "blog" }, //path: "blog"
 ];
 
-// avatar
+// avatar menu
 const settings = [
-  { label: "My Domains", path: "" },
+  { label: "My Domain", path: "" },
   { label: "My Profile", path: "blog" },
   { label: "My Group", path: "blog" },
   { label: "Setting", path: "account" },
-  { label: "Logout", path: "" },
+  { label: "Logout", path: "login" },
 ];
 
+// kiem tra lai avatarUrl ?!?!
 function ResponsiveAppBar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -44,6 +47,7 @@ function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+  // menu of avatar
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -59,6 +63,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = (event) => {
     setAnchorElUser(null);
   };
+
   //
   const handleLogout = async () => {
     try {
@@ -116,181 +121,195 @@ function ResponsiveAppBar() {
 
   //
   return (
-    <AppBar
-      position="fixed"
-      maxWidth="100%"
-      maxHeight="64px"
-      sx={{
-        backgroundColor: "black",
-        zIndex: (theme) => theme.zIndex.drawer + 1,
-        boxShadow: "none",
-        // text: "black",
-      }}
-    >
-      {/* logo */}
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          {/* link to homepage */}
-          <Stack
-            direction="row"
-            sx={{
-              paddingLeft: "50px",
-              alignItems: "center",
-            }}
-          >
-            {/* bo khung vien tron cua logo */}
-            <IconButton sx={{ p: 0, mr: 2 }}>
-              <Avatar
-                sx={{
-                  width: "55px",
-                  height: "55px",
-                }}
-                alt=""
-                src="./huongsac-logo.png"
-                to="/"
-                component={RouterLink}
-              />
-            </IconButton>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
+    <>
+      <AppBar
+        position="fixed"
+        maxWidth="100%"
+        maxHeight="64px"
+        sx={{
+          backgroundColor: "black",
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          boxShadow: "none",
+          // text: "black",
+        }}
+      >
+        {/* logo */}
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            {/* link to homepage */}
+            <Stack
+              direction="row"
               sx={{
-                mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontFamily: "monospace",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "#B31942 ",
-                textDecoration: "none",
+                paddingLeft: "50px",
+                alignItems: "center",
               }}
             >
-              MyCompany
-            </Typography>
-          </Stack>
+              {/* bo khung vien tron cua logo */}
+              <IconButton sx={{ p: 0, mr: 2 }}>
+                <Avatar
+                  sx={{
+                    width: "65px",
+                    height: "60px",
+                    borderRadius: "unset",
+                  }}
+                  alt=""
+                  src="./huongsac-logo.png"
+                  to="/"
+                  component={RouterLink}
+                  // sx={{ borderRadius: "0" }}
+                />
+              </IconButton>
 
-          {/* main menu */}
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              paddingLeft: "50px",
-            }}
-          >
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="#app-bar-with-responsive-menu"
                 sx={{
-                  my: 2,
-                  color: "white",
-                  display: "block",
-                  textTransform: "none",
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".3rem",
+                  color: "#B31942 ",
+                  textDecoration: "none",
                 }}
-                to={`/${page.path}`}
-                component={RouterLink}
               >
-                {page.label}
-              </Button>
-            ))}
-          </Box>
+                MyCompany
+              </Typography>
+            </Stack>
 
-          {/* search input, width!  */}
-          <Stack>
-            <Search sx={{ width: "300px" }}>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search..."
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
-          </Stack>
-
-          {/* icon */}
-          <Stack
-            direction="row"
-            sx={{
-              alignItems: "center",
-              justifyContent: "space-evenly",
-              paddingLeft: "20px",
-              paddingRight: "50px",
-            }}
-          >
-            <IconButton
-              size="large"
-              aria-label="switch dark/light modes"
-              color="inherit"
-              title="Dark Mode"
+            {/* main menu */}
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex" },
+                paddingLeft: "50px",
+              }}
             >
-              <LightModeIcon />
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="switch languages English/ Vietnamese"
-              color="inherit"
-              title="EN-VN"
-            >
-              <PublicIcon />
-            </IconButton>
-
-            {/* avt account & menu  */}
-            <Box sx={{ flexGrow: 0 }}>
-              {/* thay avatar account vo */}
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Badge>
-                    <Avatar
-                      alt="Account"
-                      src={user?.avatarUrl}
-                      sx={{
-                        width: "30px",
-                        height: "30px",
-                      }}
-                    />
-                  </Badge>
-                </IconButton>
-              </Tooltip>
-
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                {/* if login - logout, else login */}
-                {settings.map((setting) => (
-                  <MenuItem
-                    // key={setting}
-                    onClick={
-                      setting.label === "Logout"
-                        ? handleLogout
-                        : handleCloseUserMenu
-                    }
-                    to={`/${setting.path}`}
-                    component={RouterLink}
-                  >
-                    <Typography textAlign="center">{setting.label}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
+              {pages.map((page) => (
+                <Button
+                  key={page}
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    my: 2,
+                    color: "white",
+                    display: "block",
+                    textTransform: "none",
+                  }}
+                  to={`/${page.path}`}
+                  component={RouterLink}
+                >
+                  {page.label}
+                </Button>
+              ))}
             </Box>
-          </Stack>
-        </Toolbar>
-      </Container>
-    </AppBar>
+
+            {/* search input, width!  */}
+            <Stack>
+              <Search sx={{ width: "300px" }}>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search domain..."
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
+            </Stack>
+
+            {/* icons */}
+            <Stack
+              direction="row"
+              sx={{
+                alignItems: "center",
+                justifyContent: "space-evenly",
+                paddingLeft: "20px",
+                paddingRight: "50px",
+              }}
+            >
+              <IconButton
+                size="large"
+                aria-label="switch dark/light modes"
+                color="inherit"
+                title="Dark Mode"
+              >
+                <LightModeIcon />
+              </IconButton>
+              <IconButton
+                size="large"
+                aria-label="switch languages English/ Vietnamese"
+                color="inherit"
+                title="EN-VN"
+              >
+                <PublicIcon />
+              </IconButton>
+
+              {/* avt account & menu  */}
+              <Box sx={{ flexGrow: 0 }}>
+                {/* thay avatar account vo */}
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Badge>
+                      <Avatar
+                        alt="Account"
+                        src={user?.avatarUrl}
+                        sx={{
+                          width: "30px",
+                          height: "30px",
+                        }}
+                      />
+                    </Badge>
+                  </IconButton>
+                </Tooltip>
+
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <Typography
+                    textAlign="center"
+                    sx={{ fontWeight: "600", color: "#B31942" }}
+                  >
+                    {user?.name}
+                  </Typography>
+                  <Divider />
+                  {/* if login - logout, else login */}
+                  {settings.map((setting) => (
+                    <MenuItem
+                      // key={setting}
+                      onClick={
+                        setting.label === "Logout"
+                          ? handleLogout
+                          : handleCloseUserMenu
+                      }
+                      to={`/${setting.path}`}
+                      component={RouterLink}
+                    >
+                      <Typography textAlign="center">
+                        {setting.label}
+                      </Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            </Stack>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </>
   );
 }
 

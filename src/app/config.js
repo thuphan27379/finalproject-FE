@@ -11,3 +11,5 @@ export const CLOUDINARY_UPLOAD_PRESET =
 export const COMMENTS_PER_POST = 3;
 export const POSTS_PER_PAGE = 5;
 export const FRIEND_REQUESTS_PER_PAGE = 10;
+export const GROUP_PER_PAGE = 5;
+export const INTEREST_PER_PAGE = 5;

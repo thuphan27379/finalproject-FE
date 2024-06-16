@@ -4,6 +4,7 @@ import postReducer from "../features/post/postSlice";
 import userReducer from "../features/user/userSlice";
 import commentReducer from "../features/comment/commentSlice";
 import friendReducer from "../features/friend/friendSlice";
+import groupReducer from "../features/group/groupSlide";
 
 //
 const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   comment: commentReducer,
   friend: friendReducer,
+  group: groupReducer,
 });
 
 const store = configureStore({

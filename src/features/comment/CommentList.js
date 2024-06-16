@@ -11,10 +11,10 @@ import { COMMENTS_PER_POST } from "../../app/config";
 function CommentList({ postId }) {
   const {
     commentsByPost,
-    commentsById,
     totalComments,
-    isLoading,
     currentPage,
+    commentsById,
+    isLoading,
   } = useSelector(
     (state) => ({
       commentsByPost: state.comment.commentsByPost[postId],
@@ -23,13 +23,13 @@ function CommentList({ postId }) {
       commentsById: state.comment.commentsById,
       isLoading: state.comment.isLoading,
     }),
-    shallowEqual
+    shallowEqual //update data for render UI
   );
 
   const totalPages = Math.ceil(totalComments / COMMENTS_PER_POST);
-  const dispatch = useDispatch();
 
   //
+  const dispatch = useDispatch();
   useEffect(() => {
     if (postId) dispatch(getComments({ postId }));
   }, [postId, dispatch]);
@@ -52,27 +52,29 @@ function CommentList({ postId }) {
 
   //
   return (
-    <Stack spacing={1.5}>
-      <Stack direction="row" justifyContent="space-between">
-        <Typography variant="subtitle" sx={{ color: "text.secondary" }}>
-          {totalComments > 1
-            ? `${totalComments} comments`
-            : totalComments === 1
-            ? `${totalComments} comment`
-            : "No comment"}
-        </Typography>
+    <>
+      <Stack spacing={1.5}>
+        <Stack direction="row" justifyContent="space-between">
+          <Typography variant="subtitle" sx={{ color: "text.secondary" }}>
+            {totalComments > 1
+              ? `${totalComments} comments`
+              : totalComments === 1
+              ? `${totalComments} comment`
+              : "No comment"}
+          </Typography>
 
-        {totalComments > COMMENTS_PER_POST && (
-          <Pagination
-            count={totalPages}
-            page={currentPage}
-            onChange={(e, page) => dispatch(getComments({ postId, page }))}
-          />
-        )}
+          {totalComments > COMMENTS_PER_POST && (
+            <Pagination
+              count={totalPages}
+              page={currentPage}
+              onChange={(e, page) => dispatch(getComments({ postId, page }))}
+            />
+          )}
+        </Stack>
+        {/*  */}
+        {renderComments}
       </Stack>
-      {/*  */}
-      {renderComments}
-    </Stack>
+    </>
   );
 }
 

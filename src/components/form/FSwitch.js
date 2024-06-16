@@ -5,16 +5,18 @@ function FSwitch({ name, ...other }) {
   const { control } = useFormContext();
 
   return (
-    <FormControlLabel
-      control={
-        <Controller
-          name={name}
-          control={control}
-          render={({ field }) => <Switch {...field} checked={field.value} />}
-        />
-      }
-      {...other}
-    />
+    <>
+      <FormControlLabel
+        control={
+          <Controller
+            name={name}
+            control={control}
+            render={({ field }) => <Switch {...field} checked={field.value} />}
+          />
+        }
+        {...other}
+      />
+    </>
   );
 }
 

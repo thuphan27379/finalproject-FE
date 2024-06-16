@@ -181,3 +181,5 @@ https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and
 8. Display the posts in a group on the group page for all group members to see.
 9. Allow users to leave a group if they no longer want to be a member.
 10. Ensure that only members of a group can post in the group, and that non-members cannot view the group posts.
+
+11. Tag other users in posts and comments

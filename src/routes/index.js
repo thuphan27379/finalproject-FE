@@ -20,55 +20,60 @@ import Startup from "../pages/Startup";
 // INDEX OF ALL ROUTES = connect all layouts & pages together
 function Router() {
   return (
-    <Routes>
-      {/* public */}
-      <Route element={<HomeLayout />}>
-        <Route index path="/" element={<HomePage />} />
-        <Route path="/" element={<Aboutus />} />
-        <Route path="/" element={<Projects />} />
-        <Route path="/" element={<Domains />} />
-        <Route path="/" element={<Startup />} />
-        {/* CODERCOMM */}
-        {/* <Route path="/blog" element={<BlogPage />} /> */}
-        <Route path="/user/:userId" element={<UserProfilePage />} />
-      </Route>
+    <>
+      <Routes>
+        {/* public */}
+        <Route element={<HomeLayout />}>
+          {/* company */}
+          <Route index path="/" element={<HomePage />} />
+          <Route path="/" element={<Aboutus />} />
+          <Route path="/" element={<Projects />} />
+          <Route path="/" element={<Domains />} />
+          <Route path="/" element={<Startup />} />
+          {/* CODERCOMM */}
+          <Route path="/blog" element={<BlogPage />} />
+          {/* <Route path="/user/:userId" element={<UserProfilePage />} /> */}
+        </Route>
 
-      {/* login/signup */}
-      <Route path="/" element={<BlankLayout />}>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
+        {/* login/signup */}
+        <Route path="/" element={<BlankLayout />}>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
 
-      {/* login require  HIEN TAI KHONG LOGIN VAN VO ACCOUNT VA PROFILE DC*/}
-      <Route path="/" element={<HomeLayout />}>
-        <Route
-          path="/blog"
-          element={
-            <AuthRequire>
-              <BlogPage />
-            </AuthRequire>
-          }
-        />
-        <Route
-          path="/account"
-          element={
-            <AuthRequire>
-              <AccountPage />
-            </AuthRequire>
-          }
-        />
+        {/* login require  */}
+        <Route path="/" element={<HomeLayout />}>
+          <Route
+            path="/blog"
+            element={
+              <AuthRequire>
+                {/* <BlogPage /> */}
+                <UserProfilePage />
+              </AuthRequire>
+            }
+          />
 
-        <Route
-          path="/admin"
-          element={
-            <AuthRequire>
-              <AdminPage />
-            </AuthRequire>
-          }
-        />
-      </Route>
-    </Routes>
+          <Route
+            path="/account"
+            element={
+              <AuthRequire>
+                <AccountPage />
+              </AuthRequire>
+            }
+          />
+
+          <Route
+            path="/admin"
+            element={
+              <AuthRequire>
+                <AdminPage />
+              </AuthRequire>
+            }
+          />
+        </Route>
+      </Routes>
+    </>
   );
 }
 

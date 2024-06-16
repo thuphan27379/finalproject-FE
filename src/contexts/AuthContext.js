@@ -1,5 +1,5 @@
 // module 2.3 .3.4 & .5
-import { createContext, useReducer, useEffect } from "react";
+import { createContext, useReducer, useEffect } from "react"; //Context truyen thong tin cho component con
 import { useSelector } from "react-redux";
 
 import apiService from "../app/apiService";
@@ -9,19 +9,19 @@ import { isValidToken } from "../utils/jwt";
 //// all about authentication ////
 // init value
 const initialState = {
-  isInitialized: false,
-  isAuthenticated: false,
+  isInitialized: false, // app render first time yet?
+  isAuthenticated: false, // login yet?
   user: {},
 };
 
-// khai bao action types
+// khai bao constant of action types
 const INITIALIZE = "AUTH.INITIALIZE";
 const LOGIN_SUCCESS = "AUTH.LOGIN_SUCCESS";
 const REGISTER_SUCCESS = "AUTH.REGISTER_SUCCESS";
 const LOGOUT = "AUTH.LOGOUT";
 const UPDATE_PROFILE = "AUTH.UPDATE_PROFILE";
 
-// reducers (khai bao states)
+// func reducers (khai bao states) qly tat ca cac state cua user cho viec authorization
 const reducer = (state, action) => {
   switch (action.type) {
     // persistent login
@@ -69,6 +69,7 @@ const reducer = (state, action) => {
         instagramLink,
         linkedinLink,
         twitterLink,
+        youtubeLink,
         friendCount,
         postCount,
         commentCount,
@@ -89,6 +90,7 @@ const reducer = (state, action) => {
           instagramLink,
           linkedinLink,
           twitterLink,
+          youtubeLink,
           friendCount,
           postCount,
           commentCount,
@@ -99,7 +101,7 @@ const reducer = (state, action) => {
   }
 };
 
-// access Token
+// access Token: luu/xoa token trong headers (inspect network)
 const setSession = (accessToken) => {
   if (accessToken) {
     window.localStorage.setItem("accessToken", accessToken);
@@ -110,17 +112,17 @@ const setSession = (accessToken) => {
   }
 };
 
-//
+// authorization
 const AuthContext = createContext({ ...initialState });
 
-// func: AuthProvider
+// func: AuthProvider, connect server API
 function AuthProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const updatedProfile = useSelector((state) => state.user.updatedProfile);
 
   // AUTH INITIALIZE: stay login at account page with value accessToken
 
-  // update profile: reset user account page
+  // update profile: reset user account setting page
   useEffect(() => {
     if (updatedProfile)
       dispatch({ type: UPDATE_PROFILE, payload: updatedProfile });
@@ -131,7 +133,7 @@ function AuthProvider({ children }) {
     const response = await apiService.post("/auth/login", { email, password });
     console.log(response);
 
-    // access token
+    // get access token
     const { user, accessToken } = response.data;
     console.log("user login", user);
 
@@ -139,10 +141,10 @@ function AuthProvider({ children }) {
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: { user },
+      payload: { user }, //
     });
 
-    callback();
+    callback(); //to navigate after login
   };
 
   // 2. func: register a new account
@@ -170,12 +172,13 @@ function AuthProvider({ children }) {
     callback();
   };
 
+  // 4. for stay login if refresh
   useEffect(() => {
     const initialize = async () => {
       try {
         const accessToken = window.localStorage.getItem("accessToken");
 
-        // ??????????????????????????????????????????????????????
+        // ?
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
 
@@ -193,11 +196,17 @@ function AuthProvider({ children }) {
             type: INITIALIZE,
             payload: { isAuthenticated: false, user: null },
           });
+
+          // dispatch({
+          //   type: LOGIN_SUCCESS,
+          //   payload: { user }, //
+          //   payload: { isAuthenticated: false, user: null },
+          // });
         }
       } catch (err) {
         console.error(err);
 
-        // if accessToken is expired
+        // if accessToken is expired or null
         setSession(null);
         dispatch({
           type: INITIALIZE,
@@ -210,8 +219,9 @@ function AuthProvider({ children }) {
     };
 
     initialize();
-  }, []);
+  }, []); // chay 1 lan duy nhat sau lan render dau tien
 
+  //
   return (
     <AuthContext.Provider
       value={{

@@ -24,8 +24,8 @@ function HomeLayout() {
           marginX: "auto",
           paddingLeft: "60px",
           paddingRight: "60px",
-          minWidth: "unset", //
-          maxWidth: "unset!important", //
+          // minWidth: "unset", //
+          // maxWidth: "unset!important", //
         }}
         // className={context.theme}
       >
@@ -39,7 +39,7 @@ function HomeLayout() {
             justifyContent: "space-evenly",
             flexGrow: 1,
             maxWidth: "unset",
-            paddingLeft: "40px",
+            paddingLeft: "50px",
           }}
         >
           <div style={{ maxWidth: "240px", marginLeft: "60px" }}>
@@ -48,19 +48,25 @@ function HomeLayout() {
 
           <div
             className="outlet-wrapper"
-            style={{ marginTop: "30px", minWidth: "60vw" }}
+            style={{ marginTop: "20px", minWidth: "60vw", marginLeft: "20px" }}
           >
             <Outlet />
           </div>
 
-          <div style={{ maxWidth: "240px", marginRight: "60px" }}>
+          <div
+            style={{
+              maxWidth: "240px",
+              marginRight: "60px",
+              marginTop: "20px",
+            }}
+          >
             <RightBar />
           </div>
         </Box>
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <MainFooter />
+        <MainFooter sx={{ minHeight: "50px" }} />
       </Container>
     </>
   );

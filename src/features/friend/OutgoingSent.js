@@ -7,17 +7,19 @@ import {
   Pagination,
   Grid,
   Container,
-  Button,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+
 import { getOutgoingSents, cancelRequest } from "./friendSlice";
 import UserCard from "./UserCard";
 import SearchInput from "../../components/SearchInput";
 
-// Outgoing ???
+// totalUsers k cap nhat
+// Outgoing
 function OutgoingSents() {
   const [filterName, setFilterName] = useState("");
   const [page, setPage] = React.useState(1);
+  const dispatch = useDispatch();
 
   const {
     currentPageUsers,
@@ -29,7 +31,6 @@ function OutgoingSents() {
   console.log(outgoingRequests);
 
   const users = currentPageUsers.map((userId) => usersById[userId]);
-  const dispatch = useDispatch();
 
   const handleSubmit = (searchQuery) => {
     setFilterName(searchQuery);
@@ -45,46 +46,48 @@ function OutgoingSents() {
 
   //
   return (
-    <Container xs={8}>
-      <Typography variant="h4" sx={{ mb: 3 }}>
-        Sent Friend Requests
-      </Typography>
+    <>
+      <Container xs={8}>
+        <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
+          Sent Friend Requests List
+        </Typography>
 
-      <Card sx={{ p: 3 }}>
-        <Stack spacing={2}>
-          {/* Search Input and Pagination */}
-          <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
-            <SearchInput handleSubmit={handleSubmit} />
-            <Box sx={{ flexGrow: 1 }} />
-            <Typography
-              variant="subtitle"
-              sx={{ color: "text.secondary", ml: 1 }}
-            >
-              {totalUsers > 1
-                ? `${totalUsers} requests found`
-                : totalUsers === 1
-                ? `${totalUsers} request found`
-                : "No request found"}
-            </Typography>
-            <Pagination
-              count={totalPages}
-              page={page}
-              onChange={(e, page) => setPage(page)}
-            />
+        <Card sx={{ p: 3 }}>
+          <Stack spacing={2}>
+            {/* Search Input and Pagination */}
+            <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
+              <SearchInput handleSubmit={handleSubmit} />
+              <Box sx={{ flexGrow: 1 }} />
+              <Typography
+                variant="subtitle"
+                sx={{ color: "text.secondary", ml: 1 }}
+              >
+                {totalUsers > 1
+                  ? `${totalUsers} requests found`
+                  : totalUsers === 1
+                  ? `${totalUsers} request found`
+                  : "No request found"}
+              </Typography>
+              <Pagination
+                count={totalPages}
+                page={page}
+                onChange={(e, page) => setPage(page)}
+              />
+            </Stack>
           </Stack>
-        </Stack>
 
-        {/* Grid for displaying user cards */}
-        <Grid container spacing={3} my={1}>
-          {outgoingRequests.map((user) => (
-            <Grid key={user._id} item xs={12} md={4}>
-              <UserCard profile={user} />
-              {/* Cancel Request button */}
-            </Grid>
-          ))}
-        </Grid>
-      </Card>
-    </Container>
+          {/* Grid for displaying user cards */}
+          <Grid container spacing={3} my={1} xs={18}>
+            {outgoingRequests.map((user) => (
+              <Grid key={user._id} item xs={12} md={4}>
+                <UserCard profile={user} />
+                {/* Cancel Request button */}
+              </Grid>
+            ))}
+          </Grid>
+        </Card>
+      </Container>
+    </>
   );
 }
 

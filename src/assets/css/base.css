@@ -30,8 +30,8 @@ html {
 }
 
 body {
-  background: #fff;
-  color: var(--text-color);
+  background-color: white;
+  color: black;
   cursor: auto;
   overflow-wrap: break-word;
   overflow-wrap: break-word;

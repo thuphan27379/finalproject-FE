@@ -9,43 +9,47 @@ import ListItemText from "@mui/material/ListItemText";
 // LINK TO PAGE
 export default function RightBar() {
   return (
-    <Box
-      sx={{
-        color: "#04214a",
-        fontWeight: "1000",
-        marginTop: "90px",
-        width: "240px",
-        paddingRight: "40px",
-        marginRight: "50px",
-      }}
-    >
-      <List
+    <>
+      <Box
         sx={{
           color: "#04214a",
           fontWeight: "1000",
+          marginTop: "50px",
           width: "240px",
           paddingRight: "10px",
-          // width: "25vw",
-          marginTop: "90px",
+          marginRight: "50px",
+          fontSize: "20px",
         }}
-      ></List>
+      >
+        <List
+          sx={{
+            color: "#04214a",
+            fontWeight: "1500",
+            width: "240px",
+            paddingRight: "0px",
+            // width: "25vw",
+            marginTop: "54px",
+            fontSize: "20px",
+          }}
+        ></List>
 
-      <List sx={{ color: "#0A3161" }}>
-        {[
-          "Startup Support Program",
-          "Our Projects",
-          "Cooperate with us",
-          "Domains for sale",
-          "Your Domains",
-          "Donate us",
-        ].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+        <List sx={{ color: "#0A3161", fontSize: "20px", fontWeight: "1500" }}>
+          {[
+            "Startup Support Program",
+            "Our Projects",
+            "Cooperate with us",
+            "Domains for sale",
+            "Your Domains",
+            "Donate us",
+          ].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
+    </>
   );
 }

@@ -9,73 +9,80 @@
 \*The Project Title: MyCompany WebApp - Social Platform
 
 \*The Project Description:
-All about my company: my cooperator and customer can know everything what my company do.
-Startup community - social networking: opportunity for young startup and SMEs.
+
+- [] All about my company: my cooperator and customer can know everything what my company do. (domain list?!?!)
+- [] Startup community - social networking: opportunity for young startup and SMEs.
 
 \*User Story:
 
 \*\*Background:
-MyCompany is webapp of organization about IT solution and startup. Client can get information, search and contact us...
-It is also a blog that allows people to join and create their profile, following/ follower and others... (free email@domain.com, domain.com/accountname).
 
-Admin app (database and account management and more). admin.domain.com
+- [] MyCompany is webapp of organization about IT solution and startup. Client can get information, search and contact us...
+- [] It is also a blog that allows people to join and create their profile, following/ follower and others... (free email@domain.com, domain.com/accountname).
+- [] Admin app (database and account management and more). - admin.domain.com ?!?!
 
 \*\*\*Social Platform:
 
 User story:
 
-Site - Home:  
-Get all information of company. (about us, startup, domains, projects...)
+- [] Site - Home:  
+  Get all information of company. (about us, startup, domains, projects...)
 
-Startup Community-blog:
+- [] Startup Community-blog:
 
-Authentication:  
-As a user, I am able to log in and log out my account. (stay signed in after refreshing the page.) x
-\*\*\*Forget & Reset Password
+### Authentication:
 
-User:
-As a user, I am able to create my account by providing basic information (name, email, password...). signup x
-(Passwords must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one number.)
-As a user, I am able to get list of users with pagination for add friend. x
-As a user, I am able to see a specific user's profile given a user ID. (search by name/id) x
-As a user, I am able to get all my profile info.
-As a user, I am able to update my profile (name, avatar, bio, information, image,...). x
-As a user, I am able to receive notifications about new likes, and comments on my content, as well as new followers and other relevant events.
-\*\*\*Simple Chat between users
+- [x] As a user, I am able to log in and log out my account with email and password after register a new account. (also stay signed in after refreshing the page.) x
+      \*\*\*Forget & Reset Password ?!?!
+
+### User:
+
+- [x] As a user, I am able to create my account by providing basic information (name, email, password...). - register x
+- [x] As a user, I am able to get list of users with pagination for add friend. - list of users in add friend tab x
+- [x] As a user, I am able to see a specific user's profile given a user ID. - (search by name/id) x
+- [] As a user, I am able to get all my profile info. - my profile (posts, friends, info...) !!!
+- [x] As a user, I am able to update my profile (name, avatar, bio, information, image,...). - account setting x
+- [] As a user, I am able to receive notifications about new likes, and comments on my content, as well as new followers and other relevant events. - notifications at avatar !!!
+  \*\*\*Simple Chat between users
 
 Post:
-As a user, I am able to share my thoughts and interests by creating content (text, images, or video). x
-As a user, I am able to get comments of a post. x
-As a user, I am able to get detail a single post.(with comments, reaction)
-As a user, I am able to edit and delete my posts. x
-As a user, I am able to view my own posts as well as other users content (wall). x
-\*\*\*Tag other users in posts and comments
+
+- [] As a user, I am able to share my thoughts and interests by creating content (text, images, or video). - create a post x
+- [] As a user, I am able to get comments of a post. - pagination x
+- [] As a user, I am able to get detail a single post.(with comments, reaction) !!!
+- [] As a user, I am able to edit and delete my posts. x
+- [] As a user, I am able to view my own posts as well as other users content (wall). x
+  \*\*\*Tag other users in posts and comments
 
 Comment:
-As a user, I am able to get a list of comments of a post. x
-As a user, I am able to interact with content by commenting.
-As a user, I am able to edit or delete comments that I created. x
-\*\*\*Tag other users in posts and comments
+
+- [] As a user, I am able to get a list of comments of a post. x
+- [] As a user, I am able to interact with content by commenting. x
+- [] As a user, I am able to edit or delete comments that I created. x
+  \*\*\*Tag other users in posts and comments
 
 Friend/follow:
-As a user, I am able to get the list of received pending requests - incoming list. x
-As a user, I am able to get the list of sent pending requests - outgoing list. x
-As a user, I am able to see a list of people that I follow as well as my followers. (my friend list) x
-As a user, I am able to send a friend request to others - add friend other users - outgoing sent request. x
-As a user, I am able to accept/decline a friend request from others - incoming receive request. x
-As a user, I am able to cancel a friend request that I sent. x
-As a user, I am able to remove (unfriend) a friend. x
+
+- [] As a user, I am able to get the list of received pending requests - incoming list. x
+- [] As a user, I am able to get the list of sent pending requests - outgoing list. x
+- [] As a user, I am able to see a list of people that I follow as well as my followers. - (my friend list) x
+- [] As a user, I am able to send a friend request to others - add friend other users - outgoing sent request. x
+- [] As a user, I am able to accept/decline a friend request from others - incoming receive request. x
+- [] As a user, I am able to cancel a friend request that I sent. x
+- [] As a user, I am able to remove (unfriend) a friend. x
 
 Reaction:
-As a user, I am able to create a like/dislike on posts OR comments.
+
+- [] As a user, I am able to create a like/dislike on posts OR comments.
 
 Group:
-As a user, I am able to create a new group by providing a group name, group description, and selecting a category or interest that the group will be based on.
-As a user, I am able to search for and join existing groups by browsing categories or interests, or by searching for a specific group name or keyword. group list
-As a group member, I am able to post in a group.
-As a group member, I am able to comment and reaction on a post in the group.
-As a group member, I am able to see the posts in a group on the group page. post list
-As a group member, I am able to leave a group.
+
+- [] As a user, I am able to create a new group by providing a group name, group description, and selecting a category or interest that the group will be based on.
+- [] As a user, I am able to search for and join existing groups by browsing categories or interests, or by searching for a specific group name or keyword. group list
+- [] As a group member, I am able to post in a group.
+- [] As a group member, I am able to comment and reaction on a post in the group.
+- [] As a group member, I am able to see the posts in a group on the group page. post list
+- [] As a group member, I am able to leave a group.
 
 Admin app - dashboard: (admin.domain.com)
 *Database&Content management: (domains lists,...)
@@ -233,7 +240,7 @@ Reaction APIs: posts OR comments
 - @body ["like", "dislike"]
 - @access Login required
 
-Group ?
+Group ?!?!
 
 \* Diagram Relation: model-schema
 

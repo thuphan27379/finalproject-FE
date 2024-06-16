@@ -10,7 +10,7 @@ import { getCurrentUserProfile } from "../user/userSlice";
 const initialState = {
   isLoading: false,
   error: null,
-  postsById: {}, //luu post theo postId
+  postsById: {}, //luu tat ca posts theo postId
   currentPagePosts: [], //luu tat ca postId
 };
 
@@ -39,7 +39,7 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
 
-      const { posts, count } = action.payload;
+      const { posts, count } = action.payload; //state.posts = action.payload.posts
 
       // loc cac bai post sao cho khong trung lap
       posts.forEach((post) => {
@@ -49,7 +49,7 @@ const slice = createSlice({
       });
       state.totalPosts = count;
     },
-    // create a new post
+    // create a new post //render new post without refresh page
     createPostSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -59,7 +59,7 @@ const slice = createSlice({
       if (state.currentPagePosts.length % POSTS_PER_PAGE === 0)
         state.currentPagePosts.pop(); // xoa bot post list truoc de list new post
       state.postsById[newPost._id] = newPost;
-      state.currentPagePosts.unshift(newPost._id);
+      state.currentPagePosts.unshift(newPost._id); //gan vao dau tien
     },
     // reaction a post
     sendPostReactionSuccess(state, action) {
@@ -67,7 +67,7 @@ const slice = createSlice({
       state.error = null;
 
       const { postId, reactions } = action.payload;
-      state.postsById[postId].reactions = reactions;
+      state.postsById[postId].reactions = reactions; //update new reaction
     },
     // delete a post
     deletePostSuccess(state, action) {
@@ -130,6 +130,25 @@ export const getPosts =
     try {
       const params = { page, limit };
       const response = await apiService.get(`/posts/user/${userId}`, {
+        params,
+      });
+      ///////fix bug about get list of posts of currentUser
+      if (page === 1) dispatch(slice.actions.resetPosts()); //reset posts before dispatch and show only posts of this currentUser
+      dispatch(slice.actions.getPostsSuccess(response.data));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+    }
+  };
+
+// get all posts for Wall
+export const getAllPosts =
+  ({ page = 1, limit = POSTS_PER_PAGE }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const params = { page, limit };
+      const response = await apiService.get(`/posts`, {
         params,
       });
       ///////fix bug about get list of posts of currentUser

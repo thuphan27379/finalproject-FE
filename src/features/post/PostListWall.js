@@ -4,10 +4,10 @@ import { Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 import PostCard from "./PostCard";
-import { getPosts } from "./postSlice";
+import { getAllPosts } from "./postSlice";
 
 // new feed
-function PostList({ userId }) {
+function PostListWall() {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const { currentPagePosts, postsById, isLoading, totalPosts } = useSelector(
@@ -18,8 +18,8 @@ function PostList({ userId }) {
   const posts = currentPagePosts.map((postId) => postsById[postId]);
 
   useEffect(() => {
-    if (userId) dispatch(getPosts({ userId, page }));
-  }, [dispatch, userId, page]);
+    dispatch(getAllPosts({ page }));
+  }, [dispatch, page]);
 
   //
   return (
@@ -54,4 +54,4 @@ function PostList({ userId }) {
   );
 }
 
-export default PostList;
+export default PostListWall;

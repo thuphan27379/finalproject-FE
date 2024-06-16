@@ -9,8 +9,8 @@ import RejectionFiles from "./RejectionFiles";
 
 //
 const RootStyle = styled("div")(({ theme }) => ({
-  width: 144,
-  height: 144,
+  width: 200,
+  height: 200,
   margin: "auto",
   borderRadius: "50%",
   padding: theme.spacing(1),
@@ -96,7 +96,7 @@ function UploadAvatar({ error, file, helperText, sx, ...other }) {
             </Box>
           )}
 
-        {/* not have yet */}
+          {/* not have yet */}
           <PlaceholderStyle
             className="placeholder"
             sx={{

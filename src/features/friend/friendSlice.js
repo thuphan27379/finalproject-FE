@@ -67,7 +67,9 @@ const slice = createSlice({
       state.error = null;
 
       const { targetUserId, ...friendship } = action.payload;
-      state.usersById[targetUserId].friendship = friendship;
+      state.usersById[targetUserId].friendship = friendship; //cap nhat action btn trong user table
+
+      state.incomingRequests = action.payload.users; //////////////
     },
     //decline Request Success
     declineRequestSuccess(state, action) {
@@ -77,7 +79,7 @@ const slice = createSlice({
       const { targetUserId, ...friendship } = action.payload;
       state.usersById[targetUserId].friendship = friendship;
     },
-    //accept Request Success
+    //accept Request Success ???????????????????????????????
     acceptRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -91,7 +93,11 @@ const slice = createSlice({
       state.error = null;
 
       const { targetUserId } = action.payload;
-      state.usersById[targetUserId].friendship = null;
+      state.usersById[targetUserId].friendship = null; //
+
+      state.outgoingRequests = state.outgoingRequests.filter(
+        (request) => request.friendship.to !== targetUserId
+      );
     },
     //remove Friend Success
     removeFriendSuccess(state, action) {
@@ -116,7 +122,7 @@ export default slice.reducer;
 
 // actions //
 // function getUsers, for export to AddFriend.js
-// startLoading & startLoading
+// startLoading
 export const getUsers =
   ({ filterName, page = 1, limit = 12 }) =>
   async (dispatch) => {
@@ -139,6 +145,7 @@ export const getFriends =
   ({ filterName, page = 1, limit = 12 }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
+
     try {
       const params = { page, limit };
       if (filterName) params.name = filterName;
@@ -149,13 +156,14 @@ export const getFriends =
       toast.error(error.message); //react toastify
     }
   };
-
+// incoming
 // function getFriendRequests, for export to AddFriend.js
 // getFriendRequestsSuccess
 export const getFriendRequests =
   ({ filterName, page = 1, limit = 12 }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
+
     try {
       const params = { page, limit };
       if (filterName) params.name = filterName;
@@ -171,6 +179,7 @@ export const getFriendRequests =
 
 // function send Friend Request
 // sendFriendRequestSuccess
+// action btn
 export const sendFriendRequest = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
 
@@ -195,7 +204,7 @@ export const declineRequest = (targetUserId) => async (dispatch) => {
 
   try {
     const response = await apiService.put(`/friends/requests/${targetUserId}`, {
-      status: "declined",
+      status: "declined", //
     });
     dispatch(
       slice.actions.declineRequestSuccess({ ...response.data, targetUserId })
@@ -214,7 +223,7 @@ export const acceptRequest = (targetUserId) => async (dispatch) => {
 
   try {
     const response = await apiService.put(`/friends/requests/${targetUserId}`, {
-      status: "accepted",
+      status: "accepted", //
     });
     dispatch(
       slice.actions.acceptRequestSuccess({ ...response.data, targetUserId })
@@ -230,6 +239,7 @@ export const acceptRequest = (targetUserId) => async (dispatch) => {
 // cancelRequestSuccess
 export const cancelRequest = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
+  console.log(targetUserId);
 
   try {
     const response = await apiService.delete(
@@ -262,12 +272,14 @@ export const removeFriend = (targetUserId) => async (dispatch) => {
   }
 };
 
+// outgoing
 // getOutgoingSents
 // getOutgoingSentsSuccess
 export const getOutgoingSents =
   ({ filterName, page = 1, limit = 12 }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
+
     try {
       const params = { page, limit };
       const response = await apiService.get("/friends/requests/outgoing", {

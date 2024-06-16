@@ -15,48 +15,56 @@ function AccountPage() {
   const ACCOUNT_TABS = [
     {
       value: "general",
-      icon: <AccountBoxIcon sx={{ fontSize: 30 }} />,
+      icon: <AccountBoxIcon sx={{ fontSize: 25 }} />,
       component: <AccountGeneral />,
     },
     {
       value: "social_links",
-      icon: <ShareIcon sx={{ fontSize: 30 }} />,
-      component: <AccountSocialLinks profile={{}} />,
+      icon: <ShareIcon sx={{ fontSize: 25 }} />,
+      component: <AccountSocialLinks />,
     },
   ];
 
   //
   return (
-    <Container sx={{ paddingTop: "90px" }}>
-      <Typography variant="h5" gutterBottom>
-        Account Settings
-      </Typography>
+    <>
+      <Container sx={{ paddingTop: "90px", marginRight: "20px" }}>
+        <Typography variant="h5" gutterBottom>
+          Account Settings
+        </Typography>
 
-      <Tabs
-        value={currentTab}
-        scrollButtons="auto"
-        variant="scrollable"
-        allowScrollButtonsMobile
-        onChange={(e, value) => setCurrentTab(value)}
-      >
-        {ACCOUNT_TABS.map((tab) => (
-          <Tab
-            disableRipple
-            key={tab.value}
-            label={capitalCase(tab.value)}
-            icon={tab.icon}
-            value={tab.value}
-          />
-        ))}
-      </Tabs>
+        <Tabs
+          value={currentTab}
+          scrollButtons="auto"
+          variant="scrollable"
+          allowScrollButtonsMobile
+          onChange={(e, value) => setCurrentTab(value)}
+        >
+          {ACCOUNT_TABS.map((tab) => (
+            <Tab
+              disableRipple
+              key={tab.value}
+              label={capitalCase(tab.value)}
+              icon={tab.icon}
+              value={tab.value}
+            />
+          ))}
+        </Tabs>
 
-      <Box sx={{ mb: 5 }} />
-      {/* component */}
-      {ACCOUNT_TABS.map((tab) => {
-        const isMatched = tab.value === currentTab;
-        return isMatched && <Box key={tab.value}>{tab.component}</Box>;
-      })}
-    </Container>
+        <Box sx={{ mb: 3 }} />
+        {/* component */}
+        {ACCOUNT_TABS.map((tab) => {
+          const isMatched = tab.value === currentTab;
+          return (
+            isMatched && (
+              <Box key={tab.value} sx={{ marginRight: "20px" }}>
+                {tab.component}
+              </Box>
+            )
+          );
+        })}
+      </Container>
+    </>
   );
 }
 

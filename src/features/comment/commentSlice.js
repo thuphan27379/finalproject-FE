@@ -9,10 +9,10 @@ import { COMMENTS_PER_POST } from "../../app/config";
 const initialState = {
   isLoading: false,
   error: null,
-  commentsByPost: {},
+  commentsByPost: {}, //{'postId':{...comments}}
   totalCommentsByPost: {},
   currentPageByPost: {},
-  commentsById: {},
+  commentsById: {}, //{'commentId':{...all data of comment}}
 };
 
 // createSlice for all slices
@@ -33,6 +33,7 @@ const slice = createSlice({
     getCommentsSuccess(state, action) {
       state.isLoading = false;
       state.error = "";
+      // state.comments = state.comments.concat(action.payload)
       const { postId, comments, count, page } = action.payload;
 
       comments.forEach(
@@ -57,12 +58,13 @@ const slice = createSlice({
       state.error = null;
 
       const { commentId, reactions } = action.payload;
-      state.commentsById[commentId].reactions = reactions;
+      state.commentsById[commentId].reactions = reactions; //update new reaction
     },
     //
     deleteCommentSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
+
       const { commentId, postId } = action.payload;
 
       // Remove the deleted comment from the state

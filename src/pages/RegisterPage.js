@@ -19,6 +19,7 @@ import useAuth from "../hooks/useAuth";
 import { FormProvider, FTextField } from "../components/form";
 
 // CODERCOMM
+// yup validate input
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -35,7 +36,7 @@ const defaultValues = {
   passwordConfirmation: "",
 };
 
-//
+// func register a new account
 function RegisterPage() {
   const navigate = useNavigate();
   const auth = useAuth();
@@ -43,6 +44,7 @@ function RegisterPage() {
   const [showPasswordConfirmation, setShowPasswordConfirmation] =
     useState(false);
 
+  // yup
   const methods = useForm({
     resolver: yupResolver(RegisterSchema),
     defaultValues,
@@ -55,6 +57,7 @@ function RegisterPage() {
     formState: { errors, isSubmitting },
   } = methods;
 
+  // submit form
   const onSubmit = async (data) => {
     const { name, email, password } = data;
     try {
@@ -69,41 +72,51 @@ function RegisterPage() {
 
   //rendering to HTML
   return (
-    <Container maxWidth="xs">
-      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={3}>
-          {/* message error */}
-          {!!errors.responseError && (
-            <Alert severity="error">{errors.responseError.message}</Alert>
-          )}
-          <Alert severity="info">
-            Already have an account?{" "}
-            <Link variant="subtitle2" component={RouterLink} to="/login">
-              Sign in
-            </Link>
-          </Alert>
+    <>
+      <Container
+        maxWidth="xs"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      >
+        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={2}>
+            {/* message error */}
+            {!!errors.responseError && (
+              <Alert severity="error">{errors.responseError.message}</Alert>
+            )}
+            <Alert severity="info">
+              Already have an account?{" "}
+              <Link variant="subtitle2" component={RouterLink} to="/login">
+                Sign in
+              </Link>
+            </Alert>
 
-          {/* input  */}
-          <FTextField name="name" label="Full name" />
-          <FTextField name="email" label="Email address" />
-          <FTextField
-            name="password"
-            label="Password"
-            type={showPassword ? "text" : "password"}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => setShowPassword(!showPassword)}
-                    edge="end"
-                  >
-                    {showPassword ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-          <FTextField
+            {/* input, name sao cho giong schema  */}
+            <FTextField name="name" label="Full name" />
+            <FTextField name="email" label="Email address" />
+            <FTextField
+              name="password"
+              label="Password"
+              type={showPassword ? "text" : "password"}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={() => setShowPassword(!showPassword)}
+                      edge="end"
+                    >
+                      {showPassword ? (
+                        <VisibilityIcon />
+                      ) : (
+                        <VisibilityOffIcon />
+                      )}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            {/* <FTextField
             name="passwordConfirmation"
             label="Password Confirmation"
             type={showPasswordConfirmation ? "text" : "password"}
@@ -125,20 +138,22 @@ function RegisterPage() {
                 </InputAdornment>
               ),
             }}
-          />
-          {/*  */}
-          <LoadingButton
-            fullWidth
-            size="large"
-            type="submit"
-            variant="contained"
-            loading={isSubmitting}
-          >
-            Register
-          </LoadingButton>
-        </Stack>
-      </FormProvider>
-    </Container>
+          /> */}
+
+            {/* register btn */}
+            <LoadingButton
+              fullWidth
+              size="large"
+              type="submit"
+              variant="outlined"
+              loading={isSubmitting}
+            >
+              Register
+            </LoadingButton>
+          </Stack>
+        </FormProvider>
+      </Container>
+    </>
   );
 }
 
