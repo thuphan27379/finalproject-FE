@@ -19,6 +19,7 @@ const HomePage = () => {
           marginTop: 0,
           backgroundColor: "black",
           color: "white",
+          width: "95%",
         }}
       >
         <Grid marginTop={"68px"} maxWidth={"60vw"} marginX={"auto"}>
@@ -28,6 +29,13 @@ const HomePage = () => {
               <section>
                 <h1>Domains and Startup</h1>
                 <h3>Welcome!</h3>
+                {/* <img
+                  style={{ backgroundColor: "white", width: "500px" }}
+                  backgroundColor="white"
+                  src="C:/Users/Public/finalproject-frontend/src/assets/img/domain.png"
+                  alt=""
+                  width="500px"
+                /> */}
                 <p>
                   WWW.VNWP.COM
                   <br />
@@ -471,6 +479,8 @@ const HomePage = () => {
               <section class="place hp-main"></section>
               <section class="place hp-main"></section>
             </div>
+
+            {/* footer menu */}
             <footer id="nav-footer" class="page-footer">
               <div class="page-footer-grid">
                 {/* <!-- logo --> */}

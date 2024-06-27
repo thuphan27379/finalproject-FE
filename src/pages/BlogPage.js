@@ -3,14 +3,13 @@ import { Box, Card, Container, Tab, Tabs } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import ContactMailOutlined from "@mui/icons-material/ContactMailOutlined";
-import PersonAddOutlinedIcon from "@mui/icons-material/PersonAddOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 import Diversity1OutlinedIcon from "@mui/icons-material/Diversity1Outlined";
 import MarkUnreadChatAltOutlined from "@mui/icons-material/MarkUnreadChatAltOutlined";
+import SpatialTrackingOutlinedIcon from "@mui/icons-material/SpatialTrackingOutlined";
+import SpatialAudioOffOutlinedIcon from "@mui/icons-material/SpatialAudioOffOutlined";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
 import { capitalCase } from "change-case";
-import { Grid, Stack } from "@mui/material";
 
 import useAuth from "../hooks/useAuth";
 import Profile from "../features/user/Profile";
@@ -21,15 +20,12 @@ import OutgoingSents from "../features/friend/OutgoingSent";
 import Group from "../features/group/Group";
 import UserChat from "../features/chat/UserChat";
 import UserProfilePage from "./UserProfilePage";
-
-import PostForm from "C:/Users/Public/finalproject-frontend/src/features/post/PostForm.js";
-import PostList from "C:/Users/Public/finalproject-frontend/src/features/post/PostList.js";
+import PostForm from "../features/post/PostForm";
+import PostList from "../features/post/PostList.js";
 import Wall from "./Wall";
 
 // CODERCOMM - blogpage
-// user profile page
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
-  // MUI styled() for cover & tabs NEU KHONG XAI THI BO DI
   zIndex: 9,
   bottom: 0,
   width: "100%",
@@ -62,13 +58,6 @@ function BlogPage(profile) {
   };
   //
   const PROFILE_TABS = [
-    // Wall: postForm, postList, comment & reaction
-    // Profile: show own info & enterprise
-    // Friend: user list for send request, friend list for delete friend
-    // Request: incoming list for accept-received, sent outgoing list for cancel
-    // Group:
-    // Chat:
-
     {
       value: "wall",
       icon: <RssFeedIcon sx={{ fontSize: 24 }} />,
@@ -79,23 +68,23 @@ function BlogPage(profile) {
       value: "profile",
       icon: <AccountBoxOutlinedIcon sx={{ fontSize: 24 }} />,
       // route /user/:id
-      component: <UserProfilePage profile={user} />, //---->>>useProfilePage !!!!!!!!!!!!!
-      // component: <Profile profile={user} />, //---->>>useProfilePage !!!!!!!!!!!!!
+      // component: <UserProfilePage profile={user} />, //---->>>useProfilePage !!!!!!!!!!!!!
+      component: <Profile profile={user} />, //---->>>useProfilePage !!!!!!!!!!!!!
     },
     {
       value: "friends",
-      icon: <PeopleAltOutlinedIcon sx={{ fontSize: 24 }} />,
+      icon: <ContactMailOutlined sx={{ fontSize: 24 }} />,
       component: <FriendList />,
     },
     {
-      value: "add_friend",
-      icon: <PersonAddOutlinedIcon sx={{ fontSize: 24 }} />,
+      value: "add_friends",
+      icon: <PeopleAltOutlinedIcon sx={{ fontSize: 24 }} />,
       component: <AddFriend />,
     },
     // incoming
     {
       value: "friend_requests",
-      icon: <ContactMailOutlined sx={{ fontSize: 23 }} />,
+      icon: <SpatialTrackingOutlinedIcon sx={{ fontSize: 23 }} />,
       component: <FriendRequests />,
     },
     // outgoing
@@ -103,8 +92,8 @@ function BlogPage(profile) {
     // On the list, User can cancel the requests.
     // API: GET /api/friends/requests/outgoing
     {
-      value: "sent_request",
-      icon: <GroupAddOutlinedIcon sx={{ fontSize: 24 }} />,
+      value: "sent_requests",
+      icon: <SpatialAudioOffOutlinedIcon sx={{ fontSize: 24 }} />,
       component: <OutgoingSents />,
     },
     {
@@ -123,14 +112,13 @@ function BlogPage(profile) {
   return (
     <>
       <Container sx={{ marginTop: "95px" }}>
-        {/* tab bo o trong Card? */}
         <Card
           sx={{
             mb: 3,
             height: 42,
             position: "relative",
             paddingLeft: 0,
-            marginLeft: "-24px",
+            marginLeft: "-10px",
             lineHeight: 0,
             marginRight: "24px",
           }}
@@ -169,8 +157,7 @@ function BlogPage(profile) {
                 key={tab.value}
                 sx={{
                   "& .css-1oqqzyl-MuiContainer-root": {
-                    marginLeft: "-48px",
-                    marginRight: "-5px", //
+                    marginLeft: "-35px",
                     width: "unset",
                     paddingTop: "unset",
                   },

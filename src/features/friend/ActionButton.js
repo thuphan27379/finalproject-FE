@@ -34,17 +34,23 @@ function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
   // btn unfriend
   const btnUnfriend = (
     <Button
-      sx={{ fontSize: "0.6rem", ...sx }}
+      sx={{
+        fontSize: "0.6rem",
+        ...sx,
+        "& .css-jfdv4h-MuiStack-root>:not(style):not(style)": {
+          margin: "0",
+        }, //??????????????????????????
+      }}
       size="small"
       variant="outlined"
-      color="error"
+      color="secondary"
       onClick={() => dispatch(removeFriend(targetUserId))}
     >
       Unfriend
     </Button>
   );
 
-  // btn resend
+  // btn resend ???
   const btnResend = (
     <Button
       sx={{ fontSize: "0.6rem", ...sx }}

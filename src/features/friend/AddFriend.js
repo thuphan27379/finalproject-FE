@@ -52,7 +52,14 @@ function AddFriend() {
   return (
     <>
       <Container width={"100%"}>
-        <Grid item spacing={1} xs={8} paddingTop={0} marginTop={0}>
+        <Grid
+          item
+          spacing={1}
+          xs={8}
+          paddingTop={0}
+          marginTop={0}
+          marginBottom={20}
+        >
           <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
             Add Friends
           </Typography>
@@ -62,6 +69,7 @@ function AddFriend() {
               <Stack
                 direction={{ xs: "column", md: "row" }}
                 alignItems="center"
+                justifyContent="center"
                 width={"100%"}
               >
                 {/* SEARCH USERS */}
@@ -80,12 +88,14 @@ function AddFriend() {
 
                 <Box sx={{ flexGrow: 1 }} />
 
-                {/* page */}
+                {/* pagination !!!!!!!!!! */}
                 <TablePagination
                   sx={{
                     "& .MuiTablePagination-selectLabel, .MuiTablePagination-select, .MuiTablePagination-selectIcon":
                       {
                         display: { xs: "none", md: "block" },
+                        alignItems: "center",
+                        justifyContent: "center",
                       },
                   }}
                   component="div"

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
 import apiService from "../../app/apiService";
-import { POSTS_PER_PAGE } from "../../app/config";
+import { GROUP_PER_PAGE, POSTS_PER_PAGE } from "../../app/config";
 import { cloudinaryUpload } from "../../utils/cloudinary";
 import { getCurrentUserProfile } from "../user/userSlice";
 
@@ -11,6 +11,9 @@ import { getCurrentUserProfile } from "../user/userSlice";
 const initialState = {
   isLoading: false,
   error: null,
+  list: [],
+  currentList: [],
+  totalGroups: 1,
 };
 
 // createSlice() all the slices
@@ -27,25 +30,50 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    // declare all posts are empty before getPosts
+    resetPosts(state, action) {
+      state.postsById = {};
+      state.currentPagePosts = [];
+    },
     // ////////////////////
     // create a new group
     createGroupSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
-      const newGroup = action.payload;
-
-      //?
+      console.log(action.payload);
+      state.list.unshift(action.payload.newGroup); //bo object vao trong array
     },
     // join a group
     // leave a group
 
-    // declare all posts are empty before getPosts
-    resetPosts(state, action) {
-      state.postsById = {};
-      state.currentPagePosts = [];
+    // getListSuccess (list of group name & interests)
+    getListSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+
+      //group list, interest list
+      state.list = action.payload.groups;
+
+      // get total group
+      const { groups, totalPage } = action.payload;
+      console.log(action.payload);
+
+      state.totalGroups = action.payload.totalGroups;
+      state.interests = action.payload.interests;
     },
-    // get all posts
+
+    // getSearchGroupSuccess
+    getSearchGroupSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+
+      // ?!
+      const { groups } = action.payload;
+      state.searchGroupResult = groups; //searchGroupResult
+    },
+
+    // get all posts in group
     getPostsSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -60,6 +88,7 @@ const slice = createSlice({
       });
       state.totalPosts = count;
     },
+
     // create a new post
     createPostSuccess(state, action) {
       state.isLoading = false;
@@ -72,6 +101,7 @@ const slice = createSlice({
       state.postsById[newPost._id] = newPost;
       state.currentPagePosts.unshift(newPost._id);
     },
+
     // reaction a post
     sendPostReactionSuccess(state, action) {
       state.isLoading = false;
@@ -80,6 +110,7 @@ const slice = createSlice({
       const { postId, reactions } = action.payload;
       state.postsById[postId].reactions = reactions;
     },
+
     // delete a post
     deletePostSuccess(state, action) {
       state.isLoading = false;
@@ -95,6 +126,7 @@ const slice = createSlice({
         (id) => id !== postId
       );
     },
+
     // edit a post & image
     editPostSuccess(state, action) {
       state.isLoading = false;
@@ -132,10 +164,10 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// functions //
+// functions ///////////////////////////////////////////////////////
 // create a new group
 export const createGroup =
-  ({ name, description, interest }) =>
+  ({ name, description, interests }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
 
@@ -144,7 +176,7 @@ export const createGroup =
       const response = await apiService.post("/group", {
         name,
         description,
-        interest,
+        interests,
       });
 
       dispatch(slice.actions.createGroupSuccess(response.data));
@@ -154,6 +186,43 @@ export const createGroup =
       toast.error(error.message);
     }
   };
+
+// get list of group name, interest, search
+export const getList =
+  ({ page = 1, limit = GROUP_PER_PAGE }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    try {
+      const params = { page, limit };
+      const response = await apiService.get(`/group/groupList`, {
+        params,
+      });
+      dispatch(slice.actions.getListSuccess(response.data));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+    }
+  };
+
+// getSearchGroup: search by name
+export const getSearchGroup =
+  ({ filterGroup, groupId, page = 1, limit = GROUP_PER_PAGE }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+
+    try {
+      const params = { page, limit };
+      if (filterGroup) params.name = filterGroup;
+      const response = await apiService.get("/group/groupList", {
+        params,
+      });
+      dispatch(slice.actions.getSearchGroupSuccess(response.data));
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      // toast.error(error.message);
+    }
+  };
+
 // get all posts of the group
 export const getPosts =
   ({ userId, page = 1, limit = POSTS_PER_PAGE }) =>

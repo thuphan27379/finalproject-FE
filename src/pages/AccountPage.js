@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Tab, Box, Tabs, Typography } from "@mui/material";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
 import ShareIcon from "@mui/icons-material/Share";
 import { capitalCase } from "change-case";
 
@@ -15,7 +15,7 @@ function AccountPage() {
   const ACCOUNT_TABS = [
     {
       value: "general",
-      icon: <AccountBoxIcon sx={{ fontSize: 25 }} />,
+      icon: <AccountBoxOutlinedIcon sx={{ fontSize: 25 }} />,
       component: <AccountGeneral />,
     },
     {
@@ -28,7 +28,12 @@ function AccountPage() {
   //
   return (
     <>
-      <Container sx={{ paddingTop: "90px", marginRight: "20px" }}>
+      <Container
+        sx={{
+          marginLeft: "-5px",
+          paddingTop: "90px",
+        }}
+      >
         <Typography variant="h5" gutterBottom>
           Account Settings
         </Typography>

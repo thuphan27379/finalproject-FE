@@ -29,6 +29,9 @@ import CommentList from "../comment/CommentList";
 import { deletePost, editPost } from "../post/postSlice";
 import { FTextField, FUploadImage, FormProvider } from "../../components/form";
 // import { editPost } from "../post/postSlice";
+import FriendStatus from "../friend/FriendStatus";
+import useAuth from "../../hooks/useAuth";
+import ActionButton from "../friend/ActionButton";
 
 //show a post with comment and reaction, delete/edit
 const yupSchema = Yup.object().shape({
@@ -41,7 +44,20 @@ const defaultValues = {
 };
 
 //show list of posts
-function PostCard({ post }) {
+function PostCard({ post, profile }) {
+  // show relationship
+  // const { user } = useAuth();
+  // const currentUserId = user.id;
+
+  // const {
+  //   id: targetUserId,
+  //   name,
+  //   jobTitle,
+  //   coverUrl,
+  //   avatarUrl,
+  //   friendship,
+  // } = profile;
+
   //popover on icon to delete or edit
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -162,6 +178,16 @@ function PostCard({ post }) {
 
   const { isLoading } = useSelector((state) => state.post);
 
+  // //show relationship
+  // const friendStatus = (
+  //   <FriendStatus
+  //     sx={{ mt: 1 }}
+  //     currentUserId={currentUserId}
+  //     targetUserId={targetUserId}
+  //     friendship={friendship}
+  //   />
+  // );
+
   //
   return (
     <>
@@ -192,10 +218,22 @@ function PostCard({ post }) {
           }
           action={
             <IconButton>
-              <MoreVertIcon onClick={handleClick} sx={{ fontSize: 30 }} />
+              <MoreVertIcon onClick={handleClick} sx={{ fontSize: 27 }} />
             </IconButton>
           }
         />
+        {/* show relationship ?!?! */}
+        {/* friend status btn */}
+        {/* {friendStatus ? (
+          friendStatus
+        ) : (
+          <ActionButton
+            sx={{ mt: 1 }}
+            currentUserId={currentUserId}
+            targetUserId={targetUserId}
+            friendship={friendship}
+          />
+        )} */}
 
         {/* popover More btn*/}
         <Popover
@@ -252,11 +290,11 @@ function PostCard({ post }) {
                       }}
                     />
 
-                    {/* form upload image: edit image */}
+                    {/* form edit image */}
                     {/* UPLOAD A FILE: btn choose File  */}
                     {/* <input type="file" ref={fileInput} onChange={handleFile} /> */}
                     <FUploadImage
-                      // upload image with the Post, the image of the post?!?!
+                      // upload the image of the post?!?!
                       name="image"
                       accept="image/*"
                       maxSize={3145728}
@@ -264,7 +302,7 @@ function PostCard({ post }) {
                     />
 
                     <Box
-                      // button submit a Post
+                      // button submit edit a Post
                       sx={{
                         display: "flex",
                         alignItems: "center",

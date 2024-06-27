@@ -6,7 +6,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
-// 3rd a card show info about social link, on the left
+// 3rd show info about social link
 const IconStyle = styled(Box)(({ theme }) => ({
   width: 20,
   height: 20,
@@ -15,6 +15,7 @@ const IconStyle = styled(Box)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
+//
 function ProfileSocialInfo({ profile }) {
   const {
     facebookLink,
@@ -75,8 +76,8 @@ function ProfileSocialInfo({ profile }) {
   //
   return (
     <>
-      <Card sx={{ minWidth: "300px", minHeight: "250px" }}>
-        <CardHeader title="Social" sx={{ paddingTop: "10px" }} />
+      <Card sx={{ minWidth: "303px", minHeight: "250px" }}>
+        <CardHeader variant="h6" title="Social" sx={{ paddingTop: "10px" }} />
         <Stack spacing={2} sx={{ p: 2 }}>
           {SOCIALS.map((link) => (
             <Stack key={link.name} direction="row" alignItems="center">

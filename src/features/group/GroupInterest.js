@@ -1,29 +1,57 @@
-import { styled } from "@mui/material/styles";
-import { Link, Card, CardHeader, Stack, Box } from "@mui/material";
+import {
+  Button,
+  Link,
+  Card,
+  Typography,
+  CardHeader,
+  Stack,
+  Box,
+} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-// 3rd a card show info about interest list, on the left
+import { getList } from "./groupSlice";
+
+// 3rd card: show interest list
 function GroupInterest() {
-  // const {interest} = internet
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(1);
+  const { list } = useSelector((state) => state.group);
+  console.log(list);
+
+  useEffect(() => {
+    dispatch(getList({ page }));
+  }, [dispatch, page]);
 
   //
   return (
     <>
       <Card sx={{ minWidth: "300px", minHeight: "250px" }}>
         <CardHeader title="List of Interest" sx={{ paddingTop: "10px" }} />
+
+        {/* pagination */}
+
         <Stack spacing={2} sx={{ p: 2 }}>
-          {/* {SOCIALS.map((link) => (
-            <Stack key={link.name} direction="row" alignItems="center">
-              {link.icon}
-              <Link
-                component="span"
-                variant="body2"
-                color="text.primary"
-                noWrap
+          {list.map((listItem) => (
+            <Box
+              sx={{
+                p: 0,
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "nowrap",
+                justifyContent: "space-between",
+              }}
+            >
+              <Typography>{listItem.interests}</Typography>
+              <Button
+                color="secondary"
+                variant="outlined"
+                sx={{ p: 0, fontSize: 10 }}
               >
-                {link.href}
-              </Link>
-            </Stack>
-          ))} */}
+                See
+              </Button>
+            </Box>
+          ))}
         </Stack>
       </Card>
     </>

@@ -27,8 +27,8 @@
   margin-right: 48px;
   margin-top: 0px;
   max-width: 1440px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 5px;
+  /* padding-right: 16px; */
   row-gap: 48px;
 }
 
@@ -161,7 +161,6 @@ svg.icon {
 }
 
 .featured-articles .article-tile .tile-title a {
-  /* color: var(--text-primary); */
   color: white;
 }
 
@@ -180,7 +179,6 @@ svg.icon {
 }
 
 .featured-articles .article-tile p:after {
-  /* background: var(--background-primary); */
   content: "";
   display: block;
   height: calc(1em * var(--base-line-height));

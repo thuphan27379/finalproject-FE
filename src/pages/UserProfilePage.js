@@ -2,17 +2,17 @@ import React, { useEffect } from "react";
 import { Container, Grid, Stack } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import useAuth from "C:/Users/Public/finalproject-frontend/src/hooks/useAuth.js";
 
+import useAuth from "../hooks/useAuth";
 import Profile from "../features/user/Profile";
 import { getUser } from "../features/user/userSlice";
 import LoadingScreen from "../components/LoadingScreen";
-import ProfileScorecard from "../user/ProfileScorecard";
-import ProfileSocialInfo from "../user/ProfileSocialInfo";
-import ProfileAbout from "../user/ProfileAbout";
+import ProfileScorecard from "../features/user/ProfileScorecard";
+import ProfileSocialInfo from "../features/user/ProfileSocialInfo";
+import ProfileAbout from "../features/user/ProfileAbout";
 
 // CODERCOMM
-function UserProfilePage({ profile }) {
+function UserProfilePage() {
   const { user } = useAuth(); //get data of user from useAuth
 
   const params = useParams();
@@ -34,14 +34,14 @@ function UserProfilePage({ profile }) {
   //UI
   return (
     <>
-      <Container sx={{ paddingTop: "120px" }}>
+      <Container sx={{ paddingTop: "96px" }}>
         <Grid item xs={12} md={8}>
           {/* show profile info */}
           <Stack spacing={1}>
-            {/* <Profile /> */}
-            <ProfileAbout profile={profile} />
-            <ProfileScorecard profile={profile} />
-            <ProfileSocialInfo profile={profile} />
+            {/* <Profile profile={selectedUser} /> */}
+            {/* <ProfileAbout profile={selectedUser} />
+            <ProfileScorecard profile={selectedUser} />
+            <ProfileSocialInfo profile={selectedUser} /> */}
           </Stack>
         </Grid>
 

@@ -1,8 +1,6 @@
 import { Card, Stack, Typography, Divider } from "@mui/material";
 import { fNumber } from "../../utils/numberFormat";
 
-import Profile from "C:/Users/Public/finalproject-frontend/src/features/user/Profile.js";
-
 // 1st show how many posts and friends
 function ProfileScorecard({ profile }) {
   const { postCount, friendCount } = profile; ///////////////////////???????????????

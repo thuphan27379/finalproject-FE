@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import PostCard from "./PostCard";
 import { getAllPosts } from "./postSlice";
 
-// new feed
+// wall - khong dc delete & edit post/comment cua ng khac
 function PostListWall() {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
@@ -40,6 +40,7 @@ function PostListWall() {
           <LoadingButton
             variant="outlined"
             size="small"
+            color="secondary"
             loading={isLoading}
             onClick={() => setPage((page) => page + 1)}
             disabled={Boolean(totalPosts) && posts.length >= totalPosts}

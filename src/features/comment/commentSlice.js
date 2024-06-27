@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 
 import apiService from "../../app/apiService"; // ket noi server
 import { COMMENTS_PER_POST } from "../../app/config";
-// import { confirmAlert } from "react-confirm-alert";
 
 // trang thai khoi tao ban dau, quy dinh cac thanh phan cua slice
 const initialState = {

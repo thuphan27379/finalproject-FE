@@ -16,7 +16,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
 import useAuth from "../hooks/useAuth";
-import { FormProvider, FTextField } from "../components/form";
+import { FormProvider, FTextField, FCheckbox } from "../components/form";
 
 // CODERCOMM
 // yup validate input
@@ -24,16 +24,17 @@ const RegisterSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   password: Yup.string().required("Password is required"),
-  passwordConfirmation: Yup.string()
-    .required("Please confirm your password")
-    .oneOf([Yup.ref("password")], "Passwords must match"),
+  // passwordConfirmation: Yup.string()
+  //   .required("Please confirm your password")
+  //   .oneOf([Yup.ref("password")], "Passwords must match"),
 });
 
 const defaultValues = {
   name: "",
   email: "",
   password: "",
-  passwordConfirmation: "",
+  // passwordConfirmation: "",
+  remember: true,
 };
 
 // func register a new account
@@ -41,8 +42,8 @@ function RegisterPage() {
   const navigate = useNavigate();
   const auth = useAuth();
   const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordConfirmation, setShowPasswordConfirmation] =
-    useState(false);
+  // const [showPasswordConfirmation, setShowPasswordConfirmation] =
+  //   useState(false);
 
   // yup
   const methods = useForm({
@@ -62,7 +63,7 @@ function RegisterPage() {
     const { name, email, password } = data;
     try {
       await auth.register({ name, email, password }, () => {
-        navigate("/", { replace: true });
+        navigate("/blog", { replace: true }); //////////
       });
     } catch (error) {
       reset();
@@ -88,7 +89,7 @@ function RegisterPage() {
             <Alert severity="info">
               Already have an account?{" "}
               <Link variant="subtitle2" component={RouterLink} to="/login">
-                Sign in
+                Sign in now
               </Link>
             </Alert>
 
@@ -139,6 +140,16 @@ function RegisterPage() {
               ),
             }}
           /> */}
+
+            {/* remember me & forgot pw */}
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between"
+              sx={{ my: 2 }}
+            >
+              <FCheckbox name="remember" label="Remember me" />
+            </Stack>
 
             {/* register btn */}
             <LoadingButton

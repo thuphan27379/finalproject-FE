@@ -81,7 +81,7 @@ function PostForm() {
               name="content"
               multiline
               fullWidth
-              rows={4}
+              rows={3}
               placeholder="Share what you are thinking here..."
               sx={{
                 "& fieldset": {

@@ -50,11 +50,14 @@ function CommentCard({ comment }) {
     <>
       <Stack
         direction="row"
+        justifyContent={"space-between"}
         spacing={1}
         margin={0}
-        justifyContent={"space-between"}
+        lineHeight={0}
+        padding={0}
         sx={{
-          maxHeight: "110px",
+          maxWidth: "800px",
+          maxHeight: "105px",
           lineHeight: "0",
           p: "0",
           m: "0",
@@ -65,10 +68,9 @@ function CommentCard({ comment }) {
           "& .css-10kbc59-MuiStack-root .css-p64cbd-MuiStack-root": {
             marginRight: "7px", ////////////////////////////////////////////////////
             paddingRight: "8px",
+            paddingBottom: "10px",
           },
         }}
-        lineHeight={0}
-        padding={0}
       >
         <Avatar alt={comment.author?.name} src={comment.author?.avatarUrl} />
 
@@ -76,13 +78,14 @@ function CommentCard({ comment }) {
           sx={{
             p: 1,
             flexGrow: 1,
-            bgcolor: "#e6eaef",
             maxHeight: "110px",
             lineHeight: 0,
             "& .css-10kbc59-MuiStack-root .css-p64cbd-MuiStack-root": {
               marginRight: "7px", ////////////////////////////////////////////////////
               paddingRight: "8px",
+              paddingBottom: "10px",
             },
+            backgroundColor: "rgb(244, 246, 248)",
           }}
         >
           <Stack
@@ -94,7 +97,7 @@ function CommentCard({ comment }) {
               {comment.author?.name}
             </Typography>
 
-            {/* Date nam ke ben Author */}
+            {/* Date fai nam ke ben Author */}
             <Typography
               align="left"
               variant="caption"
@@ -134,8 +137,6 @@ function CommentCard({ comment }) {
             </Popover>
           </Stack>
 
-          {/* <Box sx={{ paddingTop: "0" }}>       
-        </Box> */}
           <Typography variant="body2" sx={{ color: "text.secondary" }}>
             {comment.content}
           </Typography>

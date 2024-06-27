@@ -121,7 +121,7 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// functions //
+// functions ///////////////////////////
 // get all posts
 export const getPosts =
   ({ userId, page = 1, limit = POSTS_PER_PAGE }) =>

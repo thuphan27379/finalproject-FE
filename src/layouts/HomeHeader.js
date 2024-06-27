@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,35 +12,39 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { styled, alpha } from "@mui/material/styles";
+import { Badge, Stack, Divider, InputAdornment } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
-import { Badge, Stack, Divider } from "@mui/material";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import PublicIcon from "@mui/icons-material/Public";
-import { useNavigate, Link as RouterLink } from "react-router-dom";
+import AdsClickOutlinedIcon from "@mui/icons-material/AdsClickOutlined";
 
 import useAuth from "../hooks/useAuth";
 
 // main menu
 const pages = [
-  { label: "About us", path: "" },
+  {
+    label: "About us",
+    path: "",
+    icon: <AdsClickOutlinedIcon sx={{ color: "primary" }} />, //???
+  },
   { label: "Projects", path: "" },
   { label: "Domains", path: "" },
   { label: "Startup", path: "" },
-  { label: "Contact us", path: "" },
   { label: "Community", path: "blog" }, //path: "blog"
+  { label: "Contact us", path: "" },
 ];
 
 // avatar menu
 const settings = [
-  { label: "My Domain", path: "" },
+  { label: "My Domains", path: "" }, //home
   { label: "My Profile", path: "blog" },
-  { label: "My Group", path: "blog" },
-  { label: "Setting", path: "account" },
+  { label: "My Groups", path: "blog" }, //group
+  { label: "Settings", path: "account" }, //login
   { label: "Logout", path: "login" },
 ];
 
-// kiem tra lai avatarUrl ?!?!
+//
 function ResponsiveAppBar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -69,7 +74,7 @@ function ResponsiveAppBar() {
     try {
       handleCloseNavMenu();
       await logout(() => {
-        navigate("/login");
+        navigate("/login"); //home
       });
     } catch (error) {
       console.error(error);
@@ -107,7 +112,6 @@ function ResponsiveAppBar() {
     width: "100%",
     "& .MuiInputBase-input": {
       padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
       paddingLeft: `calc(1em + ${theme.spacing(4)})`,
       transition: theme.transitions.create("width"),
       [theme.breakpoints.up("sm")]: {
@@ -130,21 +134,19 @@ function ResponsiveAppBar() {
           backgroundColor: "black",
           zIndex: (theme) => theme.zIndex.drawer + 1,
           boxShadow: "none",
-          // text: "black",
         }}
       >
         {/* logo */}
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            {/* link to homepage */}
             <Stack
               direction="row"
               sx={{
                 paddingLeft: "50px",
                 alignItems: "center",
               }}
+              to="/"
             >
-              {/* bo khung vien tron cua logo */}
               <IconButton sx={{ p: 0, mr: 2 }}>
                 <Avatar
                   sx={{
@@ -156,12 +158,11 @@ function ResponsiveAppBar() {
                   src="./huongsac-logo.png"
                   to="/"
                   component={RouterLink}
-                  // sx={{ borderRadius: "0" }}
                 />
               </IconButton>
 
               <Typography
-                variant="h6"
+                variant="h5"
                 noWrap
                 component="a"
                 href="#app-bar-with-responsive-menu"
@@ -169,7 +170,7 @@ function ResponsiveAppBar() {
                   mr: 2,
                   display: { xs: "none", md: "flex" },
                   fontFamily: "monospace",
-                  fontWeight: 700,
+                  fontWeight: 800,
                   letterSpacing: ".3rem",
                   color: "#B31942 ",
                   textDecoration: "none",
@@ -196,9 +197,18 @@ function ResponsiveAppBar() {
                     color: "white",
                     display: "block",
                     textTransform: "none",
+                    fontWeight: 400,
                   }}
                   to={`/${page.path}`}
                   component={RouterLink}
+                  //icon for main menu ???
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start" color="white">
+                        {page.icon}
+                      </InputAdornment>
+                    ),
+                  }}
                 >
                   {page.label}
                 </Button>
@@ -247,7 +257,6 @@ function ResponsiveAppBar() {
 
               {/* avt account & menu  */}
               <Box sx={{ flexGrow: 0 }}>
-                {/* thay avatar account vo */}
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Badge>
@@ -281,7 +290,11 @@ function ResponsiveAppBar() {
                 >
                   <Typography
                     textAlign="center"
-                    sx={{ fontWeight: "600", color: "#B31942" }}
+                    sx={{
+                      fontWeight: "600",
+                      color: "#B31942",
+                      paddingBottom: "7px",
+                    }}
                   >
                     {user?.name}
                   </Typography>

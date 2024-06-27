@@ -14,7 +14,12 @@ function NotFoundPage() {
           <Typography sx={{ color: "text.secondary", mb: "1rem" }}>
             Sorry, we couldn’t find the page you requested.
           </Typography>
-          <Button to="/" variant="outlined" component={RouterLink}>
+          <Button
+            to="/"
+            variant="outlined"
+            component={RouterLink}
+            color="secondary"
+          >
             Go to Home
           </Button>
         </Box>
@@ -22,4 +27,5 @@ function NotFoundPage() {
     </>
   );
 }
+
 export default NotFoundPage;

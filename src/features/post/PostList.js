@@ -40,6 +40,7 @@ function PostList({ userId }) {
           <LoadingButton
             variant="outlined"
             size="small"
+            color="secondary"
             loading={isLoading}
             onClick={() => setPage((page) => page + 1)}
             disabled={Boolean(totalPosts) && posts.length >= totalPosts}

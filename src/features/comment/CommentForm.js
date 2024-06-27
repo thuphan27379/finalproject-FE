@@ -22,7 +22,11 @@ function CommentForm({ postId }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Stack direction="row" alignItems="center">
+        <Stack
+          direction="row"
+          alignItems="center"
+          sx={{ paddingBottom: "10px" }}
+        >
           <Avatar src={user?.avatarUrl} alt={user.name} />
 
           <TextField
@@ -32,7 +36,7 @@ function CommentForm({ postId }) {
             placeholder="Write a comment…"
             onChange={(event) => setContent(event.target.value)}
             sx={{
-              ml: 2,
+              ml: 1,
               mr: 1,
               "& fieldset": {
                 borderWidth: `1px !important`,
@@ -43,7 +47,10 @@ function CommentForm({ postId }) {
           />
 
           <IconButton type="submit">
-            <SendIcon sx={{ fontSize: 27, color: "secondary" }} />
+            <SendIcon
+              color="secondary"
+              sx={{ fontSize: 23, color: "secondary", marginRight: "20px" }}
+            />
           </IconButton>
         </Stack>
       </form>

@@ -32,7 +32,7 @@ function Router() {
           <Route path="/" element={<Startup />} />
           {/* CODERCOMM */}
           <Route path="/blog" element={<BlogPage />} />
-          {/* <Route path="/user/:userId" element={<UserProfilePage />} /> */}
+          <Route path="/user/:userId" element={<UserProfilePage />} />
         </Route>
 
         {/* login/signup */}
@@ -45,7 +45,7 @@ function Router() {
         {/* login require  */}
         <Route path="/" element={<HomeLayout />}>
           <Route
-            path="/blog"
+            path="/user/:userId"
             element={
               <AuthRequire>
                 {/* <BlogPage /> */}
@@ -55,7 +55,7 @@ function Router() {
           />
 
           <Route
-            path="/account"
+            path="/account" //login
             element={
               <AuthRequire>
                 <AccountPage />

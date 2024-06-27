@@ -38,20 +38,12 @@ function FriendList() {
   //
   return (
     <>
-      <Container
-        xs={8}
-        // sx={{
-        //   "& .MuiContainer-maxWidthLg, .css-1oqqzyl-MuiContainer-root, .css-0": {
-        //     marginLeft: "-50px",
-        //     paddingLeft: "-50px",
-        //   },
-        // }}
-      >
+      <Container xs={8}>
         <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
           Friends List
         </Typography>
 
-        <Card sx={{ p: 3 }}>
+        <Card sx={{ p: 2 }}>
           <Stack spacing={2}>
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
               <SearchInput handleSubmit={handleSubmit} />
@@ -78,7 +70,7 @@ function FriendList() {
           </Stack>
 
           {/* card list of friend  */}
-          <Grid container spacing={3} my={1}>
+          <Grid container spacing={2} my={1}>
             {users.map((user) => (
               <Grid key={user._id} item xs={12} md={4}>
                 <UserCard profile={user} />

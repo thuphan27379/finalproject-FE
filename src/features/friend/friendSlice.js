@@ -156,7 +156,8 @@ export const getFriends =
       toast.error(error.message); //react toastify
     }
   };
-// incoming
+
+// incoming list
 // function getFriendRequests, for export to AddFriend.js
 // getFriendRequestsSuccess
 export const getFriendRequests =
@@ -272,7 +273,7 @@ export const removeFriend = (targetUserId) => async (dispatch) => {
   }
 };
 
-// outgoing
+// outgoing list
 // getOutgoingSents
 // getOutgoingSentsSuccess
 export const getOutgoingSents =

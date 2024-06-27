@@ -50,7 +50,7 @@ function FriendRequests() {
           Received Friend Requests List
         </Typography>
 
-        <Card sx={{ p: 3 }}>
+        <Card sx={{ p: 2 }}>
           <Stack spacing={2}>
             {/* Search Input and Pagination */}
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
@@ -75,19 +75,11 @@ function FriendRequests() {
           </Stack>
 
           {/* Grid for displaying user cards */}
-          <Grid container spacing={3} my={1} xs={18}>
+          <Grid container spacing={2} my={1} xs={18}>
             {users.map((user) => (
               ////////incomingRequests//////////////
               <Grid key={user._id} item xs={14} md={4}>
                 <UserCard profile={user} />
-                {/* Cancel Request button */}
-                {/* <Button
-                variant="outlined"
-                color="error"
-                onClick={() => handleCancelRequest(user._id)}
-              >
-                Cancel Request
-              </Button> */}
               </Grid>
             ))}
           </Grid>

@@ -14,7 +14,7 @@ import { getOutgoingSents, cancelRequest } from "./friendSlice";
 import UserCard from "./UserCard";
 import SearchInput from "../../components/SearchInput";
 
-// totalUsers k cap nhat
+// total request k cap nhat ???
 // Outgoing
 function OutgoingSents() {
   const [filterName, setFilterName] = useState("");
@@ -52,7 +52,7 @@ function OutgoingSents() {
           Sent Friend Requests List
         </Typography>
 
-        <Card sx={{ p: 3 }}>
+        <Card sx={{ p: 2 }}>
           <Stack spacing={2}>
             {/* Search Input and Pagination */}
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
@@ -77,11 +77,10 @@ function OutgoingSents() {
           </Stack>
 
           {/* Grid for displaying user cards */}
-          <Grid container spacing={3} my={1} xs={18}>
+          <Grid container spacing={2} my={1} xs={18}>
             {outgoingRequests.map((user) => (
               <Grid key={user._id} item xs={12} md={4}>
                 <UserCard profile={user} />
-                {/* Cancel Request button */}
               </Grid>
             ))}
           </Grid>

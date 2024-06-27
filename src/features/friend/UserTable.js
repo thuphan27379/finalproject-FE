@@ -60,7 +60,6 @@ function UserTable({ users }) {
                       xs: "none",
                       md: "table-cell",
                       fontWeight: "600",
-                      // padding: "31px",
                     },
                   }}
                 >
@@ -83,7 +82,6 @@ function UserTable({ users }) {
                     display: { xs: "none", sm: "table-cell" },
                     width: "20%",
                     fontWeight: "600",
-                    // padding: "31px",
                   }}
                 >
                   Action
@@ -152,7 +150,7 @@ function UserTable({ users }) {
                         display: {
                           xs: "none",
                           md: "table-cell",
-                          paddingRight: "41px",
+                          paddingRight: "80px", ////////////////////
                         },
                       }}
                     >

@@ -68,7 +68,7 @@ function AccountGeneral() {
     dispatch(updateUserProfile({ userId: user._id, ...data }));
   };
 
-  // css-xg6xos-MuiContainer-root paddingLeft 24 + 16
+  //
   return (
     <>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
@@ -88,6 +88,7 @@ function AccountGeneral() {
                 maxSize={3145728}
                 onDrop={handleDrop}
                 helperText={
+                  //lan dau tien chua bo hinh thi chua thay
                   <Typography
                     variant="caption"
                     sx={{
@@ -134,11 +135,11 @@ function AccountGeneral() {
                 <FTextField name="name" label="Name" />
                 <FTextField name="email" label="Email" />
 
-                <FTextField name="jobTitle" label="Job Title?" />
-                <FTextField name="company" label="Company?" />
+                <FTextField name="jobTitle" label="Job Title" />
+                <FTextField name="company" label="Company" />
 
-                <FTextField name="phoneNumber" label="Phone Number?" />
-                <FTextField name="address" label="Address?" />
+                <FTextField name="phoneNumber" label="Phone Number" />
+                <FTextField name="address" label="Address" />
 
                 <FTextField name="city" label="City" />
                 <FTextField name="country" label="Country" />
@@ -154,7 +155,7 @@ function AccountGeneral() {
                   name="aboutMe"
                   multiline
                   rows={4}
-                  label="About Me?"
+                  label="About Me"
                 />
 
                 {/* btn Save */}

@@ -6,8 +6,6 @@ import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlin
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
-import Profile from "C:/Users/Public/finalproject-frontend/src/features/user/Profile.js";
-
 //* icon */
 const IconStyle = styled(Box)(({ theme }) => ({
   width: 20,
@@ -17,15 +15,14 @@ const IconStyle = styled(Box)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
-// 2nd About
-// show detail of profile, on the left
+// 2nd show detail of profile
 function ProfileAbout({ profile }) {
   const { aboutMe, city, country, email, company } = profile;
 
   //
   return (
     <>
-      <Card sx={{ minWidth: "350px", minHeight: "246px" }}>
+      <Card sx={{ minWidth: "340px", minHeight: "246px" }}>
         <CardHeader title="About" variant="h6" sx={{ paddingTop: "10px" }} />
 
         <Stack spacing={2} sx={{ p: 2 }}>
@@ -43,7 +40,12 @@ function ProfileAbout({ profile }) {
               <PinDropOutlinedIcon />
             </IconStyle>
             <Typography variant="body2">
-              <Link component="span" variant="subtitle2" color="text.primary">
+              <Link
+                component="span"
+                variant="subtitle2"
+                color="text.primary"
+                fontWeight="400"
+              >
                 {city}, {country}.
               </Link>
             </Typography>
@@ -61,7 +63,12 @@ function ProfileAbout({ profile }) {
               <BusinessCenterOutlinedIcon />
             </IconStyle>
             <Typography variant="body2">
-              <Link component="span" variant="subtitle2" color="text.primary">
+              <Link
+                component="span"
+                variant="subtitle2"
+                color="text.primary"
+                fontWeight="400"
+              >
                 {company}
               </Link>
             </Typography>

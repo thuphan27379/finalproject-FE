@@ -10,7 +10,7 @@ function BlankLayout() {
   return (
     <>
       <Stack
-        paddingTop={30}
+        paddingTop={25}
         minHeight="100vh"
         justifyContent="center"
         alignItems="center"

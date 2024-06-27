@@ -9,22 +9,22 @@ import { CssBaseline } from "@mui/material"; //xoa css mac dinh cua MUI
 import customizeComponents from "./customizations";
 
 // module 2.3 .3.7
-// const themeCustom = createTheme({
-//   palette: {
-//     primary: {
-//       main: "#B31942 ", //700
-//       light: "#e65e7a", //300
-//       dark: "#7c093a",
-//       contrastText: "#fbe3e7",
-//     },
-//     secondary: {
-//       main: "#0A3161", //800
-//       light: "#476390", //400
-//       dark: "#04214a",
-//       contrastText: "#e5e8ef",
-//     },
-//   },
-// });
+const themeCustom = createTheme({
+  palette: {
+    primary: {
+      main: "#B31942 ", //700
+      light: "#e65e7a", //300
+      dark: "#7c093a",
+      contrastText: "#fbe3e7",
+    },
+    secondary: {
+      main: "#0A3161", //800
+      light: "#476390", //400
+      dark: "#04214a",
+      contrastText: "#e5e8ef",
+    },
+  },
+});
 
 // custom theme, design
 const PRIMARY = {
@@ -141,9 +141,6 @@ function ThemeProvider({ children }) {
       "@media (min-width:600px)": {
         fontSize: "1.5rem",
       },
-      // [theme.breakpoints.up("md")]: {
-      //   fontSize: "2.4rem",
-      // },
     },
 
     // transition, ease //

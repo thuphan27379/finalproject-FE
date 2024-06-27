@@ -2,22 +2,25 @@ import React from "react";
 import { Grid, Stack } from "@mui/material";
 
 import useAuth from "../../hooks/useAuth";
-
-import GroupScorecard from "./GroupScorecard";
 import GroupList from "./GroupList";
-import GroupInterest from "./GroupInterest";
+// import GroupInterest from "./GroupInterest";
+import GroupSearch from "./GroupSearch";
+import GroupForm from "./GroupForm";
+import { createGroup } from "./groupSlice";
+import PostForm from "../post/PostForm";
+import PostList from "../post/PostList";
 
 // UI for the group //GroupPage
 
-// GroupScoreCard: groupCount, postCount, memberCount
-// GroupList: list of the group of the interest, pagination
+// GroupSearch: SEARCH FOR GROUP
+// GroupList: list of the group, pagination
 // InterestList: interest list create by users, pagination
 
 // GroupForm: create a new group
 
 // postForm: if user login
 // postCard: post of the group
-// postsGroup: list of posts in the group //
+// postsGroup: list of posts in the group // postList
 // commentForm
 // commentCard
 // commentList
@@ -46,9 +49,8 @@ function Group({ profile }) {
             paddingTop: "0px", //?
             paddingBottom: "20px", //work
             paddingLeft: "unset", //?
-            marginLeft: "-24px", //work
-            marginRight: "0px", //?
-            paddingRight: "0px", //?
+            marginLeft: "-10px", //work
+            paddingRight: "13px", //?
           }}
         >
           <Stack
@@ -74,40 +76,41 @@ function Group({ profile }) {
             }}
           >
             {/* 20% search*/}
-            <GroupScorecard
-              profile={profile}
-              width={"200px"}
-              sx={{
-                minWidth: "200px", //
-              }}
-            />
+            <GroupSearch profile={profile} />
             {/* 40% with pagination*/}
-            <GroupList profile={profile} minWidth={"250px"} />
+            <GroupList profile={profile} />
             {/* 40% with pagination*/}
-            <GroupInterest
-              profile={profile}
-              minWidth={"250px"}
-              sx={{ maxWidth: "250px" }}
-            />
+            {/* <GroupInterest profile={profile}  /> */}
           </Stack>
         </Grid>
 
-        {/* search for group ? */}
-
         {/* GroupForm, create a new group */}
+        <GroupForm width="100%" />
 
         {/* group name & interest show if clicked/joined */}
+        <div>
+          <p>Group name - Group Interest</p>
+          <p>Members Count - Posts Count</p>
+          <br />
+        </div>
 
-        {/* postList, cmt, reaction */}
-        {/* <Grid container>
-          <Stack spacing={3} width={"100%"}>
-            {user._id === profile?._id && <PostForm />}
+        {/* postList, comment, reaction */}
+        <Grid container sx={{ paddingLeft: "15px" }}>
+          <Stack spacing={2} width={"100%"}>
+            {/* {user._id === profile?._id && <PostForm />} */}
+            <PostForm userId={profile?._id} />
             <PostList userId={profile?._id} />
           </Stack>
-        </Grid> */}
+        </Grid>
       </Grid>
 
-      <div style={{ paddingRight: "40px" }}>
+      <div
+        style={{
+          paddingRight: "30px",
+          paddingTop: "50px",
+          paddingBottom: "50px",
+        }}
+      >
         Create, join, and post in groups based on interests or topics <br />
         1. Add a "Groups" collection to your MongoDB database to store group
         information such as group name, group description, group members, and
