@@ -17,7 +17,7 @@ const IconStyle = styled(Box)(({ theme }) => ({
 
 // 2nd show detail of profile
 function ProfileAbout({ profile }) {
-  const { aboutMe, city, country, email, company } = profile;
+  const { aboutMe, city, country, email, company, others } = profile;
 
   //
   return (
@@ -78,7 +78,7 @@ function ProfileAbout({ profile }) {
             <IconStyle color="##98002e">
               <FavoriteBorderOutlinedIcon />
             </IconStyle>
-            <Typography variant="body2">Others</Typography>
+            <Typography variant="body2">{others}</Typography>
           </Stack>
         </Stack>
       </Card>

@@ -41,10 +41,10 @@ export default function RightBar() {
             "Domain Value Appraisal",
             "Find a Domain Owner",
             "Domain Investing",
-            "Auctions for Domains",
+            "Auction for Domains",
             "Transfer Domain Names",
-            "Free Subdomain & Email",
-            "Hosting & e-Marketing",
+            "Free SubDomain & Email",
+            "Hosting & eMarketing",
           ].map((text, index) => (
             <ListItem key={text} disablePadding>
               <LensBlurOutlinedIcon fontSize="small" color="secondary" />

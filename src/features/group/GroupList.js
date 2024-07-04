@@ -1,5 +1,4 @@
 import {
-  Link,
   Card,
   Typography,
   CardHeader,
@@ -10,36 +9,46 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { getList } from "./groupSlice";
-import { GROUP_PER_PAGE } from "../../app/config";
+import useAuth from "../../hooks/useAuth";
+import { getList, joinGroup } from "./groupSlice";
+// import { GROUP_PER_PAGE } from "../../app/config";
 
-// 2nd card: list of group, link to that group and with all post
+// 2nd card: list of group name, link to that group and with all post
 function GroupList({ groupId }) {
+  const { user } = useAuth();
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
-  const { list, totalGroups, interests } = useSelector((state) => state.group);
-  console.log(list);
+  const params = useParams();
   const navigate = useNavigate();
+  const currentUserId = user._id;
+  const currentGroupId = params.groupId;
+  const currentUser = useSelector((state) => state.user.currentUser);
+  console.log(user);
+  const [page, setPage] = useState(1);
+  const { list, totalGroups } = useSelector((state) => state.group);
+  console.log(list);
 
   useEffect(() => {
     dispatch(getList({ page }));
   }, [dispatch, page]);
 
-  // handleJoin
-  // const handleJoin = (groupId, userId) => {
-  //   const confirm = window.confirm("Welcome to this group!");
+  // handleJoin ??? goi groupid ve api
+  const handleJoin = async (currentGroupId, currentUserId) => {
+    try {
+      dispatch(joinGroup({ currentGroupId, currentUserId }));
+      toast.success("Join group successfully");
+      navigate(`/group/${groupId}`);
+    } catch (error) {
+      console.log("User already join");
+    }
+  };
 
-  //   if (!confirm) return;
-
-  //   handleJoin(groupId, userId);
-
-  //   toast.success("Join group successfully");
-
-  //   navigate("/group/:groupId");
-  // };
+  // navigate to groupPage /group/:groupId
+  const handleNavigate = (groupId) => {
+    navigate(`/group/${groupId}`);
+  };
 
   //
   return (
@@ -57,6 +66,7 @@ function GroupList({ groupId }) {
             variant="h6"
             sx={{ paddingTop: "10px" }}
           />
+
           {/* pagination */}
           <Pagination
             flexDirection="flex-end"
@@ -82,6 +92,9 @@ function GroupList({ groupId }) {
                 flexWrap: "nowrap",
                 justifyContent: "space-between",
               }}
+              onClick={() => {
+                handleNavigate(listItem._id);
+              }}
             >
               <Typography key={listItem._id}>
                 * {listItem.name} ({listItem.interests}) -{" "}
@@ -91,8 +104,14 @@ function GroupList({ groupId }) {
               <Button
                 color="secondary"
                 variant="outlined"
-                sx={{ p: 0, fontSize: 10 }}
-                // onClick={handleJoin()}
+                sx={{
+                  p: 0,
+                  fontSize: 10,
+                  "& .css-13f20w7-MuiButtonBase-root-MuiButton-root:hover": {
+                    backgroundColor: "#ced5df",
+                  },
+                }}
+                onClick={() => handleJoin(listItem._id)}
               >
                 Join
               </Button>

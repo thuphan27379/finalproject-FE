@@ -16,6 +16,7 @@ import Projects from "../pages/Projects";
 import Aboutus from "../pages/AboutUs";
 import Domains from "../pages/Domains";
 import Startup from "../pages/Startup";
+import Group from "../features/group/Group"; //
 
 // INDEX OF ALL ROUTES = connect all layouts & pages together
 function Router() {
@@ -48,7 +49,6 @@ function Router() {
             path="/user/:userId"
             element={
               <AuthRequire>
-                {/* <BlogPage /> */}
                 <UserProfilePage />
               </AuthRequire>
             }
@@ -59,6 +59,15 @@ function Router() {
             element={
               <AuthRequire>
                 <AccountPage />
+              </AuthRequire>
+            }
+          />
+
+          <Route
+            path="/group/:groupId"
+            element={
+              <AuthRequire>
+                <Group />
               </AuthRequire>
             }
           />

@@ -260,7 +260,7 @@ const HomePage = () => {
 
             {/* <!-- 4 Domains for sale --> */}
             <section class="recent-contributions">
-              <h2>Domains for Sale and more</h2>
+              <h2>Domains for Sale and much more</h2>
               <ul class="contribution-list">
                 <li class="request-item">
                   <p class="request-title">

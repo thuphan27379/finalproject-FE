@@ -1,0 +1,15 @@
+background-color
+
+text color
+
+placeholder color
+
+border-color
+
+border-shadow
+
+divider
+
+icon color
+
+button color

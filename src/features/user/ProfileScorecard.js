@@ -22,7 +22,6 @@ function ProfileScorecard({ profile }) {
           direction="row"
           alignItems="center"
           justifyContent="center"
-          alignDirection="center"
           lineHeight={1}
           divider={<Divider orientation="vertical" flexItem />}
         >

@@ -16,21 +16,6 @@ import { updateUserProfile } from "./userSlice";
 // for edit social links
 const SOCIAL_LINKS = [
   {
-    value: "youtubeLink",
-    icon: <YouTubeIcon sx={{ fontSize: 28 }} />,
-    placeholder: "www.youtube.com/",
-  },
-  {
-    value: "facebookLink",
-    icon: <FacebookIcon sx={{ fontSize: 27 }} />,
-    placeholder: "www.facebook.com/",
-  },
-  {
-    value: "instagramLink",
-    icon: <InstagramIcon sx={{ fontSize: 27 }} />,
-    placeholder: "www.instagram.com/",
-  },
-  {
     value: "linkedinLink",
     icon: <LinkedInIcon sx={{ fontSize: 28 }} />,
     placeholder: "www.linkedin.com/",
@@ -39,6 +24,21 @@ const SOCIAL_LINKS = [
     value: "twitterLink",
     icon: <XIcon sx={{ fontSize: 24 }} />,
     placeholder: "www.twitter.com/",
+  },
+  {
+    value: "instagramLink",
+    icon: <InstagramIcon sx={{ fontSize: 27 }} />,
+    placeholder: "www.instagram.com/",
+  },
+  {
+    value: "youtubeLink",
+    icon: <YouTubeIcon sx={{ fontSize: 28 }} />,
+    placeholder: "www.youtube.com/",
+  },
+  {
+    value: "facebookLink",
+    icon: <FacebookIcon sx={{ fontSize: 27 }} />,
+    placeholder: "www.facebook.com/",
   },
 ];
 

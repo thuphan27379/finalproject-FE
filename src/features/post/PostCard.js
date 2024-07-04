@@ -216,6 +216,7 @@ function PostCard({ post, profile }) {
               {fDate(post.createdAt)}
             </Typography>
           }
+          // More btn, if not currentUser => display: "none" */}
           action={
             <IconButton>
               <MoreVertIcon onClick={handleClick} sx={{ fontSize: 27 }} />
@@ -324,6 +325,7 @@ function PostCard({ post, profile }) {
                         type="submit"
                         variant="outlined"
                         size="small"
+                        color="secondary"
                         loading={isSubmitting || isLoading}
                       >
                         Update

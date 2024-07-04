@@ -93,7 +93,7 @@ function CommentCard({ comment }) {
             alignItems={{ sm: "center" }}
             justifyContent="space-between"
           >
-            <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+            <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
               {comment.author?.name}
             </Typography>
 
@@ -113,6 +113,7 @@ function CommentCard({ comment }) {
               {fDate(comment.createdAt)}
             </Typography>
 
+            {/* More btn, if not currentUser => display: "none" */}
             <div>
               <IconButton sx={{ color: "secondary" }}>
                 <MoreVertIcon

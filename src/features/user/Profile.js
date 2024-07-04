@@ -45,7 +45,6 @@ function Profile({ profile }) {
             alignItems="center"
             sx={{
               "& .css-13mhfsw-MuiGrid-root, .css-1q7661i-MuiGrid-root": {
-                maxWidth: "100%",
                 paddingLeft: "0px",
                 paddingTop: "0px",
               },
@@ -53,9 +52,7 @@ function Profile({ profile }) {
                 paddingLeft: "0px",
                 paddingTop: "0px",
               },
-              "& .css-15yln57-MuiStack-root > :not(style) ~ :not(style)": {
-                maxWidth: "30%",
-              },
+              "& .css-15yln57-MuiStack-root > :not(style) ~ :not(style)": {},
               paddingLeft: "0px",
               paddingTop: "0px",
               paddingRight: "25px",
@@ -76,7 +73,7 @@ function Profile({ profile }) {
             <ProfileSocialInfo
               profile={profile}
               minWidth={"230px"}
-              sx={{ maxWidth: "230px" }}
+              // sx={{ maxWidth: "230px" }}
             />
             {/* </Grid> */}
           </Stack>

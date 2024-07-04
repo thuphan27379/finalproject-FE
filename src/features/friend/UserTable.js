@@ -39,7 +39,7 @@ function UserTable({ users }) {
   return (
     <>
       <Box sx={{ overflowX: "auto" }} xs={8}>
-        <TableContainer sx={{ minWidth: 785 }}>
+        <TableContainer sx={{ minWidth: 810 }}>
           <Table>
             <TableHead>
               <TableRow>
@@ -49,6 +49,7 @@ function UserTable({ users }) {
                       xs: "20%",
                       sm: "25%",
                       fontWeight: "600",
+                      minWidth: "168px",
                     },
                   }}
                 >
@@ -60,6 +61,7 @@ function UserTable({ users }) {
                       xs: "none",
                       md: "table-cell",
                       fontWeight: "600",
+                      minWidth: "250px",
                     },
                   }}
                 >
@@ -105,7 +107,7 @@ function UserTable({ users }) {
                       <Avatar
                         alt={user.name}
                         src={user.avatarUrl}
-                        sx={{ mr: 2, mb: 2 }}
+                        sx={{ mr: 2, mb: 1, mt: 1 }}
                       />
                       <Link
                         variant="subtitle2"
@@ -131,7 +133,7 @@ function UserTable({ users }) {
                     </TableCell>
                     {/* job */}
                     <TableCell
-                      align="left"
+                      align="center"
                       sx={{ display: { xs: "none", md: "table-cell" } }}
                     >
                       {/* {user.jobTitle} */}
@@ -150,7 +152,7 @@ function UserTable({ users }) {
                         display: {
                           xs: "none",
                           md: "table-cell",
-                          paddingRight: "80px", ////////////////////
+                          paddingRight: "70px", ////////////////////
                         },
                       }}
                     >

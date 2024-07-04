@@ -44,7 +44,19 @@ const slice = createSlice({
       console.log(action.payload);
       state.list.unshift(action.payload.newGroup); //bo object vao trong array
     },
+
     // join a group
+    joinGroupSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+
+      // ?
+      const newMember = action.payload.currentUserId;
+
+      // console.log(action.payload);
+      state.newMember = action.payload.members;
+    },
+
     // leave a group
 
     // getListSuccess (list of group name & interests)
@@ -54,13 +66,13 @@ const slice = createSlice({
 
       //group list, interest list
       state.list = action.payload.groups;
+      state.interests = action.payload.interests;
 
       // get total group
       const { groups, totalPage } = action.payload;
       console.log(action.payload);
 
       state.totalGroups = action.payload.totalGroups;
-      state.interests = action.payload.interests;
     },
 
     // getSearchGroupSuccess
@@ -68,17 +80,33 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
 
-      // ?!
       const { groups } = action.payload;
       state.searchGroupResult = groups; //searchGroupResult
     },
 
-    // get all posts in group
-    getPostsSuccess(state, action) {
+    // create a new post
+    createPostGroupSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
-      const { posts, count } = action.payload;
+      const newPostGroup = action.payload;
+      const currentGroupId = action.payload;
+
+      // state.currentGroupId =
+
+      if (state.currentPagePosts.length % POSTS_PER_PAGE === 0)
+        state.currentPagePosts.pop(); // xoa bot post list truoc de list new post
+      state.postsById[newPostGroup._id] = newPostGroup;
+      state.currentPagePosts.unshift(newPostGroup._id);
+    },
+
+    // get all posts in the group
+    getPostsGroupSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+
+      // groupId?
+      const { posts, count, groupId } = action.payload;
 
       // loc cac bai post sao cho khong trung lap
       posts.forEach((post) => {
@@ -87,19 +115,6 @@ const slice = createSlice({
           state.currentPagePosts.push(post._id);
       });
       state.totalPosts = count;
-    },
-
-    // create a new post
-    createPostSuccess(state, action) {
-      state.isLoading = false;
-      state.error = null;
-
-      const newPost = action.payload;
-
-      if (state.currentPagePosts.length % POSTS_PER_PAGE === 0)
-        state.currentPagePosts.pop(); // xoa bot post list truoc de list new post
-      state.postsById[newPost._id] = newPost;
-      state.currentPagePosts.unshift(newPost._id);
     },
 
     // reaction a post
@@ -187,6 +202,25 @@ export const createGroup =
     }
   };
 
+// join a group
+export const joinGroup =
+  ({ currentGroupId, currentUserId }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+
+    try {
+      const response = await apiService.put(
+        `/${currentGroupId}/${currentUserId}`
+      );
+
+      dispatch(slice.actions.joinGroupSuccess(response.data));
+      toast.success("Join Group successfully");
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+    }
+  };
+
 // get list of group name, interest, search
 export const getList =
   ({ page = 1, limit = GROUP_PER_PAGE }) =>
@@ -223,8 +257,40 @@ export const getSearchGroup =
     }
   };
 
+// create a new post in the group
+export const createPostGroup =
+  ({ content, image, groupId, postsByGroupId }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+
+    try {
+      // upload image to cloudinary.com - from PostForm.js
+      const params = {};
+      const imageUrl = await cloudinaryUpload(image);
+      const response = await apiService.post(
+        "/group/posts",
+        {
+          params,
+        },
+        {
+          content,
+          image: imageUrl,
+          groupId, //?
+          postsByGroupId,
+        }
+      );
+
+      dispatch(slice.actions.createPostGroupSuccess(response.data));
+      toast.success("Post in the group successfully");
+      dispatch(getCurrentUserProfile()); //?
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+    }
+  };
+
 // get all posts of the group
-export const getPosts =
+export const getPostsGroup =
   ({ userId, page = 1, limit = POSTS_PER_PAGE }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
@@ -235,30 +301,7 @@ export const getPosts =
       });
       ///////fix bug about get list of posts of currentUser
       if (page === 1) dispatch(slice.actions.resetPosts()); //reset posts before dispatch and show only posts of this currentUser
-      dispatch(slice.actions.getPostsSuccess(response.data));
-    } catch (error) {
-      dispatch(slice.actions.hasError(error.message));
-      toast.error(error.message);
-    }
-  };
-
-// create a post in the group
-export const createPost =
-  ({ content, image }) =>
-  async (dispatch) => {
-    dispatch(slice.actions.startLoading());
-
-    try {
-      // upload image to cloudinary.com - from PostForm.js
-      const imageUrl = await cloudinaryUpload(image);
-      const response = await apiService.post("/posts", {
-        content,
-        image: imageUrl,
-      });
-
-      dispatch(slice.actions.createPostSuccess(response.data));
-      toast.success("Post successfully");
-      dispatch(getCurrentUserProfile());
+      dispatch(slice.actions.getPostsGroupSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
       toast.error(error.message);
@@ -340,7 +383,7 @@ export const editPost =
       dispatch(slice.actions.editPostSuccess(response.data));
       console.log(response.data);
 
-      dispatch(getPosts({ userId: response.data.author }));
+      dispatch(getPostsGroup({ userId: response.data.author }));
       toast.success("Post edited successfully");
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));

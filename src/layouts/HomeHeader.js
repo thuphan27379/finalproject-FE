@@ -257,7 +257,7 @@ function ResponsiveAppBar() {
 
               {/* avt account & menu  */}
               <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
+                <Tooltip title="Account Profile">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Badge>
                       <Avatar

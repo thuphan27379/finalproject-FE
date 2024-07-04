@@ -1,19 +1,18 @@
 import React from "react";
 import { Grid, Stack } from "@mui/material";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
-import useAuth from "../../hooks/useAuth";
-import GroupList from "./GroupList";
+import useAuth from "../hooks/useAuth";
+import GroupList from "../features/group/GroupList";
 // import GroupInterest from "./GroupInterest";
-import GroupSearch from "./GroupSearch";
-import GroupForm from "./GroupForm";
-import { getList } from "./groupSlice";
-import PostForm from "../post/PostForm";
+import GroupSearch from "../features/group/GroupSearch";
+import GroupForm from "../features/group/GroupForm";
+import { createGroup } from "../features/group/groupSlice";
+// import PostForm from "../post/PostForm";
 //import GroupPostForm from "../group/GroupPostForm";
-import PostList from "../post/PostList";
+// import PostList from "../post/PostList";
 //import GroupPostList from "../group/GroupPostList";
 
-// UI for the group //GroupPage - group dang la con cua blog
+// UI for the group //GroupPage
 
 // GroupSearch: SEARCH FOR GROUP
 // GroupList: list of the group, pagination
@@ -28,15 +27,10 @@ import PostList from "../post/PostList";
 // commentCard
 // commentList
 // reaction
-function Group({ profile, groupId }) {
+function Group({ profile }) {
   const { user } = useAuth(); //get data of user from useAuth
 
-  // 1. qua route /group bi mat profile tab (blog)
-  // 2. hai ben UI cua /blog - group tab va UI cua /group
-  // => /blog/group/...
-
-  const { list } = useSelector((state) => state.group);
-
+  //
   return (
     <>
       <Grid
@@ -44,8 +38,7 @@ function Group({ profile, groupId }) {
         spacing={3}
         width={"100%"}
         sx={{
-          // paddingLeft: ""
-          paddingTop: "60px", // 100px
+          paddingTop: "0px", // work
           "& .css-4danns-MuiStack-root": { marginRight: "-24px" },
         }}
       >
@@ -95,10 +88,8 @@ function Group({ profile, groupId }) {
 
         {/* group name & interest show if clicked/joined */}
         <div>
-          <p>
-            Group name: {list.name} - Interest: {list.interests}
-          </p>
-          <p>Members Count: - Posts Count:</p>
+          <p>Group name - Group Interest</p>
+          <p>Members Count - Posts Count</p>
           <br />
         </div>
 
@@ -106,8 +97,8 @@ function Group({ profile, groupId }) {
         <Grid container sx={{ paddingLeft: "15px" }}>
           <Stack spacing={2} width={"100%"}>
             {/* {user._id === profile?._id && <PostForm />} */}
-            <PostForm userId={profile?._id} />
-            <PostList userId={profile?._id} />
+            {/* <PostForm userId={profile?._id} /> */}
+            {/* <PostList userId={profile?._id} /> */}
           </Stack>
         </Grid>
       </Grid>

@@ -4,14 +4,13 @@ import {
   Card,
   Stack,
   Typography,
-  CardHeader,
+  // CardHeader,
   Box,
   Button,
-  Pagination,
 } from "@mui/material";
 
 import SearchInput from "../../components/SearchInput";
-import { getList, getSearchGroup } from "./groupSlice";
+import { getSearchGroup } from "./groupSlice";
 
 // 1st card: SEARCH FOR GROUP by name/interest
 function GroupSearch() {
@@ -28,11 +27,12 @@ function GroupSearch() {
   // ?!
   const { searchGroupResult } = useSelector((state) => state.group);
   console.log(searchGroupResult);
-  // const totalSearch = searchGroupResult.length;
 
   // dispatch
   useEffect(() => {
-    dispatch(getSearchGroup({ filterGroup, page: page + 1 }));
+    if (filterGroup) {
+      dispatch(getSearchGroup({ filterGroup, page: page + 1 }));
+    }
   }, [filterGroup, page, dispatch]);
 
   //
@@ -40,10 +40,10 @@ function GroupSearch() {
     <>
       <Card
         sx={{
-          p: 1,
+          p: 2,
           minWidth: "360px",
           minHeight: "270px",
-          lineHeight: "1",
+          lineHeight: "2",
           alignItems: "center",
           justifyContent: "center",
           paddingTop: "10px",
@@ -53,13 +53,11 @@ function GroupSearch() {
           direction="row"
           alignItems="center"
           justifyContent="center"
-          alignDirection="center"
           lineHeight={2}
         >
           <Stack width={1} textAlign="center">
             {/* CardHeader */}
             <Typography variant="h6">Search & Join</Typography>
-
             {/* SEARCH Input*/}
             <SearchInput
               placeholder="Search by name or interest"
@@ -74,36 +72,25 @@ function GroupSearch() {
                   }, //?????
               }}
             />
-
             {/* result count */}
+            {/* if (searchGroupResult) */}
             <Typography
               variant="subtitle"
               sx={{ color: "text.secondary", ml: 1 }}
             >
-              {searchGroupResult.length > 1
-                ? `${searchGroupResult.length} groups found`
-                : searchGroupResult.length === 1
-                ? `${searchGroupResult.length} group found`
+              {searchGroupResult?.length > 1
+                ? `${searchGroupResult?.length} groups found`
+                : searchGroupResult?.length === 1
+                ? `${searchGroupResult?.length} group found`
                 : "No group found"}
             </Typography>
 
             {/* pagination */}
-            {/* <Pagination
-              flexDirection="flex-end"
-              count={totalSearch}
-              siblingCount={0} //...
-              page={page}
-              onChange={(e, page) => {
-                setPage(page);
-                dispatch(getList({ groupId, page }));
-              }}
-              sx={{ paddingTop: "10px" }}
-            /> */}
 
             {/* show search result here */}
             {/* click on to show group name, group post */}
-            <Stack spacing={1} sx={{ p: 1 }}>
-              {searchGroupResult.map((result) => (
+            <Stack spacing={2} sx={{ p: 2 }}>
+              {searchGroupResult?.map((result) => (
                 <Box
                   sx={{
                     p: 0,

@@ -56,6 +56,7 @@ function BlogPage(profile) {
   const handleChangeTab = (newValue) => {
     setCurrentTab(newValue);
   };
+
   //
   const PROFILE_TABS = [
     {

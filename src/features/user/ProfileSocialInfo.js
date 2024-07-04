@@ -45,15 +45,6 @@ function ProfileSocialInfo({ profile }) {
       href: twitterLink,
     },
     {
-      name: "Facebook",
-      icon: (
-        <IconStyle color="#4267B2">
-          <FacebookIcon sx={{ fontSize: 27 }} />
-        </IconStyle>
-      ),
-      href: facebookLink,
-    },
-    {
       name: "Instagram",
       icon: (
         <IconStyle color="#d62976">
@@ -70,6 +61,15 @@ function ProfileSocialInfo({ profile }) {
         </IconStyle>
       ),
       href: youtubeLink,
+    },
+    {
+      name: "Facebook",
+      icon: (
+        <IconStyle color="#4267B2">
+          <FacebookIcon sx={{ fontSize: 27 }} />
+        </IconStyle>
+      ),
+      href: facebookLink,
     },
   ];
 

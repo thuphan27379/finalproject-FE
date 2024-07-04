@@ -34,6 +34,7 @@ function AccountGeneral() {
     city: user?.city || "",
     country: user?.country || "",
     aboutMe: user?.aboutMe || "",
+    others: user?.others || "",
   };
 
   // editing form
@@ -151,6 +152,11 @@ function AccountGeneral() {
                 sx={{ mt: 2, rowGap: 1 }}
               >
                 {/* <FTextField name="coverUrl" label="Home Profile Cover Image?" /> */}
+                <FTextField
+                  name="others"
+                  label="Others"
+                  placeholder="Interests"
+                />
                 <FTextField
                   name="aboutMe"
                   multiline

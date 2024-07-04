@@ -21,8 +21,12 @@ function Wall() {
           paddingTop: "10px", // work
           marginLeft: "-25px", //work
           paddingLeft: "17px",
-          borderRadius: "1px",
-          "& .css-4danns-MuiStack-root": { marginRight: "-24px" },
+          borderRadius: "0px",
+          "& .css-mencvv-MuiSvgIcon-root": { marginRight: "-10px" },
+          "& .css-1sobm86-MuiPaper-root-MuiCard-root": {
+            borderRadius: "4px",
+          },
+          "& .css-p64cbd-MuiStack-root": { paddingRight: "40px" },
         }}
       >
         <Stack spacing={2} width={"100%"}>
