@@ -38,8 +38,8 @@ function GroupList({ groupId }) {
   const handleJoin = async (currentGroupId, currentUserId) => {
     try {
       dispatch(joinGroup({ currentGroupId, currentUserId }));
-      toast.success("Join group successfully");
-      navigate(`/group/${groupId}`);
+      toast.success("Join a group successfully");
+      navigate(`/group/${groupId}`); //?
     } catch (error) {
       console.log("User already join");
     }
@@ -47,7 +47,7 @@ function GroupList({ groupId }) {
 
   // navigate to groupPage /group/:groupId
   const handleNavigate = (groupId) => {
-    navigate(`/group/${groupId}`);
+    navigate(`/group/${groupId}`); //?
   };
 
   //

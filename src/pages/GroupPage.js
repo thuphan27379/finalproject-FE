@@ -27,12 +27,23 @@ import { createGroup } from "../features/group/groupSlice";
 // commentCard
 // commentList
 // reaction
-function Group({ profile }) {
+function GroupPage({ profile }) {
   const { user } = useAuth(); //get data of user from useAuth
 
   //
   return (
     <>
+      {/* <Stack
+        // stack css m?i thêm
+        direction="column"
+        sx={{
+          paddingTop: "95px",
+          "& .css-1p6s51d-MuiGrid-root": {
+            marginLeft: "unset",
+            paddingRight: "50px",
+          },
+        }}
+      > */}
       <Grid
         container
         spacing={3}
@@ -136,8 +147,9 @@ function Group({ profile }) {
         10. Ensure that only members of a group can post in the group, and that
         non-members cannot view the group posts.
       </div>
+      {/* </Stack> */}
     </>
   );
 }
 
-export default Group;
+export default GroupPage;

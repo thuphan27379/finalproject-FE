@@ -300,9 +300,9 @@ function ResponsiveAppBar() {
                   </Typography>
                   <Divider />
                   {/* if login - logout, else login */}
-                  {settings.map((setting) => (
+                  {settings.map((setting, index) => (
                     <MenuItem
-                      // key={setting}
+                      key={index}
                       onClick={
                         setting.label === "Logout"
                           ? handleLogout

@@ -15,9 +15,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fDate } from "../../utils/formatTime";
 import CommentReaction from "./CommentReaction";
 import { deleteComment } from "./commentSlice";
+import useAuth from "../../hooks/useAuth";
 
 //
 function CommentCard({ comment }) {
+  const { user } = useAuth();
+  const currentUserId = user._id;
   //popover on icon to delete or edit
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -96,7 +99,6 @@ function CommentCard({ comment }) {
             <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
               {comment.author?.name}
             </Typography>
-
             {/* Date fai nam ke ben Author */}
             <Typography
               align="left"
@@ -114,15 +116,15 @@ function CommentCard({ comment }) {
             </Typography>
 
             {/* More btn, if not currentUser => display: "none" */}
-            <div>
+            {/* action= */}
+            {currentUserId === comment.author._id && (
               <IconButton sx={{ color: "secondary" }}>
                 <MoreVertIcon
                   onClick={handleClick}
                   sx={{ fontSize: 27, color: "secondary" }}
                 />
               </IconButton>
-            </div>
-
+            )}
             <Popover
               open={open}
               anchorEl={anchorEl}

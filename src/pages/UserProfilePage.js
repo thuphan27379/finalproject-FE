@@ -45,7 +45,7 @@ function UserProfilePage() {
           </Stack>
         </Grid>
 
-        {/* show postForm, postList */}
+        {/* show postList */}
         {isLoading ? (
           <LoadingScreen />
         ) : (

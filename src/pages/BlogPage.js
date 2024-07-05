@@ -23,6 +23,7 @@ import UserProfilePage from "./UserProfilePage";
 import PostForm from "../features/post/PostForm";
 import PostList from "../features/post/PostList.js";
 import Wall from "./Wall";
+import GroupPage from "./GroupPage";
 
 // CODERCOMM - blogpage
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
@@ -51,7 +52,7 @@ const TabsWrapperStyle = styled("div")(({ theme }) => ({
 function BlogPage(profile) {
   const { user } = useAuth();
   const [currentTab, setCurrentTab] = useState("profile");
-  console.log(user);
+  // console.log(user);
 
   const handleChangeTab = (newValue) => {
     setCurrentTab(newValue);
@@ -100,7 +101,7 @@ function BlogPage(profile) {
     {
       value: "group",
       icon: <Diversity1OutlinedIcon sx={{ fontSize: 24 }} />,
-      component: <Group />,
+      component: <GroupPage />, //<GroupPage/>
     },
     {
       value: "chat",

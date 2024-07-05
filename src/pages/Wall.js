@@ -7,6 +7,7 @@ import useAuth from "../hooks/useAuth";
 // show all post of all user
 // NEU CHUA LOG IN THI CUNG KHONG THAY TAB WALL
 // khong dc delete hay edit post&comment cua nguoi khac ????
+// post of group!!!
 function Wall() {
   const { user } = useAuth();
 

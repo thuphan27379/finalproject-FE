@@ -34,6 +34,7 @@ import useAuth from "../../hooks/useAuth";
 import ActionButton from "../friend/ActionButton";
 
 //show a post with comment and reaction, delete/edit
+// show group name if post of group
 const yupSchema = Yup.object().shape({
   content: Yup.string().required("Content is required"),
 });
@@ -46,8 +47,9 @@ const defaultValues = {
 //show list of posts
 function PostCard({ post, profile }) {
   // show relationship
-  // const { user } = useAuth();
-  // const currentUserId = user.id;
+  const { user } = useAuth();
+  const currentUserId = user._id;
+  console.log(currentUserId);
 
   // const {
   //   id: targetUserId,
@@ -218,9 +220,11 @@ function PostCard({ post, profile }) {
           }
           // More btn, if not currentUser => display: "none" */}
           action={
-            <IconButton>
-              <MoreVertIcon onClick={handleClick} sx={{ fontSize: 27 }} />
-            </IconButton>
+            currentUserId === post.author._id && (
+              <IconButton onClick={handleClick}>
+                <MoreVertIcon sx={{ fontSize: 27 }} />
+              </IconButton>
+            )
           }
         />
         {/* show relationship ?!?! */}

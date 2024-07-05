@@ -1,6 +1,13 @@
 import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 
+import HomePage from "../pages/HomePage";
+import AdminPage from "../pages/AdminPage";
+import Projects from "../pages/Projects";
+import Aboutus from "../pages/AboutUs";
+import Domains from "../pages/Domains";
+import Startup from "../pages/Startup";
+
 import AuthRequire from "./AuthRequire";
 import HomeLayout from "../layouts/HomeLayout";
 import BlankLayout from "../layouts/BlankLayout";
@@ -10,13 +17,8 @@ import RegisterPage from "../pages/RegisterPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import AccountPage from "../pages/AccountPage";
 import UserProfilePage from "../pages/UserProfilePage";
-import HomePage from "../pages/HomePage";
-import AdminPage from "../pages/AdminPage";
-import Projects from "../pages/Projects";
-import Aboutus from "../pages/AboutUs";
-import Domains from "../pages/Domains";
-import Startup from "../pages/Startup";
-import Group from "../features/group/Group"; //
+import Group from "../features/group/Group"; // group component
+import GroupPage from "../pages/GroupPage"; // group page
 
 // INDEX OF ALL ROUTES = connect all layouts & pages together
 function Router() {
@@ -64,7 +66,7 @@ function Router() {
           />
 
           <Route
-            path="/group/:groupId"
+            path="/group/:groupId" // /:groupId
             element={
               <AuthRequire>
                 <Group />
