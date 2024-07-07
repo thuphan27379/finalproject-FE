@@ -1,6 +1,6 @@
 import { LoadingButton } from "@mui/lab";
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Stack, Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
 import PostCard from "./PostCard";
@@ -24,33 +24,35 @@ function PostList({ userId }) {
   //
   return (
     <>
-      {posts.map((post) => (
-        <PostCard key={post._id} post={post} />
-      ))}
+      <Stack spacing={1}>
+        {posts.map((post) => (
+          <PostCard key={post._id} post={post} />
+        ))}
 
-      {/* load more btn */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          paddingBottom: "20px",
-        }}
-      >
-        {totalPosts ? (
-          <LoadingButton
-            variant="outlined"
-            size="small"
-            color="secondary"
-            loading={isLoading}
-            onClick={() => setPage((page) => page + 1)}
-            disabled={Boolean(totalPosts) && posts.length >= totalPosts}
-          >
-            Load more
-          </LoadingButton>
-        ) : (
-          <Typography variant="h6">No Post Yet</Typography>
-        )}
-      </Box>
+        {/* load more btn */}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            paddingBottom: "20px",
+          }}
+        >
+          {totalPosts ? (
+            <LoadingButton
+              variant="outlined"
+              size="small"
+              color="secondary"
+              loading={isLoading}
+              onClick={() => setPage((page) => page + 1)}
+              disabled={Boolean(totalPosts) && posts.length >= totalPosts}
+            >
+              Load more
+            </LoadingButton>
+          ) : (
+            <Typography variant="h6">No Post Yet</Typography>
+          )}
+        </Box>
+      </Stack>
     </>
   );
 }

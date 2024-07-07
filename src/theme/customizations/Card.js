@@ -7,7 +7,7 @@ function Card(theme) {
         root: {
           position: "relative",
           zIndex: 0, // Fix Safari overflow: hidden with border radius
-          borderRadius: "1%",
+          borderRadius: "1%", //?
         },
       },
     },

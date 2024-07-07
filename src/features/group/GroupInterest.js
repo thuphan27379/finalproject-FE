@@ -17,7 +17,7 @@ function GroupInterest() {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const { list } = useSelector((state) => state.group);
-  console.log(list);
+  // console.log(list);
 
   useEffect(() => {
     dispatch(getList({ page }));

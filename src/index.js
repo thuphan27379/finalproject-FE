@@ -5,7 +5,7 @@ import { Provider } from "react-redux"; //
 import App from "./App"; //
 import store from "./app/store"; //
 
-// provider redux - features slice?
+// provider redux - features slice
 ReactDOM.render(
   <Provider store={store}>
     <App />

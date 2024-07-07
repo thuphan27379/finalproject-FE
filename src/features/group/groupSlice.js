@@ -35,7 +35,6 @@ const slice = createSlice({
       state.postsById = {};
       state.currentPagePosts = [];
     },
-    // ////////////////////
     // create a new group
     createGroupSuccess(state, action) {
       state.isLoading = false;
@@ -58,6 +57,16 @@ const slice = createSlice({
     },
 
     // leave a group
+    leaveGroupSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+
+      // ?
+      const memberLeave = action.payload.currentUserId;
+
+      // console.log(action.payload);
+      state.memberLeave = action.payload.members;
+    },
 
     // getListSuccess (list of group name & interests)
     getListSuccess(state, action) {
@@ -117,15 +126,6 @@ const slice = createSlice({
       state.totalPosts = count;
     },
 
-    // reaction a post
-    sendPostReactionSuccess(state, action) {
-      state.isLoading = false;
-      state.error = null;
-
-      const { postId, reactions } = action.payload;
-      state.postsById[postId].reactions = reactions;
-    },
-
     // delete a post
     deletePostSuccess(state, action) {
       state.isLoading = false;
@@ -155,12 +155,12 @@ const slice = createSlice({
       // Find the index of the edited post in currentPagePosts
       const editedPostIndex = state.currentPagePosts.indexOf(editedPost._id);
 
-      // Check if the edited post has a new image URL /////////////
+      // Check if the edited post has a new image URL //
       const newImage = editedPost.image
         ? editedPost.image
         : state.postsById[editedPost._id].image;
 
-      // Update the post's content and image URL ///////////
+      // Update the post's content and image URL //
       state.postsById[editedPost._id] = {
         ...state.postsById[editedPost._id],
         content: editedPost.content,
@@ -174,12 +174,21 @@ const slice = createSlice({
       }
       // state.postsById[editedPost._id] = editedPost;
     },
+
+    // reaction a post
+    sendPostReactionSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
+
+      const { postId, reactions } = action.payload;
+      state.postsById[postId].reactions = reactions;
+    },
   },
 });
 
 export default slice.reducer;
 
-// functions ///////////////////////////////////////////////////////
+// functions //
 // create a new group
 export const createGroup =
   ({ name, description, interests }) =>
@@ -221,7 +230,26 @@ export const joinGroup =
     }
   };
 
-// get list of group name, interest, search
+// leave a group
+export const leaveGroup =
+  ({ currentGroupId, currentUserId }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+
+    try {
+      const response = await apiService.put(
+        `/${currentGroupId}/${currentUserId}`
+      );
+
+      dispatch(slice.actions.leaveGroupSuccess(response.data));
+      toast.success("Leave Group successfully");
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+    }
+  };
+
+// get list of group name, interest
 export const getList =
   ({ page = 1, limit = GROUP_PER_PAGE }) =>
   async (dispatch) => {
@@ -296,38 +324,13 @@ export const getPostsGroup =
     dispatch(slice.actions.startLoading());
     try {
       const params = { page, limit };
+
+      //?? get post by groupId OR lay postsByGroupId ra
       const response = await apiService.get(`/posts/user/${userId}`, {
         params,
       });
-      ///////fix bug about get list of posts of currentUser
       if (page === 1) dispatch(slice.actions.resetPosts()); //reset posts before dispatch and show only posts of this currentUser
       dispatch(slice.actions.getPostsGroupSuccess(response.data));
-    } catch (error) {
-      dispatch(slice.actions.hasError(error.message));
-      toast.error(error.message);
-    }
-  };
-
-// reaction on the post in the group
-export const sendPostReaction =
-  ({ postId, emoji }) =>
-  async (dispatch) => {
-    dispatch(slice.actions.startLoading());
-    console.log(postId);
-    console.log(emoji);
-
-    try {
-      const response = await apiService.post(`/reactions`, {
-        targetType: "Post",
-        targetId: postId,
-        emoji,
-      });
-      dispatch(
-        slice.actions.sendPostReactionSuccess({
-          postId,
-          reactions: response.data,
-        })
-      );
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
       toast.error(error.message);
@@ -363,7 +366,7 @@ export const deletePost =
   };
 
 // edit a post in the group
-// edit a image in the post ???
+// edit a image in the post ??
 export const editPost =
   ({ postId, content, image }) =>
   async (dispatch) => {
@@ -385,6 +388,32 @@ export const editPost =
 
       dispatch(getPostsGroup({ userId: response.data.author }));
       toast.success("Post edited successfully");
+    } catch (error) {
+      dispatch(slice.actions.hasError(error.message));
+      toast.error(error.message);
+    }
+  };
+
+// reaction on the post in the group
+export const sendPostReaction =
+  ({ postId, emoji }) =>
+  async (dispatch) => {
+    dispatch(slice.actions.startLoading());
+    console.log(postId);
+    console.log(emoji);
+
+    try {
+      const response = await apiService.post(`/reactions`, {
+        targetType: "Post",
+        targetId: postId,
+        emoji,
+      });
+      dispatch(
+        slice.actions.sendPostReactionSuccess({
+          postId,
+          reactions: response.data,
+        })
+      );
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
       toast.error(error.message);

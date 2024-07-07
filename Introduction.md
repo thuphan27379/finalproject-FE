@@ -134,7 +134,7 @@ Our company is developing a social platform app for users to connect and share c
 2. Posts: This schema includes post information such as post content, creation date, and the user who created the post.
 3. Comments: This schema includes comment information such as comment content, creation date, and the user who created the comment.
 4. Likes: This schema includes like information such as creation date, the user who created the like, and the post that was liked.
-5. ??? Shares: This schema includes share information such as creation date, the user who created the share, and the post that was shared.
+5. ?? Shares: This schema includes share information such as creation date, the user who created the share, and the post that was shared.
 6. Followers/Following: This schema includes information on which users follow each other.
 
 Your schemas may be different depending on your business logic. You may also need more schemas or more properties .

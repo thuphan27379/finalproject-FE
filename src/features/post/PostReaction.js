@@ -1,8 +1,8 @@
+import React from "react";
+import { useDispatch } from "react-redux";
 import { IconButton, Stack, Typography } from "@mui/material";
 import ThumbDownAltRoundedIcon from "@mui/icons-material/ThumbDownAltRounded";
 import ThumbUpRoundedIcon from "@mui/icons-material/ThumbUpRounded";
-import React from "react";
-import { useDispatch } from "react-redux";
 
 import { sendPostReaction } from "./postSlice";
 
@@ -17,7 +17,7 @@ function PostReaction({ post }) {
   //
   return (
     <>
-      <Stack direction="row" alignItems="center">
+      <Stack direction="row" alignItems="center" justifyContent="flex-end">
         {/* LIKE */}
         <IconButton onClick={() => handleClick("like")}>
           <ThumbUpRoundedIcon sx={{ fontSize: 18, color: "secondary.main" }} />

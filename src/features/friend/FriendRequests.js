@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getFriendRequests, cancelRequest } from "./friendSlice"; ////////////
+import { getFriendRequests, cancelRequest } from "./friendSlice"; //
 import UserCard from "./UserCard";
 import SearchInput from "../../components/SearchInput";
 
@@ -25,7 +25,7 @@ function FriendRequests() {
     usersById,
     totalUsers,
     totalPages,
-    incomingRequests, /////////
+    incomingRequests, //
   } = useSelector((state) => state.friend);
 
   const users = currentPageUsers.map((userId) => usersById[userId]);
@@ -35,7 +35,7 @@ function FriendRequests() {
   };
 
   useEffect(() => {
-    dispatch(getFriendRequests({ filterName, page })); //////////
+    dispatch(getFriendRequests({ filterName, page })); //
   }, [filterName, page, dispatch]);
 
   const handleCancelRequest = (targetUserId) => {
@@ -50,7 +50,10 @@ function FriendRequests() {
           Received Friend Requests List
         </Typography>
 
-        <Card sx={{ p: 2 }}>
+        <Card
+          style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+          sx={{ p: 2 }}
+        >
           <Stack spacing={2}>
             {/* Search Input and Pagination */}
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
@@ -61,10 +64,10 @@ function FriendRequests() {
                 sx={{ color: "text.secondary", ml: 1 }}
               >
                 {totalUsers > 1
-                  ? `${totalUsers} requests found`
+                  ? `${totalUsers} requests`
                   : totalUsers === 1
-                  ? `${totalUsers} request found`
-                  : "No request found"}
+                  ? `${totalUsers} request`
+                  : "No request"}
               </Typography>
               <Pagination
                 count={totalPages}
@@ -77,7 +80,7 @@ function FriendRequests() {
           {/* Grid for displaying user cards */}
           <Grid container spacing={2} my={1} xs={18}>
             {users.map((user) => (
-              ////////incomingRequests//////////////
+              //incomingRequests
               <Grid key={user._id} item xs={14} md={4}>
                 <UserCard profile={user} />
               </Grid>

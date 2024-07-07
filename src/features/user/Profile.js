@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Stack } from "@mui/material";
+import { Grid, Stack, Typography } from "@mui/material";
 
 import useAuth from "../../hooks/useAuth";
 import PostForm from "../post/PostForm";
@@ -38,6 +38,10 @@ function Profile({ profile }) {
             paddingRight: "10px", //?
           }}
         >
+          <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
+            Your Business
+          </Typography>
+
           <Stack
             spacing={1}
             direction="row"
@@ -75,7 +79,6 @@ function Profile({ profile }) {
               minWidth={"230px"}
               // sx={{ maxWidth: "230px" }}
             />
-            {/* </Grid> */}
           </Stack>
         </Grid>
 

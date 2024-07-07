@@ -3,19 +3,23 @@ import { fNumber } from "../../utils/numberFormat";
 
 // 1st show how many posts and friends
 function ProfileScorecard({ profile }) {
-  const { postCount, friendCount } = profile; ///////////////////////???????????????
+  const { postCount, friendCount } = profile;
 
-  // show how many friends and posts
   return (
     <>
       <Card
+        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
         sx={{
-          p: 2,
+          p: 1,
           minWidth: "200px",
-          minHeight: "250px",
+          minHeight: "255px",
           lineHeight: "1",
           alignItems: "center",
           justifyContent: "center",
+          alignContent: "center",
+          "& .css-tiopvi-MuiStack-root": {
+            marginTop: "-50px",
+          },
         }}
       >
         <Stack

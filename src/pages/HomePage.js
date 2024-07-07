@@ -2,12 +2,12 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import { Container } from "@mui/material";
 
-import "../assets/css/mainbody.css";
 import "../assets/css/main.css";
 import "../assets/css/reset.css";
+import "../assets/css/mainbody.css";
 import "../assets/css/footer.css";
 
-// Outlet (company)
+// Outlet (Company)
 const HomePage = () => {
   return (
     <>
@@ -43,10 +43,12 @@ const HomePage = () => {
                   Value Name for Web Project
                   <br /> Value Name for World Project
                   <br />
+                  <br />
                   <br /> Name - Brand Name is a necessary condition to start a
                   startup, and a sufficient condition is a platform and a
                   method. There are many platforms, many methods, but the Name
                   and Brand Name are only one.
+                  <br />
                   <br />
                   <br /> In the digital era, Domain Name is the Brand Name for a
                   product or service (subdomain can also be used instead). There
@@ -54,8 +56,10 @@ const HomePage = () => {
                   of operations, but it is necessary to standardize for the
                   future if there is development.
                   <br />
+                  <br />
                   <br /> The Domain Name must be short, easy to understand, easy
                   to remember, easy to recognize, and easy to express.
+                  <br />
                   <br />
                   <br /> VNWP.COM is the place to start your Startup. A place
                   the fishing rod is given, not the fish. A place to give you
@@ -63,13 +67,15 @@ const HomePage = () => {
                   choice is up to you. A place that will accompany you (if
                   needed) and more...
                   <br />
-                  <br /> VNWP.COM has the following main activities:
+                  <br />
+                  <br /> VNWP.COM has the following main activities: <br />
                   <br /> - Some typical Startup projects of VNWP.COM. You can
                   own it or cooperate.
                   <br /> - Brand Names and Startup ideas for you.
-                  <br /> - Domain Names as Brand Names for you to choose from.
+                  <br /> - Domain Names as Brand Names for you to choose.
                   <br />
-                  <br /> How VNWP.COM works:
+                  <br />
+                  <br /> How VNWP.COM works: <br />
                   <br /> - For typical Startup projects, VNWP.COM will give many
                   incentives to partners who want to transfer ownership or
                   invest in development cooperation. Each project has its own
@@ -84,6 +90,7 @@ const HomePage = () => {
                   preferential policies for you. VNWP.COM uses the highly
                   reputable and guaranteed Escrow.com and SEDO.COM as a partner
                   for payment and transfer domain name.
+                  <br />
                   <br />
                   <br /> Agreement of use: When you enter into an economic
                   transaction contract with VNWP.COM, you automatically agree to
@@ -291,7 +298,7 @@ const HomePage = () => {
                 </li>
                 <li class="request-item">
                   <p class="request-title">
-                    <a href="/">Web/Performance/Speculative_loading ?????</a>
+                    <a href="/">Web/Performance/Speculative_loading</a>
                     <span>
                       <a class="request-repo" href="/">
                         hello
@@ -474,10 +481,6 @@ const HomePage = () => {
                   </p>
                 </div>
               </div>
-              <section class="place hp-main"></section>
-              <section class="place hp-main"></section>
-              <section class="place hp-main"></section>
-              <section class="place hp-main"></section>
             </div>
 
             {/* footer menu */}

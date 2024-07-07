@@ -21,12 +21,12 @@ function GroupSearch() {
   // input
   const handleSubmit = (e) => {
     setFilterGroup(e);
-    console.log(e);
+    // console.log(e);
   };
 
-  // ?!
+  // ?
   const { searchGroupResult } = useSelector((state) => state.group);
-  console.log(searchGroupResult);
+  // console.log(searchGroupResult);
 
   // dispatch
   useEffect(() => {
@@ -39,10 +39,11 @@ function GroupSearch() {
   return (
     <>
       <Card
+        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
         sx={{
           p: 2,
           minWidth: "360px",
-          minHeight: "270px",
+          minHeight: "250px",
           lineHeight: "2",
           alignItems: "center",
           justifyContent: "center",
@@ -69,7 +70,7 @@ function GroupSearch() {
                     borderRadius: "4px",
                     paddingRight: "10px",
                     width: "300px",
-                  }, //?????
+                  }, //??
               }}
             />
             {/* result count */}
@@ -89,7 +90,7 @@ function GroupSearch() {
 
             {/* show search result here */}
             {/* click on to show group name, group post */}
-            <Stack spacing={2} sx={{ p: 2 }}>
+            <Stack spacing={1} sx={{ p: 2 }}>
               {searchGroupResult?.map((result) => (
                 <Box
                   sx={{

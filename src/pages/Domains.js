@@ -1,7 +1,8 @@
 import React from "react";
 
+// Domain for sale and more
+// & domain whois & domain appraisal
 function Domains() {
-  // domain whois & domain appraisal
   return <div>Domains</div>;
 }
 

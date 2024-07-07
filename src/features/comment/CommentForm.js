@@ -49,7 +49,11 @@ function CommentForm({ postId }) {
           <IconButton type="submit">
             <SendIcon
               color="secondary"
-              sx={{ fontSize: 23, color: "secondary", marginRight: "20px" }}
+              sx={{
+                fontSize: 23,
+                color: "secondary",
+                marginRight: "-10px",
+              }}
             />
           </IconButton>
         </Stack>

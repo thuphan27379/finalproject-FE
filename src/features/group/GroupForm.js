@@ -44,13 +44,17 @@ function GroupForm() {
   // reset a form after create a group
   const onSubmit = async (data) => {
     dispatch(createGroup(data)).then(() => reset());
-    console.log(data);
+    // console.log(data);
   };
 
   //
   return (
     <>
-      <Card sx={{ p: 1, width: "100%", marginLeft: "15px" }} fullWidth>
+      <Card
+        sx={{ p: 1, width: "100%", marginLeft: "15px" }}
+        fullWidth
+        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+      >
         <Typography sx={{ paddingBottom: "15px", fontSize: "20px" }}>
           Create own group and join with friend!
         </Typography>

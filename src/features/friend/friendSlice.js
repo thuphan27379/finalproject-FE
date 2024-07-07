@@ -69,7 +69,7 @@ const slice = createSlice({
       const { targetUserId, ...friendship } = action.payload;
       state.usersById[targetUserId].friendship = friendship; //cap nhat action btn trong user table
 
-      state.incomingRequests = action.payload.users; //////////////
+      state.incomingRequests = action.payload.users; //
     },
     //decline Request Success
     declineRequestSuccess(state, action) {
@@ -79,7 +79,7 @@ const slice = createSlice({
       const { targetUserId, ...friendship } = action.payload;
       state.usersById[targetUserId].friendship = friendship;
     },
-    //accept Request Success ???????????????????????????????
+    //accept Request Success ??
     acceptRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -87,7 +87,7 @@ const slice = createSlice({
       const { targetUserId, ...friendship } = action.payload;
       state.usersById[targetUserId].friendship = friendship;
     },
-    //cancel Request Success////////////////////
+    //cancel Request Success//
     cancelRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -107,12 +107,12 @@ const slice = createSlice({
       const { targetUserId } = action.payload;
       state.usersById[targetUserId].friendship = null;
     },
-    //sent friend request, outgoing///////////////////////
+    //sent friend request, outgoing//
     getOutgoingSentsSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
-      console.log(action.payload);
+      // console.log(action.payload);
       state.outgoingRequests = action.payload.users;
     },
   },

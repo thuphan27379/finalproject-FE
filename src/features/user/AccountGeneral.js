@@ -34,7 +34,7 @@ function AccountGeneral() {
     city: user?.city || "",
     country: user?.country || "",
     aboutMe: user?.aboutMe || "",
-    others: user?.others || "",
+    others: user?.others || "", //
   };
 
   // editing form
@@ -48,7 +48,7 @@ function AccountGeneral() {
     formState: { isSubmitting },
   } = methods;
 
-  //// drap&drop a image ///////////
+  // drap&drop a image //
   const handleDrop = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
@@ -77,6 +77,7 @@ function AccountGeneral() {
           <Grid item xs={12} md={4}>
             {/* update avatar */}
             <Card
+              style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
               sx={{
                 py: 4,
                 px: 3,
@@ -120,7 +121,11 @@ function AccountGeneral() {
               },
             }}
           >
-            <Card sx={{ p: 1, m: 1, spacing: 1 }} spacing={2}>
+            <Card
+              style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+              sx={{ p: 1, m: 1, spacing: 1 }}
+              spacing={2}
+            >
               <Box
                 sx={{
                   "& .css-10g9nb3": { rowGap: "10px" },
@@ -153,7 +158,7 @@ function AccountGeneral() {
               >
                 {/* <FTextField name="coverUrl" label="Home Profile Cover Image?" /> */}
                 <FTextField
-                  name="others"
+                  name="others" //
                   label="Others"
                   placeholder="Interests"
                 />

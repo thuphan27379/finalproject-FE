@@ -18,7 +18,7 @@ import * as Yup from "yup";
 import { FCheckbox, FormProvider, FTextField } from "../components/form";
 import useAuth from "../hooks/useAuth";
 
-// CODERCOMM
+//
 // Yup: validate input
 const LoginSchema = Yup.object().shape({
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -129,6 +129,7 @@ function LoginPage() {
             type="submit"
             variant="outlined"
             loading={isSubmitting}
+            color="secondary"
           >
             Login
           </LoadingButton>

@@ -16,7 +16,7 @@ export default function RightBar() {
       <Box
         sx={{
           color: "#04214a",
-          fontWeight: "1000",
+          fontWeight: "700", //?
           marginTop: "50px",
           width: "240px",
           paddingRight: "10px",
@@ -27,16 +27,15 @@ export default function RightBar() {
         <List
           sx={{
             color: "#04214a",
-            fontWeight: "1500",
+            fontWeight: "700", //?
             width: "240px",
             paddingRight: "0px",
-            // width: "25vw",
             marginTop: "54px",
             fontSize: "20px",
           }}
         ></List>
 
-        <List sx={{ color: "#0A3161", fontSize: "20px", fontWeight: "1500" }}>
+        <List sx={{ color: "#0A3161", fontSize: "20px", fontWeight: "700" }}>
           {[
             "Domain Value Appraisal",
             "Find a Domain Owner",

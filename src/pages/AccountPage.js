@@ -7,7 +7,6 @@ import { capitalCase } from "change-case";
 import AccountGeneral from "../features/user/AccountGeneral";
 import AccountSocialLinks from "../features/user/AccountSocialLinks";
 
-// CODERCOMM
 // account setting: for updating account info of user
 function AccountPage() {
   const [currentTab, setCurrentTab] = useState("general");

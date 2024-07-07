@@ -18,23 +18,23 @@ import { getList, joinGroup } from "./groupSlice";
 
 // 2nd card: list of group name, link to that group and with all post
 function GroupList({ groupId }) {
-  const { user } = useAuth();
   const dispatch = useDispatch();
-  const params = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
+  const params = useParams();
   const currentUserId = user._id;
   const currentGroupId = params.groupId;
   const currentUser = useSelector((state) => state.user.currentUser);
-  console.log(user);
+  // console.log(user);
   const [page, setPage] = useState(1);
   const { list, totalGroups } = useSelector((state) => state.group);
-  console.log(list);
+  // console.log(list);
 
   useEffect(() => {
     dispatch(getList({ page }));
   }, [dispatch, page]);
 
-  // handleJoin ??? goi groupid ve api
+  // handleJoin ?? goi groupid ve api
   const handleJoin = async (currentGroupId, currentUserId) => {
     try {
       dispatch(joinGroup({ currentGroupId, currentUserId }));
@@ -53,7 +53,10 @@ function GroupList({ groupId }) {
   //
   return (
     <>
-      <Card sx={{ minWidth: "490px", minHeight: "270px" }}>
+      <Card
+        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+        sx={{ minWidth: "490px", minHeight: "250px" }}
+      >
         <Stack
           sx={{
             flexDirection: "row",
@@ -77,12 +80,17 @@ function GroupList({ groupId }) {
               setPage(page);
               dispatch(getList({ groupId, page }));
             }}
-            sx={{ paddingTop: "10px" }}
+            sx={{
+              paddingTop: "10px",
+              "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root": {
+                margin: "0px",
+              },
+            }}
           />
         </Stack>
 
         {/* click on to show group name, group post */}
-        <Stack spacing={2} sx={{ p: 2 }}>
+        <Stack spacing={1} sx={{ p: 2 }}>
           {list.map((listItem) => (
             <Box
               sx={{

@@ -17,7 +17,7 @@ import RegisterPage from "../pages/RegisterPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import AccountPage from "../pages/AccountPage";
 import UserProfilePage from "../pages/UserProfilePage";
-import Group from "../features/group/Group"; // group component
+import Group from "../features/group/Group"; // group component trong blog
 import GroupPage from "../pages/GroupPage"; // group page
 
 // INDEX OF ALL ROUTES = connect all layouts & pages together
@@ -33,9 +33,8 @@ function Router() {
           <Route path="/" element={<Projects />} />
           <Route path="/" element={<Domains />} />
           <Route path="/" element={<Startup />} />
-          {/* CODERCOMM */}
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/user/:userId" element={<UserProfilePage />} />
+          {/* Community */}
+          {/* <Route path="/blog" element={<Wall />} /> */}
         </Route>
 
         {/* login/signup */}
@@ -47,6 +46,15 @@ function Router() {
 
         {/* login require  */}
         <Route path="/" element={<HomeLayout />}>
+          <Route
+            path="/blog"
+            element={
+              <AuthRequire>
+                <BlogPage />
+              </AuthRequire>
+            }
+          />
+
           <Route
             path="/user/:userId"
             element={
@@ -66,7 +74,7 @@ function Router() {
           />
 
           <Route
-            path="/group/:groupId" // /:groupId
+            path="/group/:groupId" // /blog
             element={
               <AuthRequire>
                 <Group />

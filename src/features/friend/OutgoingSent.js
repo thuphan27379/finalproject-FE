@@ -14,7 +14,7 @@ import { getOutgoingSents, cancelRequest } from "./friendSlice";
 import UserCard from "./UserCard";
 import SearchInput from "../../components/SearchInput";
 
-// total request k cap nhat ???
+// total request k cap nhat ??
 // Outgoing
 function OutgoingSents() {
   const [filterName, setFilterName] = useState("");
@@ -28,7 +28,7 @@ function OutgoingSents() {
     totalPages,
     outgoingRequests,
   } = useSelector((state) => state.friend);
-  console.log(outgoingRequests);
+  // console.log(outgoingRequests);
 
   const users = currentPageUsers.map((userId) => usersById[userId]);
 
@@ -52,7 +52,10 @@ function OutgoingSents() {
           Sent Friend Requests List
         </Typography>
 
-        <Card sx={{ p: 2 }}>
+        <Card
+          style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+          sx={{ p: 2 }}
+        >
           <Stack spacing={2}>
             {/* Search Input and Pagination */}
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
@@ -63,10 +66,10 @@ function OutgoingSents() {
                 sx={{ color: "text.secondary", ml: 1 }}
               >
                 {totalUsers > 1
-                  ? `${totalUsers} requests found`
+                  ? `${totalUsers} requests`
                   : totalUsers === 1
-                  ? `${totalUsers} request found`
-                  : "No request found"}
+                  ? `${totalUsers} request`
+                  : "No request"}
               </Typography>
               <Pagination
                 count={totalPages}

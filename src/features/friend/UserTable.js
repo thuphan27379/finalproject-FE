@@ -28,7 +28,7 @@ function UserTable({ users }) {
       targetUserId: targetUser._id,
       friendship: targetUser.friendship,
     };
-    console.log(targetUser);
+    // console.log(targetUser);
     return {
       status: <FriendStatus {...props} />,
       action: <ActionButton {...props} />,
@@ -49,7 +49,7 @@ function UserTable({ users }) {
                       xs: "20%",
                       sm: "25%",
                       fontWeight: "600",
-                      minWidth: "168px",
+                      minWidth: "165px",
                     },
                   }}
                 >
@@ -152,7 +152,7 @@ function UserTable({ users }) {
                         display: {
                           xs: "none",
                           md: "table-cell",
-                          paddingRight: "70px", ////////////////////
+                          paddingRight: "70px",
                         },
                       }}
                     >

@@ -18,7 +18,7 @@ import * as Yup from "yup";
 import useAuth from "../hooks/useAuth";
 import { FormProvider, FTextField, FCheckbox } from "../components/form";
 
-// CODERCOMM
+//
 // yup validate input
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -63,7 +63,7 @@ function RegisterPage() {
     const { name, email, password } = data;
     try {
       await auth.register({ name, email, password }, () => {
-        navigate("/blog", { replace: true }); //////////
+        navigate("/blog", { replace: true }); //
       });
     } catch (error) {
       reset();
@@ -94,7 +94,7 @@ function RegisterPage() {
             </Alert>
 
             {/* input, name sao cho giong schema  */}
-            <FTextField name="name" label="Full name" />
+            <FTextField name="name" label="Name" />
             <FTextField name="email" label="Email address" />
             <FTextField
               name="password"
@@ -158,6 +158,8 @@ function RegisterPage() {
               type="submit"
               variant="outlined"
               loading={isSubmitting}
+              color="secondary"
+              backgroundColor="#476390" //?
             >
               Register
             </LoadingButton>

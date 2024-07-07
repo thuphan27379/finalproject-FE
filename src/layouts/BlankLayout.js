@@ -3,7 +3,7 @@ import { Box, Stack } from "@mui/material";
 import React from "react";
 
 import HomeHeader from "./HomeHeader";
-import MainFooter from "./MainFooter";
+import HomeFooter from "./HomeFooter";
 
 // login/register/notfound page
 function BlankLayout() {
@@ -21,7 +21,7 @@ function BlankLayout() {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <MainFooter />
+        <HomeFooter />
       </Stack>
     </>
   );

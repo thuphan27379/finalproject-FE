@@ -6,7 +6,7 @@ import AlertMsg from "../components/AlertMsg";
 import HomeHeader from "./HomeHeader";
 import LeftBar from "./LeftBar";
 import RightBar from "./RightBar";
-import MainFooter from "./MainFooter";
+import HomeFooter from "./HomeFooter";
 
 import { ThemeContext } from "../ThemeContext"; //
 
@@ -67,7 +67,7 @@ function HomeLayout() {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <MainFooter sx={{ minHeight: "50px" }} />
+        <HomeFooter sx={{ minHeight: "50px" }} />
       </Container>
     </>
   );

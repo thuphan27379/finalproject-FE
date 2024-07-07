@@ -5,7 +5,7 @@ import { createTheme } from "@mui/material/styles";
 // bo vo themeProvider routes/index.js
 export const theme = createTheme({
   // background (every part of layouts), textColor (title, header, content, menu, placeholder.. ), logo-icon, button, border, boxShadow, hover..
-  root: { backgroundColor: "white", color: "black" }, //??????????
+  root: { backgroundColor: "white", color: "black" }, //?
 
   // components //
   components: {

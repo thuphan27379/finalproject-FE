@@ -77,11 +77,12 @@ Reaction:
 
 Group:
 
-- [] As a user, I am able to create a new group by providing a group name, group description, and selecting a category or interest that the group will be based on.
-- [] As a user, I am able to search for and join existing groups by browsing categories or interests, or by searching for a specific group name or keyword. group list
+- [x] As a user, I am able to create a new group by providing a group name, group description, and selecting a category or interest that the group will be based on.
+- [x] As a user, I am able to search for and join groups by browsing categories or interests, or by searching for a specific group name or keyword. group search
 - [] As a group member, I am able to post in a group.
 - [] As a group member, I am able to comment and reaction on a post in the group.
 - [] As a group member, I am able to see the posts in a group on the group page. post list
+- [] As a group member, I am able to join existing group.
 - [] As a group member, I am able to leave a group.
 
 Admin app - dashboard: (admin.domain.com)

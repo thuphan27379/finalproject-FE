@@ -11,18 +11,18 @@ import ProfileScorecard from "../features/user/ProfileScorecard";
 import ProfileSocialInfo from "../features/user/ProfileSocialInfo";
 import ProfileAbout from "../features/user/ProfileAbout";
 
-// CODERCOMM
+//
 function UserProfilePage() {
   const { user } = useAuth(); //get data of user from useAuth
 
   const params = useParams();
   const userId = params.userId;
   const dispatch = useDispatch();
-  ///////fix bug about get list of posts of currentUser only
-  //     shallowEqual:  // make sure re-render all the change of selectedUser
+  // fix bug about get list of posts of currentUser only
   const { selectedUser, isLoading } = useSelector(
     (state) => state.user,
     shallowEqual //update data theo khi userId thay doi
+    // make sure re-render all the change of selectedUser
   );
 
   useEffect(() => {
@@ -31,10 +31,10 @@ function UserProfilePage() {
     }
   }, [dispatch, userId]);
 
-  //UI
+  // UI
   return (
     <>
-      <Container sx={{ paddingTop: "96px" }}>
+      <Container spacing={1} sx={{ paddingTop: "96px" }}>
         <Grid item xs={12} md={8}>
           {/* show profile info */}
           <Stack spacing={1}>

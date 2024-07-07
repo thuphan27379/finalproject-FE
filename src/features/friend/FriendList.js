@@ -43,7 +43,10 @@ function FriendList() {
           Friends List
         </Typography>
 
-        <Card sx={{ p: 2 }}>
+        <Card
+          style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+          sx={{ p: 2 }}
+        >
           <Stack spacing={2}>
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
               <SearchInput handleSubmit={handleSubmit} />
@@ -55,10 +58,10 @@ function FriendList() {
                 sx={{ color: "text.secondary", ml: 1 }}
               >
                 {totalUsers > 1
-                  ? `${totalUsers} friends found`
+                  ? `${totalUsers} friends`
                   : totalUsers === 1
-                  ? `${totalUsers} friend found`
-                  : "No friend found"}
+                  ? `${totalUsers} friend`
+                  : "No friend"}
               </Typography>
 
               <Pagination

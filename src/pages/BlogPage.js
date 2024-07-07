@@ -25,7 +25,7 @@ import PostList from "../features/post/PostList.js";
 import Wall from "./Wall";
 import GroupPage from "./GroupPage";
 
-// CODERCOMM - blogpage
+// blogpage
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
   zIndex: 9,
   bottom: 0,
@@ -101,7 +101,7 @@ function BlogPage(profile) {
     {
       value: "group",
       icon: <Diversity1OutlinedIcon sx={{ fontSize: 24 }} />,
-      component: <GroupPage />, //<GroupPage/>
+      component: <GroupPage />, //<Group/>
     },
     {
       value: "chat",
@@ -124,6 +124,7 @@ function BlogPage(profile) {
             lineHeight: 0,
             marginRight: "24px",
           }}
+          style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
         >
           {/* tabs Wrapper*/}
           <TabsWrapperStyle sx={{ paddingLeft: 0, marginLeft: 0 }}>

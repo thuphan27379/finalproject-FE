@@ -34,7 +34,7 @@ import useAuth from "../../hooks/useAuth";
 import ActionButton from "../friend/ActionButton";
 
 //show a post with comment and reaction, delete/edit
-// show group name if post of group
+// show group name if post of group OR not
 const yupSchema = Yup.object().shape({
   content: Yup.string().required("Content is required"),
 });
@@ -49,7 +49,7 @@ function PostCard({ post, profile }) {
   // show relationship
   const { user } = useAuth();
   const currentUserId = user._id;
-  console.log(currentUserId);
+  // console.log(currentUserId);
 
   // const {
   //   id: targetUserId,
@@ -193,7 +193,15 @@ function PostCard({ post, profile }) {
   //
   return (
     <>
-      <Card sx={{ padding: "2px", lineHeight: "1" }}>
+      <Card
+        style={{ border: "1px solid #f9d2dd" }}
+        sx={{
+          lineHeight: "1",
+          "& .css-1yqujyp-MuiButtonBase-root-MuiIconButton-root": {
+            padding: "5px",
+          },
+        }}
+      >
         <CardHeader
           disableTypography
           avatar={
@@ -279,7 +287,7 @@ function PostCard({ post, profile }) {
                   methods={methods}
                   onSubmit={handleSubmit(onSubmit)}
                 >
-                  <Stack spacing={2}>
+                  <Stack spacing={1}>
                     <FTextField
                       // content of the Post, not placeholder?!?!
                       name="content"
@@ -319,8 +327,8 @@ function PostCard({ post, profile }) {
                         type="cancel"
                         variant="outlined"
                         size="small"
-                        onClose={handleClose}
-                        // loading={isSubmitting || isLoading}
+                        onClose={handleCloseModal} //??
+                        loading={isSubmitting || isLoading}
                       >
                         Cancel
                       </LoadingButton>
@@ -330,6 +338,7 @@ function PostCard({ post, profile }) {
                         variant="outlined"
                         size="small"
                         color="secondary"
+                        // onClick={handle}
                         loading={isSubmitting || isLoading}
                       >
                         Update
@@ -343,7 +352,7 @@ function PostCard({ post, profile }) {
         </Popover>
 
         {/* post content */}
-        <Stack spacing={2} sx={{ pl: 3, pt: 1, pb: 1 }}>
+        <Stack spacing={1} sx={{ pl: 4, pt: 1, pb: 1, pr: 4 }}>
           <Typography>{post.content}</Typography>
           {/* {isEditing && (
           <input
@@ -354,13 +363,13 @@ function PostCard({ post, profile }) {
           />
         )} */}
 
-          {/* media */}
+          {/* media, width & height?!?! */}
           {post.image && (
             <Box
               sx={{
-                borderRadius: 1,
+                borderRadius: "1px", //?
                 overflow: "hidden",
-                height: 500,
+                height: "400px",
                 "& img": { objectFit: "scale-down", width: 1, height: 1 },
               }}
             >

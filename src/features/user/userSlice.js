@@ -54,7 +54,7 @@ export const updateUserProfile =
     country,
     company,
     // jobTitle,
-    others,
+    others, //
     facebookLink,
     instagramLink,
     linkedinLink,
@@ -72,7 +72,7 @@ export const updateUserProfile =
         country,
         company,
         // jobTitle,
-        others,
+        others, //
         facebookLink,
         instagramLink,
         linkedinLink,

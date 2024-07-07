@@ -76,7 +76,10 @@ function ProfileSocialInfo({ profile }) {
   //
   return (
     <>
-      <Card sx={{ minWidth: "303px", minHeight: "250px" }}>
+      <Card
+        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+        sx={{ minWidth: "303px", minHeight: "255px" }}
+      >
         <CardHeader variant="h6" title="Social" sx={{ paddingTop: "10px" }} />
         <Stack spacing={2} sx={{ p: 2 }}>
           {SOCIALS.map((link) => (

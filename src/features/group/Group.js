@@ -1,12 +1,12 @@
 import React from "react";
-import { Grid, Stack } from "@mui/material";
+import { Grid, Stack, Typography } from "@mui/material";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 import useAuth from "../../hooks/useAuth";
 import GroupList from "./GroupList";
 // import GroupInterest from "./GroupInterest";
 import GroupSearch from "./GroupSearch";
-import GroupForm from "./GroupForm";
+// import GroupForm from "./GroupForm";
 import { getList } from "./groupSlice";
 import PostForm from "../post/PostForm";
 //import GroupPostForm from "../group/GroupPostForm";
@@ -31,10 +31,10 @@ function Group({ profile, groupId }) {
   return (
     <>
       <Stack
-        // stack css m?i thêm
+        // stack css moi them vao
         direction="column"
         sx={{
-          paddingTop: "95px",
+          paddingTop: "90px",
           "& .css-1p6s51d-MuiGrid-root": {
             marginLeft: "unset",
             paddingRight: "50px",
@@ -62,6 +62,10 @@ function Group({ profile, groupId }) {
               paddingRight: "13px", //?
             }}
           >
+            <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
+              Our Community
+            </Typography>
+
             {/* 3 cards */}
             <Stack
               spacing={1}
@@ -80,6 +84,9 @@ function Group({ profile, groupId }) {
                 "& .css-15yln57-MuiStack-root > :not(style) ~ :not(style)": {},
                 paddingLeft: "0px",
                 paddingTop: "0px",
+                // "& .css-y2fcx1-MuiGrid-root> .MuiGrid-item": {
+                //   paddingTop: "0px", //??
+                // },
               }}
             >
               {/* 20% search*/}
@@ -92,7 +99,7 @@ function Group({ profile, groupId }) {
           </Grid>
 
           {/* GroupForm, create a new group */}
-          <GroupForm width="100%" />
+          {/* <GroupForm width="100%" /> */}
 
           {/* group name & interest show if clicked/joined */}
           <div>
@@ -105,7 +112,7 @@ function Group({ profile, groupId }) {
 
           {/* postForm, postList, comment, reaction */}
           <Grid container sx={{ paddingLeft: "15px" }}>
-            <Stack spacing={2} width={"100%"}>
+            <Stack spacing={1} width={"100%"}>
               {/* {user._id === profile?._id && <PostForm />} */}
               {/* GroupPostForm */}
               <PostForm userId={profile?._id} />
@@ -115,7 +122,7 @@ function Group({ profile, groupId }) {
           </Grid>
         </Grid>
 
-        <div
+        {/* <div
           style={{
             paddingRight: "30px",
             paddingTop: "50px",
@@ -150,7 +157,7 @@ function Group({ profile, groupId }) {
           <br />
           10. Ensure that only members of a group can post in the group, and
           that non-members cannot view the group posts.
-        </div>
+        </div> */}
       </Stack>
     </>
   );

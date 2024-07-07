@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Stack,
   Typography,
@@ -8,7 +9,6 @@ import {
   Container,
   Grid,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
 
 import { getUsers } from "./friendSlice";
 import UserTable from "./UserTable";
@@ -58,13 +58,18 @@ function AddFriend() {
           xs={8}
           paddingTop={0}
           marginTop={0}
-          marginBottom={20}
+          marginBottom={10}
         >
           <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
             Add Friends
           </Typography>
 
-          <Card sx={{ p: 3 }} width={"100%"} xs={8}>
+          <Card
+            style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+            sx={{ p: 1.5 }}
+            width={"100%"}
+            xs={8}
+          >
             <Stack spacing={1} xs={8} width={"100%"}>
               <Stack
                 direction={{ xs: "column", md: "row" }}
@@ -88,7 +93,7 @@ function AddFriend() {
 
                 <Box sx={{ flexGrow: 1 }} />
 
-                {/* pagination !!!!!!!!!! */}
+                {/* pagination */}
                 <TablePagination
                   sx={{
                     "& .MuiTablePagination-selectLabel, .MuiTablePagination-select, .MuiTablePagination-selectIcon":

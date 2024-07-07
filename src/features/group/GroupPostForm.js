@@ -72,9 +72,9 @@ function GroupPostForm() {
     <>
       <Card sx={{ p: 2 }}>
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={2}>
+          <Stack spacing={1}>
             <FTextField
-              // content of the Post
+              // content of the group
               name="content"
               multiline
               fullWidth

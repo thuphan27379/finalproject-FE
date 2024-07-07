@@ -54,11 +54,7 @@ function CommentList({ postId }) {
   return (
     <>
       <Stack spacing={1.5}>
-        <Stack
-          direction="row"
-          justifyContent="space-between"
-          sx={{ paddingRight: "12px" }}
-        >
+        <Stack direction="row" justifyContent="space-between">
           <Typography variant="subtitle" sx={{ color: "text.secondary" }}>
             {totalComments > 1
               ? `${totalComments} comments`

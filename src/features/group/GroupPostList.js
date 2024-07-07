@@ -1,29 +1,31 @@
-import { LoadingButton } from "@mui/lab";
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+import { LoadingButton } from "@mui/lab";
+import { Box, Typography } from "@mui/material";
 
 import PostCard from "./post/PostCard";
 import { getPostsGroup } from "./groupSlice";
 
-// new feed
+// new feed of group
 function GroupPostList({ userId, groupId }) {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
   const { currentPagePosts, postsById, isLoading, totalPosts, postsByGroupId } =
-    useSelector((state) => state.post);
+    useSelector((state) => state.post); //postSlice
+  const { currentPagePostsByGroup, groupPostsById, totalPostsGroup } =
+    useSelector((state) => state.group); //groupSlice
 
   // lay nhung post trong data ra va loc theo groupId
-  const posts = currentPagePosts.map((postId) => postsById[postId]);
-  const postsByGroup = currentPagePosts.map(
-    (groupId) => postsByGroupId[groupId]
+  const posts = currentPagePosts.map((postId) => groupPostsById[postId]);
+  const postsByGroup = currentPagePostsByGroup.map(
+    (groupPostId) => postsByGroupId[groupPostId] // postsByGroup
   ); //?
 
   useEffect(() => {
-    if (userId) dispatch(getPostsGroup({ userId, page }));
+    if (userId) dispatch(getPostsGroup({ userId, groupId, page }));
   }, [dispatch, userId, groupId, page]);
 
-  //
+  // l?y postsByGroup
   return (
     <>
       {posts.map((post) => (
@@ -36,9 +38,11 @@ function GroupPostList({ userId, groupId }) {
           display: "flex",
           justifyContent: "center",
           paddingBottom: "20px",
+          paddingTop: "5px",
         }}
       >
         {totalPosts ? (
+          // k load more dc
           <LoadingButton
             variant="outlined"
             size="small"

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import apiService from "../app/apiService";
 import { isValidToken } from "../utils/jwt";
 
-//// all about authentication ////
+// all about authentication //
 // init value
 const initialState = {
   isInitialized: false, // app render first time yet?

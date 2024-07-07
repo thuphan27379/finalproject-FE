@@ -245,11 +245,6 @@ svg.icon {
   }
 }
 
-.latest-news .news-item:nth-child(odd) {
-  background: var(--background-secondary);
-  border-radius: var(--elem-radius);
-}
-
 .latest-news .news-item .news-date {
   align-items: center;
   display: flex;
@@ -319,11 +314,6 @@ svg.icon {
   .recent-contributions .request-item {
     flex-direction: revert;
   }
-}
-
-.recent-contributions .request-item:nth-child(odd) {
-  background: var(--background-secondary);
-  border-radius: var(--elem-radius);
 }
 
 .recent-contributions .request-item .request-date {

@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import Router from "./routes";
 
-import ThemeProvider from "./theme/index";
+import Router from "./routes";
+import ThemeProvider from "./theme/index"; //style
 import { AuthProvider } from "./contexts/AuthContext"; //access token
 
 //
 function App() {
   return (
-    <div>
+    <>
       <AuthProvider>
         <BrowserRouter>
           <ThemeProvider>
@@ -16,7 +16,7 @@ function App() {
           </ThemeProvider>
         </BrowserRouter>
       </AuthProvider>
-    </div>
+    </>
   );
 }
 

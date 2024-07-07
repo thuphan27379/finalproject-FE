@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Typography, Stack } from "@mui/material";
 
 //
-function MainFooter() {
+function HomeFooter() {
   return (
     <>
       <Stack
@@ -26,4 +26,4 @@ function MainFooter() {
   );
 }
 
-export default MainFooter;
+export default HomeFooter;

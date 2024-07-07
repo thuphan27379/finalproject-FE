@@ -28,7 +28,7 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    ///////fix bug about get list of posts of currentUser
+    //fix bug about get list of posts of currentUser
     // declare all posts are empty before getPosts
     resetPosts(state, action) {
       state.postsById = {};
@@ -92,17 +92,17 @@ const slice = createSlice({
       // Check if the edited post data is available in the response
       // if (action.payload.success && action.payload.data) {
       const editedPost = action.payload;
-      console.log(editedPost);
+      // console.log(editedPost);
 
       // Find the index of the edited post in currentPagePosts
       const editedPostIndex = state.currentPagePosts.indexOf(editedPost._id);
 
-      // Check if the edited post has a new image URL /////////////
+      // Check if the edited post has a new image URL //
       const newImage = editedPost.image
         ? editedPost.image
         : state.postsById[editedPost._id].image;
 
-      // Update the post's content and image URL ///////////
+      // Update the post's content and image URL //
       state.postsById[editedPost._id] = {
         ...state.postsById[editedPost._id],
         content: editedPost.content,
@@ -121,8 +121,7 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// functions ///////////////////////////
-// get all posts
+// functions //
 export const getPosts =
   ({ userId, page = 1, limit = POSTS_PER_PAGE }) =>
   async (dispatch) => {
@@ -132,7 +131,7 @@ export const getPosts =
       const response = await apiService.get(`/posts/user/${userId}`, {
         params,
       });
-      ///////fix bug about get list of posts of currentUser
+      //fix bug about get list of posts of currentUser
       if (page === 1) dispatch(slice.actions.resetPosts()); //reset posts before dispatch and show only posts of this currentUser
       dispatch(slice.actions.getPostsSuccess(response.data));
     } catch (error) {
@@ -151,7 +150,6 @@ export const getAllPosts =
       const response = await apiService.get(`/posts`, {
         params,
       });
-      ///////fix bug about get list of posts of currentUser
       if (page === 1) dispatch(slice.actions.resetPosts()); //reset posts before dispatch and show only posts of this currentUser
       dispatch(slice.actions.getPostsSuccess(response.data));
     } catch (error) {
@@ -188,8 +186,8 @@ export const sendPostReaction =
   ({ postId, emoji }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
-    console.log(postId);
-    console.log(emoji);
+    // console.log(postId);
+    // console.log(emoji);
 
     try {
       const response = await apiService.post(`/reactions`, {
@@ -238,7 +236,7 @@ export const deletePost =
   };
 
 // edit a post
-// edit a image in the post ???
+// edit a image in the post ??
 export const editPost =
   ({ postId, content, image }) =>
   async (dispatch) => {
@@ -253,10 +251,10 @@ export const editPost =
       });
 
       // Log the entire response
-      console.log("Edit Post Response:", response);
+      // console.log("Edit Post Response:", response);
 
       dispatch(slice.actions.editPostSuccess(response.data));
-      console.log(response.data);
+      // console.log(response.data);
 
       dispatch(getPosts({ userId: response.data.author }));
       toast.success("Post edited successfully");

@@ -1,12 +1,12 @@
-import { LoadingButton } from "@mui/lab";
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+import { LoadingButton } from "@mui/lab";
+import { Box, Typography } from "@mui/material";
 
 import PostCard from "./PostCard";
 import { getAllPosts } from "./postSlice";
 
-// wall - khong dc delete & edit post/comment cua ng khac
+// wall
 function PostListWall() {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
@@ -34,6 +34,7 @@ function PostListWall() {
           display: "flex",
           justifyContent: "center",
           paddingBottom: "20px",
+          paddingTop: "5px",
         }}
       >
         {totalPosts ? (

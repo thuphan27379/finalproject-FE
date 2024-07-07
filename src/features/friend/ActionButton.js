@@ -39,7 +39,7 @@ function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
         ...sx,
         "& .css-jfdv4h-MuiStack-root>:not(style):not(style)": {
           margin: "0",
-        }, //??????????????????????????
+        }, //??
       }}
       size="small"
       variant="outlined"

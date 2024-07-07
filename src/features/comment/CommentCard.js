@@ -59,19 +59,22 @@ function CommentCard({ comment }) {
         lineHeight={0}
         padding={0}
         sx={{
-          maxWidth: "800px",
+          maxWidth: "808px",
           maxHeight: "105px",
           lineHeight: "0",
           p: "0",
           m: "0",
           "& .css-15hh60j-MuiStack-root > :not(style) ~ :not(style)": {
-            marginRight: "8px", ////////////////////////////////////////////////////
+            marginRight: "8px", //
             paddingRight: "8px",
           },
           "& .css-10kbc59-MuiStack-root .css-p64cbd-MuiStack-root": {
-            marginRight: "7px", ////////////////////////////////////////////////////
+            marginRight: "7px", //
             paddingRight: "8px",
             paddingBottom: "10px",
+          },
+          "& .css-ga6y80-MuiButtonBase-root-MuiIconButton-root": {
+            padding: "0px",
           },
         }}
       >
@@ -84,7 +87,7 @@ function CommentCard({ comment }) {
             maxHeight: "110px",
             lineHeight: 0,
             "& .css-10kbc59-MuiStack-root .css-p64cbd-MuiStack-root": {
-              marginRight: "7px", ////////////////////////////////////////////////////
+              marginRight: "7px", //
               paddingRight: "8px",
               paddingBottom: "10px",
             },
@@ -98,21 +101,6 @@ function CommentCard({ comment }) {
           >
             <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
               {comment.author?.name}
-            </Typography>
-            {/* Date fai nam ke ben Author */}
-            <Typography
-              align="left"
-              variant="caption"
-              sx={{
-                display: "flex",
-                color: "text.disabled",
-                alignContent: "left-end",
-                flexDirection: "left",
-                paddingLeft: "0",
-                justifyContent: "flex-end",
-              }}
-            >
-              {fDate(comment.createdAt)}
             </Typography>
 
             {/* More btn, if not currentUser => display: "none" */}
@@ -140,7 +128,22 @@ function CommentCard({ comment }) {
             </Popover>
           </Stack>
 
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
+          {/* Date fai nam ke ben Author */}
+          <Typography
+            variant="caption"
+            sx={{
+              color: "text.disabled",
+              paddingLeft: "0",
+              marginTop: "-2px",
+              display: "flex",
+              alignItems: "start",
+              fontSize: "11px",
+            }}
+          >
+            {fDate(comment.createdAt)}
+          </Typography>
+
+          <Typography variant="body2" sx={{ color: "black" }}>
             {comment.content}
           </Typography>
 

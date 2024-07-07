@@ -73,9 +73,9 @@ function PostForm() {
   //UI
   return (
     <>
-      <Card sx={{ p: 2 }}>
+      <Card sx={{ p: 1 }} style={{ border: "1px solid #f9d2dd" }}>
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={2}>
+          <Stack spacing={1}>
             <FTextField
               // content of the Post
               name="content"

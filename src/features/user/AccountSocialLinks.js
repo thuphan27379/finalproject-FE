@@ -73,7 +73,10 @@ function AccountSocialLinks() {
   //
   return (
     <>
-      <Card sx={{ p: 1 }}>
+      <Card
+        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+        sx={{ p: 1 }}
+      >
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={1} alignItems="flex-end">
             {SOCIAL_LINKS.map((link) => (

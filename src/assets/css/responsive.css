@@ -1,11 +1,28 @@
-/* mobile & tablet */
-@media (max-width: 1024px) {
+/* desktop */
+@media (min-width: 1024px) {
 }
 
 /* tablet */
-@media (min-width: 740px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {
 }
 
 /* mobile */
-@media (max-width: 739px) {
+@media (min-width: 767px) {
 }
+
+/* mobile, tablet, desktop
+
+main menu: icon menu, search, icon account
+
+sidebar: leftbar, rightbar, icon sidemenu
+
+blog tabs
+
+profile cards
+
+postcard
+
+comment card
+
+
+*/

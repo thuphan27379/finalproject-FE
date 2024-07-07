@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,41 +19,49 @@ import SearchIcon from "@mui/icons-material/Search";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import PublicIcon from "@mui/icons-material/Public";
 import AdsClickOutlinedIcon from "@mui/icons-material/AdsClickOutlined";
+import NightlightOutlinedIcon from "@mui/icons-material/NightlightOutlined";
 
 import useAuth from "../hooks/useAuth";
+import Aboutus from "../pages/AboutUs";
+import { ColorModeContext } from "../theme/index"; // dark/light
 
 // main menu
 const pages = [
   {
     label: "About us",
-    path: "",
-    icon: <AdsClickOutlinedIcon sx={{ color: "primary" }} />, //???
+    path: "", //aboutus
+    element: <Aboutus />, //??
+    icon: <AdsClickOutlinedIcon sx={{ color: "primary" }} />, //??
   },
-  { label: "Projects", path: "" },
-  { label: "Domains", path: "" },
-  { label: "Startup", path: "" },
+  { label: "Projects", path: "" }, //project
+  { label: "Domains", path: "" }, //domain
+  { label: "Startup", path: "" }, //startup
+  // cong ðong khoi nghiep, ho so doanh nghiep (friend=follow)
   { label: "Community", path: "blog" }, //path: "blog"
   { label: "Contact us", path: "" },
 ];
 
 // avatar menu
 const settings = [
-  { label: "My Domains", path: "" }, //home
+  { label: "My Domains", path: "" },
   { label: "My Profile", path: "blog" },
   { label: "My Groups", path: "blog" }, //group
-  { label: "Settings", path: "account" }, //login
-  { label: "Logout", path: "login" },
+  { label: "Settings", path: "account" },
+  { label: "Logout", path: "login" }, // home
+  // { label: "Login", path: "login" },
 ];
 
 //
 function ResponsiveAppBar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const colorMode = React.useContext(ColorModeContext); // dark/light
+  const theme = useTheme();
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = React.useState(null); //icon menu for responsive
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-  // menu of avatar
+  // menu responsive
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -69,7 +78,7 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  //
+  // logout
   const handleLogout = async () => {
     try {
       handleCloseNavMenu();
@@ -81,7 +90,7 @@ function ResponsiveAppBar() {
     }
   };
 
-  // search
+  // search style
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -131,14 +140,15 @@ function ResponsiveAppBar() {
         maxWidth="100%"
         maxHeight="64px"
         sx={{
+          color: "", //black
           backgroundColor: "black",
           zIndex: (theme) => theme.zIndex.drawer + 1,
           boxShadow: "none",
         }}
       >
-        {/* logo */}
         <Container maxWidth="xl">
           <Toolbar disableGutters>
+            {/* logo */}
             <Stack
               direction="row"
               sx={{
@@ -154,18 +164,19 @@ function ResponsiveAppBar() {
                     height: "60px",
                     borderRadius: "unset",
                   }}
-                  alt=""
+                  title="BizHolding"
                   src="./huongsac-logo.png"
                   to="/"
                   component={RouterLink}
                 />
               </IconButton>
 
+              {/* company name */}
               <Typography
                 variant="h5"
                 noWrap
-                component="a"
-                href="#app-bar-with-responsive-menu"
+                to="/"
+                component={RouterLink}
                 sx={{
                   mr: 2,
                   display: { xs: "none", md: "flex" },
@@ -197,11 +208,11 @@ function ResponsiveAppBar() {
                     color: "white",
                     display: "block",
                     textTransform: "none",
-                    fontWeight: 400,
+                    fontWeight: 450,
                   }}
                   to={`/${page.path}`}
-                  component={RouterLink}
-                  //icon for main menu ???
+                  component={RouterLink} //{pages.element}
+                  //icon for main menu ??
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start" color="white">
@@ -215,7 +226,7 @@ function ResponsiveAppBar() {
               ))}
             </Box>
 
-            {/* search input, width!  */}
+            {/* search input  */}
             <Stack>
               <Search sx={{ width: "300px" }}>
                 <SearchIconWrapper>
@@ -228,7 +239,7 @@ function ResponsiveAppBar() {
               </Search>
             </Stack>
 
-            {/* icons */}
+            {/* feature icons */}
             <Stack
               direction="row"
               sx={{
@@ -238,34 +249,49 @@ function ResponsiveAppBar() {
                 paddingRight: "50px",
               }}
             >
+              {/* dark/light */}
+              {/* mode OR colorMode */}
+              {theme.palette.mode} mode
               <IconButton
                 size="large"
                 aria-label="switch dark/light modes"
                 color="inherit"
                 title="Dark Mode"
+                onClick={colorMode.toggleColorMode}
               >
-                <LightModeIcon />
+                {theme.palette.colorMode === "dark" ? (
+                  <LightModeIcon />
+                ) : (
+                  <NightlightOutlinedIcon />
+                )}
+                {/* <LightModeIcon /> */}
               </IconButton>
+              {/*  */}
               <IconButton
                 size="large"
-                aria-label="switch languages English/ Vietnamese"
+                aria-label="switch languages English/Vietnamese"
                 color="inherit"
                 title="EN-VN"
               >
                 <PublicIcon />
               </IconButton>
-
               {/* avt account & menu  */}
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Account Profile">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Badge>
+                    {/* show notification if login only  */}
+                    <Badge
+                      variant="dot" //
+                      badgeContent=" " //{4}
+                      color="primary" //secondary
+                      showZero
+                    >
                       <Avatar
-                        alt="Account"
                         src={user?.avatarUrl}
                         sx={{
-                          width: "30px",
-                          height: "30px",
+                          width: "35px",
+                          height: "35px",
+                          border: "2px solid #B31942 ",
                         }}
                       />
                     </Badge>
@@ -273,7 +299,7 @@ function ResponsiveAppBar() {
                 </Tooltip>
 
                 <Menu
-                  sx={{ mt: "45px" }}
+                  sx={{ mt: "40px" }}
                   id="menu-appbar"
                   anchorEl={anchorElUser}
                   anchorOrigin={{
@@ -298,8 +324,11 @@ function ResponsiveAppBar() {
                   >
                     {user?.name}
                   </Typography>
+
+                  {/* hide if logout */}
                   <Divider />
-                  {/* if login - logout, else login */}
+
+                  {/* if login - show logout, else login ??*/}
                   {settings.map((setting, index) => (
                     <MenuItem
                       key={index}
@@ -311,6 +340,8 @@ function ResponsiveAppBar() {
                       to={`/${setting.path}`}
                       component={RouterLink}
                     >
+                      {/*  if (!user) return (<Typography textAlign="center">{setting.label = }Login</Typography>) else {}                              */}
+
                       <Typography textAlign="center">
                         {setting.label}
                       </Typography>

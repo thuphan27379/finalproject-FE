@@ -1,15 +1,25 @@
-background-color
+primary: old glory red (main, error, warning)
 
-text color
+light primary
 
-placeholder color
+secondary: old glory blue (success, info)
 
-border-color
+light secondary
 
-border-shadow
+background-color: black/white
 
-divider
+text color: black/white
 
-icon color
+placeholder color: light grey
 
-button color
+card border-color:  primary/secondary
+
+card border-shadow: light grey
+
+divider: primary/secondary
+
+icon color: primary (outlined)
+
+button border color: primary/secondary
+
+button background color: primary/secondary

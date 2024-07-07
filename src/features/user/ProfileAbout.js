@@ -17,12 +17,15 @@ const IconStyle = styled(Box)(({ theme }) => ({
 
 // 2nd show detail of profile
 function ProfileAbout({ profile }) {
-  const { aboutMe, city, country, email, company, others } = profile;
+  const { aboutMe, city, country, email, company, others } = profile; //
 
   //
   return (
     <>
-      <Card sx={{ minWidth: "340px", minHeight: "246px" }}>
+      <Card
+        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+        sx={{ minWidth: "340px", minHeight: "255px" }}
+      >
         <CardHeader title="About" variant="h6" sx={{ paddingTop: "10px" }} />
 
         <Stack spacing={2} sx={{ p: 2 }}>

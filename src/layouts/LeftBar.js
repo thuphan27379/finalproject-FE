@@ -17,12 +17,13 @@ export default function LeftBar() {
           marginTop: "90px",
           minHeight: "120vh",
           marginLeft: "-35px",
+          fontWeight: "700", //?
         }}
       >
         <List
           sx={{
             color: "#04214a",
-            fontWeight: "1000",
+            fontWeight: "700", //?
             width: "240px",
             lineHeight: 1,
           }}
@@ -36,7 +37,13 @@ export default function LeftBar() {
             "Our Services",
             "Donate us",
           ].map((text, index) => (
-            <ListItem key={text} disablePadding>
+            <ListItem
+              key={index}
+              disablePadding
+              sx={{
+                fontWeight: "700", //?
+              }}
+            >
               <FitbitOutlinedIcon fontSize="small" color="secondary" />
               <ListItemButton>
                 <ListItemText primary={text} />
