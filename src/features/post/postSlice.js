@@ -10,8 +10,9 @@ import { getCurrentUserProfile } from "../user/userSlice";
 const initialState = {
   isLoading: false,
   error: null,
-  postsById: {}, //luu tat ca posts theo postId
-  currentPagePosts: [], //luu tat ca postId
+  postsById: {}, // luu tat ca posts theo postId
+  currentPagePosts: [], // luu tat ca postId
+  postByGroup: {}, // post from group & check member
 };
 
 // createSlice all the slices
@@ -50,16 +51,25 @@ const slice = createSlice({
       state.totalPosts = count;
     },
     // create a new post //render new post without refresh page
+    // & post from group ?!?!
     createPostSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
+      // post bthuong
       const newPost = action.payload;
 
       if (state.currentPagePosts.length % POSTS_PER_PAGE === 0)
         state.currentPagePosts.pop(); // xoa bot post list truoc de list new post
       state.postsById[newPost._id] = newPost;
       state.currentPagePosts.unshift(newPost._id); //gan vao dau tien
+
+      // post of group ?
+      // userId
+      // params groupId, members
+      // const {} = action.payload; //state.posts = action.payload.posts
+      // console.log(action.payload);
+      // if (!state..includes(user._id))
     },
     // reaction a post
     sendPostReactionSuccess(state, action) {
@@ -69,7 +79,7 @@ const slice = createSlice({
       const { postId, reactions } = action.payload;
       state.postsById[postId].reactions = reactions; //update new reaction
     },
-    // delete a post
+    // delete a post & delete in postsByGroupId also ?
     deletePostSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -112,7 +122,6 @@ const slice = createSlice({
       // If the edited post is in the current page posts, update it
       if (editedPostIndex !== -1) {
         state.currentPagePosts[editedPostIndex] = editedPost._id;
-        // }
       }
       // state.postsById[editedPost._id] = editedPost;
     },
@@ -126,13 +135,17 @@ export const getPosts =
   ({ userId, page = 1, limit = POSTS_PER_PAGE }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
+
+    // if post from group & by groupId (postsByGroupId)
+    // fromGroup is false
     try {
       const params = { page, limit };
       const response = await apiService.get(`/posts/user/${userId}`, {
         params,
       });
       //fix bug about get list of posts of currentUser
-      if (page === 1) dispatch(slice.actions.resetPosts()); //reset posts before dispatch and show only posts of this currentUser
+      if (page === 1) dispatch(slice.actions.resetPosts());
+      //reset posts before dispatch and show only posts of this currentUser
       dispatch(slice.actions.getPostsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
@@ -150,7 +163,8 @@ export const getAllPosts =
       const response = await apiService.get(`/posts`, {
         params,
       });
-      if (page === 1) dispatch(slice.actions.resetPosts()); //reset posts before dispatch and show only posts of this currentUser
+      // reset posts before dispatch and show only posts of this currentUser
+      if (page === 1) dispatch(slice.actions.resetPosts());
       dispatch(slice.actions.getPostsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
@@ -159,21 +173,37 @@ export const getAllPosts =
   };
 
 // create a post
+// & on the group ?!?!
 export const createPost =
-  ({ content, image }) =>
+  (
+    { content, image, fromGroup } // ,userId, groupId
+  ) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
 
+    // check if member join group ? //
+    // get userId
+    // get groupId, get members of group
+    // if has params groupId, check if members include user, if yes can post
+    // if not
+    // "/:groupId/posts",
+
+    /* dang lam
+    if (members.group.includes(currentUserId)) {}       
+    */
+
     try {
+      // post bthuong
       // upload image to cloudinary.com - from PostForm.js
       const imageUrl = await cloudinaryUpload(image);
       const response = await apiService.post("/posts", {
         content,
         image: imageUrl,
+        // fromGroup: false // ??
       });
 
       dispatch(slice.actions.createPostSuccess(response.data));
-      toast.success("Post successfully");
+      toast.success("Create post successfully");
       dispatch(getCurrentUserProfile());
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));

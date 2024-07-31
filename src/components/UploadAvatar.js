@@ -2,7 +2,7 @@ import React from "react";
 import isString from "lodash/isString";
 import { useDropzone } from "react-dropzone";
 import { Typography, Box } from "@mui/material";
-import AddAPhotoRoundedIcon from "@mui/icons-material/AddAPhotoRounded";
+import AddAPhotoOutlinedIcon from "@mui/icons-material/AddAPhotoOutlined";
 import { styled, alpha } from "@mui/material/styles";
 
 import RejectionFiles from "./RejectionFiles";
@@ -12,9 +12,11 @@ const RootStyle = styled("div")(({ theme }) => ({
   width: 200,
   height: 200,
   margin: "auto",
-  borderRadius: "50%",
   padding: theme.spacing(1),
-  border: `1px dashed ${alpha("#919EAB", 0.32)}`,
+
+  border: `1px dashed ${alpha("#b3198f", 0.32)}`, //
+  borderRadius: "50%",
+  backgroundColor: "", //
 }));
 
 const DropZoneStyle = styled("div")({
@@ -24,11 +26,12 @@ const DropZoneStyle = styled("div")({
   outline: "none",
   display: "flex",
   overflow: "hidden",
-  borderRadius: "50%",
   position: "relative",
   alignItems: "center",
   justifyContent: "center",
   "& > *": { width: "100%", height: "100%" },
+
+  borderRadius: "50%",
   "&:hover": {
     cursor: "pointer",
     "& .placeholder": {
@@ -43,8 +46,8 @@ const PlaceholderStyle = styled("div")(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   justifyContent: "center",
-  color: "#919EAB",
-  backgroundColor: "#919EAB",
+  color: "#fff", // ?
+  backgroundColor: "#919EAB", //
   transition: theme.transitions.create("opacity", {
     easing: theme.transitions.easing.easeInOut,
     duration: theme.transitions.duration.shorter,
@@ -92,7 +95,7 @@ function UploadAvatar({ error, file, helperText, sx, ...other }) {
                 "& img": { objectFit: "cover", width: 1, height: 1 },
               }}
             >
-              <img alt="avatar" src={isString(file) ? file : file.preview} />
+              <img alt="" src={isString(file) ? file : file.preview} />
             </Box>
           )}
 
@@ -102,17 +105,19 @@ function UploadAvatar({ error, file, helperText, sx, ...other }) {
             sx={{
               ...(file && {
                 opacity: 0,
-                color: "common.white",
-                bgcolor: "grey.900",
-                "&:hover": { opacity: 0.72 },
+                color: "#fff", // ?
+                bgcolor: "PRIMARY.100",
+                "&:hover": { opacity: 0.2 },
               }),
               ...((isDragReject || error) && {
                 bgcolor: "error.lighter",
               }),
             }}
           >
-            <AddAPhotoRoundedIcon sx={{ width: 24, height: 24, mb: 1 }} />
-            <Typography variant="caption">
+            <AddAPhotoOutlinedIcon
+              sx={{ width: 24, height: 24, mb: 1, color: " #B31942" }}
+            />
+            <Typography variant="caption" sx={{ color: "#fff" }}>
               {file ? "Update photo" : "Upload photo"}
             </Typography>
           </PlaceholderStyle>

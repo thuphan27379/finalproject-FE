@@ -1,8 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { IconButton, Stack, Typography } from "@mui/material";
-import ThumbDownAltRoundedIcon from "@mui/icons-material/ThumbDownAltRounded";
-import ThumbUpRoundedIcon from "@mui/icons-material/ThumbUpRounded";
+import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
+import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
+import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 
 import { sendCommentReaction } from "./commentSlice";
 
@@ -14,7 +16,7 @@ function CommentReaction({ comment }) {
     dispatch(sendCommentReaction({ commentId: comment._id, emoji }));
   };
 
-  //
+  // if current user is like => icon is Filled !!!
   return (
     <>
       <Stack direction="row" alignItems="center">
@@ -23,7 +25,7 @@ function CommentReaction({ comment }) {
           onClick={() => handleClick("like")}
           sx={{ color: "secondary.main" }}
         >
-          <ThumbUpRoundedIcon sx={{ fontSize: 18 }} />
+          <ThumbUpAltOutlinedIcon sx={{ fontSize: 18 }} />
         </IconButton>
         <Typography variant="h7" mr={1}>
           {comment?.reactions?.like}
@@ -34,7 +36,7 @@ function CommentReaction({ comment }) {
           onClick={() => handleClick("dislike")}
           sx={{ color: "error.main" }}
         >
-          <ThumbDownAltRoundedIcon sx={{ fontSize: 18 }} />
+          <ThumbDownAltOutlinedIcon sx={{ fontSize: 18 }} />
         </IconButton>
         <Typography variant="h7">{comment?.reactions?.dislike}</Typography>
       </Stack>

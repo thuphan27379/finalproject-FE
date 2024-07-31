@@ -1,6 +1,7 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
@@ -16,25 +17,23 @@ import {
   Button,
   alpha,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
 import Modal from "@mui/material/Modal";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { LoadingButton } from "@mui/lab";
-// import { useFormContext, Controller } from "react-hook-form";
+import RecommendIcon from "@mui/icons-material/Recommend"; // like
+import RecommendOutlinedIcon from "@mui/icons-material/RecommendOutlined";
 
 import { fDate } from "../../utils/formatTime";
+import useAuth from "../../hooks/useAuth";
+import { FTextField, FUploadImage, FormProvider } from "../../components/form";
 import PostReaction from "./PostReaction";
 import CommentForm from "../comment/CommentForm";
 import CommentList from "../comment/CommentList";
 import { deletePost, editPost } from "../post/postSlice";
-import { FTextField, FUploadImage, FormProvider } from "../../components/form";
-// import { editPost } from "../post/postSlice";
 import FriendStatus from "../friend/FriendStatus";
-import useAuth from "../../hooks/useAuth";
 import ActionButton from "../friend/ActionButton";
 
-//show a post with comment and reaction, delete/edit
-// show group name if post of group OR not
+// show a post with comment and reaction, delete/edit
 const yupSchema = Yup.object().shape({
   content: Yup.string().required("Content is required"),
 });
@@ -44,21 +43,15 @@ const defaultValues = {
   image: null,
 };
 
-//show list of posts
+// show list of posts
 function PostCard({ post, profile }) {
-  // show relationship
+  // show relationship, from - to
   const { user } = useAuth();
-  const currentUserId = user._id;
+  const currentUserId = user._id; // dang login
   // console.log(currentUserId);
+  const [IsEditing, setIsEditing] = useState(true);
 
-  // const {
-  //   id: targetUserId,
-  //   name,
-  //   jobTitle,
-  //   coverUrl,
-  //   avatarUrl,
-  //   friendship,
-  // } = profile;
+  // const { id: targetUserId, name, avatarUrl, friendship } = profile;
 
   //popover on icon to delete or edit
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -69,11 +62,11 @@ function PostCard({ post, profile }) {
 
   const handleClose = () => {
     setAnchorEl(null);
-    // setIsEditing(false); // Reset editing mode when closing the popover
+    setIsEditing(false); // Reset editing mode when closing the popover
   };
 
-  const open = Boolean(anchorEl);
   // a window will pop up asking for confirmation to delete.
+  const open = Boolean(anchorEl);
 
   // handleDelete a post
   const dispatch = useDispatch();
@@ -84,8 +77,8 @@ function PostCard({ post, profile }) {
     if (currentUser) {
     }
     dispatch(deletePost({ postId: post._id }));
-
-    handleClose(); //close popover
+    // render after delete
+    handleClose(); // close popover
   };
 
   // handleEdit a post
@@ -194,8 +187,9 @@ function PostCard({ post, profile }) {
   return (
     <>
       <Card
-        style={{ border: "1px solid #f9d2dd" }}
+        style={{ border: "1px solid #B31942" }} // ?
         sx={{
+          borderRadius: "3px", //
           lineHeight: "1",
           "& .css-1yqujyp-MuiButtonBase-root-MuiIconButton-root": {
             padding: "5px",
@@ -212,7 +206,7 @@ function PostCard({ post, profile }) {
               variant="subtitle2"
               color="text.primary"
               component={RouterLink}
-              sx={{ fontWeight: 700 }}
+              sx={{ fontWeight: 700, color: "#fff" }} //
               to={`/user/${post.author._id}`}
             >
               {post?.author?.name}
@@ -226,7 +220,7 @@ function PostCard({ post, profile }) {
               {fDate(post.createdAt)}
             </Typography>
           }
-          // More btn, if not currentUser => display: "none" */}
+          // More btn */}
           action={
             currentUserId === post.author._id && (
               <IconButton onClick={handleClick}>
@@ -235,7 +229,7 @@ function PostCard({ post, profile }) {
             )
           }
         />
-        {/* show relationship ?!?! */}
+
         {/* friend status btn */}
         {/* {friendStatus ? (
           friendStatus
@@ -256,30 +250,54 @@ function PostCard({ post, profile }) {
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "left",
+            backgroundColor: "#8498b0", // ?
           }}
+          sx={{ backgroundColor: "transparent" }} //?
         >
-          <Button sx={{ p: 1, fontSize: 12 }} onClick={handleDelete}>
+          <Button
+            sx={{
+              p: 1,
+              fontSize: 12,
+              backgroundColor: "#8498b0",
+              color: "#061d3a",
+            }}
+            onClick={handleDelete}
+          >
             Delete
           </Button>
-          |
+          {/* | */}
           <div>
-            <Button sx={{ p: 1, fontSize: 12 }} onClick={handleOpenModal}>
+            <Button
+              sx={{
+                p: 1,
+                fontSize: 12,
+                backgroundColor: "#8498b0",
+                color: "#061d3a",
+              }}
+              onClick={handleOpenModal}
+            >
               Edit
             </Button>
 
-            {/* popup modal delete & edit */}
+            {/* popup modal for edit, position center of the screen? */}
             <Modal
               open={openModal}
               onClose={handleCloseModal}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
             >
               <Card
                 sx={{
-                  p: 3,
-                  width: 500,
-                  alignItems: "center",
-                  justifyContent: "center",
+                  p: 1,
+                  width: 700,
+                  height: 350,
+                  alignItems: "center", //?
+                  justifyContent: "center", //?
                 }}
               >
                 {/* postForm: edit content */}
@@ -289,12 +307,13 @@ function PostCard({ post, profile }) {
                 >
                   <Stack spacing={1}>
                     <FTextField
-                      // content of the Post, not placeholder?!?!
+                      // content of the old Post, not placeholder?!?!
                       name="content"
                       multiline
                       fullWidth
                       rows={4}
-                      placeholder={post.content}
+                      placeholder={post.content} //?
+                      value={post.content}
                       sx={{
                         "& fieldset": {
                           borderWidth: `1px !important`,
@@ -304,7 +323,6 @@ function PostCard({ post, profile }) {
                     />
 
                     {/* form edit image */}
-                    {/* UPLOAD A FILE: btn choose File  */}
                     {/* <input type="file" ref={fileInput} onChange={handleFile} /> */}
                     <FUploadImage
                       // upload the image of the post?!?!
@@ -355,13 +373,13 @@ function PostCard({ post, profile }) {
         <Stack spacing={1} sx={{ pl: 4, pt: 1, pb: 1, pr: 4 }}>
           <Typography>{post.content}</Typography>
           {/* {isEditing && (
-          <input
-            type="text"
-            value={editedContent}
-            onChange={handleContentChange}
-            onMouseDown={handleInputMouseDown}
-          />
-        )} */}
+            <input
+              type="text"
+              value={editedContent}
+              onChange={handleContentChange}
+              onMouseDown={handleInputMouseDown}
+            />
+          )} */}
 
           {/* media, width & height?!?! */}
           {post.image && (

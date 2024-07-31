@@ -53,7 +53,7 @@ function GroupForm() {
       <Card
         sx={{ p: 1, width: "100%", marginLeft: "15px" }}
         fullWidth
-        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+        style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
       >
         <Typography sx={{ paddingBottom: "15px", fontSize: "20px" }}>
           Create own group and join with friend!
@@ -78,7 +78,7 @@ function GroupForm() {
                 sx={{
                   "& fieldset": {
                     borderWidth: `1px !important`,
-                    borderColor: alpha("#919EAB", 0.32),
+                    borderColor: alpha("#0A3161", 0.5),
                   },
                 }}
               ></FTextField>
@@ -87,6 +87,12 @@ function GroupForm() {
                 label="Interest:"
                 name="interests"
                 placeholder="Eg: Startup, Domain,..."
+                sx={{
+                  "& fieldset": {
+                    borderWidth: `1px !important`,
+                    borderColor: alpha("#0A3161 ", 0.5),
+                  },
+                }}
               ></FTextField>
             </Box>
 
@@ -96,6 +102,12 @@ function GroupForm() {
               placeholder="Something about your group..."
               multiline
               fullWidth
+              sx={{
+                "& fieldset": {
+                  borderWidth: `1px !important`,
+                  borderColor: alpha("#0A3161 ", 0.5),
+                },
+              }}
             ></FTextField>
 
             <Box
@@ -109,9 +121,10 @@ function GroupForm() {
               <LoadingButton
                 // loading...
                 type="submit"
-                variant="outlined"
+                variant="contained"
                 size="small"
                 loading={isSubmitting || isLoading}
+                color="secondary"
               >
                 Create
               </LoadingButton>

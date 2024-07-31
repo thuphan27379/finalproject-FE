@@ -3,7 +3,7 @@
   width: 70px;
 }
 .page-footer {
-  background-color: black;
+  background-color: #000;
   padding: 1rem 1rem;
   position: relative;
   padding-left: 0px;
@@ -19,12 +19,15 @@
 
 .page-footer,
 .page-footer a {
-  color: white;
+  color: #fff;
 }
 
 .page-footer-logo-col p {
   margin-top: 0;
   max-width: 20ch;
+  color: #0a3161;
+  font-weight: 700;
+  font-size: 21px;
 }
 
 .page-footer-legal-text {
@@ -35,6 +38,7 @@
 .footer-nav-heading {
   font: var(--type-smaller-font-size);
   margin: 0 0 0.5rem;
+  color: #0a3161;
 }
 
 .footer-nav-list {
@@ -47,7 +51,7 @@
   font-size: var(--type-smaller-font-size);
 }
 
-@media screen and (min-width: 426px) {
+@media screen and (min-width: 480px) {
   .page-footer-grid {
     display: grid;
     gap: 1rem;
@@ -101,7 +105,7 @@
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .page-footer-grid {
     gap: 1rem;
     grid-template-areas: "logo  nav1  nav2  nav3  nav4" "moz   moz   moz   moz   moz" "legal legal legal legal  . ";
@@ -118,7 +122,7 @@
   }
 }
 
-@media screen and (min-width: 1441px) {
+@media screen and (min-width: 1440px) {
   .page-footer-grid {
     gap: 2.5rem;
   }

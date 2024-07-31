@@ -2,7 +2,7 @@
 function Link() {
   //
   return {
-    // classname of MUI
+    // className of MUI
     MuiLink: {
       defaultProps: {
         underline: "hover",

@@ -1,12 +1,12 @@
-import { LoadingButton } from "@mui/lab";
 import React, { useEffect, useState } from "react";
-import { Stack, Box, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+import { LoadingButton } from "@mui/lab";
+import { Stack, Box, Typography } from "@mui/material";
 
 import PostCard from "./PostCard";
 import { getPosts } from "./postSlice";
 
-// new feed
+// new feed: list post of currentUser & friendship also
 function PostList({ userId }) {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
@@ -14,12 +14,16 @@ function PostList({ userId }) {
     (state) => state.post
   );
 
+  // fromGroup is false
   // lay nhung post trong data ra
   const posts = currentPagePosts.map((postId) => postsById[postId]);
 
   useEffect(() => {
     if (userId) dispatch(getPosts({ userId, page }));
   }, [dispatch, userId, page]);
+
+  // get groupId
+  // if post from group & by groupId (postsByGroupId)
 
   //
   return (
@@ -39,7 +43,7 @@ function PostList({ userId }) {
         >
           {totalPosts ? (
             <LoadingButton
-              variant="outlined"
+              variant="contained"
               size="small"
               color="secondary"
               loading={isLoading}

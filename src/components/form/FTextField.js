@@ -7,10 +7,19 @@ function FTextField({ name, ...other }) {
   return (
     <>
       <Controller
+        sx={{
+          border: "#fff", // ?
+          borderColor: "#fff",
+          placeholderColor: "#fff",
+        }}
         name={name}
         control={control}
         render={({ field, fieldState: { error } }) => (
           <TextField
+            sx={{
+              borderColor: "#fff",
+              placeholderColor: "#fff",
+            }}
             {...field}
             fullWidth
             error={!!error}

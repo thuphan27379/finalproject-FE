@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Stack, Card, InputAdornment } from "@mui/material";
+import { Stack, Card, InputAdornment, alpha } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -23,7 +23,7 @@ const SOCIAL_LINKS = [
   {
     value: "twitterLink",
     icon: <XIcon sx={{ fontSize: 24 }} />,
-    placeholder: "www.twitter.com/",
+    placeholder: "www.x.com/",
   },
   {
     value: "instagramLink",
@@ -74,13 +74,22 @@ function AccountSocialLinks() {
   return (
     <>
       <Card
-        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+        style={{
+          border: "1px solid #0A3161",
+          borderRadius: "3px",
+          placeholderColor: "#fff",
+        }}
         sx={{ p: 1 }}
       >
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={1} alignItems="flex-end">
             {SOCIAL_LINKS.map((link) => (
               <FTextField
+                sx={{
+                  "& fieldset": {
+                    borderColor: alpha("#0A3161 ", 0.5),
+                  },
+                }}
                 key={link.value}
                 name={link.value}
                 placeholder={link.placeholder}
@@ -97,8 +106,9 @@ function AccountSocialLinks() {
             <LoadingButton
               sx={{ fontSize: "12px" }}
               type="submit"
-              variant="outlined"
+              variant="contained"
               loading={isSubmitting || isLoading}
+              color="secondary"
             >
               Save Changes
             </LoadingButton>

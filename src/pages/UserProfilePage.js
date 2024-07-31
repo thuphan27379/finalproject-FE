@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Container, Grid, Stack } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { Container, Grid, Stack } from "@mui/material";
 
 import useAuth from "../hooks/useAuth";
 import Profile from "../features/user/Profile";

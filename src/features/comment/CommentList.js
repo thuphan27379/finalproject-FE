@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
-import { Pagination, Stack, Typography } from "@mui/material";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { Pagination, Stack, Typography } from "@mui/material";
 
 import { getComments } from "./commentSlice";
 import CommentCard from "./CommentCard";
@@ -23,7 +23,7 @@ function CommentList({ postId }) {
       commentsById: state.comment.commentsById,
       isLoading: state.comment.isLoading,
     }),
-    shallowEqual //update data for render UI
+    shallowEqual // update data for render UI
   );
 
   const totalPages = Math.ceil(totalComments / COMMENTS_PER_POST);

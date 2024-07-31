@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { Box, Grid, Card, Stack, Typography } from "@mui/material";
+import { Box, Grid, Card, Stack, Typography, alpha } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -77,7 +77,7 @@ function AccountGeneral() {
           <Grid item xs={12} md={4}>
             {/* update avatar */}
             <Card
-              style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+              style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
               sx={{
                 py: 4,
                 px: 3,
@@ -90,7 +90,7 @@ function AccountGeneral() {
                 maxSize={3145728}
                 onDrop={handleDrop}
                 helperText={
-                  //lan dau tien chua bo hinh thi chua thay
+                  // lan dau tien chua bo hinh thi chua thay
                   <Typography
                     variant="caption"
                     sx={{
@@ -98,7 +98,7 @@ function AccountGeneral() {
                       mx: "auto",
                       display: "block",
                       textAlign: "center",
-                      color: "text.secondary",
+                      color: "#fff", //
                     }}
                   >
                     Allowed *.jpeg, *.jpg, *.png, *.gif
@@ -119,11 +119,12 @@ function AccountGeneral() {
               "& .css-f3o4t6-MuiPaper-root-MuiCard-root": {
                 margin: "0px",
               },
+              paddingTop: "-10px",
             }}
           >
             <Card
-              style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
-              sx={{ p: 1, m: 1, spacing: 1 }}
+              style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
+              sx={{ p: 1, m: 0, spacing: 1 }}
               spacing={2}
             >
               <Box
@@ -138,17 +139,81 @@ function AccountGeneral() {
                   },
                 }}
               >
-                <FTextField name="name" label="Name" />
-                <FTextField name="email" label="Email" />
+                <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
+                  name="name"
+                  label="Name"
+                />
+                <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
+                  name="email"
+                  label="Email"
+                />
 
-                <FTextField name="jobTitle" label="Job Title" />
-                <FTextField name="company" label="Company" />
+                <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
+                  name="jobTitle"
+                  label="Job Title"
+                />
+                <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
+                  name="company"
+                  label="Company"
+                />
 
-                <FTextField name="phoneNumber" label="Phone Number" />
-                <FTextField name="address" label="Address" />
+                <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
+                  name="phoneNumber"
+                  label="Phone Number"
+                />
+                <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
+                  name="address"
+                  label="Address"
+                />
 
-                <FTextField name="city" label="City" />
-                <FTextField name="country" label="Country" />
+                <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
+                  name="city"
+                  label="City"
+                />
+                <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
+                  name="country"
+                  label="Country"
+                />
               </Box>
 
               <Stack
@@ -158,11 +223,21 @@ function AccountGeneral() {
               >
                 {/* <FTextField name="coverUrl" label="Home Profile Cover Image?" /> */}
                 <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
                   name="others" //
                   label="Others"
                   placeholder="Interests"
                 />
                 <FTextField
+                  sx={{
+                    "& fieldset": {
+                      borderColor: alpha("#0A3161 ", 0.5),
+                    },
+                  }}
                   name="aboutMe"
                   multiline
                   rows={4}
@@ -173,8 +248,9 @@ function AccountGeneral() {
                 <LoadingButton
                   sx={{ fontSize: "12px", mt: 0 }}
                   type="submit"
-                  variant="outlined"
+                  variant="contained"
                   loading={isSubmitting || isLoading}
+                  color="secondary"
                 >
                   Save Changes
                 </LoadingButton>

@@ -39,6 +39,7 @@ function AddFriend() {
     setPage(0);
   };
 
+  // search
   const handleSubmit = (searchQuery) => {
     setFilterName(searchQuery);
   };
@@ -48,7 +49,7 @@ function AddFriend() {
     dispatch(getUsers({ filterName, page: page + 1, limit: rowsPerPage }));
   }, [filterName, page, rowsPerPage, dispatch]);
 
-  //UI
+  // UI
   return (
     <>
       <Container width={"100%"}>
@@ -60,12 +61,15 @@ function AddFriend() {
           marginTop={0}
           marginBottom={10}
         >
-          <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
+          <Typography
+            variant="h5"
+            sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }} //
+          >
             Add Friends
           </Typography>
 
           <Card
-            style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+            style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
             sx={{ p: 1.5 }}
             width={"100%"}
             xs={8}
@@ -77,13 +81,10 @@ function AddFriend() {
                 justifyContent="center"
                 width={"100%"}
               >
-                {/* SEARCH USERS */}
+                {/* SEARCH USERS result count, hide if not ?*/}
                 <SearchInput handleSubmit={handleSubmit} />
                 {/* result */}
-                <Typography
-                  variant="subtitle"
-                  sx={{ color: "text.secondary", ml: 1 }}
-                >
+                <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
                   {totalUsers > 1
                     ? `${totalUsers} users found`
                     : totalUsers === 1
@@ -102,6 +103,7 @@ function AddFriend() {
                         alignItems: "center",
                         justifyContent: "center",
                       },
+                    color: "#fff", // work
                   }}
                   component="div"
                   count={totalUsers ? totalUsers : 0}

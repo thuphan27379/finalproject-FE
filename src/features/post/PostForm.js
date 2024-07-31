@@ -1,16 +1,20 @@
-import React, { useCallback } from "react";
-import { Box, Card, alpha, Stack } from "@mui/material";
+import React, { useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { Box, Card, alpha, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
+// import { useRef } from "react";
+import useAuth from "../../hooks/useAuth";
 import { FormProvider, FTextField, FUploadImage } from "../../components/form";
 import { createPost } from "./postSlice";
-// import { useRef } from "react";
+import { getSingleGroup, createPostGroup } from "../group/groupSlice";
 
 // for create a new post
+// & on the group ?!?!
 // validate content
 const yupSchema = Yup.object().shape({
   content: Yup.string().required("Content is required"),
@@ -25,6 +29,11 @@ const defaultValues = {
 function PostForm() {
   const { isLoading } = useSelector((state) => state.post);
   const dispatch = useDispatch();
+  const { user } = useAuth(); //get data of user from useAuth
+  const params = useParams();
+  const currentUserId = user._id;
+  const currentGroupId = params.groupId;
+  const { singleGroup } = useSelector((state) => state.group); // Get group details from state
 
   const methods = useForm({
     resolver: yupResolver(yupSchema),
@@ -48,7 +57,7 @@ function PostForm() {
   //   }
   // };
 
-  // drag & drop a image ///////////
+  // drag & drop a image //
   const handleDrop = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
@@ -67,13 +76,32 @@ function PostForm() {
 
   // reset a form after create a post
   const onSubmit = (data) => {
+    data.fromGroup = false; // Set fromGroup to false if not posting in a group
+    // console.log(data);
+
     dispatch(createPost(data)).then(() => reset());
   };
 
-  //UI
+  // check if member join group ? //
+  // get userId
+  // get groupId, get members of group
+  // if has params groupId, check if members include user, if yes can post
+  // if not
+
+  // Fetch group details if a group ID is present in the route
+  useEffect(() => {
+    if (currentGroupId) {
+      dispatch(getSingleGroup(currentGroupId));
+    }
+  }, [dispatch, currentGroupId]);
+
+  // UI
   return (
     <>
-      <Card sx={{ p: 1 }} style={{ border: "1px solid #f9d2dd" }}>
+      <Card
+        sx={{ p: 1 }}
+        style={{ border: "1px solid #B31942", boxShadow: "#e8bac6" }}
+      >
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={1}>
             <FTextField
@@ -82,12 +110,13 @@ function PostForm() {
               multiline
               fullWidth
               rows={3}
-              placeholder="Share what you are thinking here..."
+              placeholder="Share your ideas here..."
               sx={{
                 "& fieldset": {
                   borderWidth: `1px !important`,
-                  borderColor: alpha("#919EAB", 0.32),
+                  borderColor: alpha("#B31942", 0.5),
                 },
+                color: "#fff", // placeholder text?
               }}
             />
 
@@ -107,12 +136,13 @@ function PostForm() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "flex-end",
+                // fontWeight: "800",
               }}
             >
               <LoadingButton
                 // loading...
                 type="submit"
-                variant="outlined"
+                variant="contained"
                 size="small"
                 loading={isSubmitting || isLoading}
               >

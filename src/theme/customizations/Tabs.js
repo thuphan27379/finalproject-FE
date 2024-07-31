@@ -1,4 +1,6 @@
-//
+import { PRIMARY, SECONDARY } from "../index";
+
+// blog, profile tabs
 function Tabs(theme) {
   //
   return {
@@ -14,13 +16,22 @@ function Tabs(theme) {
           fontWeight: 600,
           borderTopLeftRadius: theme.shape.borderRadius,
           borderTopRightRadius: theme.shape.borderRadius,
-          textTransform: "capitalize", //
+          textTransform: "capitalize", //?
+
+          borderRadius: "1%", //?
+          backgroundColor: "#000", // bg
+          color: "#fff", // text
+
           "&.Mui-selected": {
             color: theme.palette.text.primary,
           },
           "&:not(:last-of-type)": {
-            marginRight: theme.spacing(3.5),
+            marginRight: theme.spacing(2),
+            marginLeft: theme.spacing(1),
+            paddingLeft: theme.spacing(0),
+            paddingRight: theme.spacing(0),
           },
+          // responsive
           "@media (min-width: 600px)": {
             minWidth: 48,
           },
@@ -38,7 +49,7 @@ function Tabs(theme) {
           whiteSpace: "nowrap",
         },
         textColorInherit: {
-          opacity: 1,
+          opacity: 0,
           color: theme.palette.text.secondary,
         },
       },

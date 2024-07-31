@@ -1,4 +1,4 @@
-import { styled } from "@mui/material/styles"; //* icon */
+import { styled } from "@mui/material/styles"; // icon
 import { Link, Card, Typography, CardHeader, Stack, Box } from "@mui/material";
 import PinDropOutlinedIcon from "@mui/icons-material/PinDropOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -6,7 +6,7 @@ import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlin
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 
-//* icon */
+// icon
 const IconStyle = styled(Box)(({ theme }) => ({
   width: 20,
   height: 20,
@@ -23,13 +23,17 @@ function ProfileAbout({ profile }) {
   return (
     <>
       <Card
-        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
-        sx={{ minWidth: "340px", minHeight: "255px" }}
+        style={{
+          border: "1px solid #0A3161",
+          borderRadius: "3px",
+        }}
+        sx={{ minWidth: "320px", minHeight: "255px" }}
       >
+        {/* Portfolio */}
         <CardHeader title="About" variant="h6" sx={{ paddingTop: "10px" }} />
 
         <Stack spacing={2} sx={{ p: 2 }}>
-          <Stack direction="row">
+          <Stack direction="row" sx={{ color: "#fff" }}>
             <IconStyle color="##19b38a">
               <SelfImprovementIcon />
             </IconStyle>
@@ -38,7 +42,7 @@ function ProfileAbout({ profile }) {
             </Typography>
           </Stack>
 
-          <Stack direction="row">
+          <Stack direction="row" sx={{ color: "#fff" }}>
             <IconStyle color="##19b38a">
               <PinDropOutlinedIcon />
             </IconStyle>
@@ -48,6 +52,7 @@ function ProfileAbout({ profile }) {
                 variant="subtitle2"
                 color="text.primary"
                 fontWeight="400"
+                sx={{ color: "#fff" }} //
               >
                 {city}, {country}.
               </Link>
@@ -71,6 +76,7 @@ function ProfileAbout({ profile }) {
                 variant="subtitle2"
                 color="text.primary"
                 fontWeight="400"
+                sx={{ color: "#fff" }}
               >
                 {company}
               </Link>

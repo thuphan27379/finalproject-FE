@@ -5,10 +5,11 @@ import { fNumber } from "../../utils/numberFormat";
 function ProfileScorecard({ profile }) {
   const { postCount, friendCount } = profile;
 
+  //
   return (
     <>
       <Card
-        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+        style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
         sx={{
           p: 1,
           minWidth: "200px",
@@ -27,7 +28,13 @@ function ProfileScorecard({ profile }) {
           alignItems="center"
           justifyContent="center"
           lineHeight={1}
-          divider={<Divider orientation="vertical" flexItem />}
+          divider={
+            <Divider
+              style={{ background: "#fff" }}
+              orientation="vertical"
+              flexItem
+            />
+          }
         >
           <Stack width={1} textAlign="center">
             <Typography variant="h4">{fNumber(friendCount)}</Typography>

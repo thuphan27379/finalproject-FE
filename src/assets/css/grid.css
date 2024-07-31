@@ -1,3 +1,4 @@
+/* chua xai */
 *,
 *::before,
 *::after {
@@ -14,8 +15,6 @@ body {
   margin: 0;
   padding: 0;
 } */
-
-/* https://codepen.io/ng-ngc-sn-the-bashful/pen/dyovNrP */
 
 /* responsive */
 .grid {
@@ -625,8 +624,8 @@ body {
   text-rendering: optimizeSpeed;
 }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
+/* A elements that don't have a className get default styles */
+a:not([className]) {
   text-decoration-skip-ink: auto;
 }
 

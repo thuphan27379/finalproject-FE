@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import {
   Link,
   Stack,
@@ -10,15 +12,12 @@ import {
 import { LoadingButton } from "@mui/lab";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { useNavigate, Link as RouterLink } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
 import useAuth from "../hooks/useAuth";
 import { FormProvider, FTextField, FCheckbox } from "../components/form";
 
-//
 // yup validate input
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -71,7 +70,7 @@ function RegisterPage() {
     }
   };
 
-  //rendering to HTML
+  //
   return (
     <>
       <Container
@@ -86,14 +85,23 @@ function RegisterPage() {
             {!!errors.responseError && (
               <Alert severity="error">{errors.responseError.message}</Alert>
             )}
-            <Alert severity="info">
-              Already have an account?{" "}
+            <Alert
+              sx={{
+                backgroundColor: "#000",
+                color: "#fff",
+                borderColor: "1px #B31942", // ?
+                variant: "outlined",
+              }}
+              severity="info" // icon type
+              color="secondary" // icon color
+            >
+              Already have an account!{" "}
               <Link variant="subtitle2" component={RouterLink} to="/login">
-                Sign in now
+                Log in now
               </Link>
             </Alert>
 
-            {/* input, name sao cho giong schema  */}
+            {/* input  */}
             <FTextField name="name" label="Name" />
             <FTextField name="email" label="Email address" />
             <FTextField
@@ -159,7 +167,7 @@ function RegisterPage() {
               variant="outlined"
               loading={isSubmitting}
               color="secondary"
-              backgroundColor="#476390" //?
+              sx={{ backgroundColor: "#8498b0" }} //
             >
               Register
             </LoadingButton>

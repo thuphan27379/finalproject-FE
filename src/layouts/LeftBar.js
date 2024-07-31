@@ -4,8 +4,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import BlurOnOutlinedIcon from "@mui/icons-material/BlurOnOutlined";
-import FitbitOutlinedIcon from "@mui/icons-material/FitbitOutlined";
+import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined"; // star
 
 // homepage: company tabs
 // LINK TO PAGE
@@ -14,15 +13,15 @@ export default function LeftBar() {
     <>
       <Box
         sx={{
+          width: "240px",
           marginTop: "90px",
           minHeight: "120vh",
           marginLeft: "-35px",
-          fontWeight: "700", //?
         }}
       >
         <List
           sx={{
-            color: "#04214a",
+            color: "#fff",
             fontWeight: "700", //?
             width: "240px",
             lineHeight: 1,
@@ -44,7 +43,7 @@ export default function LeftBar() {
                 fontWeight: "700", //?
               }}
             >
-              <FitbitOutlinedIcon fontSize="small" color="secondary" />
+              <GradeOutlinedIcon fontSize="small" color="secondary" />
               <ListItemButton>
                 <ListItemText primary={text} />
               </ListItemButton>

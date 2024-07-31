@@ -1,6 +1,5 @@
 import { useFormContext, Controller } from "react-hook-form";
 import { FormHelperText } from "@mui/material";
-
 import UploadAvatar from "../UploadAvatar";
 
 //
@@ -11,6 +10,10 @@ function FUploadAvatar({ name, ...other }) {
   return (
     <>
       <Controller
+        sx={{
+          color: "#fff",
+          placeholderColor: "#fff",
+        }} //?
         name={name}
         control={control}
         render={({ field, fieldState: { error } }) => {

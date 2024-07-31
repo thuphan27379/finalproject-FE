@@ -18,7 +18,7 @@ function AccountPage() {
       component: <AccountGeneral />,
     },
     {
-      value: "social_links",
+      value: "links",
       icon: <ShareIcon sx={{ fontSize: 25 }} />,
       component: <AccountSocialLinks />,
     },
@@ -33,7 +33,11 @@ function AccountPage() {
           paddingTop: "90px",
         }}
       >
-        <Typography variant="h5" gutterBottom>
+        <Typography
+          variant="h5"
+          gutterBottom
+          sx={{ color: "#fff", paddingLeft: "30px" }}
+        >
           Account Settings
         </Typography>
 

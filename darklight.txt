@@ -1,25 +1,90 @@
-primary: old glory red (main, error, warning)
+JUST DARK
 
+primary: old glory red (main, error, warning)
+ #B31942 (179,25,66)
+Complementary Color #19b38a
+Monochromatic Colors #e33664
+Analogous Colors #b33d19 #b3198f
 light primary
+#6b0f27
+#7d112e
+#8f1434
+#a1163b
+#b31942
+#ba2f54
+#c24667
+#c95e7a
+#d1758d
+#d98ca0
+#e0a3b3
+#e8bac6
+dark primary #7c093a
 
 secondary: old glory blue (success, info)
-
+#0A3161  (10,49,97)
+Complementary Color #613a0a
+Monochromatic Colors #1154a6
+Analogous Colors #0a5d61
 light secondary
+#061d3a
+#072243
+#08274d
+#092c57
+#0a3161
+#224570
+#3a5a80
+#536e90
+#6c83a0
+#8498b0
+#9dacbf
+#b5c1cf
+dark secondary #04214a
+----
+page background-color: black/white
 
-background-color: black/white
+main text color: black/white
 
-text color: black/white
-
-placeholder color: light grey
-
+placeholder text color: medium light grey
+---
 card border-color:  primary/secondary
 
-card border-shadow: light grey
+card border-shadow: light primary/secondary
 
-divider: primary/secondary
+card background color 
 
-icon color: primary (outlined)
+divider: light primary/secondary
 
-button border color: primary/secondary
+icon color: primary & secondary (outlined) & size (large, small)
 
-button background color: primary/secondary
+button border color: light primary/secondary - thick
+
+button background color: light primary/secondary
+---
+font size (small, medium, large)
+
+font weight
+
+border size & border radius
+
+margin & padding & gap
+
+line-height & letter-spacing
+
+card width & height
+
+button size
+---
+responsive
+
+Grid:
+<Grid container spacing={2}>
+  <Grid item xs={6} md={8}>
+
+direction: row column
+justifyContent:flex-start center flex-end space-between space-around space-evenly
+alignItems: flex-start center flex-end stretch baseline
+
+Container:
+Breakpoints: 
+useMediaQuery:
+tim tat ca nhung component nao minh xai de resize

@@ -7,16 +7,17 @@ function HomeFooter() {
     <>
       <Stack
         sx={{
-          backgroundColor: "black",
+          backgroundColor: "#000", //
           minWidth: "100%",
           marginLeft: "-24px",
           marginRight: "-24px",
           minHeight: "50px",
+          borderTop: "1px solid #0A3161",
         }}
       >
-        <Typography variant="body2" color="white" align="center" p={2}>
-          Copyright {"© "} 2000-{new Date().getFullYear()}{" "}
-          <Link color="inherit" href="">
+        <Typography variant="body2" color="#fff" align="center" p={2}>
+          {"© "} 2000 - {new Date().getFullYear()}{" "}
+          <Link color="inherit" href="/">
             BizHolding, Inc
           </Link>
           {"."} All Rights Reserved | Terms | Policy | Security

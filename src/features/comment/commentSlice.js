@@ -8,10 +8,10 @@ import { COMMENTS_PER_POST } from "../../app/config";
 const initialState = {
   isLoading: false,
   error: null,
-  commentsByPost: {}, //{'postId':{...comments}}
+  commentsByPost: {}, // {'postId':{...comments}}
   totalCommentsByPost: {},
   currentPageByPost: {},
-  commentsById: {}, //{'commentId':{...all data of comment}}
+  commentsById: {}, // {'commentId':{...all data of comment}}
 };
 
 // createSlice for all slices

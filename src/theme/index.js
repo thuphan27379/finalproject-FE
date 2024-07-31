@@ -1,27 +1,43 @@
-import React, { createContext, useMemo } from "react";
-import useState from "react";
+import React, { createContext, useMemo, useState } from "react";
 import {
   alpha,
   createTheme,
   ThemeProvider as MUIThemeProvider,
 } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material"; //xoa css mac dinh cua MUI
-
+import { CssBaseline } from "@mui/material"; // xoa css mac dinh cua MUI
 import customizeComponents from "./customizations";
 
-// module 2.3 .3.7
-// custom theme, design
+// module 2.3 .3.7 // custom theme, design
+// color
 const PRIMARY = {
-  light: "#e65e7a",
-  main: "#B31942 ",
-  dark: "#7c093a",
-  contrastText: "#FFF",
+  1000: "#6b0f27",
+  900: "#7d112e",
+  800: "#8f1434",
+  700: "#a1163b",
+  main: "#b31942",
+  600: "#ba2f54",
+  500: "#c24667",
+  400: "#c95e7a",
+  300: "#d1758d",
+  200: "#d98ca0",
+  100: "#e0a3b3",
+  0: "#e8bac6",
+  // contrastText: "#FFF",
 };
 const SECONDARY = {
-  light: "#476390",
+  1000: "#061d3a",
+  900: "#072243",
+  800: "#08274d",
+  700: "#092c57",
   main: "#0A3161",
-  dark: "#04214a",
-  contrastText: "#FFF",
+  600: "#224570",
+  500: "#3a5a80",
+  400: "#536e90",
+  300: "#6c83a0",
+  200: "#8498b0",
+  100: "#9dacbf",
+  0: "#b5c1cf",
+  // contrastText: "#FFF",
 };
 const SUCCESS = {
   lighter: "#E9FCD4",
@@ -29,10 +45,11 @@ const SUCCESS = {
   main: "#54D62C",
   dark: "#229A16",
   darker: "#08660D",
-  contrastText: "#FFF",
+  // contrastText: "#FFF",
 };
 const GREY = {
-  0: "#FFFFFF",
+  // white to black
+  0: "#FFF", // white
   100: "#F9FAFB",
   200: "#F4F6F8",
   300: "#DFE3E8",
@@ -50,34 +67,29 @@ const GREY = {
   500_48: alpha("#919EAB", 0.48),
   500_56: alpha("#919EAB", 0.56),
   500_80: alpha("#919EAB", 0.8),
+  1000: "#000", // black
 };
 
-const themeCustom = createTheme({
-  palette: {
-    primary: {
-      main: "#B31942 ", //700
-      light: "#e65e7a", //300
-      dark: "#7c093a",
-      contrastText: "#fbe3e7",
-    },
-    secondary: {
-      main: "#0A3161", //800
-      light: "#476390", //400
-      dark: "#04214a",
-      contrastText: "#e5e8ef",
-    },
-  },
-});
-
 // func custom MUI style
-const muiCustomProvider = createTheme({
+// xai chung cho toan bo site, component & responsive...
+const MuiCustomProvider = createTheme({
   shape: { borderRadius: 8 },
 
   // custom style for all components here
   components: {
-    MuiLink: {
+    MuiInputBase: {
       defaultProps: {
-        underline: "hover",
+        disableInjectingGlobalStyles: true,
+      },
+    },
+    MuiAlert: {
+      styleOverrides: {
+        root: {
+          //  [`&.${alertClasses.outlinedInfo}`]: {
+          //  [`&.${alertClasses.outlined}.${alertClasses.colorInfo}`]: {
+          //  color: '#0A3161',
+          // },
+        },
       },
     },
   },
@@ -85,31 +97,21 @@ const muiCustomProvider = createTheme({
   // responsive //
   breakpoints: {
     values: {
-      xs: 0, //
-      sm: 600, //mobile: 767px
-      md: 900,
-      lg: 1200, //desktop: 1024px
-      xl: 1536, //
+      xs: 0,
+      sm: 480,
+      md: 768,
+      lg: 1024,
+      xl: 1440,
     },
   },
 
   typography: {
-    fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      "Segoe UI",
-      "Roboto",
-      "Helvetica Neue",
-      "Arial",
-      "sans-serif",
-      "Apple Color Emoji",
-      "Segoe UI Emoji",
-      "Segoe UI Symbol",
-    ].join(","),
+    fontFamily: ["Ubuntu", "sans-serif"].join(","), // index.html: Roboto
     fontSize: 15,
     fontWeight: 800,
     spacing: 4,
-    "@media (min-width:600px)": {
+    // responsive
+    "@media (min-width:768px)": {
       fontSize: "1.5rem",
     },
   },
@@ -143,26 +145,25 @@ const muiCustomProvider = createTheme({
   },
 });
 
-// dark/light
+// dark/light mode
 function ThemeProvider({ children }) {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState("dark");
 
+  // change text color, bg color, placeholder color...
   const themeOptions = (mode) =>
     mode === "light"
       ? {
-          // light
+          // light: sua lai text color va background color
           palette: {
             primary: PRIMARY,
             secondary: SECONDARY,
             success: SUCCESS,
-
             text: {
-              primary: GREY[800],
+              color: GREY[1000], // black
               secondary: GREY[600],
               disabled: GREY[500],
             },
-            background: { paper: "#fff", default: "#fff", neutral: GREY[200] },
-
+            background: { paper: GREY[0], default: "#fff", neutral: GREY[200] },
             action: {
               active: GREY[600],
               hover: GREY[500_8],
@@ -173,32 +174,36 @@ function ThemeProvider({ children }) {
               hoverOpacity: 0.08,
               disabledOpacity: 0.48,
               error: {
-                main: "#B31942 ", //700
+                main: "#B31942 ",
               },
               warning: {
-                main: "#B31942 ", //700
+                main: "#B31942 ",
               },
               info: {
-                main: "#0A3161", //800
+                main: "#0A3161",
               },
               success: {
-                main: "#0A3161", //800
+                main: "#0A3161",
               },
             },
           },
         }
-      : {
-          // dark
+      : // dark: default
+        {
           palette: {
             primary: PRIMARY,
             secondary: SECONDARY,
             success: SUCCESS,
             text: {
-              primary: GREY[800],
+              primary: GREY[0], // white
               secondary: GREY[600],
               disabled: GREY[500],
             },
-            background: { paper: "#fff", default: "#fff", neutral: GREY[200] },
+            background: {
+              paper: GREY[1000],
+              default: "#000",
+              neutral: GREY[200],
+            },
             action: {
               active: GREY[600],
               hover: GREY[500_8],
@@ -209,26 +214,26 @@ function ThemeProvider({ children }) {
               hoverOpacity: 0.08,
               disabledOpacity: 0.48,
               error: {
-                main: "#B31942 ", //700
+                main: "#B31942 ",
               },
               warning: {
-                main: "#B31942 ", //700
+                main: "#B31942 ",
               },
               info: {
-                main: "#0A3161", //800
+                main: "#0A3161",
               },
               success: {
-                main: "#0A3161", //800
+                main: "#0A3161",
               },
             },
           },
         };
 
-  // theme
+  // toggle theme
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+        setMode((prevMode) => (prevMode === "dark" ? "light" : "dark"));
       },
     }),
     []
@@ -236,12 +241,11 @@ function ThemeProvider({ children }) {
 
   // index custom components
   let theme = useMemo(() => createTheme(themeOptions(mode)), [mode]); // mode OR colorMode
-  // const theme = createTheme(themeOptions);
   theme.components = customizeComponents(theme);
 
   //
   return (
-    <ColorModeContext.Provider value={mode}>
+    <ColorModeContext.Provider value={colorMode}>
       <MUIThemeProvider theme={theme}>
         <CssBaseline />
         {children}

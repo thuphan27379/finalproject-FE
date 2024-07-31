@@ -1,3 +1,7 @@
+import React, { useEffect, useState } from "react";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import {
   Card,
   Typography,
@@ -7,10 +11,6 @@ import {
   Button,
   Pagination,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import useAuth from "../../hooks/useAuth";
 import { getList, joinGroup } from "./groupSlice";
@@ -24,8 +24,11 @@ function GroupList({ groupId }) {
   const params = useParams();
   const currentUserId = user._id;
   const currentGroupId = params.groupId;
-  const currentUser = useSelector((state) => state.user.currentUser);
-  // console.log(user);
+  // console.log(currentUserId);
+  // console.log(currentGroupId);
+
+  // const currentUser = useSelector((state) => state.user.currentUser);
+
   const [page, setPage] = useState(1);
   const { list, totalGroups } = useSelector((state) => state.group);
   // console.log(list);
@@ -54,8 +57,8 @@ function GroupList({ groupId }) {
   return (
     <>
       <Card
-        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
-        sx={{ minWidth: "490px", minHeight: "250px" }}
+        style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
+        sx={{ minWidth: "500px", minHeight: "250px" }}
       >
         <Stack
           sx={{
@@ -65,7 +68,7 @@ function GroupList({ groupId }) {
           }}
         >
           <CardHeader
-            title="List of Group"
+            title="List of Groups"
             variant="h6"
             sx={{ paddingTop: "10px" }}
           />
@@ -85,6 +88,7 @@ function GroupList({ groupId }) {
               "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root": {
                 margin: "0px",
               },
+              color: "#fff", //?
             }}
           />
         </Stack>
@@ -93,6 +97,7 @@ function GroupList({ groupId }) {
         <Stack spacing={1} sx={{ p: 2 }}>
           {list.map((listItem) => (
             <Box
+              key={listItem._id}
               sx={{
                 p: 0,
                 display: "flex",
@@ -100,18 +105,24 @@ function GroupList({ groupId }) {
                 flexWrap: "nowrap",
                 justifyContent: "space-between",
               }}
-              onClick={() => {
-                handleNavigate(listItem._id);
-              }}
+              // onClick={() => {
+              //   handleNavigate(listItem._id);
+              // }}
             >
-              <Typography key={listItem._id}>
+              <Typography
+                key={listItem._id}
+                onClick={() => {
+                  handleNavigate(listItem._id);
+                }}
+              >
                 * {listItem.name} ({listItem.interests}) -{" "}
                 {listItem.members.length} members
               </Typography>
 
+              {/* if already join, hide OR show Your Group OR leave */}
               <Button
                 color="secondary"
-                variant="outlined"
+                variant="contained"
                 sx={{
                   p: 0,
                   fontSize: 10,
@@ -119,7 +130,7 @@ function GroupList({ groupId }) {
                     backgroundColor: "#ced5df",
                   },
                 }}
-                onClick={() => handleJoin(listItem._id)}
+                onClick={() => handleJoin(listItem._id, currentUserId)}
               >
                 Join
               </Button>

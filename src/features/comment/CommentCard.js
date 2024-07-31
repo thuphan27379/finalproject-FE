@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Avatar,
   Box,
@@ -10,7 +11,6 @@ import {
   Button,
 } from "@mui/material";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { useDispatch, useSelector } from "react-redux";
 
 import { fDate } from "../../utils/formatTime";
 import CommentReaction from "./CommentReaction";
@@ -21,7 +21,7 @@ import useAuth from "../../hooks/useAuth";
 function CommentCard({ comment }) {
   const { user } = useAuth();
   const currentUserId = user._id;
-  //popover on icon to delete or edit
+  // popover on icon to delete or edit
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -52,6 +52,7 @@ function CommentCard({ comment }) {
   return (
     <>
       <Stack
+        border="1px #0A3161" //?
         direction="row"
         justifyContent={"space-between"}
         spacing={1}
@@ -59,6 +60,7 @@ function CommentCard({ comment }) {
         lineHeight={0}
         padding={0}
         sx={{
+          borderColor: "1px solid #0A3161", //?
           maxWidth: "808px",
           maxHeight: "105px",
           lineHeight: "0",
@@ -76,6 +78,10 @@ function CommentCard({ comment }) {
           "& .css-ga6y80-MuiButtonBase-root-MuiIconButton-root": {
             padding: "0px",
           },
+          "& .MuiPaper-elevation .MuiPaper-rounded .MuiPaper-elevation1 .css-1vmzsl-MuiPaper-root":
+            {
+              padding: "0px", //?
+            },
         }}
       >
         <Avatar alt={comment.author?.name} src={comment.author?.avatarUrl} />
@@ -91,24 +97,38 @@ function CommentCard({ comment }) {
               paddingRight: "8px",
               paddingBottom: "10px",
             },
-            backgroundColor: "rgb(244, 246, 248)",
+            borderColor: "1px #fff", // ?
+            backgroundColor: "#000",
+            "& .MuiPaper-elevation .MuiPaper-rounded .MuiPaper-elevation1 .css-1vmzsl-MuiPaper-root":
+              {
+                padding: "0px",
+              },
           }}
         >
           <Stack
             direction="row"
             alignItems={{ sm: "center" }}
             justifyContent="space-between"
+            sx={{
+              borderColor: "1px #fff",
+              "& .MuiPaper-elevation .MuiPaper-rounded .MuiPaper-elevation1 .css-1vmzsl-MuiPaper-root":
+                {
+                  padding: "0px",
+                },
+            }}
           >
-            <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
+            <Typography
+              variant="subtitle2"
+              sx={{ fontWeight: 700, color: "#fff" }}
+            >
               {comment.author?.name}
             </Typography>
 
-            {/* More btn, if not currentUser => display: "none" */}
-            {/* action= */}
+            {/* More btn */}
             {currentUserId === comment.author._id && (
-              <IconButton sx={{ color: "secondary" }}>
+              <IconButton onClick={handleClick} sx={{ color: "secondary" }}>
                 <MoreVertIcon
-                  onClick={handleClick}
+                  // onClick={handleClick}
                   sx={{ fontSize: 27, color: "secondary" }}
                 />
               </IconButton>
@@ -121,20 +141,29 @@ function CommentCard({ comment }) {
                 vertical: "bottom",
                 horizontal: "left",
               }}
+              sx={{}}
             >
-              <Button sx={{ p: 1, fontSize: 12 }} onClick={handleDelete}>
+              <Button
+                sx={{
+                  p: 1,
+                  fontSize: 12,
+                  backgroundColor: "#8498b0",
+                  color: "#061d3a",
+                }}
+                onClick={handleDelete}
+              >
                 Delete
               </Button>
             </Popover>
           </Stack>
 
-          {/* Date fai nam ke ben Author */}
+          {/*  */}
           <Typography
             variant="caption"
             sx={{
               color: "text.disabled",
               paddingLeft: "0",
-              marginTop: "-2px",
+              marginTop: "-9px", // ????
               display: "flex",
               alignItems: "start",
               fontSize: "11px",
@@ -143,11 +172,17 @@ function CommentCard({ comment }) {
             {fDate(comment.createdAt)}
           </Typography>
 
-          <Typography variant="body2" sx={{ color: "black" }}>
+          <Typography variant="body2" sx={{ color: "#fff" }}>
             {comment.content}
           </Typography>
 
-          <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              "& .css-1d9cypr-MuiStack-root": { paddingRight: "20px" },
+            }}
+          >
             <CommentReaction comment={comment} />
           </Box>
         </Paper>

@@ -1,38 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
 import { Box, Typography } from "@mui/material";
 
-import PostCard from "./post/PostCard";
+import PostCard from "../post/PostCard";
 import { getPostsGroup } from "./groupSlice";
+import useAuth from "../../hooks/useAuth";
 
-// new feed of group
-function GroupPostList({ userId, groupId }) {
+// new feed of group, list of post of the group
+function GroupPostList() {
   const dispatch = useDispatch();
   const [page, setPage] = useState(1);
-  const { currentPagePosts, postsById, isLoading, totalPosts, postsByGroupId } =
-    useSelector((state) => state.post); //postSlice
-  const { currentPagePostsByGroup, groupPostsById, totalPostsGroup } =
-    useSelector((state) => state.group); //groupSlice
+  const params = useParams();
+  const groupId = params.groupId;
+  const { user } = useAuth();
+
+  const {
+    groupPostsList,
+    postsByGroupId, //
+    totalPostsGroup,
+    isLoading,
+  } = useSelector((state) => state.group); //groupSlice
 
   // lay nhung post trong data ra va loc theo groupId
-  const posts = currentPagePosts.map((postId) => groupPostsById[postId]);
-  const postsByGroup = currentPagePostsByGroup.map(
-    (groupPostId) => postsByGroupId[groupPostId] // postsByGroup
-  ); //?
+  console.log(groupPostsList);
 
   useEffect(() => {
-    if (userId) dispatch(getPostsGroup({ userId, groupId, page }));
-  }, [dispatch, userId, groupId, page]);
+    dispatch(getPostsGroup({ groupId, page }));
+  }, [dispatch, groupId, page]);
 
-  // l?y postsByGroup
+  // lay postsByGroupId
   return (
     <>
-      {posts.map((post) => (
+      {groupPostsList.map((post) => (
         <PostCard key={post._id} post={post} />
       ))}
 
-      {/* load more btn */}
+      {/* load more btn ?*/}
       <Box
         sx={{
           display: "flex",
@@ -41,15 +46,18 @@ function GroupPostList({ userId, groupId }) {
           paddingTop: "5px",
         }}
       >
-        {totalPosts ? (
-          // k load more dc
+        {totalPostsGroup ? (
+          // k load more
           <LoadingButton
-            variant="outlined"
+            variant="contained"
             size="small"
             color="secondary"
             loading={isLoading}
             onClick={() => setPage((page) => page + 1)}
-            disabled={Boolean(totalPosts) && posts.length >= totalPosts}
+            disabled={
+              Boolean(totalPostsGroup) &&
+              groupPostsList.length >= totalPostsGroup
+            }
           >
             Load more
           </LoadingButton>

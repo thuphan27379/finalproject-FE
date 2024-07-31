@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Stack,
   Typography,
@@ -8,11 +9,10 @@ import {
   Grid,
   Container,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
 
-import { getFriendRequests, cancelRequest } from "./friendSlice"; //
 import UserCard from "./UserCard";
 import SearchInput from "../../components/SearchInput";
+import { getFriendRequests, cancelRequest, getUsers } from "./friendSlice"; //
 
 // incoming
 function FriendRequests() {
@@ -35,7 +35,7 @@ function FriendRequests() {
   };
 
   useEffect(() => {
-    dispatch(getFriendRequests({ filterName, page })); //
+    dispatch(getFriendRequests({ filterName, page })); // getFriendRequests
   }, [filterName, page, dispatch]);
 
   const handleCancelRequest = (targetUserId) => {
@@ -46,23 +46,31 @@ function FriendRequests() {
   return (
     <>
       <Container xs={8}>
-        <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
+        <Typography
+          variant="h5"
+          sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }} //
+        >
           Received Friend Requests List
         </Typography>
 
         <Card
-          style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+          style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
           sx={{ p: 2 }}
         >
           <Stack spacing={2}>
             {/* Search Input and Pagination */}
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
               <SearchInput handleSubmit={handleSubmit} />
+              {/* result, hide if not ? */}
+              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
+                {totalUsers > 1
+                  ? `${totalUsers} users found`
+                  : totalUsers === 1
+                  ? `${totalUsers} user found`
+                  : "No user found"}
+              </Typography>
               <Box sx={{ flexGrow: 1 }} />
-              <Typography
-                variant="subtitle"
-                sx={{ color: "text.secondary", ml: 1 }}
-              >
+              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
                 {totalUsers > 1
                   ? `${totalUsers} requests`
                   : totalUsers === 1

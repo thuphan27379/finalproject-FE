@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Stack, Avatar, TextField, IconButton } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
+import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 
 import useAuth from "../../hooks/useAuth";
 import { createComment } from "./commentSlice";
@@ -41,13 +41,14 @@ function CommentForm({ postId }) {
               "& fieldset": {
                 borderWidth: `1px !important`,
                 borderColor: (theme) =>
-                  `${theme.palette.grey[500_32]} !important`,
+                  `${theme.palette.secondary.main} !important`,
+                color: "#fff", // placeholder text color?
               },
             }}
           />
 
           <IconButton type="submit">
-            <SendIcon
+            <SendOutlinedIcon
               color="secondary"
               sx={{
                 fontSize: 23,

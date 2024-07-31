@@ -1,8 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { IconButton, Stack, Typography } from "@mui/material";
-import ThumbDownAltRoundedIcon from "@mui/icons-material/ThumbDownAltRounded";
-import ThumbUpRoundedIcon from "@mui/icons-material/ThumbUpRounded";
+import ThumbDownAltOutlinedIcon from "@mui/icons-material/ThumbDownAltOutlined";
+import ThumbUpAltOutlinedIcon from "@mui/icons-material/ThumbUpAltOutlined";
+import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 
 import { sendPostReaction } from "./postSlice";
 
@@ -14,13 +16,15 @@ function PostReaction({ post }) {
     dispatch(sendPostReaction({ postId: post._id, emoji }));
   };
 
-  //
+  // if current user is like => icon is Filled !!!
   return (
     <>
       <Stack direction="row" alignItems="center" justifyContent="flex-end">
         {/* LIKE */}
         <IconButton onClick={() => handleClick("like")}>
-          <ThumbUpRoundedIcon sx={{ fontSize: 18, color: "secondary.main" }} />
+          <ThumbUpAltOutlinedIcon
+            sx={{ fontSize: 18, color: "secondary.main" }}
+          />
         </IconButton>
         <Typography variant="h7" mr={1}>
           {post?.reactions?.like}
@@ -28,7 +32,9 @@ function PostReaction({ post }) {
 
         {/* DISLIKE */}
         <IconButton onClick={() => handleClick("dislike")}>
-          <ThumbDownAltRoundedIcon sx={{ fontSize: 18, color: "error.main" }} />
+          <ThumbDownAltOutlinedIcon
+            sx={{ fontSize: 18, color: "error.main" }}
+          />
         </IconButton>
         <Typography variant="h7">{post?.reactions?.dislike}</Typography>
       </Stack>

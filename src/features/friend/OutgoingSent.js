@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Stack,
   Typography,
@@ -8,9 +9,8 @@ import {
   Grid,
   Container,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
 
-import { getOutgoingSents, cancelRequest } from "./friendSlice";
+import { getOutgoingSents, cancelRequest, getUsers } from "./friendSlice";
 import UserCard from "./UserCard";
 import SearchInput from "../../components/SearchInput";
 
@@ -37,7 +37,7 @@ function OutgoingSents() {
   };
 
   useEffect(() => {
-    dispatch(getOutgoingSents({ filterName, page }));
+    dispatch(getOutgoingSents({ filterName, page })); //getOutgoingSents
   }, [filterName, page, dispatch]);
 
   const handleCancelRequest = (targetUserId) => {
@@ -48,23 +48,31 @@ function OutgoingSents() {
   return (
     <>
       <Container xs={8}>
-        <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
+        <Typography
+          variant="h5"
+          sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }}
+        >
           Sent Friend Requests List
         </Typography>
 
         <Card
-          style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
+          style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
           sx={{ p: 2 }}
         >
           <Stack spacing={2}>
             {/* Search Input and Pagination */}
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
               <SearchInput handleSubmit={handleSubmit} />
+              {/* result, hide if not ? */}
+              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
+                {totalUsers > 1
+                  ? `${totalUsers} users found`
+                  : totalUsers === 1
+                  ? `${totalUsers} user found`
+                  : "No user found"}
+              </Typography>
               <Box sx={{ flexGrow: 1 }} />
-              <Typography
-                variant="subtitle"
-                sx={{ color: "text.secondary", ml: 1 }}
-              >
+              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
                 {totalUsers > 1
                   ? `${totalUsers} requests`
                   : totalUsers === 1
@@ -75,6 +83,7 @@ function OutgoingSents() {
                 count={totalPages}
                 page={page}
                 onChange={(e, page) => setPage(page)}
+                sx={{ color: "#fff" }}
               />
             </Stack>
           </Stack>

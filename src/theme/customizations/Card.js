@@ -1,22 +1,27 @@
 //
 function Card(theme) {
-  // MuiCard, MuiCardHeader...: classname of MUI
+  // MuiCard, MuiCardHeader...: className of MUI
   return {
     MuiCard: {
       styleOverrides: {
         root: {
           position: "relative",
           zIndex: 0, // Fix Safari overflow: hidden with border radius
-          borderRadius: "1%", //?
+          border: "2px solid  #0A3161", // ? border color
+          borderRadius: "1%", // ?
+          backgroundColor: "#000", // bg
+          color: "#fff", // text
         },
       },
     },
+
     MuiCardHeader: {
       defaultProps: {
         titleTypographyProps: { variant: "h6" },
         subheaderTypographyProps: {
           variant: "body2",
           marginTop: theme.spacing(0.5),
+          color: "#fff", //
         },
       },
       styleOverrides: {
@@ -25,13 +30,16 @@ function Card(theme) {
         },
       },
     },
+
     MuiCardContent: {
       styleOverrides: {
         root: {
           padding: theme.spacing(3),
+          color: "#fff", // ?
         },
       },
     },
+
     MuiGridContainer: {
       styleOverrides: {
         root: {

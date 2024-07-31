@@ -1,7 +1,7 @@
 import { Box, CircularProgress } from "@mui/material"; // Loading icon
 import React from "react";
 
-//
+// vong tron nam lech ben phai ?
 function LoadingScreen() {
   return (
     <>

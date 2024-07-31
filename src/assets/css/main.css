@@ -33,8 +33,6 @@ html {
 body {
   font-family: "Ubuntu", sans-serif;
   font-size: 15px;
-  line-height: var(--font-content-line-height);
-  /* text-rendering: optimizeSpeed; */
 }
 
 a {
@@ -55,13 +53,10 @@ textarea {
 }
 
 body {
-  accent-color: var(--accent-primary);
-  background-color: black;
-  color: var(--text-primary);
   scrollbar-color: var(--scrollbar-color) var(--scrollbar-bg);
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
   body.mobile-overlay-active {
     overflow: hidden;
   }
@@ -87,10 +82,10 @@ h3 {
 h1 {
   font: var(--type-heading-h1);
   margin-bottom: 2rem;
-  /* word-break: break-word; */
+  word-break: break-word;
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   h1 {
     font: var(--type-heading-h1);
   }
@@ -132,18 +127,14 @@ h6 {
   font: var(--type-heading-h6);
 }
 
-/* h1 code,
+h1 code,
 h2 code,
 h3 code,
 h4 code,
 h5 code,
 h6 code {
   font-size: inherit;
-} */
-
-/* p {
-  margin: 1rem 0 2rem;
-} */
+}
 
 a.page-not-created {
   cursor: not-allowed;
@@ -210,7 +201,7 @@ a.page-not-created:visited {
   );
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   :root {
     --type-heading-h1: 600 var(--type-heading-h1-font-size) /
       var(--heading-line-height) var(--font-heading);

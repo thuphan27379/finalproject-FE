@@ -1,14 +1,14 @@
 import React from "react";
-import Grid from "@mui/material/Grid";
-import { Container } from "@mui/material";
+import { Container, Grid, Stack, Pagination } from "@mui/material";
 
-import "../assets/css/main.css";
-import "../assets/css/reset.css";
-import "../assets/css/mainbody.css";
+// import "../assets/css/main.css";
+// import "../assets/css/reset.css";
+import "../assets/css/body.css";
 import "../assets/css/footer.css";
 
-// about us, contact us, donate us, ...
+// /about: about us, contact, cooperation, donate...
 const Aboutus = () => {
+  //
   return (
     <>
       <Container
@@ -17,25 +17,28 @@ const Aboutus = () => {
           justifyContent: "space-evenly",
           maxWidth: "unset!important",
           marginTop: 0,
-          backgroundColor: "black",
-          color: "white",
+          backgroundColor: "#000",
+          color: "#fff",
           width: "95%",
         }}
       >
         <Grid marginTop={"68px"} maxWidth={"60vw"} marginX={"auto"}>
-          <div class="homepage">
+          <div className="homepage">
             {/* <!-- 1 Welcome --> */}
-            <div class="homepage-hero dark">
+            <div className="homepage-hero dark">
               <section>
-                <h1>Domains and Startup</h1>
-                <h3>Welcome!</h3>
-                {/* <img
-                  style={{ backgroundColor: "white", width: "500px" }}
-                  backgroundColor="white"
+                <h1>All about Domains and Startup</h1>
+                <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
+                  Welcome Entrepreneur!
+                </h3>
+                {/* ??? */}
+                <img
+                  // style={{ backgroundColor: "white", width: "500px" }}
+                  // backgroundColor="white"
                   src="C:/Users/Public/finalproject-frontend/src/assets/img/domain.png"
                   alt=""
                   width="500px"
-                /> */}
+                />
                 <p>
                   WWW.VNWP.COM
                   <br />
@@ -68,16 +71,14 @@ const Aboutus = () => {
                   needed) and more...
                   <br />
                   <br />
-                  <br /> VNWP.COM has the following main activities:
-                  <br />
+                  <br /> VNWP.COM has the following main activities: <br />
                   <br /> - Some typical Startup projects of VNWP.COM. You can
                   own it or cooperate.
                   <br /> - Brand Names and Startup ideas for you.
-                  <br /> - Domain Names as Brand Names for you to choose from.
+                  <br /> - Domain Names as Brand Names for you to choose.
                   <br />
                   <br />
-                  <br /> How VNWP.COM works:
-                  <br />
+                  <br /> How VNWP.COM works: <br />
                   <br /> - For typical Startup projects, VNWP.COM will give many
                   incentives to partners who want to transfer ownership or
                   invest in development cooperation. Each project has its own
@@ -91,7 +92,9 @@ const Aboutus = () => {
                   VNWP.COM has specific information about domain name value and
                   preferential policies for you. VNWP.COM uses the highly
                   reputable and guaranteed Escrow.com and SEDO.COM as a partner
-                  for payment and transfer domain name.
+                  for payment and transfer domain name. <br />
+                  <br />
+                  Our ESCROW: worlddetail@gmail.com
                   <br />
                   <br />
                   <br /> Agreement of use: When you enter into an economic
@@ -103,17 +106,14 @@ const Aboutus = () => {
               </section>
             </div>
 
-            {/* contact and donate for youth startup */}
-
             {/* <!-- 5 Cooperation --> */}
-            <div class="featured-articles">
+            {/* link to /about */}
+            <div className="featured-articles">
               <h2>Cooperation and Partners</h2>
-              <div class="tile-container">
-                <div class="article-tile">
-                  <a href="/" class="tile-tag">
-                    ICANN
-                  </a>
-                  <h3 class="tile-title">
+              <div className="tile-container">
+                <div className="article-tile">
+                  <p className="tile-tag">ICANN</p>
+                  <h3 className="tile-title">
                     <a href="https://www.icann.org/">https://www.icann.org/</a>
                   </h3>
                   <p>
@@ -122,26 +122,22 @@ const Aboutus = () => {
                     and logged in to view the schedule.
                   </p>
                 </div>
-                <div class="article-tile">
-                  <a href="/" class="tile-tag">
-                    GODADDY
-                  </a>
-                  <h3 class="tile-title">
-                    <a href="https://www.godaddy.com/">
-                      https://www.godaddy.com/
-                    </a>
+
+                <div className="article-tile">
+                  <p className="tile-tag">SEDO</p>
+                  <h3 className="tile-title">
+                    <a href="https://www.sedo.com/">https://www.sedo.com/</a>
                   </h3>
                   <p>
-                    Buy a new domain and get GoDaddy Airo™, our customizable,
-                    AI-powered solution that can easily deliver a website, logo,
-                    LLC, and more^.
+                    Find the perfect web address, or earn money with domains you
+                    already own, on the world's largest domain name marketplace.
+                    The first address for your online success.
                   </p>
                 </div>
-                <div class="article-tile">
-                  <a href="/" class="tile-tag">
-                    ONLINENIC
-                  </a>
-                  <h3 class="tile-title">
+
+                <div className="article-tile">
+                  <p className="tile-tag">ONLINENIC</p>
+                  <h3 className="tile-title">
                     <a href="https://onlinenic.com/en/">
                       https://onlinenic.com/en/
                     </a>
@@ -153,11 +149,10 @@ const Aboutus = () => {
                     more relevant.
                   </p>
                 </div>
-                <div class="article-tile">
-                  <a href="/" class="tile-tag">
-                    ESCROW
-                  </a>
-                  <h3 class="tile-title">
+
+                <div className="article-tile">
+                  <p className="tile-tag">ESCROW</p>
+                  <h3 className="tile-title">
                     <a href="https://www.escrow.com/">
                       https://www.escrow.com/
                     </a>
@@ -167,11 +162,10 @@ const Aboutus = () => {
                     the risk of chargebacks. Truly secure payments.
                   </p>
                 </div>
-                <div class="article-tile">
-                  <a href="/" class="tile-tag">
-                    WHOIS
-                  </a>
-                  <h3 class="tile-title">
+
+                <div className="article-tile">
+                  <p className="tile-tag">WHOIS</p>
+                  <h3 className="tile-title">
                     <a href="https://who.is/">https://who.is/</a>
                   </h3>
                   <p>
@@ -180,27 +174,27 @@ const Aboutus = () => {
                     other statistics.
                   </p>
                 </div>
-                <div class="article-tile">
-                  <a href="/" class="tile-tag">
-                    Domain Appraisals
-                  </a>
-                  <h3 class="tile-title">
+
+                <div className="article-tile">
+                  <p className="tile-tag">DOMAIN APPRAISALS</p>
+                  <h3 className="tile-title">
                     <a href="https://sedo.com">https://sedo.com</a>
                   </h3>
                   <p>
                     The world's leading platform for domain buyers and sellers.
-                    The first address for your online success
+                    The first address for your online success.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* footer menu */}
-            <footer id="nav-footer" class="page-footer">
-              <div class="page-footer-grid">
+            {/* link to /about */}
+            <footer id="nav-footer" className="page-footer">
+              <div className="page-footer-grid">
                 {/* <!-- logo --> */}
-                <div class="page-footer-logo-col">
-                  <div class="mainlogo">
+                <div className="page-footer-logo-col">
+                  <div className="mainlogo">
                     <a href="/">
                       <img src="./huongsac-logo.png" alt="" />
                     </a>
@@ -209,63 +203,66 @@ const Aboutus = () => {
                   <p>World Wide Web For All</p>
                 </div>
                 {/* <!-- category footer --> */}
-                <div class="page-footer-nav-col-1">
-                  <h2 class="footer-nav-heading">Biz Holding</h2>
-                  <ul class="footer-nav-list">
-                    <li class="footer-nav-item">
+                <div className="page-footer-nav-col-1">
+                  <h2 className="footer-nav-heading">Biz Holding</h2>
+                  <ul className="footer-nav-list">
+                    <li className="footer-nav-item">
                       <a href="/">About</a>
                     </li>
-                    <li class="footer-nav-item">
+                    <li className="footer-nav-item">
                       <a href="/">Blog</a>
                     </li>
-                    <li class="footer-nav-item">
+                    <li className="footer-nav-item">
                       <a href="/" target="_blank" rel="noopener noreferrer">
                         Careers
                       </a>
                     </li>
-                    <li class="footer-nav-item">
+                    <li className="footer-nav-item">
                       <a href="/">Advertise with us</a>
+                    </li>
+                    <li className="footer-nav-item">
+                      <a href="/">Sitemap</a>
                     </li>
                   </ul>
                 </div>
                 {/* <!--  --> */}
-                <div class="page-footer-nav-col-2">
-                  <h2 class="footer-nav-heading">Support</h2>
-                  <ul class="footer-nav-list">
-                    <li class="footer-nav-item">
-                      <a class="footer-nav-link" href="/">
+                <div className="page-footer-nav-col-2">
+                  <h2 className="footer-nav-heading">Support</h2>
+                  <ul className="footer-nav-list">
+                    <li className="footer-nav-item">
+                      <a className="footer-nav-link" href="/">
                         Business Development
                       </a>
                     </li>
-                    <li class="footer-nav-item">
-                      <a class="footer-nav-link" href="/">
+                    <li className="footer-nav-item">
+                      <a className="footer-nav-link" href="/">
                         Online Marketplaces
                       </a>
                     </li>
-                    <li class="footer-nav-item">
-                      <a class="footer-nav-link" href="/">
+                    <li className="footer-nav-item">
+                      <a className="footer-nav-link" href="/">
                         Email
                       </a>
                     </li>
-                    <li class="footer-nav-item">
-                      <a class="footer-nav-link" href="/">
+                    <li className="footer-nav-item">
+                      <a className="footer-nav-link" href="/">
                         Subdomain
                       </a>
                     </li>
                   </ul>
                 </div>
                 {/* <!--  --> */}
-                <div class="page-footer-nav-col-3">
-                  <h2 class="footer-nav-heading">Communities</h2>
-                  <ul class="footer-nav-list">
-                    <li class="footer-nav-item">
-                      <a class="footer-nav-link" href="/">
+                <div className="page-footer-nav-col-3">
+                  <h2 className="footer-nav-heading">Communities</h2>
+                  <ul className="footer-nav-list">
+                    <li className="footer-nav-item">
+                      <a className="footer-nav-link" href="/">
                         Our community
                       </a>
                     </li>
-                    <li class="footer-nav-item">
+                    <li className="footer-nav-item">
                       <a
-                        class="footer-nav-link"
+                        className="footer-nav-link"
                         href="/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -273,9 +270,9 @@ const Aboutus = () => {
                         Affiliates
                       </a>
                     </li>
-                    <li class="footer-nav-item">
+                    <li className="footer-nav-item">
                       <a
-                        class="footer-nav-link"
+                        className="footer-nav-link"
                         href="/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -283,9 +280,9 @@ const Aboutus = () => {
                         Support
                       </a>
                     </li>
-                    <li class="footer-nav-item">
+                    <li className="footer-nav-item">
                       <a
-                        class="footer-nav-link"
+                        className="footer-nav-link"
                         href="/"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -293,28 +290,38 @@ const Aboutus = () => {
                         Chat
                       </a>
                     </li>
+                    <li className="footer-nav-item">
+                      <a
+                        className="footer-nav-link"
+                        href="/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Social network
+                      </a>
+                    </li>
                   </ul>
                 </div>
                 {/* <!--  --> */}
-                <div class="page-footer-nav-col-4">
-                  <h2 class="footer-nav-heading">Developers</h2>
-                  <ul class="footer-nav-list">
-                    <li class="footer-nav-item">
-                      <a class="footer-nav-link" href="/">
+                <div className="page-footer-nav-col-4">
+                  <h2 className="footer-nav-heading">Developers</h2>
+                  <ul className="footer-nav-list">
+                    <li className="footer-nav-item">
+                      <a className="footer-nav-link" href="/">
                         Web Technologies
                       </a>
                     </li>
-                    <li class="footer-nav-item">
-                      <a class="footer-nav-link" href="/">
+                    <li className="footer-nav-item">
+                      <a className="footer-nav-link" href="/">
                         eCommerce
                       </a>
                     </li>
-                    <li class="footer-nav-item">
-                      <a class="footer-nav-link" href="/">
+                    <li className="footer-nav-item">
+                      <a className="footer-nav-link" href="/">
                         IT Project Management
                       </a>
                     </li>
-                    <li class="footer-nav-item">
+                    <li className="footer-nav-item">
                       <a href="/" target="_blank" rel="noopener noreferrer">
                         Programming & Code
                       </a>

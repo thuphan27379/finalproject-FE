@@ -19,38 +19,40 @@ const slice = createSlice({
   name: "friend",
   initialState,
   reducers: {
-    //start Loading
+    // start Loading
     startLoading(state) {
       state.isLoading = true;
     },
-    //has Error
+    // has Error
     hasError(state, action) {
       state.isLoading = false;
       state.error = action.payload;
     },
-    //get Users Success
+    // get Users Success
     getUsersSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
       const { users, count, totalPages } = action.payload;
+
       users.forEach((user) => (state.usersById[user._id] = user));
       state.currentPageUsers = users.map((user) => user._id);
       state.totalUsers = count;
       state.totalPages = totalPages;
     },
-    //get Friends Success
+    // get Friends Success
     getFriendsSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
       const { users, count, totalPages } = action.payload;
+
       users.forEach((user) => (state.usersById[user._id] = user));
       state.currentPageUsers = users.map((user) => user._id);
       state.totalUsers = count;
       state.totalPages = totalPages;
     },
-    //get Friend Requests Success
+    // get Friend Requests Success
     getFriendRequestsSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -61,7 +63,7 @@ const slice = createSlice({
       state.totalUsers = count;
       state.totalPages = totalPages;
     },
-    //send Friend Request Success
+    // send Friend Request Success
     sendFriendRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -71,7 +73,7 @@ const slice = createSlice({
 
       state.incomingRequests = action.payload.users; //
     },
-    //decline Request Success
+    // decline Request Success
     declineRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -79,7 +81,7 @@ const slice = createSlice({
       const { targetUserId, ...friendship } = action.payload;
       state.usersById[targetUserId].friendship = friendship;
     },
-    //accept Request Success ??
+    // accept Request Success ??
     acceptRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -87,7 +89,7 @@ const slice = createSlice({
       const { targetUserId, ...friendship } = action.payload;
       state.usersById[targetUserId].friendship = friendship;
     },
-    //cancel Request Success//
+    // cancel Request Success//
     cancelRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -99,7 +101,7 @@ const slice = createSlice({
         (request) => request.friendship.to !== targetUserId
       );
     },
-    //remove Friend Success
+    // remove Friend Success
     removeFriendSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -107,7 +109,7 @@ const slice = createSlice({
       const { targetUserId } = action.payload;
       state.usersById[targetUserId].friendship = null;
     },
-    //sent friend request, outgoing//
+    // sent friend request, outgoing//
     getOutgoingSentsSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -122,7 +124,6 @@ export default slice.reducer;
 
 // actions //
 // function getUsers, for export to AddFriend.js
-// startLoading
 export const getUsers =
   ({ filterName, page = 1, limit = 12 }) =>
   async (dispatch) => {
@@ -180,7 +181,6 @@ export const getFriendRequests =
 
 // function send Friend Request
 // sendFriendRequestSuccess
-// action btn
 export const sendFriendRequest = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
 
@@ -240,7 +240,7 @@ export const acceptRequest = (targetUserId) => async (dispatch) => {
 // cancelRequestSuccess
 export const cancelRequest = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
-  console.log(targetUserId);
+  // console.log(targetUserId);
 
   try {
     const response = await apiService.delete(
@@ -274,8 +274,6 @@ export const removeFriend = (targetUserId) => async (dispatch) => {
 };
 
 // outgoing list
-// getOutgoingSents
-// getOutgoingSentsSuccess
 export const getOutgoingSents =
   ({ filterName, page = 1, limit = 12 }) =>
   async (dispatch) => {

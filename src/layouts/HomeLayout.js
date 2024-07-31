@@ -23,7 +23,7 @@ function HomeLayout() {
           marginX: "auto",
           paddingLeft: "60px",
           paddingRight: "60px",
-
+          backgroundColor: "#000", // back ground of site
           "& .css-11chnac-MuiButtonBase-root-MuiListItemButton-root": {
             paddingLeft: "10px",
             paddingRight: "0px",

@@ -13,3 +13,4 @@ export const FRIEND_REQUESTS_PER_PAGE = 10;
 export const COMMENTS_PER_POST = 3;
 export const GROUP_PER_PAGE = 5;
 export const INTEREST_PER_PAGE = 5;
+export const DOMAIN_PER_PAGE = 100;

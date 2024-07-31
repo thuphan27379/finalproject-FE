@@ -11,9 +11,9 @@ import ProfileAbout from "./ProfileAbout";
 // show own info & enterprise
 // function show info of user account
 function Profile({ profile }) {
-  const { user } = useAuth(); //get data of user from useAuth
+  const { user } = useAuth(); // get data of user from useAuth
 
-  //render
+  // render
   return (
     <>
       <Grid
@@ -38,8 +38,11 @@ function Profile({ profile }) {
             paddingRight: "10px", //?
           }}
         >
-          <Typography variant="h5" sx={{ mb: 3, paddingLeft: "40px" }}>
-            Your Business
+          <Typography
+            variant="h5"
+            sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }}
+          >
+            My Business
           </Typography>
 
           <Stack
@@ -74,11 +77,7 @@ function Profile({ profile }) {
             {/* 40% */}
             <ProfileAbout profile={profile} maxWidth={"200px"} />
             {/* 40% */}
-            <ProfileSocialInfo
-              profile={profile}
-              minWidth={"230px"}
-              // sx={{ maxWidth: "230px" }}
-            />
+            <ProfileSocialInfo profile={profile} minWidth={"230px"} />
           </Stack>
         </Grid>
 

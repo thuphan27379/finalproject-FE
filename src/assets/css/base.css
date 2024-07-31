@@ -1,18 +1,15 @@
+/* chua xai */
 :root {
-  --primary-color-red: #b31942;
-  --primary-color-blue: #0a3161;
+  --primary-red-color: #b31942;
+  --primary-blue-color: #0a3161;
   --white-color: #fff;
   --black-color: #000;
   --text-color: #333;
   --border-color: #dbdbdb;
+  --dark-grey-color: #4e4e4e;
+  --light-grey-color: #e2e2e2;
   --error-text-color: #b00020;
-  --header-height: 120px;
-  --navbar-height: 34px;
-  --header-sort-bar-height: 46px;
-  /* --border-radius: 5px; */
   --box-shadow: 0 0 0 2px rgb(10, 49, 97, 0.1);
-  --color-dark-grey: #4e4e4e;
-  --colo-light-grey: #e2e2e2;
 }
 
 * {
@@ -25,15 +22,14 @@
 html {
   font-size: 18px;
   line-height: 1.6rem;
-  font-family: "Google Sans", Roboto, Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", sans-serif;
   box-sizing: border-box;
 }
 
 body {
-  background-color: white;
-  color: black;
+  background-color: #fff;
+  color: #000;
   cursor: auto;
-  overflow-wrap: break-word;
   overflow-wrap: break-word;
   border: solid;
 }
@@ -111,13 +107,12 @@ a:hover {
 
 .card:hover {
   border: #dadce0 solid 1px;
-  /* border-radius: 8px; */
-  content: "";
   height: 100%;
   position: absolute;
   transition: border 0.25s;
 }
 
+/*  */
 .grid {
   width: 1200px;
   max-width: 100%;
@@ -158,6 +153,7 @@ a:hover {
   width: 83.3333%;
 }
 
+/*  */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -200,18 +196,19 @@ a:hover {
   position: relative;
   z-index: 1;
   background-color: #fff;
-  /* border-radius: 5px; */
+  border-radius: 5px;
   --growth-from: 0.7;
   --growth-to: 1;
   animation: growth 0.1s linear;
 }
 
+/*  */
 .btn {
   min-width: 124px;
   height: 34px;
   text-decoration: none;
   border: none;
-  /* border-radius: 2px; */
+  border-radius: 2px;
   font-size: 1.4rem;
   padding: 0 12px;
   outline: none;
@@ -249,7 +246,7 @@ a:hover {
   min-width: 200px;
   height: 34px;
   padding: 0 12px;
-  /* border-radius: 2px; */
+  border-radius: 2px;
   background-color: #fff;
   display: flex;
   align-items: center;
@@ -269,7 +266,7 @@ a:hover {
   left: 0;
   right: 0;
   top: 25px;
-  /* border-radius: 2px; */
+  border-radius: 2px;
   box-shadow: 0 1px 2px #e0e0e0;
   background-color: #fff;
   padding: 8px 16px;
@@ -320,5 +317,5 @@ a:hover {
   height: 30px;
   text-align: center;
   line-height: 30px;
-  /* border-radius: 2px; */
+  border-radius: 2px;
 }

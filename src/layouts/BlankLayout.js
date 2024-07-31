@@ -1,11 +1,11 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 import { Box, Stack } from "@mui/material";
-import React from "react";
 
 import HomeHeader from "./HomeHeader";
 import HomeFooter from "./HomeFooter";
 
-// login/register/notfound page
+// login/register/not found page
 function BlankLayout() {
   return (
     <>
@@ -14,6 +14,7 @@ function BlankLayout() {
         minHeight="100vh"
         justifyContent="center"
         alignItems="center"
+        sx={{ backgroundColor: "#000", color: "#fff" }} //
       >
         <HomeHeader />
 

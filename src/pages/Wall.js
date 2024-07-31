@@ -5,9 +5,8 @@ import PostListWall from "../features/post/PostListWall";
 import useAuth from "../hooks/useAuth";
 
 // show all post of all user
-// NEU CHUA LOG IN THI CUNG KHONG THAY TAB WALL
-// khong dc delete hay edit post&comment cua nguoi khac ??
 // post of group!!!
+// fromGroup false //
 function Wall() {
   const { user } = useAuth();
 
@@ -24,24 +23,28 @@ function Wall() {
           paddingLeft: "17px",
           // borderRadius: "0px", //?
           "& .css-mencvv-MuiSvgIcon-root": { marginRight: "-10px" },
-          "& .css-1sobm86-MuiPaper-root-MuiCard-root": {
-            // borderRadius: "4px", //?
-          },
+          "& .css-1sobm86-MuiPaper-root-MuiCard-root": {},
           "& .css-p64cbd-MuiStack-root": { paddingRight: "40px" },
         }}
       >
         <Stack spacing={1} width={"100%"}>
           <Typography
             variant="h5"
-            sx={{ mb: 3, paddingLeft: "40px", paddingTop: "0px" }}
+            sx={{
+              mb: 3,
+              paddingLeft: "40px",
+              paddingTop: "0px",
+              color: "#0A3161",
+            }}
           >
             Startup & Domain Community
           </Typography>
+
           <PostListWall
             p={1}
             sx={{
               "& .css-lbjakd-MuiStack-root > :not(style) ~ :not(style)": {
-                marginTop: "40px", //??
+                marginTop: "50px", //?? why not work
               },
             }}
           />

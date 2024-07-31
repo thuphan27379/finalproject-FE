@@ -39,7 +39,7 @@ function PostListWall() {
       >
         {totalPosts ? (
           <LoadingButton
-            variant="outlined"
+            variant="contained"
             size="small"
             color="secondary"
             loading={isLoading}

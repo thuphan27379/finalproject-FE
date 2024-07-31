@@ -1,9 +1,9 @@
 import { styled } from "@mui/material/styles";
 import { Link, Card, CardHeader, Stack, Box } from "@mui/material";
+import XIcon from "@mui/icons-material/X";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import XIcon from "@mui/icons-material/X";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
 // 3rd show info about social link
@@ -36,7 +36,7 @@ function ProfileSocialInfo({ profile }) {
       href: linkedinLink,
     },
     {
-      name: "Twitter",
+      name: "X",
       icon: (
         <IconStyle color="	#1DA1F2">
           <XIcon />
@@ -77,15 +77,17 @@ function ProfileSocialInfo({ profile }) {
   return (
     <>
       <Card
-        style={{ border: "1px solid #c0d9f9", borderRadius: "3px" }}
-        sx={{ minWidth: "303px", minHeight: "255px" }}
+        style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
+        sx={{ minWidth: "325px", minHeight: "255px", color: "#fff" }}
       >
-        <CardHeader variant="h6" title="Social" sx={{ paddingTop: "10px" }} />
+        {/* website */}
+        <CardHeader variant="h6" title="Links" sx={{ paddingTop: "10px" }} />
         <Stack spacing={2} sx={{ p: 2 }}>
           {SOCIALS.map((link) => (
             <Stack key={link.name} direction="row" alignItems="center">
               {link.icon}
               <Link
+                sx={{ color: "#fff" }} //
                 component="span"
                 variant="body2"
                 color="text.primary"

@@ -18,7 +18,6 @@ import NotFoundPage from "../pages/NotFoundPage";
 import AccountPage from "../pages/AccountPage";
 import UserProfilePage from "../pages/UserProfilePage";
 import Group from "../features/group/Group"; // group component trong blog
-import GroupPage from "../pages/GroupPage"; // group page
 
 // INDEX OF ALL ROUTES = connect all layouts & pages together
 function Router() {
@@ -29,12 +28,14 @@ function Router() {
         <Route element={<HomeLayout />}>
           {/* company */}
           <Route index path="/" element={<HomePage />} />
-          <Route path="/" element={<Aboutus />} />
-          <Route path="/" element={<Projects />} />
-          <Route path="/" element={<Domains />} />
-          <Route path="/" element={<Startup />} />
-          {/* Community */}
-          {/* <Route path="/blog" element={<Wall />} /> */}
+          {/* about */}
+          <Route path="/about" element={<Aboutus />} />
+          {/* project */}
+          <Route path="/project" element={<Projects />} />
+          {/* startup */}
+          <Route path="/startup" element={<Startup />} />
+          {/* domain */}
+          <Route path="/domain" element={<Domains />} />
         </Route>
 
         {/* login/signup */}
@@ -74,7 +75,7 @@ function Router() {
           />
 
           <Route
-            path="/group/:groupId" // /blog
+            path="/group/:groupId" //  <GroupPage />
             element={
               <AuthRequire>
                 <Group />
