@@ -13,6 +13,7 @@ const initialState = {
   postsById: {}, // luu tat ca posts theo postId
   currentPagePosts: [], // luu tat ca postId
   postByGroup: {}, // post from group & check member
+  userReactions: {}, // reaction clicked
 };
 
 // createSlice all the slices
@@ -29,7 +30,6 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
-    //fix bug about get list of posts of currentUser
     // declare all posts are empty before getPosts
     resetPosts(state, action) {
       state.postsById = {};
@@ -40,7 +40,7 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
 
-      const { posts, count } = action.payload; //state.posts = action.payload.posts
+      const { posts, count } = action.payload;
 
       // loc cac bai post sao cho khong trung lap
       posts.forEach((post) => {
@@ -50,34 +50,26 @@ const slice = createSlice({
       });
       state.totalPosts = count;
     },
-    // create a new post //render new post without refresh page
-    // & post from group ?!?!
+    // create a new post // render new post without refresh page
     createPostSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
-      // post bthuong
       const newPost = action.payload;
 
       if (state.currentPagePosts.length % POSTS_PER_PAGE === 0)
         state.currentPagePosts.pop(); // xoa bot post list truoc de list new post
       state.postsById[newPost._id] = newPost;
-      state.currentPagePosts.unshift(newPost._id); //gan vao dau tien
-
-      // post of group ?
-      // userId
-      // params groupId, members
-      // const {} = action.payload; //state.posts = action.payload.posts
-      // console.log(action.payload);
-      // if (!state..includes(user._id))
+      state.currentPagePosts.unshift(newPost._id); // gan vao dau tien
     },
     // reaction a post
     sendPostReactionSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
-      const { postId, reactions } = action.payload;
-      state.postsById[postId].reactions = reactions; //update new reaction
+      const { postId, reactions, userReaction } = action.payload;
+      state.postsById[postId].reactions = reactions; // update new reaction
+      state.userReactions[postId] = userReaction; // store user reaction
     },
     // delete a post & delete in postsByGroupId also ?
     deletePostSuccess(state, action) {
@@ -136,16 +128,14 @@ export const getPosts =
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
 
-    // if post from group & by groupId (postsByGroupId)
-    // fromGroup is false
     try {
       const params = { page, limit };
       const response = await apiService.get(`/posts/user/${userId}`, {
         params,
       });
-      //fix bug about get list of posts of currentUser
+      // fix bug about get list of posts of currentUser
       if (page === 1) dispatch(slice.actions.resetPosts());
-      //reset posts before dispatch and show only posts of this currentUser
+      // reset posts before dispatch and show only posts of this currentUser
       dispatch(slice.actions.getPostsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
@@ -173,7 +163,6 @@ export const getAllPosts =
   };
 
 // create a post
-// & on the group ?!?!
 export const createPost =
   (
     { content, image, fromGroup } // ,userId, groupId
@@ -181,25 +170,12 @@ export const createPost =
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
 
-    // check if member join group ? //
-    // get userId
-    // get groupId, get members of group
-    // if has params groupId, check if members include user, if yes can post
-    // if not
-    // "/:groupId/posts",
-
-    /* dang lam
-    if (members.group.includes(currentUserId)) {}       
-    */
-
     try {
-      // post bthuong
       // upload image to cloudinary.com - from PostForm.js
       const imageUrl = await cloudinaryUpload(image);
       const response = await apiService.post("/posts", {
         content,
         image: imageUrl,
-        // fromGroup: false // ??
       });
 
       dispatch(slice.actions.createPostSuccess(response.data));
@@ -214,21 +190,33 @@ export const createPost =
 // reaction on the post
 export const sendPostReaction =
   ({ postId, emoji }) =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
     dispatch(slice.actions.startLoading());
     // console.log(postId);
     // console.log(emoji);
 
     try {
+      if (!["like", "dislike"].includes(emoji)) {
+        throw new Error("Invalid emoji value");
+      }
+
+      // filled vs outlined
+      const currentReaction = getState().post.userReactions[postId];
+      const newEmoji = currentReaction === emoji ? null : emoji;
+
       const response = await apiService.post(`/reactions`, {
         targetType: "Post",
         targetId: postId,
-        emoji,
+        emoji: newEmoji, //
       });
+
+      const userReaction = emoji; //
+
       dispatch(
         slice.actions.sendPostReactionSuccess({
           postId,
           reactions: response.data,
+          userReaction: newEmoji,
         })
       );
     } catch (error) {
@@ -237,8 +225,7 @@ export const sendPostReaction =
     }
   };
 
-// delete a post
-// confirm delete
+// delete a post // confirm delete
 export const deletePost =
   ({ postId }) =>
   async (dispatch) => {

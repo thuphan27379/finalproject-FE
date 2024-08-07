@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { shallowEqual, useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -32,7 +32,7 @@ function Group({ profile, groupId }) {
   // console.log(currentUserId);
 
   // getSingleGroup // show group name, interest,... after join
-  const { singleGroup } = useSelector((state) => state.group); // get state data from groupController (be)
+  const { singleGroup } = useSelector((state) => state.group, shallowEqual); // get state data from groupController (be)
   // console.log("Single group", singleGroup);
 
   useEffect(() => {
@@ -42,14 +42,24 @@ function Group({ profile, groupId }) {
   }, [dispatch, currentGroupId]);
 
   // leave a group
-  const handleLeave = async (currentGroupId, currentUserId) => {
+  const handleLeave = async (groupId, userId) => {
     try {
-      dispatch(leaveGroup({ currentGroupId, currentUserId })); //
-      toast.success("Leave a group successfully");
+      await dispatch(
+        leaveGroup({ currentGroupId: groupId, currentUserId: userId })
+      );
+      toast.success("Left group successfully");
       navigate(`/blog`);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  // check member for show Leave btn
+  const isUserMember = () => {
+    return (
+      singleGroup &&
+      singleGroup.members.some((member) => member._id === currentUserId)
+    );
   };
 
   //
@@ -71,15 +81,15 @@ function Group({ profile, groupId }) {
           spacing={3}
           width={"100%"}
           sx={{
-            paddingTop: "0px",
+            paddingTop: 0,
           }}
         >
           <Grid
             item
             xs={8}
-            md={12}
+            md={12} // responsive ok
             sx={{
-              paddingTop: "0px", //?
+              paddingTop: 0, //?
               paddingBottom: "20px", //work
               paddingLeft: "unset", //?
               marginLeft: "-10px", //work
@@ -93,24 +103,23 @@ function Group({ profile, groupId }) {
               My Groups
             </Typography>
 
-            {/* 3 cards */}
+            {/* 2 cards */}
             <Stack
               spacing={1}
               direction="row"
               justifyContent="space-between"
               alignItems="center"
               sx={{
+                paddingLeft: 0,
+                paddingTop: 0,
                 "& .css-13mhfsw-MuiGrid-root, .css-1q7661i-MuiGrid-root": {
-                  paddingLeft: "0px",
-                  paddingTop: "0px",
+                  paddingLeft: 0,
+                  paddingTop: 0,
                 },
                 "& .css-13mhfsw-MuiGrid-root > .MuiGrid-item": {
-                  paddingLeft: "0px",
-                  paddingTop: "0px",
+                  paddingLeft: 0,
+                  paddingTop: 0,
                 },
-                "& .css-15yln57-MuiStack-root > :not(style) ~ :not(style)": {},
-                paddingLeft: "0px",
-                paddingTop: "0px",
               }}
             >
               {/* 20% search*/}
@@ -131,27 +140,36 @@ function Group({ profile, groupId }) {
               sx={{ paddingBottom: "20px", paddingLeft: "20px" }}
             >
               <Box>
-                <Typography sx={{ color: "#fff" }}>
+                <Typography
+                // sx={{ color: "#fff" }}
+                >
                   Group name: {singleGroup.name} - Interest:{" "}
-                  {singleGroup.interests}{" "}
+                  {singleGroup.interests}
+                  {"."}{" "}
                 </Typography>
-                <Typography sx={{ color: "#fff" }}>
-                  Members Count: 100 - Posts Count: 1000{" "}
+              </Box>{" "}
+              <Box>
+                <Typography
+                // sx={{ color: "#fff" }}
+                >
+                  {" "}
+                  * Members Count: 100 - Posts Count: 1000{" "}
                 </Typography>
               </Box>
-
+              {/* leave btn */}
               <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "flex-end",
+                  justifyContent: "flex-end", // ?
+                  marginLeft: "50px",
                 }}
               >
                 <Button
                   color="secondary"
                   variant="contained"
                   sx={{
-                    p: 0,
+                    p: 0.5,
                     fontSize: 10,
                   }}
                   onClick={() => handleLeave(currentGroupId, currentUserId)}
@@ -159,13 +177,35 @@ function Group({ profile, groupId }) {
                   Leave
                 </Button>
               </Box>
+              {/*  */}
+              {isUserMember() && (
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "flex-end",
+                    marginLeft: "50px",
+                  }}
+                >
+                  <Button
+                    color="secondary"
+                    variant="contained"
+                    sx={{
+                      p: 0.5,
+                      fontSize: 10,
+                    }}
+                    onClick={() => handleLeave(currentGroupId, currentUserId)}
+                  >
+                    Leave
+                  </Button>
+                </Box>
+              )}
             </Stack>
           )}
 
           {/* postForm, postList */}
           <Grid container sx={{ paddingLeft: "15px" }}>
             <Stack spacing={1} width={"100%"}>
-              {/* {user._id === profile?._id && <PostForm />} */}
               <GroupPostForm userId={profile?._id} />
               <GroupPostList userId={profile?._id} />
             </Stack>

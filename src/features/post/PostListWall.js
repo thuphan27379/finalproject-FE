@@ -49,7 +49,9 @@ function PostListWall() {
             Load more
           </LoadingButton>
         ) : (
-          <Typography variant="h6">No Post Yet</Typography>
+          <Typography variant="h6" color="secondary">
+            No Post Yet
+          </Typography>
         )}
       </Box>
     </>

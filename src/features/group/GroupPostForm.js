@@ -2,17 +2,16 @@ import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Card, alpha, Stack } from "@mui/material";
+import { Box, Card, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 
 import useAuth from "../../hooks/useAuth";
 import { FormProvider, FTextField, FUploadImage } from "../../components/form";
 import { createPostGroup } from "./groupSlice";
 
-// phai biet dang o group nao
-// gan them groupId vào post, list post theo groupid
 // for create a new post in the group
 // validate content
 const yupSchema = Yup.object().shape({
@@ -72,8 +71,7 @@ function GroupPostForm() {
       const isMember = singleGroup?.members?.includes(currentUserId);
 
       if (!isMember) {
-        // toast.error("You must be a member of group")
-        alert("You must be a member of the group to post.");
+        toast.error("You must be a member of group to post");
         return;
       }
 
@@ -106,21 +104,18 @@ function GroupPostForm() {
               placeholder="Share your post into your group here..."
               sx={{
                 "& fieldset": {
-                  borderWidth: `1px !important`,
-                  borderColor: alpha("#919EAB", 0.32),
-                  border: "1px solid #B31942",
+                  border: "1px dashed #B31942",
                 },
-                placeholderColor: "#fff", // ?
               }}
             />
 
             {/* UPLOAD A FILE: btn choose File  */}
             <FUploadImage
-              // upload image with the Post
               name="image"
               accept="image/*"
               maxSize={3145728} // 3MB
               onDrop={handleDrop}
+              sx={{ border: "1px dashed #0A3161" }}
             />
 
             <Box
@@ -134,7 +129,7 @@ function GroupPostForm() {
               <LoadingButton
                 // loading...
                 type="submit"
-                variant="outlined"
+                variant="contained"
                 size="small"
                 loading={isSubmitting || isLoading}
               >

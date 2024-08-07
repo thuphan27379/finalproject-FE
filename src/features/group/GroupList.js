@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 
 import useAuth from "../../hooks/useAuth";
-import { getList, joinGroup } from "./groupSlice";
+import { getList, joinGroup, leaveGroup } from "./groupSlice";
 // import { GROUP_PER_PAGE } from "../../app/config";
 
 // 2nd card: list of group name, link to that group and with all post
@@ -28,16 +28,21 @@ function GroupList({ groupId }) {
   // console.log(currentGroupId);
 
   // const currentUser = useSelector((state) => state.user.currentUser);
+  // const membersList = useSelector((state) => state.group.members);
+  // console.log("member", membersList);
 
   const [page, setPage] = useState(1);
-  const { list, totalGroups } = useSelector((state) => state.group);
+  const { list, totalGroups } = useSelector(
+    (state) => state.group,
+    shallowEqual
+  );
   // console.log(list);
 
   useEffect(() => {
     dispatch(getList({ page }));
   }, [dispatch, page]);
 
-  // handleJoin ?? goi groupid ve api
+  // handleJoin, goi groupid ve api
   const handleJoin = async (currentGroupId, currentUserId) => {
     try {
       dispatch(joinGroup({ currentGroupId, currentUserId }));
@@ -53,12 +58,31 @@ function GroupList({ groupId }) {
     navigate(`/group/${groupId}`); //?
   };
 
+  // leave, at the Group.js
+  const handleLeave = async (groupId, userId) => {
+    try {
+      dispatch(leaveGroup({ currentGroupId: groupId, currentUserId: userId }));
+      toast.success("Left group successfully");
+      navigate(`/group`);
+    } catch (error) {
+      console.error("Error leaving group", error);
+    }
+  };
+
+  // check members array, if have currentUserId, hide btn
+  // currentUserId === members._id
+  const isUserMember = (group) => {
+    return group.members.some((member) => member._id === currentUserId);
+  };
+
+  console.log(isUserMember);
+
   //
   return (
     <>
       <Card
         style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
-        sx={{ minWidth: "500px", minHeight: "250px" }}
+        sx={{ minWidth: "455px", minHeight: "250px" }} //, width: "85%"
       >
         <Stack
           sx={{
@@ -86,9 +110,9 @@ function GroupList({ groupId }) {
             sx={{
               paddingTop: "10px",
               "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root": {
-                margin: "0px",
+                margin: 0,
               },
-              color: "#fff", //?
+              // color: "#fff", //?
             }}
           />
         </Stack>
@@ -97,7 +121,7 @@ function GroupList({ groupId }) {
         <Stack spacing={1} sx={{ p: 2 }}>
           {list.map((listItem) => (
             <Box
-              key={listItem._id}
+              key={listItem._id} // !
               sx={{
                 p: 0,
                 display: "flex",
@@ -105,9 +129,6 @@ function GroupList({ groupId }) {
                 flexWrap: "nowrap",
                 justifyContent: "space-between",
               }}
-              // onClick={() => {
-              //   handleNavigate(listItem._id);
-              // }}
             >
               <Typography
                 key={listItem._id}
@@ -115,25 +136,41 @@ function GroupList({ groupId }) {
                   handleNavigate(listItem._id);
                 }}
               >
-                * {listItem.name} ({listItem.interests}) -{" "}
-                {listItem.members.length} members
+                * {listItem.name} - {listItem.members.length} members
               </Typography>
 
-              {/* if already join, hide OR show Your Group OR leave */}
-              <Button
+              {/* <Button
                 color="secondary"
                 variant="contained"
                 sx={{
                   p: 0,
                   fontSize: 10,
-                  "& .css-13f20w7-MuiButtonBase-root-MuiButton-root:hover": {
-                    backgroundColor: "#ced5df",
-                  },
                 }}
                 onClick={() => handleJoin(listItem._id, currentUserId)}
               >
                 Join
-              </Button>
+              </Button> */}
+
+              {/* if already join, hide OR show Your Group OR leave */}
+              {isUserMember(listItem) ? (
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  sx={{ p: 0, fontSize: 10 }}
+                  onClick={() => handleLeave(listItem._id, currentUserId)}
+                >
+                  Joined
+                </Button>
+              ) : (
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  sx={{ p: 0, fontSize: 10 }}
+                  onClick={() => handleJoin(listItem._id, currentUserId)}
+                >
+                  Join
+                </Button>
+              )}
             </Box>
           ))}
         </Stack>

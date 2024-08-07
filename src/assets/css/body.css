@@ -10,12 +10,12 @@
   padding-top: 40px;
 }
 
-.homepage > * {
-  margin-top: 2rem;
-}
-
 .homepage > :first-child {
   margin-top: 0;
+}
+
+.homepage-hero h5 {
+  margin: 0;
 }
 
 .main-wrapper {
@@ -27,7 +27,6 @@
   margin-top: 0px;
   max-width: 1440px;
   padding-left: 5px;
-  /* padding-right: 16px; */
   column-gap: 48px;
   row-gap: 48px;
 }
@@ -70,13 +69,15 @@
 
 @media screen and (min-width: 480px) {
   .homepage-hero section h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
+    flex-wrap: wrap;
   }
 }
 
 @media screen and (min-width: 768px) {
   .homepage-hero section h1 {
-    font-size: 3rem;
+    font-size: 2rem;
+    flex-wrap: wrap;
   }
 }
 
@@ -84,7 +85,8 @@
   font-weight: 300;
 }
 
-/* 2 our projects & 5 */
+/* 2 our projects & 5 Cooperation */
+/* featured-articles */
 .featured-articles {
   display: flex;
   align-items: flex-start;
@@ -94,16 +96,26 @@
 }
 
 .featured-articles h2 {
-  margin-top: 0;
-  color: #b31942;
+  margin-top: 15px;
   font-size: 25px;
+  color: #b31942;
 }
 
+.featured-articles h2 a {
+  color: #b31942;
+}
+
+/* tile-container */
 .featured-articles .tile-container {
   display: grid;
   gap: 1rem;
   grid-auto-flow: row;
   max-width: 52rem;
+}
+
+/* ? */
+.featured-articles .tile-container a {
+  color: #0a3161;
 }
 
 @media screen and (min-width: 768px) {
@@ -112,6 +124,9 @@
   }
 }
 
+/* bo vo custom theme de toggle dark/light */
+
+/* article-tile */
 .featured-articles .article-tile {
   display: flex;
   flex-direction: column;
@@ -119,14 +134,15 @@
   border-radius: 0.5rem;
   margin-bottom: 5px;
   padding: 1rem;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .featured-articles .article-tile .tile-tag {
   font-weight: 600;
-  color: #fff;
+  /* color: #fff; */
 }
 
+/* tile-title */
 .featured-articles .article-tile .tile-title {
   display: flex;
   align-items: flex-start;
@@ -134,10 +150,6 @@
   font-weight: 600;
   margin: 0 0 1rem;
   color: #0a3161;
-}
-
-.featured-articles .article-tile .tile-title a {
-  color: #fff;
 }
 
 .featured-articles .article-tile .tile-title a:focus,
@@ -173,7 +185,7 @@
 
 /* 3 Domains for Startup */
 .news-title a {
-  color: #fff;
+  /* color: #fff; */
 }
 
 .latest-news {
@@ -183,7 +195,7 @@
   max-width: 52rem;
   padding: 0 1rem;
   width: 100%;
-  color: #fff;
+  /* color: #fff; */
 }
 
 @media screen and (min-width: 1024px) {
@@ -192,11 +204,28 @@
   }
 }
 
-.latest-news h2 {
+.latest-news h2 a {
   margin-top: 1rem;
   color: #b31942;
   font-size: 25px;
 }
+
+.latest-news h2 {
+  margin-top: 1rem;
+  color: #b31942;
+  font-size: 23px;
+}
+
+.latest-news a {
+  color: #0a3161;
+  font-size: 17px;
+}
+
+/* ? */
+/* .latest-name a {
+  color: #0a3161;
+  font-size: 12px;
+} */
 
 .latest-news h5 {
   margin: 0;
@@ -218,6 +247,13 @@
   }
 }
 
+.latest-news .news-item .request-date {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 175%;
+}
+
 .latest-news .news-item .news-date {
   display: flex;
   align-items: center;
@@ -230,12 +266,12 @@
   flex-direction: column;
   gap: 0.125rem;
   margin: 0;
-  color: #fff;
+  /* color: #fff; */
 }
 
 /* domain list title black or white */
 .latest-news .news-title a {
-  color: #fff;
+  /* color: #fff; */
 }
 
 .latest-news .news-title a:hover {
@@ -243,7 +279,7 @@
   text-decoration: underline;
 }
 
-/* 4 Domains for sale  */
+/* 4 Domains for sale */
 .recent-contributions {
   display: flex;
   flex-direction: column;
@@ -259,10 +295,27 @@
   }
 }
 
-.recent-contributions h2 {
+.recent-contributions h2 a {
   margin-top: 1rem;
   color: #b31942;
   font-size: 25px;
+}
+
+.recent-contributions h2 {
+  margin-top: 1rem;
+  color: #b31942;
+  font-size: 23px;
+}
+
+.recent-contributions h3 {
+  color: #0a3161;
+  margin: 0;
+  font-size: 19px;
+}
+
+.recent-contributions a {
+  color: #0a3161;
+  font-size: 17px;
 }
 
 .recent-contributions h5 {
@@ -285,6 +338,14 @@
   }
 }
 
+.recent-contributions .request-item .news-date {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 175%;
+}
+
+/* ?????? */
 .recent-contributions .request-item .request-date {
   display: flex;
   align-items: center;
@@ -298,7 +359,7 @@
   gap: 0.125rem;
   margin: 0;
   overflow-wrap: break-word;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .recent-contributions .request-title a:hover {
@@ -306,11 +367,11 @@
 }
 
 .contribution-list .request-repo {
-  color: #fff;
+  /* color: #fff; */
 }
 
 .contribution-list .request-title a {
-  color: #fff;
+  /* color: #fff; */
 }
 
 /* section */

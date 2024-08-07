@@ -1,37 +1,44 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { Container, Grid, Stack, Pagination } from "@mui/material";
+import React, { useState } from "react";
+import { shallowEqual, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { Container, Grid, Stack } from "@mui/material";
 
+import apiService from "../app/apiService";
 import "../assets/css/main.css";
 import "../assets/css/body.css";
 import "../assets/css/footer.css";
-import LoadingScreen from "../components/LoadingScreen";
-import { DOMAIN_PER_PAGE } from "../app/config";
-import { getDomainForSale } from "../features/home/homeSlice";
 
-// Domain for sale and more
-// & domain whois & domain appraisal
-function Domains() {
-  const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
-  const params = useParams();
+//
+function Contact() {
+  // const { transporter } = useSelector((state) => state.contact, shallowEqual); // get state from contactController (be)
+  // console.log("contact", transporter);
 
-  const {
-    domainsForSale,
-    domainForStartup,
-    currentPage,
-    isLoading,
-    totalPages,
-    totalDomain,
-  } = useSelector((state) => state.home, shallowEqual);
-  // console.log("domain list", domainsForSale);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    story: "",
+  });
 
-  const totalDomainPage = Math.ceil(totalDomain / DOMAIN_PER_PAGE);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  console.log(formData);
 
-  useEffect(() => {
-    dispatch(getDomainForSale({ page }));
-  }, [dispatch, page]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    apiService
+      .post("/contact", formData)
+      .then((response) => {
+        alert("Contact sent successfully");
+      })
+      .catch((error) => {
+        alert("Failed to send message");
+      });
+  };
 
   // UI with HTML&CSS
   return (
@@ -57,94 +64,111 @@ function Domains() {
                 <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
                   Welcome Entrepreneur!
                 </h3>
-                <h5>The easy way to be a domain name investors.</h5>
                 {/* ??? */}
                 <img
-                  // style={{ backgroundColor: "white", width: "500px" }}
-                  // backgroundColor="white"
+                  // style={{ backgroundColor: "", width: "500px" }}
+                  // backgroundColor=""
                   src="C:/Users/Public/finalproject-frontend/src/assets/img/domain.png"
                   alt=""
                   width="500px"
                 />
               </section>
-
-              {/* Domain Appraisal */}
-              {/* Whois */}
-              {/* Domain Investing */}
             </div>
 
-            {/* <!-- 3 Domains for Sale --> */}
-            <section className="latest-news">
+            {/* <!-- contact info --> */}
+            <section className="recent-contributions">
               <Stack
                 sx={{
                   flexDirection: "row",
                   alignItems: "center",
-                  justifyContent: "space-between",
+                  fontSize: "14px",
                 }}
               >
-                <h2>Domains for Sale and much more</h2>
-
-                {/* pagination */}
-                {domainsForSale?.domains?.length ? (
-                  <Pagination
-                    flexDirection="flex-end"
-                    count={totalPages}
-                    siblingCount={0} //...
-                    page={page}
-                    onChange={(e, page) => {
-                      setPage(page);
-                      dispatch(getDomainForSale({ page })); //?
-                    }}
-                    sx={{
-                      paddingTop: "10px",
-                      "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root":
-                        {
-                          margin: 0,
-                        },
-                      color: "#fff", // ?
-                    }}
-                  />
-                ) : (
-                  ""
-                )}
+                <h2>Contact us 24/7:</h2>
               </Stack>
+              <h3>- Join Startup Sponsor Program with your ideas </h3>
+              <h3>- Cooperate with our projects</h3>
+              <h3>- Buy a domains</h3>
+              <h3>- Or any</h3>
 
-              <ul className="news-list">
-                {domainsForSale?.domains?.length ? (
-                  domainsForSale?.domains?.map((domain) => (
-                    <li className="news-item" key={domain.id}>
-                      <p className="news-title">
-                        {/* <!-- domain name --> */}
-                        <span>
-                          <a className="news-source" href="/">
-                            www.{domain.name}.{domain.topLevel}
-                          </a>
-                        </span>
-                        {/* <!-- idea, description --> */}
-                        <span style={{ textTransform: "uppercase" }}>
-                          <p>
-                            {" "}
-                            {domain.description} - {domain.ideas}
-                          </p>
-                        </span>
-                      </p>
-                      {/* <!-- price--> */}
-                      <p>
-                        <span className="news-date">${domain.price}</span>
-                        <a href="/contact" className="news-date">
-                          Contact
-                        </a>
-                      </p>
-                    </li>
-                  ))
-                ) : (
-                  <p>Let try another search or contact us.</p>
-                )}
+              <ul className="contribution-list" sx={{ width: "700px" }}>
+                <li className="request-item">
+                  <p className="request-title">
+                    <p>Company name: BizHolding, Inc. & Huong Sac Ltd.</p>
+                    <br />
+                    <p>Registration No.:</p>
+                    <br />
+                    <p>
+                      Address: 5885 El Cajon, Blvd., San Diego, CA 92115, USA.
+                    </p>
+                    <br />
+                    <p>
+                      Telephone: +1 (619) 674-1015 --- +84 (97) 313-1234 --- +84
+                      (97) 555-6084 --- iMes, Viber, WhatApp, Zalo
+                    </p>
+                    <br />
+                    <p>
+                      Email: lucphanus@gmail.com --- lucphan@center247.com ---
+                      thuphan273@gmail.com
+                    </p>
+                    <br />
+                    <p>
+                      Website: <a href="http://www.vnwp.com">www.vnstar.com</a>{" "}
+                      --- <a href="http://www.vnwp.com">www.vnwp.com</a> ---{" "}
+                      <a href="http://www.seechannel.com">www.seechannel.com</a>
+                    </p>
+                    <br />
+                    <p>ESCROW: worlddetail@gmail.com</p>
+                    <br />
+                    <p>Paypal:</p>
+                  </p>
+                </li>
               </ul>
             </section>
 
+            {/* contact form */}
+            <div className="contact-form">
+              <form onSubmit={handleSubmit}>
+                <div className="form-example">
+                  <label htmlFor="name">Your name:</label>
+                  <input
+                    name="name"
+                    id="name"
+                    type="text"
+                    required
+                    onChange={handleChange}
+                    value={formData.name}
+                  />
+                </div>
+                <div className="form-example">
+                  <label htmlFor="email">Your email:</label>
+                  <input
+                    name="email"
+                    type="email"
+                    id="email"
+                    required
+                    onChange={handleChange}
+                    value={formData.email}
+                  />
+                </div>
+                <div className="form-example">
+                  <label htmlFor="story">Your story:</label>
+                  <textarea
+                    name="story"
+                    id="story"
+                    rows="5"
+                    onChange={handleChange}
+                    value={formData.story}
+                  ></textarea>
+                </div>
+
+                <div className="form-example">
+                  <input type="submit" value="Submit" />
+                </div>
+              </form>
+            </div>
+
             {/* footer menu */}
-            {/* link to /about */}
             <footer id="nav-footer" className="page-footer">
               <div className="page-footer-grid">
                 {/* <!-- logo --> */}
@@ -292,4 +316,4 @@ function Domains() {
   );
 }
 
-export default Domains;
+export default Contact;

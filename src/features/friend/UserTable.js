@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom"; //link to profile of user
+import { Link as RouterLink } from "react-router-dom"; // link to profile of user
 import {
   Table,
   TableHead,
@@ -10,9 +10,9 @@ import {
   Link,
   TableContainer,
   Box,
-} from "@mui/material"; //table of friend list
+} from "@mui/material"; // table of friend list
 
-import useAuth from "../../hooks/useAuth"; //de lay thong tin cua tung user
+import useAuth from "../../hooks/useAuth"; // de lay thong tin cua tung user
 import FriendStatus from "./FriendStatus";
 import ActionButton from "./ActionButton";
 
@@ -39,18 +39,18 @@ function UserTable({ users }) {
   return (
     <>
       <Box sx={{ overflowX: "auto" }} xs={8}>
-        <TableContainer sx={{ minWidth: 810, borderColor: "#0A3161" }}>
+        <TableContainer sx={{ minWidth: 800, borderColor: "#0A3161" }}>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell
                   sx={{
                     width: {
-                      xs: "20%",
+                      xs: "20%", // responsive ?
                       sm: "25%",
                       fontWeight: "600",
-                      minWidth: "165px",
-                      color: "#fff",
+                      minWidth: "100px",
+                      // color: "#fff",
                       borderColor: "#0A3161",
                     },
                   }}
@@ -63,8 +63,8 @@ function UserTable({ users }) {
                       xs: "none",
                       md: "table-cell",
                       fontWeight: "600",
-                      minWidth: "250px",
-                      color: "#fff",
+                      minWidth: "150px",
+                      // color: "#fff",
                       borderColor: "#0A3161",
                     },
                   }}
@@ -85,8 +85,9 @@ function UserTable({ users }) {
                     display: { xs: "none", sm: "table-cell" },
                     width: "20%",
                     fontWeight: "600",
-                    color: "#fff",
+                    // color: "#fff",
                     borderColor: "#0A3161",
+                    minWidth: "150px",
                   }}
                 >
                   Status
@@ -96,8 +97,9 @@ function UserTable({ users }) {
                     display: { xs: "none", sm: "table-cell" },
                     width: "20%",
                     fontWeight: "600",
-                    color: "#fff",
+                    // color: "#fff",
                     borderColor: "#0A3161",
+                    minWidth: "150px",
                   }}
                 >
                   Action
@@ -108,7 +110,7 @@ function UserTable({ users }) {
             <TableBody>
               {users.map((user) => {
                 const { status, action } = getActionsAndStatus(user);
-
+                //
                 return (
                   <TableRow key={user._id} hover>
                     <TableCell
@@ -127,6 +129,7 @@ function UserTable({ users }) {
                       <Link
                         variant="subtitle2"
                         sx={{
+                          minWidth: "100px",
                           fontWeight: 600,
                           borderColor: "#0A3161",
                           "& .css-skr1o3-MuiTypography-root-MuiLink-root .css-142n4nt-MuiTypography-root-MuiLink-root":
@@ -145,9 +148,10 @@ function UserTable({ users }) {
                         display: {
                           xs: "none",
                           md: "table-cell",
-                          paddingRight: "31px", //
-                          color: "#fff",
+                          paddingRight: "30px",
+                          // color: "#fff",
                           borderColor: "#0A3161",
+                          minWidth: "120px",
                         },
                       }}
                     >
@@ -174,6 +178,7 @@ function UserTable({ users }) {
                           xs: "none",
                           sm: "table-cell",
                           borderColor: "#0A3161",
+                          minWidth: "120px",
                         },
                       }}
                     >
@@ -188,6 +193,7 @@ function UserTable({ users }) {
                           md: "table-cell",
                           paddingRight: "70px",
                           borderColor: "#0A3161",
+                          minWidth: "90px",
                         },
                       }}
                     >

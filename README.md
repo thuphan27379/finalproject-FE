@@ -140,7 +140,7 @@ User APIs:
 
 - @route PUT /users/:id
 - @description Update user profile
-- @body {name, avatar, cover, aboutMe, city, country, company, jobtitle, fbLink, instagramLink, linkedInLink, twitterLink}
+- @body {name, avatar, aboutMe, city, country, company, jobtitle, fbLink, instagramLink, linkedInLink, twitterLink}
 - @access Login required
 
 Post APIs:
@@ -250,7 +250,6 @@ name: String, required
 email: String, required
 password: String, required
 avatarUrl: String
-coverUrl: String
 aboutMe: String
 city: String
 country: String

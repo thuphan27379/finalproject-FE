@@ -1,7 +1,7 @@
-import React, { useCallback, useRef } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Card, alpha, Stack, CardHeader, Typography } from "@mui/material";
+import { Box, Card, alpha, Stack, Typography } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
@@ -51,7 +51,7 @@ function GroupForm() {
   return (
     <>
       <Card
-        sx={{ p: 1, width: "100%", marginLeft: "15px" }}
+        sx={{ p: 1, width: "100%", marginLeft: "15px", marginTop: "20px" }}
         fullWidth
         style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
       >

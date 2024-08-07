@@ -46,7 +46,7 @@ const PlaceholderStyle = styled("div")(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   justifyContent: "center",
-  color: "#fff", // ?
+  // color: "#fff", // ?
   backgroundColor: "#919EAB", //
   transition: theme.transitions.create("opacity", {
     easing: theme.transitions.easing.easeInOut,
@@ -105,7 +105,7 @@ function UploadAvatar({ error, file, helperText, sx, ...other }) {
             sx={{
               ...(file && {
                 opacity: 0,
-                color: "#fff", // ?
+                // color: "#fff", // ?
                 bgcolor: "PRIMARY.100",
                 "&:hover": { opacity: 0.2 },
               }),

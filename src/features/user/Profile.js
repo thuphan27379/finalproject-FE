@@ -21,7 +21,10 @@ function Profile({ profile }) {
         spacing={3}
         width={"100%"}
         sx={{
-          paddingTop: "0px", // work
+          paddingRight: "5px",
+          paddingTop: 0, // work
+          maxWidth: "850px",
+          marginLeft: "10px",
           "& .css-4danns-MuiStack-root": { marginRight: "-24px" },
         }}
       >
@@ -31,10 +34,10 @@ function Profile({ profile }) {
           xs={8}
           md={12}
           sx={{
-            paddingTop: "0px", //?
-            paddingBottom: "20px", //work
+            paddingTop: 0, //?
+            paddingBottom: "20px", // work
             paddingLeft: "unset", //?
-            marginLeft: "-10px", //work
+            marginLeft: "-10px", // work
             paddingRight: "10px", //?
           }}
         >
@@ -51,19 +54,19 @@ function Profile({ profile }) {
             justifyContent="space-between"
             alignItems="center"
             sx={{
-              "& .css-13mhfsw-MuiGrid-root, .css-1q7661i-MuiGrid-root": {
-                paddingLeft: "0px",
-                paddingTop: "0px",
-              },
-              "& .css-13mhfsw-MuiGrid-root > .MuiGrid-item": {
-                paddingLeft: "0px",
-                paddingTop: "0px",
-              },
-              "& .css-15yln57-MuiStack-root > :not(style) ~ :not(style)": {},
-              paddingLeft: "0px",
-              paddingTop: "0px",
+              paddingLeft: 0,
+              paddingTop: 0,
               paddingRight: "25px",
               marginRight: "20px",
+              "& .css-13mhfsw-MuiGrid-root, .css-1q7661i-MuiGrid-root": {
+                paddingLeft: 0,
+                paddingTop: 0,
+              },
+              "& .css-13mhfsw-MuiGrid-root > .MuiGrid-item": {
+                paddingLeft: 0,
+                paddingTop: 0,
+              },
+              "& .css-15yln57-MuiStack-root > :not(style) ~ :not(style)": {},
             }}
           >
             {/* 20% */}
@@ -86,7 +89,7 @@ function Profile({ profile }) {
         <Grid
           container
           sx={{
-            marginLeft: "15px", //work
+            marginLeft: "15px", // work
             marginRight: "0",
           }}
         >

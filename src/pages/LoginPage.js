@@ -65,10 +65,10 @@ function LoginPage() {
     }
   };
 
-  // sau khi dien input thi bg input mau vang khe?
+  //
   return (
     <>
-      <Container maxWidth="xs">
+      <Container maxWidth="sm">
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>
             {/* message error & go to sign up */}
@@ -77,9 +77,9 @@ function LoginPage() {
             )}
             <Alert
               sx={{
-                backgroundColor: "#000",
-                color: "#fff",
                 borderColor: "1px #B31942", // ?
+                // backgroundColor: "#000",
+                // color: "#fff",
               }}
               severity="info"
               color="secondary"
@@ -124,8 +124,8 @@ function LoginPage() {
             sx={{ my: 2 }}
           >
             <FCheckbox name="remember" label="Remember me" />
-            <Link component={RouterLink} variant="subtitle2" to="/">
-              Forgot password?
+            <Link component={RouterLink} variant="subtitle2" to="/contact">
+              Forgot password! Contact us
             </Link>
           </Stack>
 

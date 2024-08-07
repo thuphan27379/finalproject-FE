@@ -12,7 +12,8 @@ function ProfileScorecard({ profile }) {
         style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
         sx={{
           p: 1,
-          minWidth: "200px",
+          marginLeft: "3px",
+          minWidth: "180px",
           minHeight: "255px",
           lineHeight: "1",
           alignItems: "center",
@@ -30,7 +31,7 @@ function ProfileScorecard({ profile }) {
           lineHeight={1}
           divider={
             <Divider
-              style={{ background: "#fff" }}
+              style={{ background: "#0A3161" }}
               orientation="vertical"
               flexItem
             />

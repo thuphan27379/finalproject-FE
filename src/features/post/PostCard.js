@@ -53,7 +53,7 @@ function PostCard({ post, profile }) {
 
   // const { id: targetUserId, name, avatarUrl, friendship } = profile;
 
-  //popover on icon to delete or edit
+  // popover on icon to delete or edit
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -86,20 +86,6 @@ function PostCard({ post, profile }) {
   const [isEditing] = React.useState(false); // State to track editing mode
   const [openModal, setOpenModal] = React.useState(false);
 
-  // const handleEdit = () => {
-  //   // dispatch(PostForm({}));
-  //   setIsEditing(true); // Set editing mode to true when the "Edit" button is clicked
-  // };
-
-  // const handleSave = () => {
-  //   // Dispatch the editPost action with the edited content and post ID
-  //   dispatch(
-  //     editPost({ postId: post._id, content: editedContent, image: post.image })
-  //   );
-  //   setIsEditing(false); // Reset editing mode after saving changes
-  //   handleClose();
-  // };
-
   const handleContentChange = (e) => {
     e.stopPropagation();
     setEditedContent(e.target.value);
@@ -115,25 +101,6 @@ function PostCard({ post, profile }) {
     resolver: yupResolver(yupSchema),
     defaultValues,
   });
-
-  // const { setValue } = methods;
-
-  // edit image
-  // const handleDrop = useCallback(
-  //   (acceptedFiles) => {
-  //     const file = acceptedFiles[0];
-
-  //     if (file) {
-  //       setValue(
-  //         "image",
-  //         Object.assign(file, {
-  //           preview: URL.createObjectURL(file),
-  //         })
-  //       );
-  //     }
-  //   },
-  //   [setValue]
-  // );
 
   // modal edit
   const handleOpenModal = () => setOpenModal(true);
@@ -173,7 +140,7 @@ function PostCard({ post, profile }) {
 
   const { isLoading } = useSelector((state) => state.post);
 
-  // //show relationship
+  // chip show relationship
   // const friendStatus = (
   //   <FriendStatus
   //     sx={{ mt: 1 }}
@@ -206,7 +173,10 @@ function PostCard({ post, profile }) {
               variant="subtitle2"
               color="text.primary"
               component={RouterLink}
-              sx={{ fontWeight: 700, color: "#fff" }} //
+              sx={{
+                fontWeight: 700,
+                // color: "#fff"
+              }}
               to={`/user/${post.author._id}`}
             >
               {post?.author?.name}
@@ -279,7 +249,7 @@ function PostCard({ post, profile }) {
               Edit
             </Button>
 
-            {/* popup modal for edit, position center of the screen? */}
+            {/* popup modal for edit, KHONG THAY DOI CONTENT DC */}
             <Modal
               open={openModal}
               onClose={handleCloseModal}
@@ -304,6 +274,7 @@ function PostCard({ post, profile }) {
                 <FormProvider
                   methods={methods}
                   onSubmit={handleSubmit(onSubmit)}
+                  // onChange={handleContentChange(setEditedContent)} // edit content post
                 >
                   <Stack spacing={1}>
                     <FTextField
@@ -323,9 +294,8 @@ function PostCard({ post, profile }) {
                     />
 
                     {/* form edit image */}
-                    {/* <input type="file" ref={fileInput} onChange={handleFile} /> */}
                     <FUploadImage
-                      // upload the image of the post?!?!
+                      // upload the image of the post
                       name="image"
                       accept="image/*"
                       maxSize={3145728}
@@ -356,7 +326,6 @@ function PostCard({ post, profile }) {
                         variant="outlined"
                         size="small"
                         color="secondary"
-                        // onClick={handle}
                         loading={isSubmitting || isLoading}
                       >
                         Update
@@ -372,14 +341,6 @@ function PostCard({ post, profile }) {
         {/* post content */}
         <Stack spacing={1} sx={{ pl: 4, pt: 1, pb: 1, pr: 4 }}>
           <Typography>{post.content}</Typography>
-          {/* {isEditing && (
-            <input
-              type="text"
-              value={editedContent}
-              onChange={handleContentChange}
-              onMouseDown={handleInputMouseDown}
-            />
-          )} */}
 
           {/* media, width & height?!?! */}
           {post.image && (

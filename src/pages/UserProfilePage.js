@@ -21,7 +21,7 @@ function UserProfilePage() {
   // fix bug about get list of posts of currentUser only
   const { selectedUser, isLoading } = useSelector(
     (state) => state.user,
-    shallowEqual //update data theo khi userId thay doi
+    shallowEqual // update data theo khi userId thay doi
     // make sure re-render all the change of selectedUser
   );
 
@@ -34,7 +34,7 @@ function UserProfilePage() {
   // UI
   return (
     <>
-      <Container spacing={1} sx={{ paddingTop: "96px" }}>
+      <Container spacing={1} sx={{ paddingTop: "96px", maxWidth: "850px" }}>
         <Grid item xs={12} md={8}>
           {/* show profile info */}
           <Stack spacing={1}>

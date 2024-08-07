@@ -1,8 +1,7 @@
 import React from "react";
-import { Container, Grid, Stack, Pagination } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
-// import "../assets/css/main.css";
-// import "../assets/css/reset.css";
+import "../assets/css/main.css";
 import "../assets/css/body.css";
 import "../assets/css/footer.css";
 
@@ -15,17 +14,17 @@ const Aboutus = () => {
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
-          maxWidth: "unset!important",
+          maxWidth: "850px", // "unset!important",
           marginTop: 0,
-          backgroundColor: "#000",
-          color: "#fff",
           width: "95%",
+          // backgroundColor: "#000",
+          // color: "#fff",
         }}
       >
         <Grid marginTop={"68px"} maxWidth={"60vw"} marginX={"auto"}>
           <div className="homepage">
             {/* <!-- 1 Welcome --> */}
-            <div className="homepage-hero dark">
+            <div className="homepage-hero">
               <section>
                 <h1>All about Domains and Startup</h1>
                 <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
@@ -47,67 +46,77 @@ const Aboutus = () => {
                   <br /> Value Name for World Project
                   <br />
                   <br />
+                  A country has a national brand.
+                  <br />
+                  An individual has a personal brand.
+                  <br />
+                  A business has a business brand.
+                  <br />
+                  There are product-service brands.
+                  <br />
+                  <br />
                   <br /> Name - Brand Name is a necessary condition to start a
-                  startup, and a sufficient condition is a platform and a
-                  method. There are many platforms, many methods, but the Name
-                  and Brand Name are only one.
+                  career, and a sufficient condition is a platform and a method.
+                  There are many platforms, many methods, but there is only one
+                  name and one brand.
                   <br />
                   <br />
                   <br /> In the digital era, Domain Name is the Brand Name for a
-                  product or service (subdomain can also be used instead). There
-                  are global brands and regional brands depending on the scope
-                  of operations, but it is necessary to standardize for the
-                  future if there is development.
+                  product or service (subdomains can also be used instead).
+                  There are global brands and regional brands depending on the
+                  scope of operations, but it is necessary to standardize for
+                  the future if there is development.
                   <br />
                   <br />
-                  <br /> The Domain Name must be short, easy to understand, easy
+                  <br /> A Domain Name must be short, easy to understand, easy
                   to remember, easy to recognize, and easy to express.
                   <br />
                   <br />
-                  <br /> VNWP.COM is the place to start your Startup. A place
-                  the fishing rod is given, not the fish. A place to give you
-                  the Brand Name, platform and method to start your Startup, the
-                  choice is up to you. A place that will accompany you (if
-                  needed) and more...
+                  <br /> VNWP.COM is the place to start your career. A place
+                  that gives you the fishing rod, not the fish. A place that
+                  gives you the brand name, platform, and method to start your
+                  career; the choice is up to you. A place that will accompany
+                  you (if needed) and more.
                   <br />
                   <br />
                   <br /> VNWP.COM has the following main activities: <br />
                   <br /> - Some typical Startup projects of VNWP.COM. You can
-                  own it or cooperate.
+                  own them or cooperate.
                   <br /> - Brand Names and Startup ideas for you.
-                  <br /> - Domain Names as Brand Names for you to choose.
+                  <br /> - Domain Names as Brand Names for you to choose from.
                   <br />
                   <br />
                   <br /> How VNWP.COM works: <br />
                   <br /> - For typical Startup projects, VNWP.COM will give many
                   incentives to partners who want to transfer ownership or
-                  invest in development cooperation. Each project has its own
+                  invest in development cooperation. Each Project has its own
                   plan. VNWP.COM will inform and discuss to achieve the best
                   results for VNWP.COM partners.
-                  <br /> - For brand Domain Names and Startup ideas, VNWP.COM
-                  has specific information about domain name value and the best
-                  ideas, including information sources about the market and
+                  <br /> - For Brand Names and Startup ideas, VNWP.COM has
+                  specific information about the value of domain names and the
+                  best ideas, including information sources about the market and
                   development direction for you.
-                  <br /> - For Domain Names as Brand Names for you to choose,
-                  VNWP.COM has specific information about domain name value and
-                  preferential policies for you. VNWP.COM uses the highly
-                  reputable and guaranteed Escrow.com and SEDO.COM as a partner
-                  for payment and transfer domain name. <br />
+                  <br /> - For Domain Names as Brand Names for you to choose
+                  from, VNWP.COM has specific information about domain name
+                  value and preferential policies for you.
+                  <br /> - VNWP.COM uses the highly reputable and guaranteed
+                  Escrow.com as a partner for payment and transfer. <br />
                   <br />
                   Our ESCROW: worlddetail@gmail.com
                   <br />
                   <br />
-                  <br /> Agreement of use: When you enter into an economic
-                  transaction contract with VNWP.COM, you automatically agree to
-                  VNWP.COM way of operating. Any disputes, if any, will be
-                  resolved according to VNWP.COM way of operating and according
-                  to customary practices.
+                  <br /> When you enter into a business transaction contract
+                  with VNWP.COM, you automatically agree to VNWP.COM's way of
+                  operating. Any disputes, if any, will be resolved according to
+                  VNWP.COM's way of operating and according to customary
+                  practices.
                 </p>
               </section>
             </div>
 
+            {/* Mission - vision */}
+
             {/* <!-- 5 Cooperation --> */}
-            {/* link to /about */}
             <div className="featured-articles">
               <h2>Cooperation and Partners</h2>
               <div className="tile-container">
@@ -158,8 +167,10 @@ const Aboutus = () => {
                     </a>
                   </h3>
                   <p>
-                    With Escrow.com you can buy and sell anything safely without
-                    the risk of chargebacks. Truly secure payments.
+                    Escrow.com is the world's most secure payment method from a
+                    counter party risk perspective - safeguarding both buyer and
+                    seller, all funds transacted using escrow are kept in trust.
+                    Truly secure payments.
                   </p>
                 </div>
 
@@ -181,20 +192,20 @@ const Aboutus = () => {
                     <a href="https://sedo.com">https://sedo.com</a>
                   </h3>
                   <p>
-                    The world's leading platform for domain buyers and sellers.
-                    The first address for your online success.
+                    The question both buyers and sellers ask us is: How much can
+                    a domain cost? Our scientifically sound, expert appraisals -
+                    for both individual domains and domain portfolios.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* footer menu */}
-            {/* link to /about */}
             <footer id="nav-footer" className="page-footer">
               <div className="page-footer-grid">
                 {/* <!-- logo --> */}
                 <div className="page-footer-logo-col">
-                  <div className="mainlogo">
+                  <div className="main-logo">
                     <a href="/">
                       <img src="./huongsac-logo.png" alt="" />
                     </a>

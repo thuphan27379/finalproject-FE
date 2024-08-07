@@ -88,3 +88,9 @@ Container:
 Breakpoints: 
 useMediaQuery:
 tim tat ca nhung component nao minh xai de resize
+--
+lam component cho Company
+welcome
+domainList (hinh chu nhat)
+contact
+projectList (o vuong)

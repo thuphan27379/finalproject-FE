@@ -27,7 +27,8 @@ apiService.interceptors.response.use(
   },
   function (error) {
     console.log("RESPONSE ERROR", { error });
-    const message = error.response?.data?.errors?.message || "Unknown Error";
+    const message = error.response?.data?.errors?.message;
+    // || "Unknown Error"
     return Promise.reject({ message });
   }
 );

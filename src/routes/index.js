@@ -11,13 +11,14 @@ import Startup from "../pages/Startup";
 import AuthRequire from "./AuthRequire";
 import HomeLayout from "../layouts/HomeLayout";
 import BlankLayout from "../layouts/BlankLayout";
-import BlogPage from "../pages/BlogPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import BlogPage from "../pages/BlogPage";
 import AccountPage from "../pages/AccountPage";
 import UserProfilePage from "../pages/UserProfilePage";
-import Group from "../features/group/Group"; // group component trong blog
+import Group from "../features/group/Group"; // /group/:groupId
+import Contact from "../pages/Contact";
 
 // INDEX OF ALL ROUTES = connect all layouts & pages together
 function Router() {
@@ -36,6 +37,8 @@ function Router() {
           <Route path="/startup" element={<Startup />} />
           {/* domain */}
           <Route path="/domain" element={<Domains />} />
+          {/* contact */}
+          <Route path="/contact" element={<Contact />} />
         </Route>
 
         {/* login/signup */}
@@ -45,7 +48,7 @@ function Router() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
 
-        {/* login require  */}
+        {/* login required */}
         <Route path="/" element={<HomeLayout />}>
           <Route
             path="/blog"
@@ -66,7 +69,7 @@ function Router() {
           />
 
           <Route
-            path="/account" //login
+            path="/account" // login
             element={
               <AuthRequire>
                 <AccountPage />
@@ -75,7 +78,7 @@ function Router() {
           />
 
           <Route
-            path="/group/:groupId" //  <GroupPage />
+            path="/group/:groupId" // Group.js
             element={
               <AuthRequire>
                 <Group />

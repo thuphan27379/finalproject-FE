@@ -12,6 +12,7 @@ const initialState = {
   totalCommentsByPost: {},
   currentPageByPost: {},
   commentsById: {}, // {'commentId':{...all data of comment}}
+  userReactions: {}, // reaction clicked
 };
 
 // createSlice for all slices
@@ -32,7 +33,6 @@ const slice = createSlice({
     getCommentsSuccess(state, action) {
       state.isLoading = false;
       state.error = "";
-      // state.comments = state.comments.concat(action.payload)
       const { postId, comments, count, page } = action.payload;
 
       comments.forEach(
@@ -56,8 +56,9 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
 
-      const { commentId, reactions } = action.payload;
-      state.commentsById[commentId].reactions = reactions; //update new reaction
+      const { commentId, reactions, userReaction } = action.payload;
+      state.commentsById[commentId].reactions = reactions; // update new reaction
+      state.userReactions[commentId] = userReaction; // store user reaction
     },
     //
     deleteCommentSuccess(state, action) {
@@ -139,19 +140,31 @@ export const createComment =
 // reaction on a comment
 export const sendCommentReaction =
   ({ commentId, emoji }) =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
     dispatch(slice.actions.startLoading());
 
     try {
+      if (!["like", "dislike"].includes(emoji)) {
+        throw new Error("Invalid emoji value");
+      }
+
+      // filled vs outlined
+      const currentReaction = getState().comment.userReactions[commentId];
+      const newEmoji = currentReaction === emoji ? null : emoji;
+
       const response = await apiService.post(`/reactions`, {
         targetType: "Comment",
         targetId: commentId,
-        emoji,
+        emoji: newEmoji, //
       });
+
+      const userReaction = emoji; //
+
       dispatch(
         slice.actions.sendCommentReactionSuccess({
           commentId,
           reactions: response.data,
+          userReaction: newEmoji, //
         })
       );
     } catch (error) {
@@ -160,8 +173,7 @@ export const sendCommentReaction =
     }
   };
 
-// delete a comment
-// confirm delete
+// delete a comment & confirm delete
 export const deleteComment =
   ({ postId, commentId }) =>
   async (dispatch) => {

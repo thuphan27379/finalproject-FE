@@ -1,11 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 
 import apiService from "../../app/apiService";
 import { GROUP_PER_PAGE, POSTS_PER_PAGE } from "../../app/config";
 import { cloudinaryUpload } from "../../utils/cloudinary";
-import { getCurrentUserProfile } from "../user/userSlice";
 
 // for group
 // init value
@@ -39,7 +37,6 @@ const slice = createSlice({
       state.postsById = {};
       state.currentPagePosts = [];
     },
-
     // create a new group
     createGroupSuccess(state, action) {
       state.isLoading = false;
@@ -48,7 +45,6 @@ const slice = createSlice({
       // console.log(action.payload);
       state.list.unshift(action.payload.newGroup); //bo object vao trong array
     },
-
     // getListSuccess (list of group name & interests)
     getListSuccess(state, action) {
       state.isLoading = false;
@@ -61,7 +57,6 @@ const slice = createSlice({
       // get total group
       const { groups, totalPage } = action.payload;
       // console.log(action.payload);
-
       state.totalGroups = action.payload.totalGroups;
     },
 
@@ -71,11 +66,9 @@ const slice = createSlice({
       state.error = null;
 
       const newMember = action.payload.currentUserId;
-
       // console.log(action.payload);
       state.newMember = action.payload.members;
     },
-
     // leave a group
     leaveGroupSuccess(state, action) {
       state.isLoading = false;
@@ -83,11 +76,9 @@ const slice = createSlice({
 
       const { currentUserId, members } = action.payload;
       // console.log(action.payload);
-
       state.members = members; // Update state members
       state.memberLeave = currentUserId; // Store user who left
     },
-
     // getSingleGroup
     getSingleGroupSuccess(state, action) {
       state.isLoading = false;
@@ -95,19 +86,17 @@ const slice = createSlice({
 
       const { singleGroup } = action.payload;
       // console.log(singleGroup);
-
       state.singleGroup = singleGroup;
       state.name = action.payload.singleGroup;
       state.interests = action.payload.singleGroup;
     },
-
     // getSearchGroup
     getSearchGroupSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
 
       const { groups } = action.payload;
-      state.searchGroupResult = groups; //searchGroupResult
+      state.searchGroupResult = groups; // searchGroupResult
     },
 
     // create a new post in the group
@@ -117,12 +106,7 @@ const slice = createSlice({
 
       const newPostGroup = action.payload;
       const currentGroupId = action.payload;
-
-      // if (state.currentPagePosts.length % POSTS_PER_PAGE === 0)
-      //   state.currentPagePosts.pop();
-      // xoa bot post list truoc de list new post
       state.currentGroupId = newPostGroup;
-      // state.currentPagePosts.unshift(newPostGroup._id);
     },
 
     // get all posts in the group /group/:groupId
@@ -132,76 +116,19 @@ const slice = createSlice({
 
       // groupPostsList from backend??
       // console.log(action.payload);
-      const { groupPostsList, count, groupId } = action.payload;
+      const { groupPostsList, postGroupCount, groupId } = action.payload;
       // console.log("post by group", groupPostsList);
-
       state.groupPostsList = groupPostsList.postsByGroupId;
-      // loc cac bai post sao cho khong trung lap
-      // groupPostsList.forEach((post) => {
-      //   state.postsById[post._id] = post;
-      //   if (!state.currentPagePostsByGroup.includes(post._id))
-      //     state.currentPagePostsByGroup.push(post._id);
-      // });
-      state.totalPostsGroup = count;
+      state.totalPostsGroup = postGroupCount;
     },
 
-    // delete a post
-    // deletePostSuccess(state, action) {
-    //   state.isLoading = false;
-    //   state.error = null;
+    // get member Id of the group
+    getMemberSuccess(state, action) {
+      state.isLoading = false;
+      state.error = null;
 
-    //   const { postId } = action.payload;
-
-    //   // Remove the deleted post from the state
-    //   delete state.postsById[postId];
-
-    //   // Remove the postId from currentPagePosts array
-    //   state.currentPagePosts = state.currentPagePosts.filter(
-    //     (id) => id !== postId
-    //   );
-    // },
-
-    // edit a post & image
-    // editPostSuccess(state, action) {
-    //   state.isLoading = false;
-    //   state.error = null;
-
-    //   // Check if the edited post data is available in the response
-    //   // if (action.payload.success && action.payload.data) {
-    //   const editedPost = action.payload;
-    //   // console.log(editedPost);
-
-    //   // Find the index of the edited post in currentPagePosts
-    //   const editedPostIndex = state.currentPagePosts.indexOf(editedPost._id);
-
-    //   // Check if the edited post has a new image URL //
-    //   const newImage = editedPost.image
-    //     ? editedPost.image
-    //     : state.postsById[editedPost._id].image;
-
-    //   // Update the post's content and image URL //
-    //   state.postsById[editedPost._id] = {
-    //     ...state.postsById[editedPost._id],
-    //     content: editedPost.content,
-    //     image: newImage,
-    //   };
-
-    //   // If the edited post is in the current page posts, update it
-    //   if (editedPostIndex !== -1) {
-    //     state.currentPagePosts[editedPostIndex] = editedPost._id;
-    //     // }
-    //   }
-    //   // state.postsById[editedPost._id] = editedPost;
-    // },
-
-    // reaction a post
-    // sendPostReactionSuccess(state, action) {
-    //   state.isLoading = false;
-    //   state.error = null;
-
-    //   const { postId, reactions } = action.payload;
-    //   state.postsById[postId].reactions = reactions;
-    // },
+      state.memberId = action.payload.group.members;
+    },
   },
 });
 
@@ -325,7 +252,6 @@ export const createPostGroup =
 
       dispatch(slice.actions.createPostGroupSuccess(response.data));
       toast.success("Post in the group successfully");
-      // dispatch(getCurrentUserProfile()); //?
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
       toast.error(error.message);
@@ -347,7 +273,7 @@ export const getSearchGroup =
       dispatch(slice.actions.getSearchGroupSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
-      // toast.error(error.message);
+      toast.error(error.message);
     }
   };
 
@@ -362,14 +288,14 @@ export const getPostsGroup =
     try {
       const params = { page, limit };
 
-      // ?? get post by groupId OR lay postsByGroupId ra
+      // get post by groupId OR lay postsByGroupId ra
       const response = await apiService.get(`/group/${groupId}/posts`, {
         params,
         fromGroup: true,
       });
       console.log("group post", response);
 
-      if (page === 1) dispatch(slice.actions.resetPosts()); //reset posts before dispatch and show only posts of this currentUser
+      if (page === 1) dispatch(slice.actions.resetPosts()); // reset posts before dispatch and show only posts of this currentUser
       dispatch(slice.actions.getPostsGroupSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
@@ -377,90 +303,15 @@ export const getPostsGroup =
     }
   };
 
-// get all post of groupId!!!
-// blog
+// get member Id of the group
+export const getMember = (groupId) => async (dispatch) => {
+  dispatch(slice.actions.startLoading());
 
-// comment
-
-// delete a post in the group
-// confirm delete
-// export const deletePost =
-//   ({ postId }) =>
-//   async (dispatch) => {
-//     // Show confirmation pop-up
-//     const isConfirmed = window.confirm(
-//       "Are you sure you want to delete this post?"
-//     );
-//     if (!isConfirmed) {
-//       // If user cancels the deletion, do nothing
-//       return;
-//     }
-
-//     dispatch(slice.actions.startLoading());
-//     try {
-//       // Correct the endpoint to delete a post
-//       await apiService.delete(`/posts/${postId}`);
-//       dispatch(slice.actions.deletePostSuccess({ postId }));
-
-//       // Show success notification
-//       toast.success("Post deleted successfully");
-//     } catch (error) {
-//       dispatch(slice.actions.hasError(error.message));
-//       toast.error(error.message);
-//     }
-//   };
-
-// edit a post in the group
-// edit a image in the post ??
-// export const editPost =
-//   ({ postId, content, image }) =>
-//   async (dispatch) => {
-//     dispatch(slice.actions.startLoading());
-
-//     try {
-//       // upload image to cloudinary.com - from PostForm.js
-//       const imageUrl = await cloudinaryUpload(image);
-//       const response = await apiService.put(`/posts/${postId}`, {
-//         content,
-//         image: imageUrl,
-//       });
-
-//       // Log the entire response
-//       // console.log("Edit Post Response:", response);
-
-//       dispatch(slice.actions.editPostSuccess(response.data));
-//       // console.log(response.data);
-
-//       dispatch(getPostsGroup({ userId: response.data.author }));
-//       toast.success("Post edited successfully");
-//     } catch (error) {
-//       dispatch(slice.actions.hasError(error.message));
-//       toast.error(error.message);
-//     }
-//   };
-
-// reaction on the post in the group
-// export const sendPostReaction =
-//   ({ postId, emoji }) =>
-//   async (dispatch) => {
-//     dispatch(slice.actions.startLoading());
-//     // console.log(postId);
-//     // console.log(emoji);
-
-//     try {
-//       const response = await apiService.post(`/reactions`, {
-//         targetType: "Post",
-//         targetId: postId,
-//         emoji,
-//       });
-//       dispatch(
-//         slice.actions.sendPostReactionSuccess({
-//           postId,
-//           reactions: response.data,
-//         })
-//       );
-//     } catch (error) {
-//       dispatch(slice.actions.hasError(error.message));
-//       toast.error(error.message);
-//     }
-//   };
+  try {
+    const response = await apiService.get(`/group`, {});
+    dispatch(slice.actions.getMemberSuccess(response.data));
+  } catch (error) {
+    dispatch(slice.actions.hasError(error.message));
+    toast.error(error.message);
+  }
+};

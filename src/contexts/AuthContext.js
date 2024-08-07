@@ -1,5 +1,5 @@
 // module 2.3 .3.4 & .5
-import { createContext, useReducer, useEffect } from "react"; //Context truyen thong tin cho component con
+import { createContext, useReducer, useEffect } from "react"; // Context truyen thong tin cho component con
 import { useSelector } from "react-redux";
 
 import apiService from "../app/apiService";
@@ -58,12 +58,10 @@ const reducer = (state, action) => {
       const {
         name,
         avatarUrl,
-        coverUrl,
         aboutMe,
         city,
         country,
         company,
-        jobTitle,
         facebookLink,
         instagramLink,
         linkedinLink,
@@ -79,12 +77,10 @@ const reducer = (state, action) => {
           ...state.user,
           name,
           avatarUrl,
-          coverUrl,
           aboutMe,
           city,
           country,
           company,
-          jobTitle,
           facebookLink,
           instagramLink,
           linkedinLink,
@@ -143,7 +139,7 @@ function AuthProvider({ children }) {
       payload: { user }, //
     });
 
-    callback(); //to navigate after login
+    callback(); // to navigate after login
   };
 
   // 2. func: register a new account
@@ -181,7 +177,7 @@ function AuthProvider({ children }) {
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
 
-          const response = await apiService.get("/users/me"); //send to server
+          const response = await apiService.get("/users/me"); // send to server
           const user = response.data;
 
           dispatch({
@@ -198,7 +194,7 @@ function AuthProvider({ children }) {
 
           // dispatch({
           //   type: LOGIN_SUCCESS,
-          //   // // payload: { user }, //
+          //   payload: { user },
           //   payload: { isAuthenticated: false, user: null },
           // });
         }

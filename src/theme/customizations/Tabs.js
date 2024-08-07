@@ -1,6 +1,6 @@
 import { PRIMARY, SECONDARY } from "../index";
 
-// blog, profile tabs
+// blog profile tabs
 function Tabs(theme) {
   //
   return {
@@ -19,8 +19,8 @@ function Tabs(theme) {
           textTransform: "capitalize", //?
 
           borderRadius: "1%", //?
-          backgroundColor: "#000", // bg
-          color: "#fff", // text
+          // backgroundColor: "#000",
+          // color: "#fff",
 
           "&.Mui-selected": {
             color: theme.palette.text.primary,
@@ -32,7 +32,7 @@ function Tabs(theme) {
             paddingRight: theme.spacing(0),
           },
           // responsive
-          "@media (min-width: 600px)": {
+          "@media (min-width: 768px)": {
             minWidth: 48,
           },
         },
@@ -64,7 +64,7 @@ function Tabs(theme) {
     MuiTabScrollButton: {
       styleOverrides: {
         root: {
-          width: 48,
+          width: 48, // !?
           borderRadius: "30%",
         },
       },

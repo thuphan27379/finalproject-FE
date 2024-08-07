@@ -10,11 +10,11 @@ import {
   Container,
 } from "@mui/material";
 
-import { getOutgoingSents, cancelRequest, getUsers } from "./friendSlice";
+import { getOutgoingSents, cancelRequest } from "./friendSlice";
 import UserCard from "./UserCard";
 import SearchInput from "../../components/SearchInput";
 
-// total request k cap nhat ??
+// total request k cap nhat ?
 // Outgoing
 function OutgoingSents() {
   const [filterName, setFilterName] = useState("");
@@ -37,7 +37,7 @@ function OutgoingSents() {
   };
 
   useEffect(() => {
-    dispatch(getOutgoingSents({ filterName, page })); //getOutgoingSents
+    dispatch(getOutgoingSents({ filterName, page })); // getOutgoingSents
   }, [filterName, page, dispatch]);
 
   const handleCancelRequest = (targetUserId) => {
@@ -64,7 +64,13 @@ function OutgoingSents() {
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
               <SearchInput handleSubmit={handleSubmit} />
               {/* result, hide if not ? */}
-              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
+              <Typography
+                variant="subtitle"
+                sx={{
+                  // color: "#fff",
+                  ml: 1,
+                }}
+              >
                 {totalUsers > 1
                   ? `${totalUsers} users found`
                   : totalUsers === 1
@@ -72,7 +78,13 @@ function OutgoingSents() {
                   : "No user found"}
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
-              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
+              <Typography
+                variant="subtitle"
+                sx={{
+                  // color: "#fff",
+                  ml: 1,
+                }}
+              >
                 {totalUsers > 1
                   ? `${totalUsers} requests`
                   : totalUsers === 1
@@ -83,7 +95,7 @@ function OutgoingSents() {
                 count={totalPages}
                 page={page}
                 onChange={(e, page) => setPage(page)}
-                sx={{ color: "#fff" }}
+                // sx={{ color: "#fff" }}
               />
             </Stack>
           </Stack>

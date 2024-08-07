@@ -14,21 +14,24 @@ export default function LeftBar() {
       <Box
         sx={{
           width: "240px",
-          marginTop: "90px",
+          marginTop: "20px",
           minHeight: "120vh",
-          marginLeft: "-35px",
+          marginLeft: "30px",
+          display: { xs: "none", sm: "none", md: "block", lg: "block" }, // responsive
+          "& .css-tlelie-MuiListItemText-root": { marginBottom: 0 },
         }}
       >
         <List
           sx={{
-            color: "#fff",
+            position: "fixed",
             fontWeight: "700", //?
             width: "240px",
             lineHeight: 1,
+            // color: "#fff",
           }}
         >
           {[
-            "Startup Support Program",
+            "Startup Sponsorship",
             "Our Projects",
             "Cooperate with us",
             "Domains for sale",
@@ -43,7 +46,7 @@ export default function LeftBar() {
                 fontWeight: "700", //?
               }}
             >
-              <GradeOutlinedIcon fontSize="small" color="secondary" />
+              <GradeOutlinedIcon fontSize="medium" color="secondary" />
               <ListItemButton>
                 <ListItemText primary={text} />
               </ListItemButton>

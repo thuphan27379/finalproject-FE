@@ -1,8 +1,7 @@
 import React from "react";
-import { Container, Grid, Stack, Pagination } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
-import "../assets/css/main.css"; // company footer ???
-// import "../assets/css/reset.css";
+import "../assets/css/main.css";
 import "../assets/css/body.css";
 import "../assets/css/footer.css";
 
@@ -15,17 +14,18 @@ function Projects() {
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
-          maxWidth: "unset!important",
+          maxWidth: "850px", // unset!important",
           marginTop: 0,
-          backgroundColor: "#000",
-          color: "#fff",
           width: "95%",
+          // backgroundColor: "#000",
+          // color: "#fff",
         }}
       >
-        <Grid marginTop={"68px"} maxWidth={"60vw"} marginX={"auto"}>
+        {/* maxWidth={"60vw"} */}
+        <Grid marginTop={"68px"} marginX={"auto"}>
           <div className="homepage">
             {/* <!-- 1 Welcome --> */}
-            <div className="homepage-hero dark">
+            <div className="homepage-hero">
               <section>
                 <h1>All about Domains and Startup</h1>
                 <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
@@ -48,7 +48,6 @@ function Projects() {
               <h2>Our Projects --- to be our partner</h2>
 
               <div className="tile-container">
-                {/* map() */}
                 <div className="article-tile">
                   {/* <!-- domain.com --> */}
                   <a href="/" className="tile-tag">
@@ -75,11 +74,10 @@ function Projects() {
                     <p>The truth way you see the world</p>
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Expedita ab officia vel distinctio dicta tempore temporibus
-                    molestiae natus quod, praesentium accusamus, consequuntur
-                    perferendis pariatur magni quaerat provident similique.
-                    Quasi, sapiente.
+                    Freedom is not free! Journalism and Media Social Network,
+                    bring real news and information even knowledge to people.
+                    Say no with fake news and brainwashed. Make Vietnam Great
+                    Again!
                   </p>
                 </div>
 
@@ -91,11 +89,12 @@ function Projects() {
                     <p>Global networking for everyone</p>
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Culpa hic exercitationem possimus necessitatibus quas
-                    repellat quisquam aperiam. Adipisci, quaerat consequuntur
-                    eius molestias, deleniti natus ullam explicabo sint nesciunt
-                    sequi facilis.
+                    Apps need a home on the Internet. A relevant domain name
+                    makes it much easier to remember and to share. Think of how
+                    you would tell people where to get the app, whether verbally
+                    during an announcement, in a newsletter, or on a flyer. And
+                    to share apps with their friends when using social media or
+                    sending an email.
                   </p>
                 </div>
 
@@ -107,10 +106,12 @@ function Projects() {
                     <p>Vietnam Web Portal</p>
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Velit, omnis numquam. Perspiciatis ad error nobis officia
-                    laudantium. Porro rem magni excepturi iure illo esse
-                    molestiae reiciendis ipsa, qui quae nisi.
+                    Value Name for Web Project - Value Name for World Project.
+                    VNWP.COM is the place to start your Startup. A place the
+                    fishing rod is given, not the fish. A place to give you the
+                    Brand Name, platform and method to start your Startup, the
+                    choice is up to you. A place that will accompany you (if
+                    needed) and more.
                   </p>
                 </div>
 
@@ -122,11 +123,26 @@ function Projects() {
                     <p>Startup Community</p>
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Culpa hic exercitationem possimus necessitatibus quas
-                    repellat quisquam aperiam. Adipisci, quaerat consequuntur
-                    eius molestias, deleniti natus ullam explicabo sint nesciunt
-                    sequi facilis.
+                    Community Network for Ideas and Startup whoever or whatever
+                    you are and want to become an Entrepreneur. Don't be afraid!
+                    Let's build your dream together and bright up us. "If you're
+                    good at something, never do it for free" - Joker.
+                  </p>
+                </div>
+
+                <div className="article-tile">
+                  <a href="/" className="tile-tag">
+                    www.DotSponsor.com
+                  </a>
+                  <h3 className="tile-title">
+                    <p>Startup Sponsor Program</p>
+                  </h3>
+                  <p>
+                    In the digital era, Domain Name is the Brand Name for a
+                    product or service (subdomain can also be used instead).
+                    There are global brands and regional brands depending on the
+                    scope of operations, but it is necessary to standardize for
+                    the future if there is development.
                   </p>
                 </div>
 
@@ -138,26 +154,10 @@ function Projects() {
                     <p>All About Domains</p>
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Velit, omnis numquam. Perspiciatis ad error nobis officia
-                    laudantium. Porro rem magni excepturi iure illo esse
-                    molestiae reiciendis ipsa, qui quae nisi.
-                  </p>
-                </div>
-
-                <div className="article-tile">
-                  <a href="/" className="tile-tag">
-                    www.DotSponsor.com
-                  </a>
-                  <h3 className="tile-title">
-                    <p>Chuong trinh Tai tro Ten Mien cho Startup</p>
-                  </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Culpa hic exercitationem possimus necessitatibus quas
-                    repellat quisquam aperiam. Adipisci, quaerat consequuntur
-                    eius molestias, deleniti natus ullam explicabo sint nesciunt
-                    sequi facilis.
+                    In the ever-evolving digital landscape, domain names have
+                    become more than just addresses on the internet. Investors
+                    are increasingly recognizing the value of domain names,
+                    which are influenced by various criteria.
                   </p>
                 </div>
 
@@ -166,20 +166,19 @@ function Projects() {
                     www.NETCIT.COM
                   </a>
                   <h3 className="tile-title">
-                    <p>Chuong trinh Tai tro ITTek...</p>
+                    <p>ITTek Sponsor Program</p>
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Velit, omnis numquam. Perspiciatis ad error nobis officia
-                    laudantium. Porro rem magni excepturi iure illo esse
-                    molestiae reiciendis ipsa, qui quae nisi.
+                    Hello Tek! Computer Information Technology Network.
+                    Technical Sponsor Program for coders, developers, and any
+                    more in IT field and even Startup. Don't hesitate to contact
+                    us and join our community.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* <!-- 5 Cooperation --> */}
-            {/* link to /about */}
             <div className="featured-articles">
               <h2>Cooperation and Partners</h2>
               <div className="tile-container">
@@ -230,8 +229,10 @@ function Projects() {
                     </a>
                   </h3>
                   <p>
-                    With Escrow.com you can buy and sell anything safely without
-                    the risk of chargebacks. Truly secure payments.
+                    Escrow.com is the world's most secure payment method from a
+                    counter party risk perspective - safeguarding both buyer and
+                    seller, all funds transacted using escrow are kept in trust.
+                    Truly secure payments.
                   </p>
                 </div>
 
@@ -253,8 +254,9 @@ function Projects() {
                     <a href="https://sedo.com">https://sedo.com</a>
                   </h3>
                   <p>
-                    The world's leading platform for domain buyers and sellers.
-                    The first address for your online success.
+                    The question both buyers and sellers ask us is: How much can
+                    a domain cost? Our scientifically sound, expert appraisals -
+                    for both individual domains and domain portfolios.
                   </p>
                 </div>
               </div>
@@ -262,11 +264,11 @@ function Projects() {
 
             {/* footer menu */}
             {/* link to /about */}
-            <footer id="nav-footer" className="page-footer">
+            <footer className="page-footer">
               <div className="page-footer-grid">
                 {/* <!-- logo --> */}
                 <div className="page-footer-logo-col">
-                  <div className="mainlogo">
+                  <div className="main-logo">
                     <a href="/">
                       <img src="./huongsac-logo.png" alt="" />
                     </a>

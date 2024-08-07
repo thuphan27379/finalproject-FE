@@ -10,7 +10,7 @@ import {
   Container,
 } from "@mui/material";
 
-import { getFriends, getUsers } from "./friendSlice";
+import { getFriends } from "./friendSlice";
 import UserCard from "./UserCard";
 import SearchInput from "../../components/SearchInput";
 
@@ -55,16 +55,29 @@ function FriendList() {
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
               <SearchInput handleSubmit={handleSubmit} />
               {/* result, hide if not ? */}
-              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
+              <Typography
+                variant="subtitle"
+                sx={{
+                  // color: "#fff",
+                  ml: 1,
+                }}
+              >
                 {totalUsers > 1
                   ? `${totalUsers} users found`
                   : totalUsers === 1
                   ? `${totalUsers} user found`
                   : "No user found"}
               </Typography>
+
               <Box sx={{ flexGrow: 1 }} />
 
-              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
+              <Typography
+                variant="subtitle"
+                sx={{
+                  // color: "#fff",
+                  ml: 1,
+                }}
+              >
                 {totalUsers > 1
                   ? `${totalUsers} friends`
                   : totalUsers === 1
@@ -76,7 +89,7 @@ function FriendList() {
                 count={totalPages}
                 page={page}
                 onChange={(e, page) => setPage(page)}
-                sx={{ color: "#fff" }} // ?
+                // sx={{ color: "#fff" }} // ?
               />
             </Stack>
           </Stack>

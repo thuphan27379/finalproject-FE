@@ -48,8 +48,6 @@ function UserCard({ profile }) {
             variant="subtitle2"
             sx={{
               fontWeight: 600,
-              "& .css-skr1o3-MuiTypography-root-MuiLink-root .css-142n4nt-MuiTypography-root-MuiLink-root .css-p65y6e-MuiTypography-root-MuiLink-root":
-                { color: "#fff" }, // ?
             }}
             component={RouterLink}
             to={`/user/${targetUserId}`}
@@ -60,7 +58,11 @@ function UserCard({ profile }) {
             <EmailRoundedIcon
               sx={{ width: 16, height: 16, mr: 0.5, flexShrink: 0 }}
             />
-            <Typography variant="body2" sx={{ color: "#fff" }} noWrap>
+            <Typography
+              variant="body2"
+              // sx={{ color: "#fff" }}
+              noWrap
+            >
               {email}
             </Typography>
           </Box>

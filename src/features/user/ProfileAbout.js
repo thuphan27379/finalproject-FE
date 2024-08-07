@@ -27,13 +27,16 @@ function ProfileAbout({ profile }) {
           border: "1px solid #0A3161",
           borderRadius: "3px",
         }}
-        sx={{ minWidth: "320px", minHeight: "255px" }}
+        sx={{ minWidth: "320px", minHeight: "255px" }} //
       >
         {/* Portfolio */}
         <CardHeader title="About" variant="h6" sx={{ paddingTop: "10px" }} />
 
         <Stack spacing={2} sx={{ p: 2 }}>
-          <Stack direction="row" sx={{ color: "#fff" }}>
+          <Stack
+            direction="row"
+            // sx={{ color: "#fff" }}
+          >
             <IconStyle color="##19b38a">
               <SelfImprovementIcon />
             </IconStyle>
@@ -42,7 +45,10 @@ function ProfileAbout({ profile }) {
             </Typography>
           </Stack>
 
-          <Stack direction="row" sx={{ color: "#fff" }}>
+          <Stack
+            direction="row"
+            // sx={{ color: "#fff" }}
+          >
             <IconStyle color="##19b38a">
               <PinDropOutlinedIcon />
             </IconStyle>
@@ -52,7 +58,7 @@ function ProfileAbout({ profile }) {
                 variant="subtitle2"
                 color="text.primary"
                 fontWeight="400"
-                sx={{ color: "#fff" }} //
+                // sx={{ color: "#fff" }} //
               >
                 {city}, {country}.
               </Link>
@@ -76,7 +82,7 @@ function ProfileAbout({ profile }) {
                 variant="subtitle2"
                 color="text.primary"
                 fontWeight="400"
-                sx={{ color: "#fff" }}
+                // sx={{ color: "#fff" }}
               >
                 {company}
               </Link>

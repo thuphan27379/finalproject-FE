@@ -9,8 +9,8 @@ function Card(theme) {
           zIndex: 0, // Fix Safari overflow: hidden with border radius
           border: "2px solid  #0A3161", // ? border color
           borderRadius: "1%", // ?
-          backgroundColor: "#000", // bg
-          color: "#fff", // text
+          // backgroundColor: "#000",
+          // color: "#fff",
         },
       },
     },
@@ -21,7 +21,7 @@ function Card(theme) {
         subheaderTypographyProps: {
           variant: "body2",
           marginTop: theme.spacing(0.5),
-          color: "#fff", //
+          // color: "#fff",
         },
       },
       styleOverrides: {
@@ -35,7 +35,7 @@ function Card(theme) {
       styleOverrides: {
         root: {
           padding: theme.spacing(3),
-          color: "#fff", // ?
+          // color: "#fff", // ?
         },
       },
     },
@@ -46,6 +46,10 @@ function Card(theme) {
           marginLeft: "0",
         },
       },
+    },
+
+    MuiPaper: {
+      styleOverrides: { root: { backgroundImage: "unset" } },
     },
   };
 }

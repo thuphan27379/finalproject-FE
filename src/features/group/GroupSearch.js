@@ -5,7 +5,6 @@ import {
   Card,
   Stack,
   Typography,
-  CardHeader,
   Box,
   Button,
   Pagination,
@@ -73,15 +72,17 @@ function GroupSearch({ groupId }) {
   return (
     <>
       <Card
+        fullWidth
         style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
         sx={{
           p: 2,
-          minWidth: "350px",
           minHeight: "250px",
           lineHeight: "2",
           alignItems: "center",
           justifyContent: "center",
           paddingTop: "10px",
+          width: "100%",
+          marginLeft: "15px",
         }}
       >
         <Stack
@@ -116,10 +117,7 @@ function GroupSearch({ groupId }) {
             >
               {/* result count */}
               {/* if (filterGroup) */}
-              <Typography
-                variant="subtitle"
-                sx={{ color: "text.secondary", ml: 1 }}
-              >
+              <Typography variant="subtitle" sx={{ color: "text.secondary" }}>
                 {searchGroupResult?.length > 1
                   ? `${searchGroupResult?.length} groups found`
                   : searchGroupResult?.length === 1
@@ -139,7 +137,7 @@ function GroupSearch({ groupId }) {
                 }}
                 sx={{
                   "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root": {
-                    margin: "0px",
+                    margin: 0,
                   },
                   flexDirection: "flex-end",
                 }}
@@ -148,7 +146,7 @@ function GroupSearch({ groupId }) {
 
             {/* show search result here */}
             {/* click on to show group name, group post */}
-            <Stack spacing={1} sx={{ p: 2 }}>
+            <Stack spacing={1} sx={{ p: 4 }}>
               {searchGroupResult?.map((result) => (
                 <Box
                   sx={{

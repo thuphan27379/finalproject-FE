@@ -22,9 +22,6 @@ function PostList({ userId }) {
     if (userId) dispatch(getPosts({ userId, page }));
   }, [dispatch, userId, page]);
 
-  // get groupId
-  // if post from group & by groupId (postsByGroupId)
-
   //
   return (
     <>
@@ -53,7 +50,9 @@ function PostList({ userId }) {
               Load more
             </LoadingButton>
           ) : (
-            <Typography variant="h6">No Post Yet</Typography>
+            <Typography variant="h6" color="secondary">
+              No Post Yet
+            </Typography>
           )}
         </Box>
       </Stack>

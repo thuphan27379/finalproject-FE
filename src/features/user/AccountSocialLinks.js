@@ -78,14 +78,16 @@ function AccountSocialLinks() {
           border: "1px solid #0A3161",
           borderRadius: "3px",
           placeholderColor: "#fff",
+          maxWidth: "850px",
         }}
-        sx={{ p: 1 }}
+        sx={{ p: 1, maxWidth: "850px" }}
       >
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-          <Stack spacing={1} alignItems="flex-end">
+          <Stack sx={{ maxWidth: "850px" }} spacing={1} alignItems="flex-end">
             {SOCIAL_LINKS.map((link) => (
               <FTextField
                 sx={{
+                  maxWidth: "850px",
                   "& fieldset": {
                     borderColor: alpha("#0A3161 ", 0.5),
                   },

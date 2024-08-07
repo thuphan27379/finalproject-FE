@@ -31,12 +31,16 @@ function AccountPage() {
         sx={{
           marginLeft: "-5px",
           paddingTop: "90px",
+          maxWidth: "850px",
         }}
       >
         <Typography
           variant="h5"
           gutterBottom
-          sx={{ color: "#fff", paddingLeft: "30px" }}
+          sx={{
+            // color: "#fff",
+            paddingLeft: "30px",
+          }}
         >
           Account Settings
         </Typography>
@@ -48,7 +52,7 @@ function AccountPage() {
           allowScrollButtonsMobile
           onChange={(e, value) => setCurrentTab(value)}
         >
-          {ACCOUNT_TABS.map((tab) => (
+          {ACCOUNT_TABS?.map((tab) => (
             <Tab
               disableRipple
               key={tab.value}

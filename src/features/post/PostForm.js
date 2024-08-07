@@ -2,19 +2,17 @@ import React, { useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Box, Card, alpha, Stack } from "@mui/material";
+import { Box, Card, Stack } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
-// import { useRef } from "react";
 import useAuth from "../../hooks/useAuth";
 import { FormProvider, FTextField, FUploadImage } from "../../components/form";
 import { createPost } from "./postSlice";
-import { getSingleGroup, createPostGroup } from "../group/groupSlice";
+import { getSingleGroup } from "../group/groupSlice"; //
 
 // for create a new post
-// & on the group ?!?!
 // validate content
 const yupSchema = Yup.object().shape({
   content: Yup.string().required("Content is required"),
@@ -47,17 +45,7 @@ function PostForm() {
     formState: { isSubmitting },
   } = methods;
 
-  /* UPLOAD A FILE (code along)*/
-  // const fileInput = useRef();
-  // const handleFile = (e) => {
-  //   // console.log(fileInput.current.files[0]);
-  //   const file = fileInput.current.files[0];
-  //   if (file) {
-  //     setValue("image", file);
-  //   }
-  // };
-
-  // drag & drop a image //
+  // drag & drop a image
   const handleDrop = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
@@ -82,16 +70,10 @@ function PostForm() {
     dispatch(createPost(data)).then(() => reset());
   };
 
-  // check if member join group ? //
-  // get userId
-  // get groupId, get members of group
-  // if has params groupId, check if members include user, if yes can post
-  // if not
-
   // Fetch group details if a group ID is present in the route
   useEffect(() => {
     if (currentGroupId) {
-      dispatch(getSingleGroup(currentGroupId));
+      dispatch(getSingleGroup(currentGroupId)); //
     }
   }, [dispatch, currentGroupId]);
 
@@ -113,15 +95,12 @@ function PostForm() {
               placeholder="Share your ideas here..."
               sx={{
                 "& fieldset": {
-                  borderWidth: `1px !important`,
-                  borderColor: alpha("#B31942", 0.5),
+                  border: "1px dashed #B31942",
                 },
-                color: "#fff", // placeholder text?
               }}
             />
 
             {/* UPLOAD A FILE: btn choose File  */}
-            {/* <input type="file" ref={fileInput} onChange={handleFile} /> */}
             <FUploadImage
               // upload image with the Post
               name="image"

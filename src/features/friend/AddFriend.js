@@ -84,7 +84,13 @@ function AddFriend() {
                 {/* SEARCH USERS result count, hide if not ?*/}
                 <SearchInput handleSubmit={handleSubmit} />
                 {/* result */}
-                <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
+                <Typography
+                  variant="subtitle"
+                  sx={{
+                    // color: "#fff",
+                    ml: 1,
+                  }}
+                >
                   {totalUsers > 1
                     ? `${totalUsers} users found`
                     : totalUsers === 1
@@ -103,7 +109,9 @@ function AddFriend() {
                         alignItems: "center",
                         justifyContent: "center",
                       },
-                    color: "#fff", // work
+                    "& .css-18gzhn6-MuiInputBase-root-MuiTablePagination-select":
+                      { marginRight: "20px" },
+                    // color: "#fff", // work
                   }}
                   component="div"
                   count={totalUsers ? totalUsers : 0}

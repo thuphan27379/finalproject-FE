@@ -94,14 +94,14 @@ const MuiCustomProvider = createTheme({
     },
   },
 
-  // responsive //
+  // responsive
   breakpoints: {
     values: {
-      xs: 0,
+      // xs: 0,
       sm: 480,
       md: 768,
       lg: 1024,
-      xl: 1440,
+      // xl: 1440,
     },
   },
 
@@ -116,30 +116,21 @@ const MuiCustomProvider = createTheme({
     },
   },
 
-  // transition, ease //
+  // transition, ease
   transitions: {
     duration: {
       shortest: 150,
       shorter: 200,
       short: 250,
-      // most basic recommended timing
       standard: 300,
-      // this is to be used in complex animations
       complex: 375,
-      // recommended when something is entering screen
       enteringScreen: 225,
-      // recommended when something is leaving screen
       leavingScreen: 195,
     },
     easing: {
-      // This is the most common easing curve.
       easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)",
-      // Objects enter the screen at full velocity from off-screen and
-      // slowly decelerate to a resting point.
       easeOut: "cubic-bezier(0.0, 0, 0.2, 1)",
-      // Objects leave the screen at full velocity. They do not decelerate when off-screen.
       easeIn: "cubic-bezier(0.4, 0, 1, 1)",
-      // The sharp curve is used by objects that may return to the screen at any time.
       sharp: "cubic-bezier(0.4, 0, 0.6, 1)",
     },
   },
@@ -153,17 +144,22 @@ function ThemeProvider({ children }) {
   const themeOptions = (mode) =>
     mode === "light"
       ? {
-          // light: sua lai text color va background color
+          // light: sua lai text color va background color, body.css
           palette: {
+            mode,
             primary: PRIMARY,
             secondary: SECONDARY,
-            success: SUCCESS,
+            success: SUCCESS, // dot chuoi
             text: {
               color: GREY[1000], // black
               secondary: GREY[600],
               disabled: GREY[500],
             },
-            background: { paper: GREY[0], default: "#fff", neutral: GREY[200] },
+            background: {
+              paper: GREY[0], // white
+              default: "#fff",
+              neutral: GREY[200],
+            },
             action: {
               active: GREY[600],
               hover: GREY[500_8],
@@ -187,10 +183,22 @@ function ThemeProvider({ children }) {
               },
             },
           },
+
+          // responsive
+          breakpoints: {
+            values: {
+              xs: 0,
+              sm: 480,
+              md: 768,
+              lg: 1024,
+              xl: 1440,
+            },
+          },
         }
       : // dark: default
         {
           palette: {
+            mode,
             primary: PRIMARY,
             secondary: SECONDARY,
             success: SUCCESS,
@@ -200,7 +208,7 @@ function ThemeProvider({ children }) {
               disabled: GREY[500],
             },
             background: {
-              paper: GREY[1000],
+              paper: GREY[1000], // black
               default: "#000",
               neutral: GREY[200],
             },
@@ -227,23 +235,35 @@ function ThemeProvider({ children }) {
               },
             },
           },
+
+          // responsive
+          breakpoints: {
+            values: {
+              xs: 0,
+              sm: 480,
+              md: 768,
+              lg: 1024,
+              xl: 1440,
+            },
+          },
         };
 
   // toggle theme
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "dark" ? "light" : "dark"));
+        // console.log("toggle");
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
       },
     }),
     []
   );
 
   // index custom components
-  let theme = useMemo(() => createTheme(themeOptions(mode)), [mode]); // mode OR colorMode
+  let theme = useMemo(() => createTheme(themeOptions(mode)), [mode]);
   theme.components = customizeComponents(theme);
 
-  //
+  // xai MuiCustomProvider ?
   return (
     <ColorModeContext.Provider value={colorMode}>
       <MUIThemeProvider theme={theme}>
@@ -254,5 +274,5 @@ function ThemeProvider({ children }) {
   );
 }
 
-export const ColorModeContext = createContext({ toggleColorMode: () => {} }); //??
+export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 export default ThemeProvider;

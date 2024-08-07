@@ -1,17 +1,40 @@
 import React from "react";
-import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { Container, Grid, Stack } from "@mui/material";
+import { useSelector, shallowEqual } from "react-redux";
+import { Container, Grid } from "@mui/material";
+// import { makeStyles } from "@mui/styles/makeStyles"; // npm install @mui/styles --force
+// import { StylesProvider } from "@mui/styles";
+// import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { getDomainForSale } from "../features/home/homeSlice";
-
-// import "../assets/css/main.css";
-// import "../assets/css/reset.css";
+import "../assets/css/main.css";
 import "../assets/css/body.css";
 import "../assets/css/footer.css";
 
 // Outlet (Company) all about company
-// link to /about, /project, /startup, /domain
+
+// const theme = createTheme();
+// const useStyles = makeStyles((theme) => ({
+//   pageFooter: { // name of the class, trong html
+//     borderColor: theme.palette.primary.main, // value, trong body.css
+//   },
+// }));
+
+// function AppContent(props) {
+//   const classes = useStyles();
+//   return <Card className={classes.root}>...</Card>;
+// }
+
+// In the root of your app
+// function App(props) {
+//   return (
+//     <ThemeProvider theme={theme}>
+//       <Component {...props} />
+//     </ThemeProvider>
+//   );
+// }
+
 const HomePage = () => {
+  // const classes = useStyles(); // className={classes.pageFooter}
+
   const { domainsForSale, domainForStartup, isLoading } = useSelector(
     (state) => state.home,
     shallowEqual
@@ -19,32 +42,34 @@ const HomePage = () => {
   // console.log("domain list", domainsForSale);
 
   // let arrDomainForSale = domainsForSale.domains;
-  // let arrDomainForStartup = domainsForStartup.startups;
-  // // .shuffle()
-  // // (Math.floor(Math.random())
+  // let arrDomainForStartup = domainForStartup.startups;
+  // .shuffle()
+  // (Math.floor(Math.random())
   // for (let i = 0; i < arrDomain.length; i++) {}
   // let randomDomain = Math.floor(Math.random() * arrDomain.length);
-  // randomDomain = arrDomain.slice(0, 5);
-  // console.log("slice", randomDomain);
+  // randomDomain = arrDomain.splice(0, 5);
+  // console.log("splice", randomDomain);
 
   //
   return (
     <>
+      {/* <StylesProvider injectFirst> */}
       <Container
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
-          maxWidth: "unset!important",
+          maxWidth: "850px", // unset!important ?
           marginTop: 0,
-          backgroundColor: "#000",
-          color: "white",
           width: "95%",
+          // backgroundColor: "#000",
+          // color: "#fff",
         }}
       >
-        <Grid marginTop={"68px"} maxWidth={"60vw"} marginX={"auto"}>
+        {/* maxWidth={"60vw"} */}
+        <Grid marginTop={"68px"} marginX={"auto"}>
           <div className="homepage">
             {/* <!-- 1 Welcome --> */}
-            <div className="homepage-hero dark">
+            <div className="homepage-hero">
               <section>
                 <h1>All about Domains and Startup</h1>
                 <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
@@ -59,69 +84,20 @@ const HomePage = () => {
                   width="500px"
                 />
                 <p>
-                  WWW.VNWP.COM
+                  In the digital era, Domain Name is the Brand Name for a
+                  product or service (subdomains can also be used instead).
+                  There are global brands and regional brands depending on the
+                  scope of operations, but it is necessary to standardize for
+                  the future if there is development.
                   <br />
                   <br />
-                  Value Name for Web Project
-                  <br /> Value Name for World Project
+                  <br /> VNWP.COM is the place to start your career. A place
+                  that gives you the fishing rod, not the fish. A place that
+                  gives you the brand name, platform, and method to start your
+                  career; the choice is up to you. A place that will accompany
+                  you (if needed) and more.
                   <br />
                   <br />
-                  <br /> Name - Brand Name is a necessary condition to start a
-                  startup, and a sufficient condition is a platform and a
-                  method. There are many platforms, many methods, but the Name
-                  and Brand Name are only one.
-                  <br />
-                  <br />
-                  <br /> In the digital era, Domain Name is the Brand Name for a
-                  product or service (subdomain can also be used instead). There
-                  are global brands and regional brands depending on the scope
-                  of operations, but it is necessary to standardize for the
-                  future if there is development.
-                  <br />
-                  <br />
-                  <br /> The Domain Name must be short, easy to understand, easy
-                  to remember, easy to recognize, and easy to express.
-                  <br />
-                  <br />
-                  <br /> VNWP.COM is the place to start your Startup. A place
-                  the fishing rod is given, not the fish. A place to give you
-                  the Brand Name, platform and method to start your Startup, the
-                  choice is up to you. A place that will accompany you (if
-                  needed) and more...
-                  <br />
-                  <br />
-                  <br /> VNWP.COM has the following main activities: <br />
-                  <br /> - Some typical Startup projects of VNWP.COM. You can
-                  own it or cooperate.
-                  <br /> - Brand Names and Startup ideas for you.
-                  <br /> - Domain Names as Brand Names for you to choose.
-                  <br />
-                  <br />
-                  <br /> How VNWP.COM works: <br />
-                  <br /> - For typical Startup projects, VNWP.COM will give many
-                  incentives to partners who want to transfer ownership or
-                  invest in development cooperation. Each project has its own
-                  plan. VNWP.COM will inform and discuss to achieve the best
-                  results for VNWP.COM partners.
-                  <br /> - For brand Domain Names and Startup ideas, VNWP.COM
-                  has specific information about domain name value and the best
-                  ideas, including information sources about the market and
-                  development direction for you.
-                  <br /> - For Domain Names as Brand Names for you to choose,
-                  VNWP.COM has specific information about domain name value and
-                  preferential policies for you. VNWP.COM uses the highly
-                  reputable and guaranteed Escrow.com and SEDO.COM as a partner
-                  for payment and transfer domain name.
-                  <br />
-                  <br />
-                  Our ESCROW: worlddetail@gmail.com
-                  <br />
-                  <br />
-                  <br /> Agreement of use: When you enter into an economic
-                  transaction contract with VNWP.COM, you automatically agree to
-                  VNWP.COM way of operating. Any disputes, if any, will be
-                  resolved according to VNWP.COM way of operating and according
-                  to customary practices.
                 </p>
               </section>
             </div>
@@ -129,7 +105,9 @@ const HomePage = () => {
             {/* <!-- 2 Projects --> */}
             {/* link to /project */}
             <div className="featured-articles">
-              <h2>Our Projects --- to be our partner</h2>
+              <h2>
+                <a href="/project">Our Projects --- to be our partner</a>
+              </h2>
               <div className="tile-container">
                 <div className="article-tile">
                   {/* <!-- domain.com --> */}
@@ -157,27 +135,10 @@ const HomePage = () => {
                     <p>The truth way you see the world</p>
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Expedita ab officia vel distinctio dicta tempore temporibus
-                    molestiae natus quod, praesentium accusamus, consequuntur
-                    perferendis pariatur magni quaerat provident similique.
-                    Quasi, sapiente.
-                  </p>
-                </div>
-
-                <div className="article-tile">
-                  <a href="/" className="tile-tag">
-                    www.Glonet.com .org
-                  </a>
-                  <h3 className="tile-title">
-                    <p>Global networking for everyone</p>
-                  </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Culpa hic exercitationem possimus necessitatibus quas
-                    repellat quisquam aperiam. Adipisci, quaerat consequuntur
-                    eius molestias, deleniti natus ullam explicabo sint nesciunt
-                    sequi facilis.
+                    Freedom is not free! Journalism and Media Social Network,
+                    bring real news and information even knowledge to people.
+                    Say no with fake news and brainwashed. Make Vietnam Great
+                    Again!
                   </p>
                 </div>
 
@@ -189,10 +150,12 @@ const HomePage = () => {
                     <p>Vietnam Web Portal</p>
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Velit, omnis numquam. Perspiciatis ad error nobis officia
-                    laudantium. Porro rem magni excepturi iure illo esse
-                    molestiae reiciendis ipsa, qui quae nisi.
+                    Value Name for Web Project - Value Name for World Project.
+                    VNWP.COM is the place to start your Startup. A place the
+                    fishing rod is given, not the fish. A place to give you the
+                    Brand Name, platform and method to start your Startup, the
+                    choice is up to you. A place that will accompany you (if
+                    needed) and more.
                   </p>
                 </div>
 
@@ -204,27 +167,10 @@ const HomePage = () => {
                     <p>Startup Community</p>
                   </h3>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Culpa hic exercitationem possimus necessitatibus quas
-                    repellat quisquam aperiam. Adipisci, quaerat consequuntur
-                    eius molestias, deleniti natus ullam explicabo sint nesciunt
-                    sequi facilis.
-                  </p>
-                </div>
-
-                <div className="article-tile">
-                  <a href="/" className="tile-tag">
-                    www.DotSponsor.com
-                  </a>
-                  <h3 className="tile-title">
-                    <p>Chuong trinh Tai tro Ten Mien cho Startup</p>
-                  </h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Culpa hic exercitationem possimus necessitatibus quas
-                    repellat quisquam aperiam. Adipisci, quaerat consequuntur
-                    eius molestias, deleniti natus ullam explicabo sint nesciunt
-                    sequi facilis.
+                    Community Network for Ideas and Startup whoever or whatever
+                    you are and want to become an Entrepreneur. Don't be afraid!
+                    Let's build your dream together and bright up us. "If you're
+                    good at something, never do it for free" - Joker.
                   </p>
                 </div>
               </div>
@@ -234,83 +180,113 @@ const HomePage = () => {
             {/* link to /startup */}
             {/*  */}
             <section className="latest-news">
-              <h2>Domains for Startup --- Our Domain Your Startup</h2>
+              <h2>
+                <a href="/startup">
+                  Domains for Startup --- Our Domain Your Startup
+                </a>
+              </h2>
 
               <ul className="news-list">
-                {/* domainForStartup.splice(0, 5) */}
                 <li className="news-item">
-                  {/* <!-- idea --> */}
                   <p className="news-title">
-                    <span>
-                      <a href="/">Lift-off: The Curriculum launch</a>
-                    </span>
                     {/* <!-- domain name --> */}
                     <span>
-                      <a className="news-source" href="/">
-                        developer.mozilla.org
-                      </a>
+                      <p>www.vnfamily.com</p>
+                    </span>
+                    {/* <!-- idea --> */}
+                    <span>
+                      <p className="news-source">Vietnam Family</p>
                     </span>
                   </p>
                   {/* <!-- build your startup --> */}
-                  <span className="news-date">$ $ $</span>
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
+                    </a>
+                  </p>
                 </li>
 
                 <li className="news-item">
                   <p className="news-title">
+                    {/* <!-- domain name --> */}
                     <span>
-                      <a href="/">Baseline &#x27;s evolution on</a>
+                      <p>www.ictcafe.com</p>
                     </span>
+                    {/* <!-- idea --> */}
                     <span>
-                      <a className="news-source" href="/">
-                        developer.mozilla.org
-                      </a>
+                      <p className="news-source">
+                        Information and Communication Technology Cafe
+                      </p>
                     </span>
                   </p>
-                  <span className="news-date">$ $ $</span>
+                  {/* <!-- build your startup --> */}
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
+                    </a>
+                  </p>{" "}
                 </li>
 
                 <li className="news-item">
                   <p className="news-title">
+                    {/* <!-- domain name --> */}
                     <span>
-                      <a href="/">
-                        Introducing the Playground: Bring your code to life!
-                      </a>
+                      <p>www.09az.com</p>
                     </span>
+                    {/* <!-- idea --> */}
                     <span>
-                      <a className="news-source" href="/">
-                        developer.mozilla.org
-                      </a>
+                      <p className="news-source">0 to 9 & A to Z</p>
                     </span>
                   </p>
-                  <span className="news-date">$ $ $</span>
+                  {/* <!-- build your startup --> */}
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
+                    </a>
+                  </p>{" "}
                 </li>
 
                 <li className="news-item">
                   <p className="news-title">
+                    {/* <!-- domain name --> */}
                     <span>
-                      <a href="/">Lift-off: The Curriculum launch</a>
+                      <p>www.vnkids.com</p>
                     </span>
+                    {/* <!-- idea --> */}
                     <span>
-                      <a className="news-source" href="/">
-                        developer.mozilla.org
-                      </a>
+                      <p className="news-source">Vietnam Kids</p>
                     </span>
                   </p>
-                  <span className="news-date">$ $ $</span>
+                  {/* <!-- build your startup --> */}
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
+                    </a>
+                  </p>{" "}
                 </li>
 
                 <li className="news-item">
                   <p className="news-title">
+                    {/* <!-- domain name --> */}
                     <span>
-                      <a href="/">Baseline &#x27;s evolution on</a>
+                      <p>www.vietedu.com</p>
                     </span>
+                    {/* <!-- idea --> */}
                     <span>
-                      <a className="news-source" href="/">
-                        developer.mozilla.org
-                      </a>
+                      <p className="news-source">Vietnam Education</p>
                     </span>
                   </p>
-                  <span className="news-date">$ $ $</span>
+                  {/* <!-- build your startup --> */}
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
+                    </a>
+                  </p>{" "}
                 </li>
               </ul>
             </section>
@@ -318,86 +294,113 @@ const HomePage = () => {
             {/* <!-- 4 Domains for sale --> */}
             {/* link to /domain */}
             <section className="recent-contributions">
-              <h2>Domains for Sale and much more</h2>
+              <h2>
+                <a href="/domain">Domains for Sale and much more </a>
+              </h2>
 
               <ul className="contribution-list">
-                {/* .splice(0, 5) */}
                 <li className="request-item">
                   <p className="request-title">
                     {/* <!-- domain name --> */}
-                    <a href="/">Fix indexOf() and lastIndexOf()</a>
+                    <p>www.hungthinh.com</p>
                     {/* <!-- description --> */}
                     <span>
-                      <a className="request-repo" href="/">
-                        hello
-                      </a>
+                      <p className="request-repo">Hung Thinh</p>
                     </span>
                   </p>
                   {/* <!-- price --> */}
-                  <span className="request-date">$ $ $</span>
-                </li>
-
-                <li className="request-item">
-                  <p className="request-title">
-                    <a href="/">
-                      Redirect pathway to Curriculum and remove links to it
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
                     </a>
-                    <span>
-                      <a className="request-repo" href="/">
-                        hello
-                      </a>
-                    </span>
-                  </p>
-                  <span className="request-date">$ $ $</span>
+                  </p>{" "}
                 </li>
 
                 <li className="request-item">
                   <p className="request-title">
-                    <a href="/">Web/Performance/Speculative_loading</a>
+                    {/* <!-- domain name --> */}
+                    <p>www.ngocsuong.com</p>
+                    {/* <!-- description --> */}
                     <span>
-                      <a className="request-repo" href="/">
-                        hello
-                      </a>
+                      <p className="request-repo">Ngoc Suong</p>
                     </span>
                   </p>
-                  <span className="request-date">$ $ $</span>
+                  {/* <!-- price --> */}
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
+                    </a>
+                  </p>{" "}
                 </li>
 
                 <li className="request-item">
                   <p className="request-title">
-                    <a href="/">Fix of stylesheet load events example</a>
+                    {/* <!-- domain name --> */}
+                    <p>www.hongduc.com</p>
+                    {/* <!-- description --> */}
                     <span>
-                      <a className="request-repo" href="/">
-                        hello
-                      </a>
+                      <p className="request-repo">Hong Duc</p>
                     </span>
                   </p>
-                  <span className="request-date">$ $ $</span>
+                  {/* <!-- price --> */}
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
+                    </a>
+                  </p>{" "}
                 </li>
 
                 <li className="request-item">
                   <p className="request-title">
-                    <a href="/">chore(zh-cn): sync translate content</a>
+                    {/* <!-- domain name --> */}
+                    <p>www.ngocle.com</p>
+                    {/* <!-- description --> */}
                     <span>
-                      <a className="request-repo" href="/">
-                        hello
-                      </a>
+                      <p className="request-repo">Ngoc Le</p>
                     </span>
                   </p>
-                  <span className="request-date">$ $ $</span>
+                  {/* <!-- price --> */}
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
+                    </a>
+                  </p>{" "}
+                </li>
+
+                <li className="request-item">
+                  <p className="request-title">
+                    {/* <!-- domain name --> */}
+                    <p>www.dailoc.com</p>
+                    {/* <!-- description --> */}
+                    <span>
+                      <p className="request-repo">Dai Loc</p>
+                    </span>
+                  </p>
+                  {/* <!-- price --> */}
+                  <p>
+                    <span className="news-date">$1000</span>
+                    <a href="/contact" className="request-date">
+                      Contact
+                    </a>
+                  </p>{" "}
                 </li>
               </ul>
             </section>
 
             {/* <!-- 5 Cooperation --> */}
-            {/* link to /about */}
             <div className="featured-articles">
               <h2>Cooperation and Partners</h2>
               <div className="tile-container">
                 <div className="article-tile">
                   <p className="tile-tag">ICANN</p>
                   <h3 className="tile-title">
-                    <a href="https://www.icann.org/">https://www.icann.org/</a>
+                    <a className="title" href="https://www.icann.org/">
+                      https://www.icann.org/
+                    </a>
                   </h3>
                   <p>
                     The ICANN80 Policy Forum is now live and taking place in
@@ -441,8 +444,10 @@ const HomePage = () => {
                     </a>
                   </h3>
                   <p>
-                    With Escrow.com you can buy and sell anything safely without
-                    the risk of chargebacks. Truly secure payments.
+                    Escrow.com is the world's most secure payment method from a
+                    counter party risk perspective - safeguarding both buyer and
+                    seller, all funds transacted using escrow are kept in trust.
+                    Truly secure payments.
                   </p>
                 </div>
 
@@ -464,20 +469,20 @@ const HomePage = () => {
                     <a href="https://sedo.com">https://sedo.com</a>
                   </h3>
                   <p>
-                    The world's leading platform for domain buyers and sellers.
-                    The first address for your online success.
+                    The question both buyers and sellers ask us is: How much can
+                    a domain cost? Our scientifically sound, expert appraisals -
+                    for both individual domains and domain portfolios.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* footer menu */}
-            {/* link to /about */}
             <footer id="nav-footer" className="page-footer">
               <div className="page-footer-grid">
                 {/* <!-- logo --> */}
                 <div className="page-footer-logo-col">
-                  <div className="mainlogo">
+                  <div className="main-logo">
                     <a href="/">
                       <img src="./huongsac-logo.png" alt="" />
                     </a>
@@ -617,6 +622,7 @@ const HomePage = () => {
           </div>
         </Grid>
       </Container>
+      {/* </StylesProvider> */}
     </>
   );
 };

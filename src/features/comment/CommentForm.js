@@ -42,7 +42,7 @@ function CommentForm({ postId }) {
                 borderWidth: `1px !important`,
                 borderColor: (theme) =>
                   `${theme.palette.secondary.main} !important`,
-                color: "#fff", // placeholder text color?
+                // color: "#fff", // placeholder text color?
               },
             }}
           />

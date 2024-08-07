@@ -48,13 +48,11 @@ export const updateUserProfile =
     userId,
     name,
     avatarUrl,
-    coverUrl,
     aboutMe,
     city,
     country,
     company,
-    // jobTitle,
-    others, //
+    others,
     facebookLink,
     instagramLink,
     linkedinLink,
@@ -66,13 +64,11 @@ export const updateUserProfile =
     try {
       const data = {
         name,
-        coverUrl,
         aboutMe,
         city,
         country,
         company,
-        // jobTitle,
-        others, //
+        others,
         facebookLink,
         instagramLink,
         linkedinLink,

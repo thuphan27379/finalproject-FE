@@ -69,7 +69,7 @@ const slice = createSlice({
       state.error = null;
 
       const { targetUserId, ...friendship } = action.payload;
-      state.usersById[targetUserId].friendship = friendship; //cap nhat action btn trong user table
+      state.usersById[targetUserId].friendship = friendship; // cap nhat action btn trong user table
 
       state.incomingRequests = action.payload.users; //
     },
@@ -81,7 +81,7 @@ const slice = createSlice({
       const { targetUserId, ...friendship } = action.payload;
       state.usersById[targetUserId].friendship = friendship;
     },
-    // accept Request Success ??
+    // accept Request Success
     acceptRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -89,7 +89,7 @@ const slice = createSlice({
       const { targetUserId, ...friendship } = action.payload;
       state.usersById[targetUserId].friendship = friendship;
     },
-    // cancel Request Success//
+    // cancel Request Success
     cancelRequestSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -109,7 +109,7 @@ const slice = createSlice({
       const { targetUserId } = action.payload;
       state.usersById[targetUserId].friendship = null;
     },
-    // sent friend request, outgoing//
+    // sent friend request, outgoing
     getOutgoingSentsSuccess(state, action) {
       state.isLoading = false;
       state.error = null;
@@ -136,12 +136,11 @@ export const getUsers =
       dispatch(slice.actions.getUsersSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
-      toast.error(error.message); //react toastify
+      toast.error(error.message);
     }
   };
 
 // function getFriends, for export to AddFriend.js
-// getFriendsSuccess
 export const getFriends =
   ({ filterName, page = 1, limit = 12 }) =>
   async (dispatch) => {
@@ -154,13 +153,12 @@ export const getFriends =
       dispatch(slice.actions.getFriendsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
-      toast.error(error.message); //react toastify
+      toast.error(error.message);
     }
   };
 
 // incoming list
 // function getFriendRequests, for export to AddFriend.js
-// getFriendRequestsSuccess
 export const getFriendRequests =
   ({ filterName, page = 1, limit = 12 }) =>
   async (dispatch) => {
@@ -175,12 +173,11 @@ export const getFriendRequests =
       dispatch(slice.actions.getFriendRequestsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
-      toast.error(error.message); //react toastify
+      toast.error(error.message);
     }
   };
 
-// function send Friend Request
-// sendFriendRequestSuccess
+// function sendFriendRequest
 export const sendFriendRequest = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
 
@@ -191,15 +188,14 @@ export const sendFriendRequest = (targetUserId) => async (dispatch) => {
     dispatch(
       slice.actions.sendFriendRequestSuccess({ ...response.data, targetUserId })
     );
-    toast.success("Request sent"); //react toastify
+    toast.success("Request sent");
   } catch (error) {
     dispatch(slice.actions.hasError(error.message));
     toast.error(error.message);
   }
 };
 
-// function decline Request, for export to AddFriend.js
-// declineRequestSuccess
+// function declineRequest, for export to AddFriend.js
 export const declineRequest = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
 
@@ -210,15 +206,14 @@ export const declineRequest = (targetUserId) => async (dispatch) => {
     dispatch(
       slice.actions.declineRequestSuccess({ ...response.data, targetUserId })
     );
-    toast.success("Request declined"); //react toastify
+    toast.success("Request declined");
   } catch (error) {
     dispatch(slice.actions.hasError(error.message));
     toast.error(error.message);
   }
 };
 
-// function accept Request, for export to AddFriend.js
-// acceptRequestSuccess
+// function acceptRequest, for export to AddFriend.js
 export const acceptRequest = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
 
@@ -229,15 +224,14 @@ export const acceptRequest = (targetUserId) => async (dispatch) => {
     dispatch(
       slice.actions.acceptRequestSuccess({ ...response.data, targetUserId })
     );
-    toast.success("Request accepted"); //react toastify
+    toast.success("Request accepted");
   } catch (error) {
     dispatch(slice.actions.hasError(error.message));
     toast.error(error.message);
   }
 };
 
-// function cancel Request, for export to AddFriend.js
-// cancelRequestSuccess
+// function cancelRequest, for export to AddFriend.js
 export const cancelRequest = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
   // console.log(targetUserId);
@@ -249,7 +243,7 @@ export const cancelRequest = (targetUserId) => async (dispatch) => {
     dispatch(
       slice.actions.cancelRequestSuccess({ ...response.data, targetUserId })
     );
-    toast.success("Request cancelled"); //react toastify
+    toast.success("Request cancelled");
   } catch (error) {
     dispatch(slice.actions.hasError(error.message));
     toast.error(error.message);
@@ -257,7 +251,6 @@ export const cancelRequest = (targetUserId) => async (dispatch) => {
 };
 
 // function removeFriend, for export to AddFriend.js
-// removeFriendSuccess
 export const removeFriend = (targetUserId) => async (dispatch) => {
   dispatch(slice.actions.startLoading());
 
@@ -266,7 +259,7 @@ export const removeFriend = (targetUserId) => async (dispatch) => {
     dispatch(
       slice.actions.removeFriendSuccess({ ...response.data, targetUserId })
     );
-    toast.success("Friend removed"); //react toastify
+    toast.success("Friend removed");
   } catch (error) {
     dispatch(slice.actions.hasError(error.message));
     toast.error(error.message);
@@ -288,6 +281,6 @@ export const getOutgoingSents =
       dispatch(slice.actions.getOutgoingSentsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
-      toast.error(error.message); //react toastify
+      toast.error(error.message);
     }
   };

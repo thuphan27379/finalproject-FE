@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
-  Link,
   Card,
   Typography,
   CardHeader,
@@ -26,14 +25,18 @@ function GroupInterest() {
   //
   return (
     <>
-      <Card sx={{ minWidth: "300px", minHeight: "250px" }}>
+      <Card
+        style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
+        sx={{ minWidth: "370px", minHeight: "250px" }} //, width: "70%"
+      >
         <CardHeader title="List of Interest" sx={{ paddingTop: "10px" }} />
 
         {/* pagination */}
 
-        <Stack spacing={2} sx={{ p: 2 }}>
+        <Stack spacing={1} sx={{ p: 2 }}>
           {list.map((listItem) => (
             <Box
+              key={listItem._id} // !
               sx={{
                 p: 0,
                 display: "flex",
@@ -42,10 +45,10 @@ function GroupInterest() {
                 justifyContent: "space-between",
               }}
             >
-              <Typography>{listItem.interests}</Typography>
+              <Typography>* {listItem.interests}</Typography>
               <Button
                 color="secondary"
-                variant="outlined"
+                variant="contained"
                 sx={{ p: 0, fontSize: 10 }}
               >
                 See

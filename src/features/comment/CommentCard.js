@@ -45,7 +45,7 @@ function CommentCard({ comment }) {
     }
     dispatch(deleteComment({ commentId: comment._id, postId: comment.post }));
 
-    handleClose(); //close popover
+    handleClose(); // close popover
   };
 
   //
@@ -61,7 +61,7 @@ function CommentCard({ comment }) {
         padding={0}
         sx={{
           borderColor: "1px solid #0A3161", //?
-          maxWidth: "808px",
+          maxWidth: "800px", // work
           maxHeight: "105px",
           lineHeight: "0",
           p: "0",
@@ -75,34 +75,23 @@ function CommentCard({ comment }) {
             paddingRight: "8px",
             paddingBottom: "10px",
           },
-          "& .css-ga6y80-MuiButtonBase-root-MuiIconButton-root": {
-            padding: "0px",
-          },
-          "& .MuiPaper-elevation .MuiPaper-rounded .MuiPaper-elevation1 .css-1vmzsl-MuiPaper-root":
-            {
-              padding: "0px", //?
-            },
         }}
       >
         <Avatar alt={comment.author?.name} src={comment.author?.avatarUrl} />
 
         <Paper
           sx={{
-            p: 1,
             flexGrow: 1,
-            maxHeight: "110px",
+            maxHeight: "100px",
             lineHeight: 0,
+            paddingLeft: 1,
             "& .css-10kbc59-MuiStack-root .css-p64cbd-MuiStack-root": {
               marginRight: "7px", //
               paddingRight: "8px",
               paddingBottom: "10px",
             },
-            borderColor: "1px #fff", // ?
-            backgroundColor: "#000",
-            "& .MuiPaper-elevation .MuiPaper-rounded .MuiPaper-elevation1 .css-1vmzsl-MuiPaper-root":
-              {
-                padding: "0px",
-              },
+            // borderColor: "1px #fff", // ?
+            // backgroundColor: "#000",
           }}
         >
           <Stack
@@ -113,13 +102,16 @@ function CommentCard({ comment }) {
               borderColor: "1px #fff",
               "& .MuiPaper-elevation .MuiPaper-rounded .MuiPaper-elevation1 .css-1vmzsl-MuiPaper-root":
                 {
-                  padding: "0px",
+                  padding: 0,
                 },
             }}
           >
             <Typography
               variant="subtitle2"
-              sx={{ fontWeight: 700, color: "#fff" }}
+              sx={{
+                fontWeight: 700,
+                // color: "#fff"
+              }}
             >
               {comment.author?.name}
             </Typography>
@@ -127,10 +119,7 @@ function CommentCard({ comment }) {
             {/* More btn */}
             {currentUserId === comment.author._id && (
               <IconButton onClick={handleClick} sx={{ color: "secondary" }}>
-                <MoreVertIcon
-                  // onClick={handleClick}
-                  sx={{ fontSize: 27, color: "secondary" }}
-                />
+                <MoreVertIcon sx={{ fontSize: 27, color: "secondary" }} />
               </IconButton>
             )}
             <Popover
@@ -163,7 +152,7 @@ function CommentCard({ comment }) {
             sx={{
               color: "text.disabled",
               paddingLeft: "0",
-              marginTop: "-9px", // ????
+              marginTop: "-9px", // ?
               display: "flex",
               alignItems: "start",
               fontSize: "11px",
@@ -172,7 +161,10 @@ function CommentCard({ comment }) {
             {fDate(comment.createdAt)}
           </Typography>
 
-          <Typography variant="body2" sx={{ color: "#fff" }}>
+          <Typography
+            variant="body2"
+            // sx={{ color: "#fff" }}
+          >
             {comment.content}
           </Typography>
 

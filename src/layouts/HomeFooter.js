@@ -7,12 +7,13 @@ function HomeFooter() {
     <>
       <Stack
         sx={{
-          backgroundColor: "#000", //
+          backgroundColor: "#000",
           minWidth: "100%",
           marginLeft: "-24px",
           marginRight: "-24px",
           minHeight: "50px",
           borderTop: "1px solid #0A3161",
+          marginTop: "50px",
         }}
       >
         <Typography variant="body2" color="#fff" align="center" p={2}>

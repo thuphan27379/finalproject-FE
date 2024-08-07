@@ -21,7 +21,7 @@ function GroupPostList() {
     postsByGroupId, //
     totalPostsGroup,
     isLoading,
-  } = useSelector((state) => state.group); //groupSlice
+  } = useSelector((state) => state.group); // groupSlice
 
   // lay nhung post trong data ra va loc theo groupId
   console.log(groupPostsList);
@@ -62,7 +62,9 @@ function GroupPostList() {
             Load more
           </LoadingButton>
         ) : (
-          <Typography variant="h6">No Post Yet</Typography>
+          <Typography variant="h6" color="secondary">
+            No Post Yet
+          </Typography>
         )}
       </Box>
     </>

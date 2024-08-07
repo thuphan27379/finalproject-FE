@@ -12,7 +12,7 @@ import {
 
 import UserCard from "./UserCard";
 import SearchInput from "../../components/SearchInput";
-import { getFriendRequests, cancelRequest, getUsers } from "./friendSlice"; //
+import { getFriendRequests, cancelRequest } from "./friendSlice"; //
 
 // incoming
 function FriendRequests() {
@@ -62,7 +62,13 @@ function FriendRequests() {
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
               <SearchInput handleSubmit={handleSubmit} />
               {/* result, hide if not ? */}
-              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
+              <Typography
+                variant="subtitle"
+                sx={{
+                  // color: "#fff",
+                  ml: 1,
+                }}
+              >
                 {totalUsers > 1
                   ? `${totalUsers} users found`
                   : totalUsers === 1
@@ -70,7 +76,13 @@ function FriendRequests() {
                   : "No user found"}
               </Typography>
               <Box sx={{ flexGrow: 1 }} />
-              <Typography variant="subtitle" sx={{ color: "#fff", ml: 1 }}>
+              <Typography
+                variant="subtitle"
+                sx={{
+                  // color: "#fff",
+                  ml: 1,
+                }}
+              >
                 {totalUsers > 1
                   ? `${totalUsers} requests`
                   : totalUsers === 1

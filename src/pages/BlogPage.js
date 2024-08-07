@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { capitalCase } from "change-case";
 import { Box, Card, Container, Tab, Tabs } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
@@ -9,8 +10,6 @@ import MarkUnreadChatAltOutlined from "@mui/icons-material/MarkUnreadChatAltOutl
 import SpatialTrackingOutlinedIcon from "@mui/icons-material/SpatialTrackingOutlined";
 import SpatialAudioOffOutlinedIcon from "@mui/icons-material/SpatialAudioOffOutlined";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
-import { capitalCase } from "change-case";
-import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
 import useAuth from "../hooks/useAuth";
 import UserChat from "../features/chat/UserChat";
@@ -19,11 +18,7 @@ import AddFriend from "../features/friend/AddFriend";
 import FriendRequests from "../features/friend/FriendRequests";
 import FriendList from "../features/friend/FriendList";
 import OutgoingSents from "../features/friend/OutgoingSent";
-import UserProfilePage from "./UserProfilePage";
-import PostForm from "../features/post/PostForm";
-import PostList from "../features/post/PostList.js";
 import Wall from "./Wall";
-import Group from "../features/group/Group";
 import GroupPage from "./GroupPage";
 
 // blogpage, profile tabs
@@ -52,7 +47,7 @@ const TabsWrapperStyle = styled("div")(({ theme }) => ({
 function BlogPage(profile) {
   const { user } = useAuth();
   // console.log(user);
-  const [currentTab, setCurrentTab] = useState("wall");
+  const [currentTab, setCurrentTab] = useState("profile");
 
   const handleChangeTab = (newValue) => {
     setCurrentTab(newValue); // value <=> newValue
@@ -68,8 +63,7 @@ function BlogPage(profile) {
     {
       value: "profile",
       icon: <AccountBoxOutlinedIcon sx={{ fontSize: 24 }} />,
-      // route /user/:id
-      component: <Profile profile={user} />,
+      component: <Profile profile={user} />, // route /user/:id
     },
     {
       value: "group",
@@ -93,9 +87,6 @@ function BlogPage(profile) {
       component: <FriendRequests />,
     },
     // outgoing BO!!!
-    // User can see a list of requests that he/she has sent.
-    // On the list, User can cancel the requests.
-    // API: GET /api/friends/requests/outgoing
     {
       value: "sent_requests",
       icon: <SpatialAudioOffOutlinedIcon sx={{ fontSize: 24 }} />,
@@ -111,16 +102,22 @@ function BlogPage(profile) {
   // render
   return (
     <>
-      <Container sx={{ marginTop: "95px" }}>
+      <Container
+        sx={{
+          marginTop: "95px",
+          maxWidth: "850px", // ?
+        }}
+      >
         <Card
           sx={{
             mb: 3,
             height: 42,
             position: "relative",
             paddingLeft: 0,
-            marginLeft: "-10px",
+            marginLeft: "25px",
             lineHeight: 0,
             marginRight: "24px",
+            maxWidth: "850px",
           }}
           style={{
             border: "1px solid #0A3161",
@@ -139,9 +136,6 @@ function BlogPage(profile) {
                 paddingLeft: 0,
                 marginLeft: 0,
                 bottom: "40px",
-                "& .css-14v35z7-MuiButtonBase-root-MuiTab-root.Mui-selected": {
-                  color: "#fff",
-                }, //?
               }}
               value={currentTab}
               scrollButtons="auto"
@@ -154,8 +148,6 @@ function BlogPage(profile) {
                   sx={{
                     paddingLeft: 0,
                     marginLeft: 0,
-                    "& .css-14v35z7-MuiButtonBase-root-MuiTab-root.Mui-selected":
-                      { color: "#fff" },
                   }}
                   disableRipple
                   key={tab.value}
@@ -193,15 +185,6 @@ function BlogPage(profile) {
           );
         })}
       </Container>
-
-      {/* post & comment */}
-      {/* <Grid container>
-        <Stack spacing={3} width={"100%"}>
-          {user._id === profile._id && <PostForm />}
-
-          <PostList userId={profile?._id} />
-        </Stack>
-      </Grid> */}
     </>
   );
 }

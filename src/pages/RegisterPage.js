@@ -74,7 +74,7 @@ function RegisterPage() {
   return (
     <>
       <Container
-        maxWidth="xs"
+        maxWidth="sm"
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -87,8 +87,8 @@ function RegisterPage() {
             )}
             <Alert
               sx={{
-                backgroundColor: "#000",
-                color: "#fff",
+                // backgroundColor: "#000",
+                // color: "#fff",
                 borderColor: "1px #B31942", // ?
                 variant: "outlined",
               }}

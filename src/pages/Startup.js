@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { Container, Grid, Stack, Box, Pagination } from "@mui/material";
+import { Container, Grid, Stack, Pagination } from "@mui/material";
 
-// import "../assets/css/main.css";
-// import "../assets/css/reset.css";
+import "../assets/css/main.css";
 import "../assets/css/body.css";
 import "../assets/css/footer.css";
 import LoadingScreen from "../components/LoadingScreen";
 import { DOMAIN_PER_PAGE } from "../app/config";
-import {
-  getDomainForStartup,
-  getDomainLength, // page
-} from "../features/home/homeSlice";
+import { getDomainForStartup } from "../features/home/homeSlice";
 
 // Domain for sale and more
 // & domain whois & domain appraisal
@@ -38,22 +34,24 @@ function Startup() {
         sx={{
           display: "flex",
           justifyContent: "space-evenly",
-          maxWidth: "unset!important",
+          maxWidth: "850px", // "unset!important",
           width: "95%",
           marginTop: 0,
-          backgroundColor: "#000",
-          color: "#fff",
+          // backgroundColor: "#000",
+          // color: "#fff",
         }}
       >
-        <Grid marginTop={"68px"} maxWidth={"60vw"} marginX={"auto"}>
+        {/* maxWidth={"60vw"} */}
+        <Grid marginTop={"68px"} marginX={"auto"}>
           <div className="homepage">
             {/* <!-- 1 Welcome --> */}
-            <div className="homepage-hero dark">
+            <div className="homepage-hero">
               <section>
                 <h1>All about Domains and Startup</h1>
                 <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
                   Welcome Entrepreneur!
                 </h3>
+                <h5>"Everything Begins with an Idea" - Earl Nightingale.</h5>
                 {/* ??? */}
                 <img
                   // style={{ backgroundColor: "", width: "500px" }}
@@ -63,6 +61,8 @@ function Startup() {
                   width="500px"
                 />
               </section>
+
+              {/* Startup Sponsor Program */}
             </div>
 
             {/* <!-- 4 Domains for startup --> */}
@@ -74,27 +74,31 @@ function Startup() {
                   justifyContent: "space-between",
                 }}
               >
-                <h2>Domains for Startup --- Our Domain Your Startup</h2>
+                <h2>Domains for Startup - Our Domain Your Startup</h2>
 
                 {/* pagination */}
-                <Pagination
-                  flexDirection="flex-end"
-                  count={totalPages}
-                  siblingCount={0} //...
-                  page={page}
-                  onChange={(e, page) => {
-                    setPage(page);
-                    dispatch(getDomainForStartup({ page }));
-                  }}
-                  sx={{
-                    paddingTop: "10px",
-                    "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root":
-                      {
-                        margin: "0px",
-                      },
-                    color: "#fff", // ?
-                  }}
-                />
+                {domainForStartup?.startups?.length ? (
+                  <Pagination
+                    flexDirection="flex-end"
+                    count={totalPages}
+                    siblingCount={0} //...
+                    page={page}
+                    onChange={(e, page) => {
+                      setPage(page);
+                      dispatch(getDomainForStartup({ page }));
+                    }}
+                    sx={{
+                      paddingTop: "10px",
+                      "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root":
+                        {
+                          margin: 0,
+                        },
+                      // color: "#fff", // ?
+                    }}
+                  />
+                ) : (
+                  ""
+                )}
               </Stack>
 
               <ul className="contribution-list">
@@ -113,7 +117,12 @@ function Startup() {
                       </span>
                     </p>
                     {/* <!-- price --> */}
-                    <span className="request-date">${domain.price}</span>
+                    <p>
+                      <span className="request-date">${domain.price}</span>
+                      <a href="/contact" className="request-date">
+                        Contact
+                      </a>
+                    </p>
                   </li>
                 ))}
               </ul>
@@ -125,7 +134,7 @@ function Startup() {
               <div className="page-footer-grid">
                 {/* <!-- logo --> */}
                 <div className="page-footer-logo-col">
-                  <div className="mainlogo">
+                  <div className="main-logo">
                     <a href="/">
                       <img src="./huongsac-logo.png" alt="" />
                     </a>

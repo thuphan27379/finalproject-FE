@@ -35,8 +35,8 @@ function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
   const btnUnfriend = (
     <Button
       sx={{
-        fontSize: "0.6rem",
         ...sx,
+        fontSize: "0.6rem",
         "& .css-jfdv4h-MuiStack-root>:not(style):not(style)": {
           margin: "0",
         }, //??

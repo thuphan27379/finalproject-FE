@@ -28,7 +28,6 @@ function AccountGeneral() {
     jobTitle: user?.jobTitle || "",
     company: user?.company || "",
     avatarUrl: user?.avatarUrl || "",
-    coverUrl: user?.coverUrl || "",
     phoneNumber: user?.phoneNumber || "",
     address: user?.address || "",
     city: user?.city || "",
@@ -48,7 +47,7 @@ function AccountGeneral() {
     formState: { isSubmitting },
   } = methods;
 
-  // drap&drop a image //
+  // drap&drop a image
   const handleDrop = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
@@ -73,7 +72,7 @@ function AccountGeneral() {
   return (
     <>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Grid container spacing={1}>
+        <Grid sx={{ maxWidth: "850px" }} container spacing={1}>
           <Grid item xs={12} md={4}>
             {/* update avatar */}
             <Card
@@ -98,7 +97,7 @@ function AccountGeneral() {
                       mx: "auto",
                       display: "block",
                       textAlign: "center",
-                      color: "#fff", //
+                      // color: "#fff",
                     }}
                   >
                     Allowed *.jpeg, *.jpg, *.png, *.gif
@@ -116,10 +115,10 @@ function AccountGeneral() {
             md={8}
             spacing={2}
             sx={{
-              "& .css-f3o4t6-MuiPaper-root-MuiCard-root": {
-                margin: "0px",
-              },
               paddingTop: "-10px",
+              "& .css-f3o4t6-MuiPaper-root-MuiCard-root": {
+                margin: 0,
+              },
             }}
           >
             <Card
@@ -129,7 +128,6 @@ function AccountGeneral() {
             >
               <Box
                 sx={{
-                  "& .css-10g9nb3": { rowGap: "10px" },
                   display: "grid",
                   rowGap: 2,
                   columnGap: 2,
@@ -137,6 +135,7 @@ function AccountGeneral() {
                     xs: "repeat(1, 1fr)",
                     sm: "repeat(2, 1fr)",
                   },
+                  "& .css-10g9nb3": { rowGap: "10px" },
                 }}
               >
                 <FTextField
@@ -221,7 +220,6 @@ function AccountGeneral() {
                 alignItems="flex-end"
                 sx={{ mt: 2, rowGap: 1 }}
               >
-                {/* <FTextField name="coverUrl" label="Home Profile Cover Image?" /> */}
                 <FTextField
                   sx={{
                     "& fieldset": {
