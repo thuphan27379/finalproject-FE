@@ -5,7 +5,7 @@ import PauseCircleOutlineRoundedIcon from "@mui/icons-material/PauseCircleOutlin
 import MarkEmailReadRoundedIcon from "@mui/icons-material/MarkEmailReadRounded";
 import DoNotDisturbAltRoundedIcon from "@mui/icons-material/DoNotDisturbAltRounded";
 
-// Friend Status chip (notify btn of status in MUI)
+// Friend Status chip (notify btn of status)
 function FriendStatus({ currentUserId, targetUserId, friendship, sx }) {
   if (currentUserId === targetUserId) return null;
   if (!friendship) return null;

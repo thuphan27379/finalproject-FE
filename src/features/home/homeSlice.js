@@ -34,7 +34,7 @@ const slice = createSlice({
     // get domain for sale list
     getDomainForSaleSuccess(state, action) {
       state.isLoading = false;
-      state.error = action.payload; //?
+      state.error = action.payload;
 
       // console.log(action.payload);
       const domainsForSale = action.payload;
@@ -74,7 +74,7 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// functions //
+// functions
 // get domain for sale list
 export const getDomainForSale =
   ({ page = 1, limit = 20, q }) =>

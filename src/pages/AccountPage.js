@@ -29,16 +29,17 @@ function AccountPage() {
     <>
       <Container
         sx={{
-          marginLeft: "-5px",
+          width: "750px",
           paddingTop: "90px",
-          maxWidth: "850px",
+          marginLeft: "3px",
+          marginBottom: "200px",
         }}
       >
         <Typography
           variant="h5"
           gutterBottom
           sx={{
-            // color: "#fff",
+            color: "#0a3161",
             paddingLeft: "30px",
           }}
         >
@@ -63,13 +64,13 @@ function AccountPage() {
           ))}
         </Tabs>
 
-        <Box sx={{ mb: 3 }} />
         {/* component */}
+        <Box sx={{ mb: 3 }} />
         {ACCOUNT_TABS.map((tab) => {
           const isMatched = tab.value === currentTab;
           return (
             isMatched && (
-              <Box key={tab.value} sx={{ marginRight: "20px" }}>
+              <Box key={tab.value} sx={{ marginLeft: "-24px" }}>
                 {tab.component}
               </Box>
             )

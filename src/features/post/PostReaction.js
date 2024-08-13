@@ -24,7 +24,7 @@ function PostReaction({ post }) {
     dispatch(sendPostReaction({ postId: post._id, emoji }));
   };
 
-  // unclick: unlike and undislike!!!
+  // unclick: unlike and undislike!
 
   //
   return (

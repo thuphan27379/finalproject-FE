@@ -1,8 +1,8 @@
 | Documentation |
-? Project description - a brief description of the purpose and main features
-? User Story
-? Instructions on�how to set up and run the application locally
-? Third-party libraries used in the project
+Project description - a brief description of the purpose and main features
+User Story
+Instructions on how to set up and run the application locally
+Third-party libraries used in the project
 
 ---
 
@@ -10,66 +10,61 @@
 
 \*The Project Description:
 
-- [] All about my company: my cooperator and customer can know everything what my company do. (domain list?!?!)
+- [] All about my company: my cooperator and customer can know everything what my company do.
 - [] Startup community - social networking: opportunity for young startup and SMEs.
 
 \*User Story:
 
 \*\*Background:
 
-- [] MyCompany is webapp of organization about IT solution and startup. Client can get information, search and contact us...
-- [] It is also a blog that allows people to join and create their profile, following/ follower and others... (free email@domain.com, domain.com/accountname).
-- [] Admin app (database and account management and more). - admin.domain.com ?!?!
+- [] MyCompany is webapp of organization about IT solution and startup. Client can get information, search and contact us.
+- [] It is also a blog that allows people to join and create their profile, following/ follower and others.
 
 \*\*\*Social Platform:
 
 User story:
 
 - [] Site - Home:  
-  Get all information of company. (about us, startup, domains, projects...)
+  Get all information of company.
 
 - [] Startup Community-blog:
+  Create profile, make friend, share post and comment, join group.
 
 ### Authentication:
 
-- [x] As a user, I am able to log in and log out my account with email and password after register a new account. (also stay signed in after refreshing the page.) x
-      \*\*\*Forget & Reset Password ?!?!
+- [] As a user, I am able to log in and log out my account with email and password after register a new account.
 
 ### User:
 
-- [x] As a user, I am able to create my account by providing basic information (name, email, password...). - register x
-- [x] As a user, I am able to get list of users with pagination for add friend. - list of users in add friend tab x
-- [x] As a user, I am able to see a specific user's profile given a user ID. - (search by name/id) x
-- [] As a user, I am able to get all my profile info. - my profile (posts, friends, info...) !!!
-- [x] As a user, I am able to update my profile (name, avatar, bio, information, image,...). - account setting x
-- [] As a user, I am able to receive notifications about new likes, and comments on my content, as well as new followers and other relevant events. - notifications at avatar !!!
-  \*\*\*Simple Chat between users
+- [] As a user, I am able to create my account by providing basic information.
+- [] As a user, I am able to get list of users with pagination for add friend.
+- [] As a user, I am able to see a specific user's profile given a user ID.
+- [] As a user, I am able to get all my profile info.
+- [] As a user, I am able to update my profile
 
 Post:
 
-- [] As a user, I am able to share my thoughts and interests by creating content (text, images, or video). - create a post x
-- [] As a user, I am able to get comments of a post. - pagination x
-- [] As a user, I am able to get detail a single post.(with comments, reaction) !!!
-- [] As a user, I am able to edit and delete my posts. x
-- [] As a user, I am able to view my own posts as well as other users content (wall). x
-  \*\*\*Tag other users in posts and comments
+- [] As a user, I am able to share my thoughts and interests by creating content (text, images, or video).
+- [] As a user, I am able to get comments of a post.
+- [] As a user, I am able to get detail a single post.
+- [] As a user, I am able to edit and delete my posts.
+- [] As a user, I am able to view my own posts as well as other users content.
 
 Comment:
 
-- [] As a user, I am able to get a list of comments of a post. x
-- [] As a user, I am able to interact with content by commenting. x
-- [] As a user, I am able to edit or delete comments that I created. x
-  \*\*\*Tag other users in posts and comments
+- [] As a user, I am able to get a list of comments of a post.
+- [] As a user, I am able to interact with content by commenting.
+- [] As a user, I am able to edit or delete comments that I created.
 
 Friend/follow:
 
-- [] As a user, I am able to get the list of received pending requests - incoming list. x
-- [] As a user, I am able to get the list of sent pending requests - outgoing list. x
-- [] As a user, I am able to see a list of people that I follow as well as my followers. - (my friend list) x
-- [] As a user, I am able to send a friend request to others - add friend other users - outgoing sent request. x
-- [] As a user, I am able to accept/decline a friend request from others - incoming receive request. x
-- [] As a user, I am able to cancel a friend request that I sent. x
-- [] As a user, I am able to remove (unfriend) a friend. x
+- [] As a user, I am able to get the list of received pending requests.
+- [] As a user, I am able to get the list of sent pending requests.
+- [] As a user, I am able to see a list of people that I follow as well as my followers.
+- [] As a user, I am able to send a friend request to others.
+- [] As a user, I am able to accept/decline a friend request from others.
+- [] As a user, I am able to cancel a friend request that I sent.
+- [] As a user, I am able to remove a friend.
 
 Reaction:
 
@@ -77,28 +72,13 @@ Reaction:
 
 Group:
 
-- [x] As a user, I am able to create a new group by providing a group name, group description, and selecting a category or interest that the group will be based on.
-- [x] As a user, I am able to search for and join groups by browsing categories or interests, or by searching for a specific group name or keyword. group search
+- [] As a user, I am able to create a new group by providing a group name, group description, and selecting a category or interest that the group will be based on.
+- [] As a user, I am able to search for and join groups by browsing categories or interests, or by searching for a specific group name or keyword.
 - [] As a group member, I am able to post in a group.
 - [] As a group member, I am able to comment and reaction on a post in the group.
-- [] As a group member, I am able to see the posts in a group on the group page. post list
+- [] As a group member, I am able to see the posts in a group on the group page.
 - [] As a group member, I am able to join existing group.
 - [] As a group member, I am able to leave a group.
-
-Admin app - dashboard: (admin.domain.com)
-*Database&Content management: (domains lists,...)
--edit menu
--update content, media
--add/replace banner ads
-*Authorization-User Management:
--accounts management
--approve/ profile
-*Hosting & domains:
-*Security:
-*Digital marketing: SEO,...
-*Client feedback: contact
-\*Task Management: codermanagement, minimal template x
-...
 
 \*API endpoints:
 
@@ -124,7 +104,7 @@ User APIs:
 - @access Login required
 
 - @route GET /users/me
-- @description Get current user info (my profile)
+- @description Get current user info
 - @body
 - @access Login required
 
@@ -140,7 +120,7 @@ User APIs:
 
 - @route PUT /users/:id
 - @description Update user profile
-- @body {name, avatar, aboutMe, city, country, company, jobtitle, fbLink, instagramLink, linkedInLink, twitterLink}
+- @body {name, avatar, aboutMe, city, country, company, fbLink, instagramLink, linkedInLink, twitterLink, youtubeLink}
 - @access Login required
 
 Post APIs:
@@ -241,9 +221,44 @@ Reaction APIs: posts OR comments
 - @body ["like", "dislike"]
 - @access Login required
 
-Group ?!?!
+Group:
 
-\* Diagram Relation: model-schema
+- @route POST/group
+- @description create a new group
+- @body (userId, name, description, categories, interests..)
+- @access login required
+
+- @route GET/group
+- @description get list of group & interest & search
+- @body (userId, groupId, name, categories, interests)
+- @access login required
+
+- @route PUT/group
+- @description join a group
+- @body (userId, groupId)
+- @access login required
+
+- @route DELETE/group
+- @description leave a group
+- @body (userId, groupId)
+- @access login required
+
+- @route GET/group
+- @description get single group
+- @body (groupId)
+- @access login required
+
+- @route POST/group/posts
+- @description create a new post in the group
+- @body (userId, groupId, content)
+- @access login required
+
+- @route GET/group/posts
+- @description get list of posts in group
+- @body (userId, groupId, postId)
+- @access login required
+
+\* Diagram Relation:
 
 User:
 name: String, required
@@ -266,38 +281,38 @@ postCount: Number
 Post:
 content: String, required
 image: String
-author: Schema.Types.ObjectId, required, ref: "User"
+author: Schema.Types.ObjectId, required
 isDeleted: Boolean
 commentCount: Number
-reactions:
+reactions: enum: ["like", "dislike"]
 like: Number
 dislike: Number
 
 Comment:
 content: String, required
-author: Schema.ObjectId, required, ref: "User"
-post: Schema.ObjectId, required, ref: "Blog"
-reactions:
+author: Schema.ObjectId, required
+post: Schema.ObjectId, required
+reactions: enum: ["like", "dislike"]
 like: Number
 dislike: Number
 
 Friend:
-from: Schema.ObjectId, required, ref: "User"
-to: Schema.ObjectId, required, ref: "User"
+from: Schema.ObjectId, required
+to: Schema.ObjectId, required
 status: String, enum: ["pending", "accepted", "declared"]
 
 Reaction:
-author: Schema.ObjectId, required, ref: "User"
+author: Schema.ObjectId, required,
 targetType: String, required, enum: ["Post", "Comment"]
-targetId: Schema.ObjectId, required, refPath: "targetType"
+targetId: Schema.ObjectId, required
 emoji: String, required, enum: ["like", "dislike"]
 
 Group:
+creator: Schema.Types.ObjectId, required
 name: String, required
 description: String, required
-members: (users ID)
-posts: (post by member)
-comment:
-reaction:
-categories: String, required, enum: ["", ""]
-interests: String, required, enum: ["", ""]
+interests: String, required
+members: Schema.Types.ObjectId
+postsByGroupId: Schema.Types.ObjectId,
+postGroupCount: Number
+isDeleted: Boolean

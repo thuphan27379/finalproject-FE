@@ -12,21 +12,18 @@ function Projects() {
     <>
       <Container
         sx={{
+          width: "750px",
           display: "flex",
           justifyContent: "space-evenly",
-          maxWidth: "850px", // unset!important",
           marginTop: 0,
-          width: "95%",
-          // backgroundColor: "#000",
-          // color: "#fff",
+          marginLeft: "-24px",
         }}
       >
-        {/* maxWidth={"60vw"} */}
         <Grid marginTop={"68px"} marginX={"auto"}>
           <div className="homepage">
             {/* <!-- 1 Welcome --> */}
             <div className="homepage-hero">
-              <section>
+              <section style={{ marginLeft: "24px" }}>
                 <h1>All about Domains and Startup</h1>
                 <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
                   Welcome Entrepreneur!
@@ -123,10 +120,11 @@ function Projects() {
                     <p>Startup Community</p>
                   </h3>
                   <p>
-                    Community Network for Ideas and Startup whoever or whatever
-                    you are and want to become an Entrepreneur. Don't be afraid!
-                    Let's build your dream together and bright up us. "If you're
-                    good at something, never do it for free" - Joker.
+                    Join us at Community Network for Ideas and Startup whoever
+                    or whatever you are and want to become an Entrepreneur.
+                    Don't be afraid! Let's build your dream together and bright
+                    us up. "If you're good at something, never do it for free" -
+                    Joker. See you there!
                   </p>
                 </div>
 
@@ -188,9 +186,9 @@ function Projects() {
                     <a href="https://www.icann.org/">https://www.icann.org/</a>
                   </h3>
                   <p>
-                    The ICANN80 Policy Forum is now live and taking place in
-                    Kigali, Rwanda from 10-13 June 2024. You must be registered
-                    and logged in to view the schedule.
+                    A global nonprofit organization responsible for coordinating
+                    the maintenance and procedures of several databases related
+                    to the namespaces and numerical spaces of the Internet.
                   </p>
                 </div>
 
@@ -244,7 +242,8 @@ function Projects() {
                   <p>
                     See Website Information Search the whois database, look up
                     domain and IP owner information, and check out dozens of
-                    other statistics.
+                    other statistics. Leading provider of web presence
+                    solutions.
                   </p>
                 </div>
 

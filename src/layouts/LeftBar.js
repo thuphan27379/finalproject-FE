@@ -4,7 +4,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined"; // star
+import GradeOutlinedIcon from "@mui/icons-material/GradeOutlined";
 
 // homepage: company tabs
 // LINK TO PAGE
@@ -18,16 +18,14 @@ export default function LeftBar() {
           minHeight: "120vh",
           marginLeft: "30px",
           display: { xs: "none", sm: "none", md: "block", lg: "block" }, // responsive
-          "& .css-tlelie-MuiListItemText-root": { marginBottom: 0 },
         }}
       >
         <List
           sx={{
             position: "fixed",
-            fontWeight: "700", //?
+            fontWeight: "700",
             width: "240px",
             lineHeight: 1,
-            // color: "#fff",
           }}
         >
           {[
@@ -43,7 +41,7 @@ export default function LeftBar() {
               key={index}
               disablePadding
               sx={{
-                fontWeight: "700", //?
+                fontWeight: "700",
               }}
             >
               <GradeOutlinedIcon fontSize="medium" color="secondary" />

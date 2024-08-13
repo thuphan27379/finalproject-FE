@@ -88,7 +88,7 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// functions //
+// functions
 // get all comments
 export const getComments =
   ({ postId, page = 1, limit = COMMENTS_PER_POST }) =>
@@ -155,16 +155,16 @@ export const sendCommentReaction =
       const response = await apiService.post(`/reactions`, {
         targetType: "Comment",
         targetId: commentId,
-        emoji: newEmoji, //
+        emoji: newEmoji,
       });
 
-      const userReaction = emoji; //
+      const userReaction = emoji;
 
       dispatch(
         slice.actions.sendCommentReactionSuccess({
           commentId,
           reactions: response.data,
-          userReaction: newEmoji, //
+          userReaction: newEmoji,
         })
       );
     } catch (error) {

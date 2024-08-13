@@ -6,8 +6,29 @@ function NotFoundPage() {
   //
   return (
     <>
-      <Container sx={{ display: "flex", height: "100%", alignItems: "center" }}>
-        <Box sx={{ maxWidth: 480, margin: "auto", textAlign: "center" }}>
+      <Container
+        sx={{
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "center",
+          padding: 0,
+          margin: 0,
+          flexGrow: 1,
+        }}
+      >
+        <Box
+          sx={{
+            width: 480,
+            margin: "auto",
+            padding: "auto",
+            textAlign: "center",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "center",
+          }}
+        >
           <Typography variant="h4" paragraph>
             Page not found!
           </Typography>

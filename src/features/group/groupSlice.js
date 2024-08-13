@@ -43,7 +43,7 @@ const slice = createSlice({
       state.error = null;
 
       // console.log(action.payload);
-      state.list.unshift(action.payload.newGroup); //bo object vao trong array
+      state.list.unshift(action.payload.newGroup); // bo object vao trong array
     },
     // getListSuccess (list of group name & interests)
     getListSuccess(state, action) {
@@ -65,10 +65,16 @@ const slice = createSlice({
       state.isLoading = false;
       state.error = null;
 
-      const newMember = action.payload.currentUserId;
-      // console.log(action.payload);
-      state.newMember = action.payload.members;
+      const { currentUserId, groupId } = action.payload;
+      const group = state.list.find((group) => group._id === groupId);
+      if (group) {
+        if (!group.members.includes(currentUserId)) {
+          group.members.push(currentUserId);
+        }
+        group.isJoined = true;
+      }
     },
+
     // leave a group
     leaveGroupSuccess(state, action) {
       state.isLoading = false;
@@ -134,7 +140,7 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// functions //
+// functions
 // create a new group
 export const createGroup =
   ({ name, description, interests }) =>
@@ -186,7 +192,13 @@ export const joinGroup =
         `/group/${currentGroupId}/${currentUserId}`
       );
 
-      dispatch(slice.actions.joinGroupSuccess(response.data));
+      dispatch(
+        slice.actions.joinGroupSuccess({
+          ...response.data,
+          currentUserId,
+          groupId: currentGroupId,
+        })
+      );
       toast.success("Join Group successfully");
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));
@@ -196,9 +208,7 @@ export const joinGroup =
 
 // leave a group
 export const leaveGroup =
-  (
-    { currentGroupId, currentUserId } //
-  ) =>
+  ({ currentGroupId, currentUserId }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
 
@@ -293,7 +303,7 @@ export const getPostsGroup =
         params,
         fromGroup: true,
       });
-      console.log("group post", response);
+      // console.log("group post", response);
 
       if (page === 1) dispatch(slice.actions.resetPosts()); // reset posts before dispatch and show only posts of this currentUser
       dispatch(slice.actions.getPostsGroupSuccess(response.data));

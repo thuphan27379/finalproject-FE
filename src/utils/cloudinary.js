@@ -5,7 +5,7 @@ import {
   CLOUDINARY_URL,
 } from "../app/config";
 
-// UPLOAD AVATAR IMAGE IN REACT APP by cloudinary.com ? dang bao loi hoai
+// UPLOAD AVATAR IMAGE IN REACT APP by cloudinary.com
 export const cloudinaryUpload = async (image) => {
   if (!image) return "";
 

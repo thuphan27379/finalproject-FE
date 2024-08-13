@@ -14,9 +14,9 @@ const RootStyle = styled("div")(({ theme }) => ({
   margin: "auto",
   padding: theme.spacing(1),
 
-  border: `1px dashed ${alpha("#b3198f", 0.32)}`, //
+  border: `1px dashed ${alpha("#b3198f", 0.32)}`,
   borderRadius: "50%",
-  backgroundColor: "", //
+  backgroundColor: "",
 }));
 
 const DropZoneStyle = styled("div")({
@@ -46,8 +46,7 @@ const PlaceholderStyle = styled("div")(({ theme }) => ({
   alignItems: "center",
   flexDirection: "column",
   justifyContent: "center",
-  // color: "#fff", // ?
-  backgroundColor: "#919EAB", //
+  backgroundColor: "#919EAB",
   transition: theme.transitions.create("opacity", {
     easing: theme.transitions.easing.easeInOut,
     duration: theme.transitions.duration.shorter,
@@ -105,7 +104,6 @@ function UploadAvatar({ error, file, helperText, sx, ...other }) {
             sx={{
               ...(file && {
                 opacity: 0,
-                // color: "#fff", // ?
                 bgcolor: "PRIMARY.100",
                 "&:hover": { opacity: 0.2 },
               }),

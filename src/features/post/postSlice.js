@@ -42,7 +42,7 @@ const slice = createSlice({
 
       const { posts, count } = action.payload;
 
-      // loc cac bai post sao cho khong trung lap
+      // loc cac bai post sao cho khong trung lap // error ?
       posts.forEach((post) => {
         state.postsById[post._id] = post;
         if (!state.currentPagePosts.includes(post._id))
@@ -99,12 +99,12 @@ const slice = createSlice({
       // Find the index of the edited post in currentPagePosts
       const editedPostIndex = state.currentPagePosts.indexOf(editedPost._id);
 
-      // Check if the edited post has a new image URL //
+      // Check if the edited post has a new image URL
       const newImage = editedPost.image
         ? editedPost.image
         : state.postsById[editedPost._id].image;
 
-      // Update the post's content and image URL //
+      // Update the post's content and image URL
       state.postsById[editedPost._id] = {
         ...state.postsById[editedPost._id],
         content: editedPost.content,
@@ -122,7 +122,7 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// functions //
+// functions
 export const getPosts =
   ({ userId, page = 1, limit = POSTS_PER_PAGE }) =>
   async (dispatch) => {
@@ -164,9 +164,7 @@ export const getAllPosts =
 
 // create a post
 export const createPost =
-  (
-    { content, image, fromGroup } // ,userId, groupId
-  ) =>
+  ({ content, image, fromGroup }) =>
   async (dispatch) => {
     dispatch(slice.actions.startLoading());
 
@@ -207,10 +205,10 @@ export const sendPostReaction =
       const response = await apiService.post(`/reactions`, {
         targetType: "Post",
         targetId: postId,
-        emoji: newEmoji, //
+        emoji: newEmoji,
       });
 
-      const userReaction = emoji; //
+      const userReaction = emoji;
 
       dispatch(
         slice.actions.sendPostReactionSuccess({
@@ -253,7 +251,7 @@ export const deletePost =
   };
 
 // edit a post
-// edit a image in the post ??
+// edit a image in the post
 export const editPost =
   ({ postId, content, image }) =>
   async (dispatch) => {

@@ -59,7 +59,7 @@ function LoginPage() {
         navigate(from, { replace: true });
       });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       reset();
       setError("responseError", error);
     }
@@ -68,7 +68,15 @@ function LoginPage() {
   //
   return (
     <>
-      <Container maxWidth="sm">
+      <Container
+        sx={{
+          maxWidth: "480px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "center",
+        }}
+      >
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>
             {/* message error & go to sign up */}
@@ -77,9 +85,7 @@ function LoginPage() {
             )}
             <Alert
               sx={{
-                borderColor: "1px #B31942", // ?
-                // backgroundColor: "#000",
-                // color: "#fff",
+                borderColor: "1px #B31942",
               }}
               severity="info"
               color="secondary"
@@ -137,7 +143,7 @@ function LoginPage() {
             variant="outlined"
             loading={isSubmitting}
             color="secondary"
-            sx={{ backgroundColor: "#8498b0" }} //
+            sx={{ backgroundColor: "#8498b0" }}
           >
             Log in
           </LoadingButton>

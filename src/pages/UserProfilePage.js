@@ -34,7 +34,14 @@ function UserProfilePage() {
   // UI
   return (
     <>
-      <Container spacing={1} sx={{ paddingTop: "96px", maxWidth: "850px" }}>
+      <Container
+        spacing={1}
+        sx={{
+          paddingTop: "96px",
+          width: "750px",
+          marginLeft: "3px",
+        }}
+      >
         <Grid item xs={12} md={8}>
           {/* show profile info */}
           <Stack spacing={1}>

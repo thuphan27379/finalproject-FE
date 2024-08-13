@@ -52,7 +52,7 @@ function CommentCard({ comment }) {
   return (
     <>
       <Stack
-        border="1px #0A3161" //?
+        border="1px #0A3161"
         direction="row"
         justifyContent={"space-between"}
         spacing={1}
@@ -60,21 +60,11 @@ function CommentCard({ comment }) {
         lineHeight={0}
         padding={0}
         sx={{
-          borderColor: "1px solid #0A3161", //?
-          maxWidth: "800px", // work
+          borderColor: "1px solid #0A3161",
           maxHeight: "105px",
           lineHeight: "0",
           p: "0",
           m: "0",
-          "& .css-15hh60j-MuiStack-root > :not(style) ~ :not(style)": {
-            marginRight: "8px", //
-            paddingRight: "8px",
-          },
-          "& .css-10kbc59-MuiStack-root .css-p64cbd-MuiStack-root": {
-            marginRight: "7px", //
-            paddingRight: "8px",
-            paddingBottom: "10px",
-          },
         }}
       >
         <Avatar alt={comment.author?.name} src={comment.author?.avatarUrl} />
@@ -85,13 +75,6 @@ function CommentCard({ comment }) {
             maxHeight: "100px",
             lineHeight: 0,
             paddingLeft: 1,
-            "& .css-10kbc59-MuiStack-root .css-p64cbd-MuiStack-root": {
-              marginRight: "7px", //
-              paddingRight: "8px",
-              paddingBottom: "10px",
-            },
-            // borderColor: "1px #fff", // ?
-            // backgroundColor: "#000",
           }}
         >
           <Stack
@@ -110,7 +93,6 @@ function CommentCard({ comment }) {
               variant="subtitle2"
               sx={{
                 fontWeight: 700,
-                // color: "#fff"
               }}
             >
               {comment.author?.name}
@@ -152,7 +134,7 @@ function CommentCard({ comment }) {
             sx={{
               color: "text.disabled",
               paddingLeft: "0",
-              marginTop: "-9px", // ?
+              marginTop: "-9px",
               display: "flex",
               alignItems: "start",
               fontSize: "11px",
@@ -161,18 +143,12 @@ function CommentCard({ comment }) {
             {fDate(comment.createdAt)}
           </Typography>
 
-          <Typography
-            variant="body2"
-            // sx={{ color: "#fff" }}
-          >
-            {comment.content}
-          </Typography>
+          <Typography variant="body2">{comment.content}</Typography>
 
           <Box
             sx={{
               display: "flex",
               justifyContent: "flex-end",
-              "& .css-1d9cypr-MuiStack-root": { paddingRight: "20px" },
             }}
           >
             <CommentReaction comment={comment} />

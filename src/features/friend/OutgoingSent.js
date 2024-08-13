@@ -47,17 +47,28 @@ function OutgoingSents() {
   //
   return (
     <>
-      <Container xs={8}>
+      <Container
+        xs={8}
+        sx={{
+          width: "750px",
+          marginLeft: "-20px",
+        }}
+      >
         <Typography
           variant="h5"
-          sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }}
+          sx={{ mb: 3, paddingLeft: "35px", color: "#0A3161" }}
         >
           Sent Friend Requests List
         </Typography>
 
         <Card
           style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
-          sx={{ p: 2 }}
+          sx={{
+            p: 2,
+            width: "750px",
+            marginLeft: "-24px",
+            marginTop: "-5px",
+          }}
         >
           <Stack spacing={2}>
             {/* Search Input and Pagination */}
@@ -67,7 +78,6 @@ function OutgoingSents() {
               <Typography
                 variant="subtitle"
                 sx={{
-                  // color: "#fff",
                   ml: 1,
                 }}
               >
@@ -81,7 +91,6 @@ function OutgoingSents() {
               <Typography
                 variant="subtitle"
                 sx={{
-                  // color: "#fff",
                   ml: 1,
                 }}
               >
@@ -95,7 +104,6 @@ function OutgoingSents() {
                 count={totalPages}
                 page={page}
                 onChange={(e, page) => setPage(page)}
-                // sx={{ color: "#fff" }}
               />
             </Stack>
           </Stack>
@@ -109,6 +117,8 @@ function OutgoingSents() {
             ))}
           </Grid>
         </Card>
+
+        <Box sx={{ flexGrow: 1 }} />
       </Container>
     </>
   );

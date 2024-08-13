@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Stack, Avatar, TextField, IconButton } from "@mui/material";
-import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
+import TelegramIcon from "@mui/icons-material/Telegram";
 
 import useAuth from "../../hooks/useAuth";
 import { createComment } from "./commentSlice";
@@ -42,16 +42,15 @@ function CommentForm({ postId }) {
                 borderWidth: `1px !important`,
                 borderColor: (theme) =>
                   `${theme.palette.secondary.main} !important`,
-                // color: "#fff", // placeholder text color?
               },
             }}
           />
 
           <IconButton type="submit">
-            <SendOutlinedIcon
+            <TelegramIcon
               color="secondary"
               sx={{
-                fontSize: 23,
+                fontSize: 27,
                 color: "secondary",
                 marginRight: "-10px",
               }}

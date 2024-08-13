@@ -16,7 +16,6 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Badge, Stack, Divider, InputAdornment } from "@mui/material";
-import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import PublicIcon from "@mui/icons-material/Public";
 import AdsClickOutlinedIcon from "@mui/icons-material/AdsClickOutlined";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
@@ -26,7 +25,9 @@ import Fab from "@mui/material/Fab";
 import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
 import SavedSearchIcon from "@mui/icons-material/SavedSearch";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
-import Brightness2OutlinedIcon from "@mui/icons-material/Brightness2Outlined";
+import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
+import CottageOutlinedIcon from "@mui/icons-material/CottageOutlined";
+import NightsStayOutlinedIcon from "@mui/icons-material/NightsStayOutlined";
 
 import useAuth from "../hooks/useAuth";
 import Aboutus from "../pages/AboutUs";
@@ -60,7 +61,7 @@ const settings = [
   { label: "My Startup", path: "startup" },
   { label: "My Domain", path: "domain" },
   { label: "My Profile", path: "blog" },
-  { label: "My Group", path: "blog" },
+  { label: "My Group", path: "blog" }, // group
   { label: "Setting", path: "account" },
 ];
 
@@ -169,7 +170,7 @@ function ResponsiveAppBar(props) {
     } else {
       dispatch(getDomainForStartup({ q }));
     }
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setValue();
   };
 
@@ -189,10 +190,9 @@ function ResponsiveAppBar(props) {
     <>
       <AppBar
         position="fixed" // sticky
-        maxWidth="100%" // maxWidth: "850px",
+        maxWidth="100%"
         maxHeight="64px"
         sx={{
-          // color: "#fff",
           backgroundColor: "#000",
           zIndex: (theme) => theme.zIndex.drawer + 1,
           boxShadow: "none",
@@ -228,7 +228,7 @@ function ResponsiveAppBar(props) {
                   display: { sm: "block", md: "block", lg: "none" },
                 }} // responsive hamburger
               >
-                <MenuOpenIcon />
+                <CottageOutlinedIcon />
               </IconButton>
 
               {/* logo */}
@@ -276,7 +276,7 @@ function ResponsiveAppBar(props) {
             >
               {pages.map((page, index) => (
                 <Button
-                  key={index} //
+                  key={index}
                   onClick={handleCloseNavMenu}
                   sx={{
                     my: 2,
@@ -313,6 +313,8 @@ function ResponsiveAppBar(props) {
                             color: "#0A3161",
                             margin: 0,
                             padding: 0,
+                            width: "30px",
+                            height: "30px",
                           }}
                         />
                       </InputAdornment>
@@ -321,7 +323,10 @@ function ResponsiveAppBar(props) {
                   variant="standard"
                   label="Start your domain search!"
                   style={{ color: "#0A3161" }}
-                  sx={{ color: "secondary", width: "270px" }}
+                  sx={{
+                    color: "secondary",
+                    width: "270px",
+                  }}
                   onChange={(e) => setValue(e.target.value)}
                 />
               </form>
@@ -335,9 +340,6 @@ function ResponsiveAppBar(props) {
                 justifyContent: "space-evenly",
                 paddingLeft: "20px",
                 paddingRight: "50px",
-                "& .MuiStack-root div.css-1kfvitx-MuiStack-root:empty": {
-                  display: "none",
-                },
               }}
             >
               {/* dark/light */}
@@ -353,7 +355,7 @@ function ResponsiveAppBar(props) {
                 onClick={colorMode.toggleColorMode}
               >
                 {theme.palette.mode === "dark" ? (
-                  <Brightness2OutlinedIcon />
+                  <NightsStayOutlinedIcon />
                 ) : (
                   <WbSunnyOutlinedIcon />
                 )}
@@ -370,6 +372,17 @@ function ResponsiveAppBar(props) {
                 <PublicIcon />
               </IconButton>
 
+              {/* EN-VN */}
+              <IconButton
+                sx={{ display: { sm: "none", md: "none", lg: "flex" } }} // responsive EN-VN
+                size="large"
+                aria-label=""
+                color="inherit"
+                title="Coming soon"
+              >
+                <AutoAwesomeOutlinedIcon />
+              </IconButton>
+
               {/* avt account & menu  */}
               <Box
                 sx={{
@@ -379,7 +392,7 @@ function ResponsiveAppBar(props) {
                     sm: "block",
                     md: "block",
                     lg: "block",
-                  }, // responsive avt menu ?
+                  }, // responsive avt menu
                 }}
               >
                 <Tooltip title="Account Profile">
@@ -405,8 +418,8 @@ function ResponsiveAppBar(props) {
                       <Avatar
                         src={user?.avatarUrl}
                         sx={{
-                          width: "35px",
-                          height: "35px",
+                          width: "40px",
+                          height: "40px",
                           border: "2px solid #B31942 ",
                         }}
                       />
@@ -497,7 +510,7 @@ function ResponsiveAppBar(props) {
       </AppBar>
 
       <Toolbar
-        sx={{ display: { sm: "block", md: "block", lg: "block" } }} // responsive blank page !?
+        sx={{ display: { sm: "block", md: "block", lg: "block" } }} // responsive blank page
         id="back-to-top-anchor"
       />
 
@@ -518,9 +531,6 @@ function ResponsiveAppBar(props) {
         onClose={handleCloseNavMenu}
         sx={{
           display: { lg: "none" },
-          "& .css-ag6im6-MuiPaper-root-MuiPopover-paper-MuiMenu-paper": {
-            border: "1px solid #0a3161",
-          },
         }}
       >
         {pages.map((page, index) => (

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Container, Grid, Stack, Pagination } from "@mui/material";
+import Button from "@mui/material/Button";
 
 import "../assets/css/main.css";
 import "../assets/css/body.css";
@@ -32,21 +33,18 @@ function Startup() {
     <>
       <Container
         sx={{
+          width: "750px",
           display: "flex",
           justifyContent: "space-evenly",
-          maxWidth: "850px", // "unset!important",
-          width: "95%",
           marginTop: 0,
-          // backgroundColor: "#000",
-          // color: "#fff",
+          marginLeft: "-23px",
         }}
       >
-        {/* maxWidth={"60vw"} */}
         <Grid marginTop={"68px"} marginX={"auto"}>
           <div className="homepage">
             {/* <!-- 1 Welcome --> */}
             <div className="homepage-hero">
-              <section>
+              <section style={{ marginLeft: "23px" }}>
                 <h1>All about Domains and Startup</h1>
                 <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
                   Welcome Entrepreneur!
@@ -69,6 +67,7 @@ function Startup() {
             <section className="recent-contributions">
               <Stack
                 sx={{
+                  width: "750px",
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
@@ -89,11 +88,6 @@ function Startup() {
                     }}
                     sx={{
                       paddingTop: "10px",
-                      "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root":
-                        {
-                          margin: 0,
-                        },
-                      // color: "#fff", // ?
                     }}
                   />
                 ) : (
@@ -102,29 +96,40 @@ function Startup() {
               </Stack>
 
               <ul className="contribution-list">
-                {domainForStartup?.startups?.map((domain) => (
-                  <li className="request-item" key={domain._id}>
-                    <p className="request-title">
-                      {/* <!-- domain name --> */}
-                      <a href="/">
-                        www.{domain.name}.{domain.topLevel}
-                      </a>
-                      {/* <!-- description --> */}
-                      <span style={{ textTransform: "uppercase" }}>
-                        <p className="request-repo">
-                          {domain.description} - {domain.ideas}
-                        </p>
-                      </span>
-                    </p>
-                    {/* <!-- price --> */}
-                    <p>
-                      <span className="request-date">${domain.price}</span>
-                      <a href="/contact" className="request-date">
-                        Contact
-                      </a>
-                    </p>
-                  </li>
-                ))}
+                {domainForStartup?.startups?.length ? (
+                  domainForStartup?.startups?.map((domain) => (
+                    <li className="request-item" key={domain._id}>
+                      <p className="request-title">
+                        {/* <!-- domain name --> */}
+                        <span>
+                          <a href="/">
+                            www.{domain.name}.{domain.topLevel}
+                          </a>
+                        </span>
+                        {/* <!-- description --> */}
+                        <span style={{ textTransform: "uppercase" }}>
+                          <p className="request-repo">
+                            {domain.description} - {domain.ideas}
+                          </p>
+                        </span>
+                      </p>
+                      {/* <!-- price --> */}
+                      <p>
+                        <span className="request-date">${domain.price}</span>
+                        <Button
+                          size="small"
+                          component={RouterLink}
+                          to={`/contact`}
+                          className="request-date"
+                        >
+                          Contact
+                        </Button>
+                      </p>
+                    </li>
+                  ))
+                ) : (
+                  <p>Let try another search or contact us.</p>
+                )}
               </ul>
             </section>
 

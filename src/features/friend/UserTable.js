@@ -38,25 +38,25 @@ function UserTable({ users }) {
   //
   return (
     <>
-      <Box sx={{ overflowX: "auto" }} xs={8}>
-        <TableContainer sx={{ minWidth: 800, borderColor: "#0A3161" }}>
+      <Box sx={{ overflowX: "auto", width: "750px" }} xs={8}>
+        <TableContainer sx={{ borderColor: "#0A3161", width: "750px" }}>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell
                   sx={{
                     width: {
-                      xs: "20%", // responsive ?
+                      xs: "20%", // responsive
                       sm: "25%",
                       fontWeight: "600",
                       minWidth: "100px",
-                      // color: "#fff",
                       borderColor: "#0A3161",
                     },
                   }}
                 >
                   Name
                 </TableCell>
+
                 <TableCell
                   sx={{
                     display: {
@@ -64,40 +64,41 @@ function UserTable({ users }) {
                       md: "table-cell",
                       fontWeight: "600",
                       minWidth: "150px",
-                      // color: "#fff",
                       borderColor: "#0A3161",
                     },
                   }}
                 >
                   Email
                 </TableCell>
+
                 <TableCell
                   sx={{
                     display: {
                       xs: "none",
                       md: "table-cell",
                       borderColor: "#0A3161",
+                      width: "0px",
                     },
                   }}
                 ></TableCell>
+
                 <TableCell
                   sx={{
                     display: { xs: "none", sm: "table-cell" },
                     width: "20%",
                     fontWeight: "600",
-                    // color: "#fff",
                     borderColor: "#0A3161",
                     minWidth: "150px",
                   }}
                 >
                   Status
                 </TableCell>
+
                 <TableCell
                   sx={{
                     display: { xs: "none", sm: "table-cell" },
                     width: "20%",
                     fontWeight: "600",
-                    // color: "#fff",
                     borderColor: "#0A3161",
                     minWidth: "150px",
                   }}
@@ -113,6 +114,7 @@ function UserTable({ users }) {
                 //
                 return (
                   <TableRow key={user._id} hover>
+                    {/* avt + user name */}
                     <TableCell
                       sx={{
                         display: "flex",
@@ -132,8 +134,6 @@ function UserTable({ users }) {
                           minWidth: "100px",
                           fontWeight: 600,
                           borderColor: "#0A3161",
-                          "& .css-skr1o3-MuiTypography-root-MuiLink-root .css-142n4nt-MuiTypography-root-MuiLink-root":
-                            { color: "#fff" }, // ?
                         }}
                         component={RouterLink}
                         to={`/user/${user._id}`}
@@ -141,6 +141,7 @@ function UserTable({ users }) {
                         {user.name}
                       </Link>
                     </TableCell>
+
                     {/* email */}
                     <TableCell
                       align="left"
@@ -149,7 +150,6 @@ function UserTable({ users }) {
                           xs: "none",
                           md: "table-cell",
                           paddingRight: "30px",
-                          // color: "#fff",
                           borderColor: "#0A3161",
                           minWidth: "120px",
                         },
@@ -157,7 +157,8 @@ function UserTable({ users }) {
                     >
                       {user.email}
                     </TableCell>
-                    {/* job */}
+
+                    {/* job KHONG CO*/}
                     <TableCell
                       align="center"
                       sx={{
@@ -165,11 +166,13 @@ function UserTable({ users }) {
                           xs: "none",
                           md: "table-cell",
                           borderColor: "#0A3161",
+                          width: "0px",
                         },
                       }}
                     >
                       {/* {user.jobTitle} */}
                     </TableCell>
+
                     {/* status */}
                     <TableCell
                       align="left"
@@ -184,6 +187,7 @@ function UserTable({ users }) {
                     >
                       {status}
                     </TableCell>
+
                     {/* actions */}
                     <TableCell
                       align="left"

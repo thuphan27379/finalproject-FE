@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
-import { shallowEqual, useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import { Grid, Stack, Typography, Box } from "@mui/material";
 
 import useAuth from "../hooks/useAuth";
@@ -9,10 +8,7 @@ import GroupSearch from "../features/group/GroupSearch";
 import GroupList from "../features/group/GroupList";
 import GroupInterest from "../features/group/GroupInterest";
 import GroupForm from "../features/group/GroupForm"; // /blog
-import GroupPostForm from "../features/group/GroupPostForm"; // /group/:groupId
 import PostList from "../features/post/PostList"; // post of currentUser
-// import GroupPostList from "../group/GroupPostList";
-import { leaveGroup, getSingleGroup } from "../features/group/groupSlice";
 
 // UI for the group //GroupPage  - group dang la con cua /blog ---
 // GroupSearch: SEARCH FOR GROUP
@@ -33,50 +29,27 @@ function GroupPage({ profile, groupId }) {
   const currentUserId = user._id;
   // console.log(currentUserId);
 
-  // getSingleGroup
-  // show group: name, interest,... after join
-  // const { singleGroup } = useSelector((state) => state.group, shallowEqual); // get state data from groupController (be)
-  // console.log("Single group", singleGroup);
-
-  // useEffect(() => {
-  //   if (currentGroupId) {
-  //     dispatch(getSingleGroup(currentGroupId)); // from groupSlice (fe)
-  //   }
-  // }, [dispatch, currentGroupId]);
-
-  // leave a group
-  // const handleLeave = async (currentGroupId, currentUserId) => {
-  //   try {
-  //     dispatch(leaveGroup({ currentGroupId, currentUserId })); //
-  //     toast.success("Leave a group successfully");
-  //     navigate(`/blog`);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
-
   //
   return (
     <>
       <Grid
         container
         spacing={3}
-        // width={"100%"}
         sx={{
-          maxWidth: "850px",
+          width: "750px",
+          marginLeft: "-20px",
+          paddingTop: "-20px",
           paddingBottom: "100px",
-          paddingTop: "-20px", // work
-          marginLeft: "7px",
-          "& .css-4danns-MuiStack-root": { marginRight: "-24px" },
+          marginBottom: "100px",
         }}
       >
         <Typography
           variant="h5"
           sx={{
-            mb: 1,
-            paddingLeft: "53px",
-            paddingTop: "25px",
             color: "#0A3161",
+            mb: 1,
+            paddingTop: "20px",
+            paddingLeft: "50px",
           }}
         >
           Our Groups
@@ -84,18 +57,14 @@ function GroupPage({ profile, groupId }) {
 
         <Grid
           item
-          xs={8}
-          md={12}
+          // xs={8}
+          // md={12}
           sx={{
-            maxWidth: "850px", // ??
-            paddingTop: 0, // ?
-            paddingBottom: "20px", //work
-            paddingLeft: "unset", // ?
-            marginLeft: "-10px", //work
-            paddingRight: "13px", // ?
-            "& .css-y2fcx1-MuiGrid-root> .MuiGrid-item": {
-              paddingTop: 0, // ?
-            },
+            width: "750px",
+            marginLeft: "-24px",
+            paddingTop: 0,
+            marginTop: "-7px",
+            paddingBottom: "20px",
           }}
         >
           {/* 2 cards */}
@@ -107,31 +76,34 @@ function GroupPage({ profile, groupId }) {
             sx={{
               paddingLeft: 0,
               paddingTop: 0,
-              "& .css-13mhfsw-MuiGrid-root, .css-1q7661i-MuiGrid-root": {
-                paddingLeft: 0,
-                paddingTop: 0,
-              },
-              "& .css-13mhfsw-MuiGrid-root > .MuiGrid-item": {
-                paddingLeft: 0,
-                paddingTop: 0,
-              },
-              "& .css-y2fcx1-MuiGrid-root> .MuiGrid-item": {
-                paddingTop: 0, // ?
-              },
             }}
           >
-            {/*sx={{ width: "65%" }} */}
+            {/* sx={{ width: "65%" }} */}
             <GroupList profile={profile} />
             {/* sx={{ width: "35%" }} */}
             <GroupInterest profile={profile} />
           </Stack>
         </Grid>
 
-        {/* search*/}
-        <GroupSearch profile={profile} />
+        {/* search */}
+        <Stack
+          sx={{
+            width: "750px",
+            marginLeft: "-20px",
+          }}
+        >
+          <GroupSearch profile={profile} />
+        </Stack>
 
         {/* GroupForm, create a new group */}
-        <GroupForm width="100%" />
+        <Stack
+          sx={{
+            width: "750px",
+            marginLeft: "-20px",
+          }}
+        >
+          <GroupForm />
+        </Stack>
 
         {/* postList */}
         {/* <Grid container sx={{ paddingLeft: "15px", paddingTop: "20px" }}>
@@ -141,9 +113,9 @@ function GroupPage({ profile, groupId }) {
         </Grid> */}
 
         {/* ? */}
-        <Box sx={{ flexGrow: 2 }} />
+        <Box sx={{ flexGrow: 1 }} />
       </Grid>
-      <Box sx={{ flexGrow: 2 }} />
+      <Box sx={{ flexGrow: 1 }} />
     </>
   );
 }

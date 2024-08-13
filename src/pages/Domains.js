@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import { Container, Grid, Stack, Pagination } from "@mui/material";
+import Button from "@mui/material/Button";
 
 import "../assets/css/main.css";
 import "../assets/css/body.css";
@@ -17,14 +18,8 @@ function Domains() {
   const [page, setPage] = useState(1);
   const params = useParams();
 
-  const {
-    domainsForSale,
-    domainForStartup,
-    currentPage,
-    isLoading,
-    totalPages,
-    totalDomain,
-  } = useSelector((state) => state.home, shallowEqual);
+  const { domainsForSale, currentPage, isLoading, totalPages, totalDomain } =
+    useSelector((state) => state.home, shallowEqual);
   // console.log("domain list", domainsForSale);
 
   const totalDomainPage = Math.ceil(totalDomain / DOMAIN_PER_PAGE);
@@ -38,21 +33,18 @@ function Domains() {
     <>
       <Container
         sx={{
+          width: "750px",
           display: "flex",
           justifyContent: "space-evenly",
-          maxWidth: "850px", // "unset!important",
-          width: "95%",
           marginTop: 0,
-          // backgroundColor: "#000",
-          // color: "#fff",
+          marginLeft: "-23px",
         }}
       >
-        {/* maxWidth={"60vw"} */}
         <Grid marginTop={"68px"} marginX={"auto"}>
           <div className="homepage">
             {/* <!-- 1 Welcome --> */}
             <div className="homepage-hero">
-              <section>
+              <section style={{ marginLeft: "23px" }}>
                 <h1>All about Domains and Startup</h1>
                 <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
                   Welcome Entrepreneur!
@@ -77,6 +69,7 @@ function Domains() {
             <section className="latest-news">
               <Stack
                 sx={{
+                  width: "750px",
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
@@ -93,15 +86,10 @@ function Domains() {
                     page={page}
                     onChange={(e, page) => {
                       setPage(page);
-                      dispatch(getDomainForSale({ page })); //?
+                      dispatch(getDomainForSale({ page }));
                     }}
                     sx={{
                       paddingTop: "10px",
-                      "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root":
-                        {
-                          margin: 0,
-                        },
-                      color: "#fff", // ?
                     }}
                   />
                 ) : (
@@ -123,7 +111,6 @@ function Domains() {
                         {/* <!-- idea, description --> */}
                         <span style={{ textTransform: "uppercase" }}>
                           <p>
-                            {" "}
                             {domain.description} - {domain.ideas}
                           </p>
                         </span>
@@ -131,9 +118,14 @@ function Domains() {
                       {/* <!-- price--> */}
                       <p>
                         <span className="news-date">${domain.price}</span>
-                        <a href="/contact" className="news-date">
+                        <Button
+                          size="small"
+                          component={RouterLink}
+                          to={`/contact`}
+                          className="request-date"
+                        >
                           Contact
-                        </a>
+                        </Button>
                       </p>
                     </li>
                   ))

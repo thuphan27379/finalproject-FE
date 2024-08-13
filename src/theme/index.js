@@ -4,7 +4,7 @@ import {
   createTheme,
   ThemeProvider as MUIThemeProvider,
 } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material"; // xoa css mac dinh cua MUI
+import { CssBaseline } from "@mui/material"; // xoa css mac dinh
 import customizeComponents from "./customizations";
 
 // module 2.3 .3.7 // custom theme, design
@@ -22,7 +22,6 @@ const PRIMARY = {
   200: "#d98ca0",
   100: "#e0a3b3",
   0: "#e8bac6",
-  // contrastText: "#FFF",
 };
 const SECONDARY = {
   1000: "#061d3a",
@@ -37,7 +36,6 @@ const SECONDARY = {
   200: "#8498b0",
   100: "#9dacbf",
   0: "#b5c1cf",
-  // contrastText: "#FFF",
 };
 const SUCCESS = {
   lighter: "#E9FCD4",
@@ -45,7 +43,6 @@ const SUCCESS = {
   main: "#54D62C",
   dark: "#229A16",
   darker: "#08660D",
-  // contrastText: "#FFF",
 };
 const GREY = {
   // white to black
@@ -97,11 +94,11 @@ const MuiCustomProvider = createTheme({
   // responsive
   breakpoints: {
     values: {
-      // xs: 0,
+      xs: 0,
       sm: 480,
       md: 768,
       lg: 1024,
-      // xl: 1440,
+      xl: 1440,
     },
   },
 
@@ -144,7 +141,7 @@ function ThemeProvider({ children }) {
   const themeOptions = (mode) =>
     mode === "light"
       ? {
-          // light: sua lai text color va background color, body.css
+          // light
           palette: {
             mode,
             primary: PRIMARY,

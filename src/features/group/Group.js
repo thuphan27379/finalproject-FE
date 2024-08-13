@@ -7,11 +7,10 @@ import { Grid, Stack, Typography, Box, Button } from "@mui/material";
 import useAuth from "../../hooks/useAuth";
 import GroupSearch from "./GroupSearch";
 import GroupList from "./GroupList";
-// import GroupInterest from "./GroupInterest";
-// import GroupForm from "./GroupForm"; // /blog
+import GroupInterest from "./GroupInterest";
 import GroupPostForm from "../group/GroupPostForm"; // /group/:groupId
 import GroupPostList from "../group/GroupPostList"; //
-import { getList, leaveGroup, getSingleGroup } from "./groupSlice";
+import { leaveGroup, getSingleGroup } from "./groupSlice";
 
 // UI for the group => /group/:groupId ---
 // GroupSearch: SEARCH FOR GROUP
@@ -24,7 +23,6 @@ function Group({ profile, groupId }) {
   const { user } = useAuth(); // get data of user from useAuth
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const params = useParams();
   const currentGroupId = params.groupId;
   // console.log(currentGroupId);
@@ -54,51 +52,22 @@ function Group({ profile, groupId }) {
     }
   };
 
-  // check member for show Leave btn
-  const isUserMember = () => {
-    return (
-      singleGroup &&
-      singleGroup.members.some((member) => member._id === currentUserId)
-    );
-  };
-
   //
   return (
     <>
       <Stack
-        // stack css moi them vo
         direction="column"
         sx={{
+          width: "750px",
           paddingTop: "90px",
-          "& .css-1p6s51d-MuiGrid-root": {
-            marginLeft: "unset",
-            paddingRight: "50px",
-          },
+          marginLeft: "4px",
         }}
       >
-        <Grid
-          container
-          spacing={3}
-          width={"100%"}
-          sx={{
-            paddingTop: 0,
-          }}
-        >
-          <Grid
-            item
-            xs={8}
-            md={12} // responsive ok
-            sx={{
-              paddingTop: 0, //?
-              paddingBottom: "20px", //work
-              paddingLeft: "unset", //?
-              marginLeft: "-10px", //work
-              paddingRight: "13px", //?
-            }}
-          >
+        <Grid container spacing={3}>
+          <Grid item>
             <Typography
               variant="h5"
-              sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }}
+              sx={{ mb: 3, color: "#0A3161", paddingLeft: "40px" }}
             >
               My Groups
             </Typography>
@@ -110,24 +79,17 @@ function Group({ profile, groupId }) {
               justifyContent="space-between"
               alignItems="center"
               sx={{
+                width: "750px",
                 paddingLeft: 0,
                 paddingTop: 0,
-                "& .css-13mhfsw-MuiGrid-root, .css-1q7661i-MuiGrid-root": {
-                  paddingLeft: 0,
-                  paddingTop: 0,
-                },
-                "& .css-13mhfsw-MuiGrid-root > .MuiGrid-item": {
-                  paddingLeft: 0,
-                  paddingTop: 0,
-                },
+                marginLeft: "0",
               }}
             >
-              {/* 20% search*/}
-              <GroupSearch profile={profile} />
-              {/* 40% with pagination*/}
+              {/* search */}
+              {/* <GroupSearch profile={profile} sx={{ width: "40%" }} /> */}
+              {/* list */}
               <GroupList profile={profile} />
-              {/* 40% with pagination*/}
-              {/* <GroupInterest profile={profile}  /> */}
+              <GroupInterest />
             </Stack>
           </Grid>
 
@@ -137,21 +99,22 @@ function Group({ profile, groupId }) {
             <Stack
               direction="row"
               justifyContent={"space-between"}
-              sx={{ paddingBottom: "20px", paddingLeft: "20px" }}
+              sx={{
+                width: "750px",
+                paddingBottom: "20px",
+                marginLeft: "25px",
+                marginTop: "20px",
+              }}
             >
               <Box>
-                <Typography
-                // sx={{ color: "#fff" }}
-                >
+                <Typography>
                   Group name: {singleGroup.name} - Interest:{" "}
                   {singleGroup.interests}
                   {"."}{" "}
                 </Typography>
               </Box>{" "}
               <Box>
-                <Typography
-                // sx={{ color: "#fff" }}
-                >
+                <Typography>
                   {" "}
                   * Members Count: 100 - Posts Count: 1000{" "}
                 </Typography>
@@ -161,8 +124,8 @@ function Group({ profile, groupId }) {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "flex-end", // ?
-                  marginLeft: "50px",
+                  justifyContent: "flex-end",
+                  marginLeft: "30px",
                 }}
               >
                 <Button
@@ -173,12 +136,13 @@ function Group({ profile, groupId }) {
                     fontSize: 10,
                   }}
                   onClick={() => handleLeave(currentGroupId, currentUserId)}
+                  disabled={!singleGroup.members.includes(currentUserId)} //
                 >
                   Leave
                 </Button>
               </Box>
               {/*  */}
-              {isUserMember() && (
+              {/* {isUserMember() && (
                 <Box
                   sx={{
                     display: "flex",
@@ -194,17 +158,23 @@ function Group({ profile, groupId }) {
                       p: 0.5,
                       fontSize: 10,
                     }}
-                    onClick={() => handleLeave(currentGroupId, currentUserId)}
+                    onClick={handleLeave} //() => handleLeave(currentGroupId, currentUserId)
                   >
                     Leave
                   </Button>
                 </Box>
-              )}
+              )} */}
             </Stack>
           )}
 
           {/* postForm, postList */}
-          <Grid container sx={{ paddingLeft: "15px" }}>
+          <Grid
+            container
+            sx={{
+              width: "750px",
+              marginLeft: "24px",
+            }}
+          >
             <Stack spacing={1} width={"100%"}>
               <GroupPostForm userId={profile?._id} />
               <GroupPostList userId={profile?._id} />

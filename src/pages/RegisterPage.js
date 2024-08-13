@@ -62,7 +62,7 @@ function RegisterPage() {
     const { name, email, password } = data;
     try {
       await auth.register({ name, email, password }, () => {
-        navigate("/blog", { replace: true }); //
+        navigate("/blog", { replace: true });
       });
     } catch (error) {
       reset();
@@ -74,10 +74,13 @@ function RegisterPage() {
   return (
     <>
       <Container
-        maxWidth="sm"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
+        sx={{
+          maxWidth: "480px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "center",
+        }}
       >
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>
@@ -87,9 +90,7 @@ function RegisterPage() {
             )}
             <Alert
               sx={{
-                // backgroundColor: "#000",
-                // color: "#fff",
-                borderColor: "1px #B31942", // ?
+                borderColor: "1px #B31942",
                 variant: "outlined",
               }}
               severity="info" // icon type
@@ -167,7 +168,7 @@ function RegisterPage() {
               variant="outlined"
               loading={isSubmitting}
               color="secondary"
-              sx={{ backgroundColor: "#8498b0" }} //
+              sx={{ backgroundColor: "#8498b0" }}
             >
               Register
             </LoadingButton>

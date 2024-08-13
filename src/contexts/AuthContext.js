@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 import apiService from "../app/apiService";
 import { isValidToken } from "../utils/jwt";
 
-// all about authentication //
+// all about authentication
 // init value
 const initialState = {
-  isInitialized: false, // app render first time yet?
-  isAuthenticated: false, // login yet?
+  isInitialized: false, // app render first time yet
+  isAuthenticated: false, // login yet
   user: {},
 };
 
@@ -136,7 +136,7 @@ function AuthProvider({ children }) {
 
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: { user }, //
+      payload: { user },
     });
 
     callback(); // to navigate after login
@@ -156,6 +156,7 @@ function AuthProvider({ children }) {
       type: REGISTER_SUCCESS,
       payload: { user },
     });
+    console.log(response);
 
     callback();
   };

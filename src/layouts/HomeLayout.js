@@ -7,7 +7,7 @@ import HomeHeader from "./HomeHeader";
 import LeftBar from "./LeftBar";
 import RightBar from "./RightBar";
 import HomeFooter from "./HomeFooter";
-import { ThemeContext } from "../ThemeContext"; //
+import { ThemeContext } from "../ThemeContext";
 
 //
 function HomeLayout() {
@@ -20,13 +20,8 @@ function HomeLayout() {
           minWidth: "unset",
           maxWidth: "unset!important",
           marginX: "auto",
-          paddingLeft: "60px",
+          paddingLeft: "50px",
           paddingRight: "60px",
-          "& .css-11chnac-MuiButtonBase-root-MuiListItemButton-root": {
-            paddingLeft: "10px",
-            paddingRight: 0,
-          },
-          // backgroundColor: "#000", // background of site
         }}
       >
         <HomeHeader />
@@ -39,10 +34,9 @@ function HomeLayout() {
             justifyContent: "space-evenly",
             flexGrow: 1,
             maxWidth: "unset",
-            paddingLeft: "15px",
           }}
         >
-          <div flex={1} style={{ maxWidth: "240px", marginLeft: "60px" }}>
+          <div flex={1} style={{ width: "240px", marginLeft: "65px" }}>
             <LeftBar />
           </div>
 
@@ -50,9 +44,8 @@ function HomeLayout() {
             flex={4}
             className="outlet-wrapper"
             style={{
+              width: "750px",
               marginTop: "-50px",
-              minWidth: "60vw",
-              maxWidth: "850px", // ?
             }}
           >
             <Outlet />
@@ -61,8 +54,8 @@ function HomeLayout() {
           <div
             flex={1}
             style={{
-              maxWidth: "240px",
-              marginRight: "60px",
+              width: "240px",
+              marginRight: "65px",
               marginTop: "-50px",
             }}
           >
@@ -72,7 +65,7 @@ function HomeLayout() {
 
         <Box sx={{ flexGrow: 1 }} />
 
-        <HomeFooter sx={{ minHeight: "50px" }} />
+        <HomeFooter sx={{ position: "fixed", maxHeight: "50px" }} />
       </Container>
     </>
   );

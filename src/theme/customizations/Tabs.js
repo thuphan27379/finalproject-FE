@@ -19,8 +19,6 @@ function Tabs(theme) {
           textTransform: "capitalize", //?
 
           borderRadius: "1%", //?
-          // backgroundColor: "#000",
-          // color: "#fff",
 
           "&.Mui-selected": {
             color: theme.palette.text.primary,

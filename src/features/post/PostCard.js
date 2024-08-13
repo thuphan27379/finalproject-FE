@@ -20,8 +20,6 @@ import {
 import Modal from "@mui/material/Modal";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { LoadingButton } from "@mui/lab";
-import RecommendIcon from "@mui/icons-material/Recommend"; // like
-import RecommendOutlinedIcon from "@mui/icons-material/RecommendOutlined";
 
 import { fDate } from "../../utils/formatTime";
 import useAuth from "../../hooks/useAuth";
@@ -38,13 +36,13 @@ const yupSchema = Yup.object().shape({
   content: Yup.string().required("Content is required"),
 });
 
-const defaultValues = {
-  content: "",
-  image: null,
-};
-
 // show list of posts
 function PostCard({ post, profile }) {
+  const defaultValues = {
+    content: post.content,
+    image: post.image,
+  };
+
   // show relationship, from - to
   const { user } = useAuth();
   const currentUserId = user._id; // dang login
@@ -113,6 +111,7 @@ function PostCard({ post, profile }) {
     setValue,
   } = methods;
 
+  //
   const onSubmit = (data) => {
     if (!data.image && post.image) {
       data.image = post.image;
@@ -121,6 +120,7 @@ function PostCard({ post, profile }) {
       editPost({ postId: post._id, content: data.content, image: data.image })
     ).then(() => reset());
   };
+  // console.log(post);
 
   const handleDrop = useCallback(
     (acceptedFiles) => {
@@ -154,13 +154,10 @@ function PostCard({ post, profile }) {
   return (
     <>
       <Card
-        style={{ border: "1px solid #B31942" }} // ?
+        style={{ border: "1px solid #B31942" }}
         sx={{
-          borderRadius: "3px", //
+          borderRadius: "3px",
           lineHeight: "1",
-          "& .css-1yqujyp-MuiButtonBase-root-MuiIconButton-root": {
-            padding: "5px",
-          },
         }}
       >
         <CardHeader
@@ -175,7 +172,6 @@ function PostCard({ post, profile }) {
               component={RouterLink}
               sx={{
                 fontWeight: 700,
-                // color: "#fff"
               }}
               to={`/user/${post.author._id}`}
             >
@@ -220,9 +216,9 @@ function PostCard({ post, profile }) {
           anchorOrigin={{
             vertical: "bottom",
             horizontal: "left",
-            backgroundColor: "#8498b0", // ?
+            backgroundColor: "#8498b0",
           }}
-          sx={{ backgroundColor: "transparent" }} //?
+          sx={{ backgroundColor: "transparent" }}
         >
           <Button
             sx={{
@@ -266,8 +262,8 @@ function PostCard({ post, profile }) {
                   p: 1,
                   width: 700,
                   height: 350,
-                  alignItems: "center", //?
-                  justifyContent: "center", //?
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 {/* postForm: edit content */}
@@ -278,13 +274,11 @@ function PostCard({ post, profile }) {
                 >
                   <Stack spacing={1}>
                     <FTextField
-                      // content of the old Post, not placeholder?!?!
+                      // content of the old Post, not placeholder
                       name="content"
                       multiline
                       fullWidth
                       rows={4}
-                      placeholder={post.content} //?
-                      value={post.content}
                       sx={{
                         "& fieldset": {
                           borderWidth: `1px !important`,
@@ -342,11 +336,11 @@ function PostCard({ post, profile }) {
         <Stack spacing={1} sx={{ pl: 4, pt: 1, pb: 1, pr: 4 }}>
           <Typography>{post.content}</Typography>
 
-          {/* media, width & height?!?! */}
+          {/* media, width & height ? */}
           {post.image && (
             <Box
               sx={{
-                borderRadius: "1px", //?
+                borderRadius: "1px",
                 overflow: "hidden",
                 height: "400px",
                 "& img": { objectFit: "scale-down", width: 1, height: 1 },

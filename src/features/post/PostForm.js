@@ -10,7 +10,7 @@ import * as Yup from "yup";
 import useAuth from "../../hooks/useAuth";
 import { FormProvider, FTextField, FUploadImage } from "../../components/form";
 import { createPost } from "./postSlice";
-import { getSingleGroup } from "../group/groupSlice"; //
+import { getSingleGroup } from "../group/groupSlice";
 
 // for create a new post
 // validate content
@@ -27,7 +27,7 @@ const defaultValues = {
 function PostForm() {
   const { isLoading } = useSelector((state) => state.post);
   const dispatch = useDispatch();
-  const { user } = useAuth(); //get data of user from useAuth
+  const { user } = useAuth(); // get data of user from useAuth
   const params = useParams();
   const currentUserId = user._id;
   const currentGroupId = params.groupId;
@@ -73,7 +73,7 @@ function PostForm() {
   // Fetch group details if a group ID is present in the route
   useEffect(() => {
     if (currentGroupId) {
-      dispatch(getSingleGroup(currentGroupId)); //
+      dispatch(getSingleGroup(currentGroupId));
     }
   }, [dispatch, currentGroupId]);
 
@@ -115,7 +115,6 @@ function PostForm() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "flex-end",
-                // fontWeight: "800",
               }}
             >
               <LoadingButton

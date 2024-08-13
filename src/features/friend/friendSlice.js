@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-
 import apiService from "../../app/apiService";
 
 // gia tri khoi tao
@@ -13,7 +12,7 @@ const initialState = {
   outgoingRequests: [],
 };
 
-// states //
+// states
 // function createSlice
 const slice = createSlice({
   name: "friend",
@@ -71,7 +70,7 @@ const slice = createSlice({
       const { targetUserId, ...friendship } = action.payload;
       state.usersById[targetUserId].friendship = friendship; // cap nhat action btn trong user table
 
-      state.incomingRequests = action.payload.users; //
+      state.incomingRequests = action.payload.users;
     },
     // decline Request Success
     declineRequestSuccess(state, action) {
@@ -95,7 +94,7 @@ const slice = createSlice({
       state.error = null;
 
       const { targetUserId } = action.payload;
-      state.usersById[targetUserId].friendship = null; //
+      state.usersById[targetUserId].friendship = null;
 
       state.outgoingRequests = state.outgoingRequests.filter(
         (request) => request.friendship.to !== targetUserId
@@ -122,7 +121,7 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// actions //
+// actions
 // function getUsers, for export to AddFriend.js
 export const getUsers =
   ({ filterName, page = 1, limit = 12 }) =>
@@ -201,7 +200,7 @@ export const declineRequest = (targetUserId) => async (dispatch) => {
 
   try {
     const response = await apiService.put(`/friends/requests/${targetUserId}`, {
-      status: "declined", //
+      status: "declined",
     });
     dispatch(
       slice.actions.declineRequestSuccess({ ...response.data, targetUserId })
@@ -219,7 +218,7 @@ export const acceptRequest = (targetUserId) => async (dispatch) => {
 
   try {
     const response = await apiService.put(`/friends/requests/${targetUserId}`, {
-      status: "accepted", //
+      status: "accepted",
     });
     dispatch(
       slice.actions.acceptRequestSuccess({ ...response.data, targetUserId })
@@ -277,7 +276,7 @@ export const getOutgoingSents =
       const response = await apiService.get("/friends/requests/outgoing", {
         params,
       });
-      console.log(response);
+      // console.log(response);
       dispatch(slice.actions.getOutgoingSentsSuccess(response.data));
     } catch (error) {
       dispatch(slice.actions.hasError(error.message));

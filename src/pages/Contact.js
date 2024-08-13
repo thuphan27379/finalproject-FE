@@ -2,6 +2,19 @@ import React, { useState } from "react";
 import { shallowEqual, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Container, Grid, Stack } from "@mui/material";
+import HandshakeOutlinedIcon from "@mui/icons-material/HandshakeOutlined";
+import LocalPoliceOutlinedIcon from "@mui/icons-material/LocalPoliceOutlined";
+import InterestsOutlinedIcon from "@mui/icons-material/InterestsOutlined";
+import AttachMoneyOutlinedIcon from "@mui/icons-material/AttachMoneyOutlined";
+import TipsAndUpdatesOutlinedIcon from "@mui/icons-material/TipsAndUpdatesOutlined";
+import AlternateEmailOutlinedIcon from "@mui/icons-material/AlternateEmailOutlined"; // @
+import AnchorOutlinedIcon from "@mui/icons-material/AnchorOutlined"; // neo
+import LanguageIcon from "@mui/icons-material/Language";
+import AdsClickIcon from "@mui/icons-material/AdsClick";
+import AppShortcutIcon from "@mui/icons-material/AppShortcut"; // telephone
+import GiteIcon from "@mui/icons-material/Gite";
+import StreamIcon from "@mui/icons-material/Stream";
+import WorkspacePremiumOutlinedIcon from "@mui/icons-material/WorkspacePremiumOutlined"; // star
 
 import apiService from "../app/apiService";
 import "../assets/css/main.css";
@@ -26,18 +39,24 @@ function Contact() {
       [name]: value,
     });
   };
-  console.log(formData);
+  // console.log(formData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     apiService
       .post("/contact", formData)
       .then((response) => {
-        alert("Contact sent successfully");
+        toast.info("Contact sent successfully");
       })
       .catch((error) => {
-        alert("Failed to send message");
+        toast.error("Failed to send message");
       });
+
+    setFormData({
+      name: "",
+      email: "",
+      story: "",
+    });
   };
 
   // UI with HTML&CSS
@@ -45,21 +64,19 @@ function Contact() {
     <>
       <Container
         sx={{
+          width: "750px",
           display: "flex",
           justifyContent: "space-evenly",
-          maxWidth: "850px", // "unset!important",
-          width: "95%",
           marginTop: 0,
-          // backgroundColor: "#000",
-          // color: "#fff",
+          marginLeft: "-23px",
+          paddingLeft: "20px",
         }}
       >
-        {/* maxWidth={"60vw"} */}
         <Grid marginTop={"68px"} marginX={"auto"}>
           <div className="homepage">
             {/* <!-- 1 Welcome --> */}
             <div className="homepage-hero">
-              <section>
+              <section style={{ marginLeft: "23px" }}>
                 <h1>All about Domains and Startup</h1>
                 <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
                   Welcome Entrepreneur!
@@ -82,45 +99,87 @@ function Contact() {
                   flexDirection: "row",
                   alignItems: "center",
                   fontSize: "14px",
+                  paddingLeft: "40px",
                 }}
               >
                 <h2>Contact us 24/7:</h2>
               </Stack>
-              <h3>- Join Startup Sponsor Program with your ideas </h3>
-              <h3>- Cooperate with our projects</h3>
-              <h3>- Buy a domains</h3>
-              <h3>- Or any</h3>
+              <Stack
+                sx={{
+                  paddingLeft: "30px",
+                }}
+              >
+                <h3>
+                  <TipsAndUpdatesOutlinedIcon />
+                  Join Startup Sponsor Program with your ideas{" "}
+                </h3>
+                <h3>
+                  <HandshakeOutlinedIcon /> Cooperate with our projects
+                </h3>
+                <h3>
+                  <AttachMoneyOutlinedIcon /> Buy a domains
+                </h3>
+                <h3>
+                  <InterestsOutlinedIcon /> Join our community
+                </h3>
+                <h3>
+                  <LocalPoliceOutlinedIcon /> Or any
+                </h3>
+              </Stack>
 
-              <ul className="contribution-list" sx={{ width: "700px" }}>
-                <li className="request-item">
+              <ul
+                className="contribution-list"
+                style={{ width: "750px", margin: "auto", padding: "1.5rem" }}
+              >
+                <li
+                  className="request-item contact-info"
+                  style={{ padding: "1.5rem" }}
+                >
                   <p className="request-title">
-                    <p>Company name: BizHolding, Inc. & Huong Sac Ltd.</p>
-                    <br />
-                    <p>Registration No.:</p>
-                    <br />
                     <p>
-                      Address: 5885 El Cajon, Blvd., San Diego, CA 92115, USA.
+                      <GiteIcon fontSize="30" /> Company name: BizHolding, Inc.
+                      (USA) & Huong Sac Ltd. (VN)
                     </p>
                     <br />
                     <p>
-                      Telephone: +1 (619) 674-1015 --- +84 (97) 313-1234 --- +84
-                      (97) 555-6084 --- iMes, Viber, WhatApp, Zalo
+                      <AdsClickIcon fontSize="30" /> Registration No.:
                     </p>
                     <br />
                     <p>
-                      Email: lucphanus@gmail.com --- lucphan@center247.com ---
+                      <AnchorOutlinedIcon fontSize="27" /> Address: 5885 El
+                      Cajon, Blvd., San Diego, CA 92115, USA.
+                    </p>
+                    <br />
+                    <p>
+                      <AppShortcutIcon fontSize="30" /> Telephone: +1 (619)
+                      674-1015 --- +84 (97) 313-1234 --- +84 (97) 555-6084{" "}
+                      <br />
+                      iMes, Viber, WhatApp, Zalo
+                    </p>
+                    <br />
+                    <p>
+                      {" "}
+                      <AlternateEmailOutlinedIcon fontSize="21" /> Email:
+                      lucphanus@gmail.com --- lucphan@center247.com ---
                       thuphan273@gmail.com
                     </p>
                     <br />
                     <p>
-                      Website: <a href="http://www.vnwp.com">www.vnstar.com</a>{" "}
-                      --- <a href="http://www.vnwp.com">www.vnwp.com</a> ---{" "}
+                      <LanguageIcon fontSize="27" /> Website:{" "}
+                      <a href="http://www.vnwp.com">www.vnstar.com</a> ---{" "}
+                      <a href="http://www.vnwp.com">www.vnwp.com</a> ---{" "}
                       <a href="http://www.seechannel.com">www.seechannel.com</a>
                     </p>
                     <br />
-                    <p>ESCROW: worlddetail@gmail.com</p>
+                    <p>
+                      {" "}
+                      <StreamIcon fontSize="30" /> ESCROW: worlddetail@gmail.com
+                    </p>
                     <br />
-                    <p>Paypal:</p>
+                    <p>
+                      <WorkspacePremiumOutlinedIcon fontSize="30" />
+                      Paypal:
+                    </p>
                   </p>
                 </li>
               </ul>

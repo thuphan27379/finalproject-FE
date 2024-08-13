@@ -22,7 +22,6 @@ const defaultValues = {
   content: "",
   image: "",
   postsByGroupId: "",
-  // groupId: ""
 };
 
 //
@@ -83,7 +82,7 @@ function GroupPostForm() {
     }
     // console.log("post group", data);
 
-    dispatch(createPostGroup(data)).then(() => reset()); // ??
+    dispatch(createPostGroup(data)).then(() => reset());
   };
 
   // UI

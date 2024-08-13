@@ -49,7 +49,7 @@ function GroupSearch({ groupId }) {
 
   // navigate to groupPage /group/:groupId
   const handleNavigate = (groupId) => {
-    navigate(`/group/${groupId}`); //?
+    navigate(`/group/${groupId}`);
   };
 
   // handleJoin
@@ -75,14 +75,14 @@ function GroupSearch({ groupId }) {
         fullWidth
         style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
         sx={{
+          width: "750px",
           p: 2,
           minHeight: "250px",
           lineHeight: "2",
           alignItems: "center",
           justifyContent: "center",
           paddingTop: "10px",
-          width: "100%",
-          marginLeft: "15px",
+          marginLeft: "20px",
         }}
       >
         <Stack
@@ -99,14 +99,6 @@ function GroupSearch({ groupId }) {
               placeholder="Search by name or interest"
               handleSubmit={handleSubmit}
               minWidth="350px"
-              sx={{
-                "& .MuiInputBase-root .MuiOutlinedInput-root .MuiInputBase-colorPrimary .MuiInputBase-formControl .MuiInputBase-sizeSmall .MuiInputBase-adornedEnd .css-199d5a5-MuiInputBase-root-MuiOutlinedInput-root":
-                  {
-                    borderRadius: "4px",
-                    paddingRight: "10px",
-                    width: "300px",
-                  }, //??
-              }}
             />
             <Box
               sx={{
@@ -136,9 +128,7 @@ function GroupSearch({ groupId }) {
                   dispatch(getList({ groupId, page }));
                 }}
                 sx={{
-                  "& .css-1888ozn-MuiButtonBase-root-MuiPaginationItem-root": {
-                    margin: 0,
-                  },
+                 
                   flexDirection: "flex-end",
                 }}
               /> */}

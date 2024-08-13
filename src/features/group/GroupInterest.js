@@ -27,7 +27,7 @@ function GroupInterest() {
     <>
       <Card
         style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
-        sx={{ minWidth: "370px", minHeight: "250px" }} //, width: "70%"
+        sx={{ minWidth: "313px", minHeight: "250px" }}
       >
         <CardHeader title="List of Interest" sx={{ paddingTop: "10px" }} />
 
@@ -36,7 +36,7 @@ function GroupInterest() {
         <Stack spacing={1} sx={{ p: 2 }}>
           {list.map((listItem) => (
             <Box
-              key={listItem._id} // !
+              key={listItem._id}
               sx={{
                 p: 0,
                 display: "flex",

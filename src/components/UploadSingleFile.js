@@ -15,8 +15,7 @@ const DropZoneStyle = styled("div")(({ theme }) => ({
   transition: theme.transitions.create("padding"),
 
   borderRadius: theme.shape.borderRadius,
-  // backgroundColor: "#000", //
-  border: `1px dashed #B31942`, //
+  border: `1px dashed #B31942`,
   "&:hover": { opacity: 0.72, cursor: "pointer" },
 }));
 

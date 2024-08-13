@@ -27,7 +27,7 @@ function UserCard({ profile }) {
         sx={{
           display: "flex",
           alignItems: "center",
-          p: 2,
+          p: 1,
         }}
         style={{
           border: "1px solid #0A3161",
@@ -58,11 +58,7 @@ function UserCard({ profile }) {
             <EmailRoundedIcon
               sx={{ width: 16, height: 16, mr: 0.5, flexShrink: 0 }}
             />
-            <Typography
-              variant="body2"
-              // sx={{ color: "#fff" }}
-              noWrap
-            >
+            <Typography variant="body2" noWrap>
               {email}
             </Typography>
           </Box>

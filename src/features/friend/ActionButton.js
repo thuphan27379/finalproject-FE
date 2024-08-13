@@ -37,9 +37,6 @@ function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
       sx={{
         ...sx,
         fontSize: "0.6rem",
-        "& .css-jfdv4h-MuiStack-root>:not(style):not(style)": {
-          margin: "0",
-        }, //??
       }}
       size="small"
       variant="outlined"
@@ -50,7 +47,7 @@ function ActionButton({ currentUserId, targetUserId, friendship, sx }) {
     </Button>
   );
 
-  // btn resend ???
+  // btn resend
   const btnResend = (
     <Button
       sx={{ fontSize: "0.6rem", ...sx }}

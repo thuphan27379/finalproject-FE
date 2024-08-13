@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { capitalCase } from "change-case";
 import { Box, Card, Container, Tab, Tabs } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
-import ContactMailOutlined from "@mui/icons-material/ContactMailOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import Diversity1OutlinedIcon from "@mui/icons-material/Diversity1Outlined";
 import MarkUnreadChatAltOutlined from "@mui/icons-material/MarkUnreadChatAltOutlined";
 import SpatialTrackingOutlinedIcon from "@mui/icons-material/SpatialTrackingOutlined";
 import SpatialAudioOffOutlinedIcon from "@mui/icons-material/SpatialAudioOffOutlined";
-import RssFeedIcon from "@mui/icons-material/RssFeed";
+import CoPresentOutlinedIcon from "@mui/icons-material/CoPresentOutlined";
+import ContactEmergencyOutlinedIcon from "@mui/icons-material/ContactEmergencyOutlined";
+import RocketLaunchOutlinedIcon from "@mui/icons-material/RocketLaunchOutlined";
 
 import useAuth from "../hooks/useAuth";
 import UserChat from "../features/chat/UserChat";
@@ -23,9 +23,9 @@ import GroupPage from "./GroupPage";
 
 // blogpage, profile tabs
 const TabsWrapperStyle = styled("div")(({ theme }) => ({
+  minWidth: "750px",
   zIndex: 9,
   bottom: 0,
-  width: "100%",
   display: "flex",
   position: "absolute",
   paddingLeft: 0,
@@ -57,12 +57,12 @@ function BlogPage(profile) {
   const PROFILE_TABS = [
     {
       value: "wall",
-      icon: <RssFeedIcon sx={{ fontSize: 24 }} />,
+      icon: <RocketLaunchOutlinedIcon sx={{ fontSize: 24 }} />,
       component: <Wall />,
     },
     {
       value: "profile",
-      icon: <AccountBoxOutlinedIcon sx={{ fontSize: 24 }} />,
+      icon: <CoPresentOutlinedIcon sx={{ fontSize: 24 }} />,
       component: <Profile profile={user} />, // route /user/:id
     },
     {
@@ -72,7 +72,7 @@ function BlogPage(profile) {
     },
     {
       value: "friends",
-      icon: <ContactMailOutlined sx={{ fontSize: 24 }} />,
+      icon: <ContactEmergencyOutlinedIcon sx={{ fontSize: 25 }} />,
       component: <FriendList />,
     },
     {
@@ -104,31 +104,30 @@ function BlogPage(profile) {
     <>
       <Container
         sx={{
+          width: "750px",
           marginTop: "95px",
-          maxWidth: "850px", // ?
         }}
       >
         <Card
           sx={{
+            width: "750px",
             mb: 3,
             height: 42,
             position: "relative",
-            paddingLeft: 0,
-            marginLeft: "25px",
             lineHeight: 0,
-            marginRight: "24px",
-            maxWidth: "850px",
           }}
           style={{
+            width: "750px",
             border: "1px solid #0A3161",
             borderRadius: "3px",
+            marginLeft: "-20px",
           }}
         >
           {/* tabs Wrapper*/}
           <TabsWrapperStyle
             sx={{
+              width: "750px",
               paddingLeft: 0,
-              marginLeft: 0,
             }}
           >
             <Tabs
@@ -169,14 +168,7 @@ function BlogPage(profile) {
               <Box
                 key={tab.value}
                 sx={{
-                  "& .css-1oqqzyl-MuiContainer-root": {
-                    marginLeft: "-35px",
-                    width: "unset",
-                    paddingTop: "unset",
-                  },
-                  "& .css-13mhfsw-MuiGrid-root": {
-                    marginTop: "0",
-                  },
+                  width: "750px",
                 }}
               >
                 {tab.component}

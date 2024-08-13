@@ -12,22 +12,29 @@ const Aboutus = () => {
     <>
       <Container
         sx={{
+          width: "750px",
           display: "flex",
           justifyContent: "space-evenly",
-          maxWidth: "850px", // "unset!important",
           marginTop: 0,
-          width: "95%",
-          // backgroundColor: "#000",
-          // color: "#fff",
+          marginLeft: "-24px",
         }}
       >
-        <Grid marginTop={"68px"} maxWidth={"60vw"} marginX={"auto"}>
+        <Grid marginTop={"68px"} width={"60vw"} marginX={"auto"}>
           <div className="homepage">
             {/* <!-- 1 Welcome --> */}
             <div className="homepage-hero">
               <section>
-                <h1>All about Domains and Startup</h1>
-                <h3 style={{ color: "#0A3161", fontWeight: 700, fontSize: 27 }}>
+                <h1 style={{ marginLeft: "24px" }}>
+                  All about Domains and Startup
+                </h1>
+                <h3
+                  style={{
+                    marginLeft: "24px",
+                    color: "#0A3161",
+                    fontWeight: 700,
+                    fontSize: 27,
+                  }}
+                >
                   Welcome Entrepreneur!
                 </h3>
                 {/* ??? */}
@@ -54,12 +61,10 @@ const Aboutus = () => {
                   <br />
                   There are product-service brands.
                   <br />
-                  <br />
                   <br /> Name - Brand Name is a necessary condition to start a
                   career, and a sufficient condition is a platform and a method.
                   There are many platforms, many methods, but there is only one
                   name and one brand.
-                  <br />
                   <br />
                   <br /> In the digital era, Domain Name is the Brand Name for a
                   product or service (subdomains can also be used instead).
@@ -67,10 +72,8 @@ const Aboutus = () => {
                   scope of operations, but it is necessary to standardize for
                   the future if there is development.
                   <br />
-                  <br />
                   <br /> A Domain Name must be short, easy to understand, easy
                   to remember, easy to recognize, and easy to express.
-                  <br />
                   <br />
                   <br /> VNWP.COM is the place to start your career. A place
                   that gives you the fishing rod, not the fish. A place that
@@ -78,15 +81,15 @@ const Aboutus = () => {
                   career; the choice is up to you. A place that will accompany
                   you (if needed) and more.
                   <br />
+                  <br /> VNWP.COM has the following main activities:
                   <br />
-                  <br /> VNWP.COM has the following main activities: <br />
                   <br /> - Some typical Startup projects of VNWP.COM. You can
                   own them or cooperate.
                   <br /> - Brand Names and Startup ideas for you.
                   <br /> - Domain Names as Brand Names for you to choose from.
                   <br />
+                  <br /> How VNWP.COM works:
                   <br />
-                  <br /> How VNWP.COM works: <br />
                   <br /> - For typical Startup projects, VNWP.COM will give many
                   incentives to partners who want to transfer ownership or
                   invest in development cooperation. Each Project has its own
@@ -100,16 +103,15 @@ const Aboutus = () => {
                   from, VNWP.COM has specific information about domain name
                   value and preferential policies for you.
                   <br /> - VNWP.COM uses the highly reputable and guaranteed
-                  Escrow.com as a partner for payment and transfer. <br />
-                  <br />
-                  Our ESCROW: worlddetail@gmail.com
-                  <br />
+                  Escrow.com as a partner for payment and transfer.
                   <br />
                   <br /> When you enter into a business transaction contract
                   with VNWP.COM, you automatically agree to VNWP.COM's way of
                   operating. Any disputes, if any, will be resolved according to
                   VNWP.COM's way of operating and according to customary
                   practices.
+                  <br />
+                  <br />
                 </p>
               </section>
             </div>
@@ -126,9 +128,9 @@ const Aboutus = () => {
                     <a href="https://www.icann.org/">https://www.icann.org/</a>
                   </h3>
                   <p>
-                    The ICANN80 Policy Forum is now live and taking place in
-                    Kigali, Rwanda from 10-13 June 2024. You must be registered
-                    and logged in to view the schedule.
+                    A global nonprofit organization responsible for coordinating
+                    the maintenance and procedures of several databases related
+                    to the namespaces and numerical spaces of the Internet.
                   </p>
                 </div>
 
@@ -182,7 +184,8 @@ const Aboutus = () => {
                   <p>
                     See Website Information Search the whois database, look up
                     domain and IP owner information, and check out dozens of
-                    other statistics.
+                    other statistics. Leading provider of web presence
+                    solutions.
                   </p>
                 </div>
 

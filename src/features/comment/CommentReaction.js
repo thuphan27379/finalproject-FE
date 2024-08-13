@@ -27,7 +27,7 @@ function CommentReaction({ comment }) {
     dispatch(sendCommentReaction({ commentId: comment._id, emoji }));
   };
 
-  // unclick: unlike and undislike!!!
+  // unclick: unlike and undislike
 
   //
   return (

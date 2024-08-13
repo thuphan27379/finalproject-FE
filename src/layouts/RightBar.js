@@ -14,9 +14,8 @@ export default function RightBar() {
         sx={{
           width: "240px",
           marginTop: "70px",
-          paddingRight: "30px",
+          paddingRight: "10px",
           display: { xs: "none", sm: "none", md: "none", lg: "block" }, // responsive
-          "& .css-tlelie-MuiListItemText-root": { marginBottom: 0 },
         }}
       >
         <List
@@ -25,7 +24,6 @@ export default function RightBar() {
             fontSize: "20px",
             fontWeight: "700",
             lineHeight: 1,
-            // color: "#fff",
           }}
         >
           {[

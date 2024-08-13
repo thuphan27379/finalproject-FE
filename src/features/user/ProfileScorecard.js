@@ -12,16 +12,13 @@ function ProfileScorecard({ profile }) {
         style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
         sx={{
           p: 1,
-          marginLeft: "3px",
-          minWidth: "180px",
+          marginLeft: "2px",
+          minWidth: "150px",
           minHeight: "255px",
           lineHeight: "1",
           alignItems: "center",
           justifyContent: "center",
           alignContent: "center",
-          "& .css-tiopvi-MuiStack-root": {
-            marginTop: "-50px",
-          },
         }}
       >
         <Stack

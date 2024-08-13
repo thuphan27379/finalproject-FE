@@ -39,26 +39,39 @@ function FriendList() {
   //
   return (
     <>
-      <Container xs={8}>
+      <Container
+        sx={{
+          width: "750px",
+          marginLeft: "-20px",
+        }}
+      >
         <Typography
           variant="h5"
-          sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }}
+          sx={{
+            color: "#0A3161",
+            mb: 3,
+            paddingLeft: "35px",
+          }}
         >
           My Friends
         </Typography>
 
         <Card
           style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
-          sx={{ p: 2 }}
+          sx={{
+            p: 2,
+            width: "750px",
+            marginLeft: "-24px",
+            marginTop: "-3px",
+          }}
         >
           <Stack spacing={2}>
             <Stack direction={{ xs: "column", md: "row" }} alignItems="center">
               <SearchInput handleSubmit={handleSubmit} />
-              {/* result, hide if not ? */}
+              {/* results, hide if not ? */}
               <Typography
                 variant="subtitle"
                 sx={{
-                  // color: "#fff",
                   ml: 1,
                 }}
               >
@@ -74,7 +87,6 @@ function FriendList() {
               <Typography
                 variant="subtitle"
                 sx={{
-                  // color: "#fff",
                   ml: 1,
                 }}
               >
@@ -89,7 +101,6 @@ function FriendList() {
                 count={totalPages}
                 page={page}
                 onChange={(e, page) => setPage(page)}
-                // sx={{ color: "#fff" }} // ?
               />
             </Stack>
           </Stack>
@@ -103,6 +114,8 @@ function FriendList() {
             ))}
           </Grid>
         </Card>
+
+        <Box sx={{ flexGrow: 1 }} />
       </Container>
     </>
   );

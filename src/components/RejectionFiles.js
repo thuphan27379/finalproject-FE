@@ -1,6 +1,5 @@
 import { Box, Typography, Paper } from "@mui/material";
 import { alpha } from "@mui/material/styles";
-
 import { fData } from "../utils/numberFormat";
 
 // image size, han che dung luong file cua image

@@ -10,11 +10,15 @@ function BlankLayout() {
   return (
     <>
       <Stack
-        paddingTop={15}
-        minHeight="100vh"
-        justifyContent="center"
-        alignItems="center"
-        // sx={{ backgroundColor: "#000", color: "#fff" }} //
+        sx={{
+          width: "100%",
+          paddingTop: "100px",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "center",
+        }}
       >
         <HomeHeader />
 

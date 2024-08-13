@@ -79,9 +79,8 @@ function ProfileSocialInfo({ profile }) {
       <Card
         style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
         sx={{
-          minWidth: "315px",
+          minWidth: "290px",
           minHeight: "255px",
-          // color: "#fff"
         }}
       >
         {/* website */}
@@ -91,7 +90,6 @@ function ProfileSocialInfo({ profile }) {
             <Stack key={link.name} direction="row" alignItems="center">
               {link.icon}
               <Link
-                // sx={{ color: "#fff" }} //
                 component="span"
                 variant="body2"
                 color="text.primary"

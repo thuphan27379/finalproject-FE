@@ -99,8 +99,7 @@ Our company is developing a social platform app for users to connect and share c
 
   | User Profile Management |
 
-  - Users can edit their profile information (name, profile picture, bio, interests) at any time.
-
+- Users can edit their profile information (name, profile picture, bio, interests) at any time.
 - Users can view their own profile as well as the profiles of other users.
 - Users can follow/unfollow other users
 - Users can accept/deny following requests.
@@ -108,22 +107,19 @@ Our company is developing a social platform app for users to connect and share c
 
   | Post Creation and Interaction |
 
-  - Users can create posts that consist of text, images, or video.
-
+- Users can create posts that consist of text, images, or video.
 - Users can view their own posts as well as other users' posts.
 - Users can like, react, comment, and share posts.
 - Users can edit or delete posts, comments, shares, or likes that they created.
 
   | Notification System |
 
-  - Users receive notifications for new likes, shares, and comments on their posts, as well as new followers.
-
+- Users receive notifications for new likes, shares, and comments on their posts, as well as new followers.
 - Users can view their notification history.
 
   | Post Bookmarking |
 
-  - Users can save posts to a bookmarks list for later viewing.
-
+- Users can save posts to a bookmarks list for later viewing.
 - Users can remove posts from their bookmarks list.
 
 ## **Schema & ERD Suggestion**
@@ -134,7 +130,7 @@ Our company is developing a social platform app for users to connect and share c
 2. Posts: This schema includes post information such as post content, creation date, and the user who created the post.
 3. Comments: This schema includes comment information such as comment content, creation date, and the user who created the comment.
 4. Likes: This schema includes like information such as creation date, the user who created the like, and the post that was liked.
-5. ?? Shares: This schema includes share information such as creation date, the user who created the share, and the post that was shared.
+5. Shares: This schema includes share information such as creation date, the user who created the share, and the post that was shared.
 6. Followers/Following: This schema includes information on which users follow each other.
 
 Your schemas may be different depending on your business logic. You may also need more schemas or more properties .
@@ -160,7 +156,7 @@ You can choose up to 3 elective features from the list below to make your app co
 
 [Untitled Database](https://www.notion.so/c1bb4747653e4118ac6f47901f393854?pvs=21)
 
-1.  ?? Features with a _blank page_ icon, like **_Forget & Reset Password,_** are simple enough that we encourage you to come up with the solution yourself.
+1.  Features with a _blank page_ icon, like **_Forget & Reset Password,_** are simple enough that we encourage you to come up with the solution yourself.
 
 2.  Features with _2 lines_ in the icon, like **_Simple Chat between users,_** are the more challenging ones that include suggestion on how to approach them. You can click on those page to see more.
 
@@ -181,5 +177,4 @@ https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and
 8. Display the posts in a group on the group page for all group members to see.
 9. Allow users to leave a group if they no longer want to be a member.
 10. Ensure that only members of a group can post in the group, and that non-members cannot view the group posts.
-
 11. Tag other users in posts and comments

@@ -7,7 +7,6 @@ import {
   Box,
   TablePagination,
   Container,
-  Grid,
 } from "@mui/material";
 
 import { getUsers } from "./friendSlice";
@@ -52,82 +51,73 @@ function AddFriend() {
   // UI
   return (
     <>
-      <Container width={"100%"}>
-        <Grid
-          item
-          spacing={1}
-          xs={8}
-          paddingTop={0}
-          marginTop={0}
-          marginBottom={10}
+      <Container
+        sx={{
+          width: "750px",
+          marginLeft: "-20px",
+        }}
+      >
+        <Typography
+          variant="h5"
+          sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }}
         >
-          <Typography
-            variant="h5"
-            sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }} //
-          >
-            Add Friends
-          </Typography>
+          Add Friends
+        </Typography>
 
-          <Card
-            style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
-            sx={{ p: 1.5 }}
-            width={"100%"}
-            xs={8}
-          >
-            <Stack spacing={1} xs={8} width={"100%"}>
-              <Stack
-                direction={{ xs: "column", md: "row" }}
-                alignItems="center"
-                justifyContent="center"
-                width={"100%"}
+        <Card
+          style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
+          sx={{
+            p: 1.5,
+            width: "750px",
+            marginLeft: "-24px",
+            marginTop: "-5px",
+          }}
+        >
+          <Stack spacing={1}>
+            <Stack
+              direction={{ xs: "column", md: "row" }}
+              alignItems="center"
+              justifyContent="center"
+            >
+              {/* SEARCH USERS result count, hide if not ?*/}
+              <SearchInput handleSubmit={handleSubmit} />
+              {/* result */}
+              <Typography
+                variant="subtitle"
+                sx={{
+                  ml: 1,
+                }}
               >
-                {/* SEARCH USERS result count, hide if not ?*/}
-                <SearchInput handleSubmit={handleSubmit} />
-                {/* result */}
-                <Typography
-                  variant="subtitle"
-                  sx={{
-                    // color: "#fff",
-                    ml: 1,
-                  }}
-                >
-                  {totalUsers > 1
-                    ? `${totalUsers} users found`
-                    : totalUsers === 1
-                    ? `${totalUsers} user found`
-                    : "No user found"}
-                </Typography>
+                {totalUsers > 1
+                  ? `${totalUsers} users found`
+                  : totalUsers === 1
+                  ? `${totalUsers} user found`
+                  : "No user found"}
+              </Typography>
 
-                <Box sx={{ flexGrow: 1 }} />
+              <Box sx={{ flexGrow: 1 }} />
 
-                {/* pagination */}
-                <TablePagination
-                  sx={{
-                    "& .MuiTablePagination-selectLabel, .MuiTablePagination-select, .MuiTablePagination-selectIcon":
-                      {
-                        display: { xs: "none", md: "block" },
-                        alignItems: "center",
-                        justifyContent: "center",
-                      },
-                    "& .css-18gzhn6-MuiInputBase-root-MuiTablePagination-select":
-                      { marginRight: "20px" },
-                    // color: "#fff", // work
-                  }}
-                  component="div"
-                  count={totalUsers ? totalUsers : 0}
-                  page={page}
-                  onPageChange={handleChangePage}
-                  rowsPerPage={rowsPerPage}
-                  rowsPerPageOptions={[5, 10, 25]}
-                  onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-              </Stack>
-
-              {/* TABLE LIST OF USERS */}
-              <UserTable users={users} />
+              {/* pagination, khong chinh duoc css */}
+              <TablePagination
+                sx={{
+                  padding: "unset",
+                  paddingLeft: "0px",
+                  paddingRight: "0px",
+                }}
+                component="div"
+                count={totalUsers ? totalUsers : 0}
+                page={page}
+                onPageChange={handleChangePage}
+                rowsPerPage={rowsPerPage}
+                rowsPerPageOptions={[5, 10, 25]}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
             </Stack>
-          </Card>
-        </Grid>
+
+            {/* TABLE LIST OF USERS */}
+            <UserTable users={users} />
+          </Stack>
+        </Card>
       </Container>
     </>
   );

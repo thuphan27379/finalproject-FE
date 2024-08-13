@@ -1,10 +1,10 @@
-import { styled } from "@mui/material/styles"; // icon
+import { styled } from "@mui/material/styles";
 import { Link, Card, Typography, CardHeader, Stack, Box } from "@mui/material";
 import PinDropOutlinedIcon from "@mui/icons-material/PinDropOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
-import BusinessCenterOutlinedIcon from "@mui/icons-material/BusinessCenterOutlined";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
 
 // icon
 const IconStyle = styled(Box)(({ theme }) => ({
@@ -17,7 +17,7 @@ const IconStyle = styled(Box)(({ theme }) => ({
 
 // 2nd show detail of profile
 function ProfileAbout({ profile }) {
-  const { aboutMe, city, country, email, company, others } = profile; //
+  const { aboutMe, city, country, email, company, others } = profile;
 
   //
   return (
@@ -27,16 +27,13 @@ function ProfileAbout({ profile }) {
           border: "1px solid #0A3161",
           borderRadius: "3px",
         }}
-        sx={{ minWidth: "320px", minHeight: "255px" }} //
+        sx={{ minWidth: "295px", minHeight: "255px" }}
       >
         {/* Portfolio */}
         <CardHeader title="About" variant="h6" sx={{ paddingTop: "10px" }} />
 
         <Stack spacing={2} sx={{ p: 2 }}>
-          <Stack
-            direction="row"
-            // sx={{ color: "#fff" }}
-          >
+          <Stack direction="row">
             <IconStyle color="##19b38a">
               <SelfImprovementIcon />
             </IconStyle>
@@ -45,10 +42,7 @@ function ProfileAbout({ profile }) {
             </Typography>
           </Stack>
 
-          <Stack
-            direction="row"
-            // sx={{ color: "#fff" }}
-          >
+          <Stack direction="row">
             <IconStyle color="##19b38a">
               <PinDropOutlinedIcon />
             </IconStyle>
@@ -58,7 +52,6 @@ function ProfileAbout({ profile }) {
                 variant="subtitle2"
                 color="text.primary"
                 fontWeight="400"
-                // sx={{ color: "#fff" }} //
               >
                 {city}, {country}.
               </Link>
@@ -74,7 +67,7 @@ function ProfileAbout({ profile }) {
 
           <Stack direction="row">
             <IconStyle color="##19b38a">
-              <BusinessCenterOutlinedIcon />
+              <EmojiEventsOutlinedIcon />
             </IconStyle>
             <Typography variant="body2">
               <Link
@@ -82,7 +75,6 @@ function ProfileAbout({ profile }) {
                 variant="subtitle2"
                 color="text.primary"
                 fontWeight="400"
-                // sx={{ color: "#fff" }}
               >
                 {company}
               </Link>

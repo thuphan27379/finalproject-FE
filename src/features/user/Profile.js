@@ -18,32 +18,32 @@ function Profile({ profile }) {
     <>
       <Grid
         container
-        spacing={3}
+        spacing={2}
         width={"100%"}
         sx={{
-          paddingRight: "5px",
-          paddingTop: 0, // work
-          maxWidth: "850px",
-          marginLeft: "10px",
-          "& .css-4danns-MuiStack-root": { marginRight: "-24px" },
+          width: "750px",
+          paddingTop: 0,
+          marginLeft: "-20px",
         }}
       >
-        {/* left sidebar 4/12 */}
         <Grid
           item
-          xs={8}
-          md={12}
+          // xs={8}
+          // md={12}
           sx={{
-            paddingTop: 0, //?
-            paddingBottom: "20px", // work
-            paddingLeft: "unset", //?
-            marginLeft: "-10px", // work
-            paddingRight: "10px", //?
+            paddingTop: 0,
+            paddingBottom: "20px",
+            paddingRight: "10px",
+            marginLeft: "-2px",
           }}
         >
           <Typography
             variant="h5"
-            sx={{ mb: 3, paddingLeft: "40px", color: "#0A3161" }}
+            sx={{
+              mb: 3,
+              paddingLeft: "40px",
+              color: "#0A3161",
+            }}
           >
             My Business
           </Typography>
@@ -54,33 +54,18 @@ function Profile({ profile }) {
             justifyContent="space-between"
             alignItems="center"
             sx={{
+              marginLeft: "-15px",
               paddingLeft: 0,
               paddingTop: 0,
-              paddingRight: "25px",
-              marginRight: "20px",
-              "& .css-13mhfsw-MuiGrid-root, .css-1q7661i-MuiGrid-root": {
-                paddingLeft: 0,
-                paddingTop: 0,
-              },
-              "& .css-13mhfsw-MuiGrid-root > .MuiGrid-item": {
-                paddingLeft: 0,
-                paddingTop: 0,
-              },
-              "& .css-15yln57-MuiStack-root > :not(style) ~ :not(style)": {},
+              marginTop: "-3px",
             }}
           >
             {/* 20% */}
-            <ProfileScorecard
-              profile={profile}
-              width={"200px"}
-              sx={{
-                minWidth: "200px", //
-              }}
-            />
+            <ProfileScorecard profile={profile} />
             {/* 40% */}
-            <ProfileAbout profile={profile} maxWidth={"200px"} />
+            <ProfileAbout profile={profile} />
             {/* 40% */}
-            <ProfileSocialInfo profile={profile} minWidth={"230px"} />
+            <ProfileSocialInfo profile={profile} />
           </Stack>
         </Grid>
 
@@ -89,11 +74,11 @@ function Profile({ profile }) {
         <Grid
           container
           sx={{
-            marginLeft: "15px", // work
+            width: "750px",
             marginRight: "0",
           }}
         >
-          <Stack spacing={3} width={"100%"}>
+          <Stack spacing={2} width={"100%"}>
             {user?._id === profile?._id && <PostForm />}
             <PostList userId={profile?._id} />
           </Stack>

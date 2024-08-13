@@ -51,7 +51,12 @@ function GroupForm() {
   return (
     <>
       <Card
-        sx={{ p: 1, width: "100%", marginLeft: "15px", marginTop: "20px" }}
+        sx={{
+          width: "750px",
+          p: 1,
+          marginLeft: "20px",
+          marginTop: "20px",
+        }}
         fullWidth
         style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
       >

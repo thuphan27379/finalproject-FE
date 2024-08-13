@@ -33,7 +33,7 @@ function AccountGeneral() {
     city: user?.city || "",
     country: user?.country || "",
     aboutMe: user?.aboutMe || "",
-    others: user?.others || "", //
+    others: user?.others || "",
   };
 
   // editing form
@@ -72,15 +72,19 @@ function AccountGeneral() {
   return (
     <>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Grid sx={{ maxWidth: "850px" }} container spacing={1}>
+        <Grid sx={{ minWidth: "750px" }} container spacing={2}>
           <Grid item xs={12} md={4}>
             {/* update avatar */}
             <Card
               style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
               sx={{
-                py: 4,
+                width: "230px",
+                py: 3,
                 px: 3,
                 textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
               <FUploadAvatar
@@ -97,7 +101,6 @@ function AccountGeneral() {
                       mx: "auto",
                       display: "block",
                       textAlign: "center",
-                      // color: "#fff",
                     }}
                   >
                     Allowed *.jpeg, *.jpg, *.png, *.gif
@@ -116,14 +119,11 @@ function AccountGeneral() {
             spacing={2}
             sx={{
               paddingTop: "-10px",
-              "& .css-f3o4t6-MuiPaper-root-MuiCard-root": {
-                margin: 0,
-              },
             }}
           >
             <Card
               style={{ border: "1px solid #0A3161", borderRadius: "3px" }}
-              sx={{ p: 1, m: 0, spacing: 1 }}
+              sx={{ p: 1, m: 0, spacing: 1, width: "500px" }}
               spacing={2}
             >
               <Box
@@ -135,7 +135,6 @@ function AccountGeneral() {
                     xs: "repeat(1, 1fr)",
                     sm: "repeat(2, 1fr)",
                   },
-                  "& .css-10g9nb3": { rowGap: "10px" },
                 }}
               >
                 <FTextField
@@ -226,7 +225,7 @@ function AccountGeneral() {
                       borderColor: alpha("#0A3161 ", 0.5),
                     },
                   }}
-                  name="others" //
+                  name="others"
                   label="Others"
                   placeholder="Interests"
                 />

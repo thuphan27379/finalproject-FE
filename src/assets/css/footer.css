@@ -3,9 +3,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  /* background-color: #000;
-  color: #fff; */
-  /* max-width: 700px; */
+
   padding: 1rem;
   margin: 3rem auto;
   border-radius: 0.5rem;
@@ -30,8 +28,6 @@
   border: 1px solid #0a3161;
   border-radius: 0.25rem;
   font-size: 1rem;
-  /* background-color: #000;
-  color: #fff; */
 }
 
 .contact-form input[type="submit"] {
@@ -39,7 +35,6 @@
   border: none;
   border-radius: 0.25rem;
   background-color: #0a3161;
-  /* color: #fff; */
   font-size: 1rem;
   cursor: pointer;
 }
@@ -60,10 +55,11 @@
 }
 
 .page-footer {
-  /* background-color: #000; */
   padding: 1rem 1rem;
   position: relative;
   padding-left: 0px;
+  margin-top: 30px;
+  width: 750px;
 }
 
 .page-footer-grid {
@@ -76,7 +72,7 @@
 
 .page-footer,
 .page-footer a {
-  /* color: #fff; */
+  color: #fff;
 }
 
 .page-footer-logo-col p {
@@ -183,9 +179,3 @@
     height: auto;
   }
 }
-
-/* @media screen and (min-width: 1440px) {
-  .page-footer-grid {
-    gap: 2.5rem;
-  }
-} */

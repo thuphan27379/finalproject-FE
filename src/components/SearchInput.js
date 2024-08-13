@@ -28,7 +28,7 @@ function SearchInput({ handleSubmit }) {
           placeholder="Search by name"
           onChange={(event) => setSearchQuery(event.target.value)}
           sx={{
-            width: 300,
+            width: 270,
             borderColor: "#fff", // ?
             placeholderColor: "#fff", // ?
           }}

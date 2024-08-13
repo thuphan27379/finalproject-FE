@@ -16,15 +16,10 @@ function GroupPostList() {
   const groupId = params.groupId;
   const { user } = useAuth();
 
-  const {
-    groupPostsList,
-    postsByGroupId, //
-    totalPostsGroup,
-    isLoading,
-  } = useSelector((state) => state.group); // groupSlice
+  const { groupPostsList, postsByGroupId, totalPostsGroup, isLoading } =
+    useSelector((state) => state.group); // groupSlice
 
-  // lay nhung post trong data ra va loc theo groupId
-  console.log(groupPostsList);
+  // console.log(groupPostsList);
 
   useEffect(() => {
     dispatch(getPostsGroup({ groupId, page }));

@@ -10,10 +10,6 @@ function FUploadAvatar({ name, ...other }) {
   return (
     <>
       <Controller
-        // sx={{
-        //   color: "#fff",
-        //   placeholderColor: "#fff",
-        // }} //?
         name={name}
         control={control}
         render={({ field, fieldState: { error } }) => {
