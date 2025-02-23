@@ -13,8 +13,6 @@ Third-party libraries used in the project
 - [] All about my company: my cooperator and customer can know everything what my company do.
 - [] Startup community - social networking: opportunity for young startup and SMEs.
 
-\*User Story:
-
 \*\*Background:
 
 - [] MyCompany is webapp of organization about IT solution and startup. Client can get information, search and contact us.

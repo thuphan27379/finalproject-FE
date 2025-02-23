@@ -75,6 +75,7 @@ const HomePage = () => {
             {/* <!-- 2 Projects --> */}
             {/* link to /project */}
             <section className="featured-articles">
+              {/* <Link href="#"> </Link>*/}
               <h2>
                 <a href="/project">Our Projects --- to be our partner</a>
               </h2>

@@ -20,7 +20,7 @@ function Domains() {
 
   const { domainsForSale, currentPage, isLoading, totalPages, totalDomain } =
     useSelector((state) => state.home, shallowEqual);
-  // console.log("domain list", domainsForSale);
+  console.log("domain list", domainsForSale);
 
   const totalDomainPage = Math.ceil(totalDomain / DOMAIN_PER_PAGE);
 

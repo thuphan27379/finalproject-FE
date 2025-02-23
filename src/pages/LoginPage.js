@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useNavigate, useLocation, Link as RouterLink } from "react-router-dom";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate, useLocation, Link as RouterLink } from 'react-router-dom';
 import {
   Link,
   Stack,
@@ -8,25 +8,25 @@ import {
   IconButton,
   InputAdornment,
   Container,
-} from "@mui/material";
-import { LoadingButton } from "@mui/lab";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { yupResolver } from "@hookform/resolvers/yup"; //validate us&pw
-import * as Yup from "yup";
+} from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { yupResolver } from '@hookform/resolvers/yup'; //validate us&pw
+import * as Yup from 'yup';
 
-import { FCheckbox, FormProvider, FTextField } from "../components/form";
-import useAuth from "../hooks/useAuth";
+import { FCheckbox, FormProvider, FTextField } from '../components/form';
+import useAuth from '../hooks/useAuth';
 
 // Yup: validate input
 const LoginSchema = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Email is required"),
-  password: Yup.string().required("Password is required"),
+  email: Yup.string().email('Invalid email').required('Email is required'),
+  password: Yup.string().required('Password is required'),
 });
 
 const defaultValues = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
   remember: true,
 };
 
@@ -51,17 +51,22 @@ function LoginPage() {
 
   // dau ra cua data
   const onSubmit = async (data) => {
-    const from = location.state?.from?.pathname || "/blog";
+    const from = location.state?.from?.pathname || '/blog';
     let { email, password } = data;
 
     try {
-      await auth.login({ email, password }, () => {
-        navigate(from, { replace: true });
+      const user = await auth.login({ email, password }, () => {
+        // Check the user role and redirect accordingly
+        if (user.roles === 'admin') {
+          navigate('/admin/dashboard', { replace: true }); // Redirect admin to admin dashboard
+        } else {
+          navigate(from, { replace: true });
+        }
       });
     } catch (error) {
       // console.log(error);
       reset();
-      setError("responseError", error);
+      setError('responseError', error);
     }
   };
 
@@ -70,11 +75,11 @@ function LoginPage() {
     <>
       <Container
         sx={{
-          maxWidth: "480px",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "center",
+          maxWidth: '480px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'center',
         }}
       >
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
@@ -85,12 +90,12 @@ function LoginPage() {
             )}
             <Alert
               sx={{
-                borderColor: "1px #B31942",
+                borderColor: '1px #B31942',
               }}
               severity="info"
               color="secondary"
             >
-              Don’t have an account!{" "}
+              Don’t have an account!{' '}
               <Link variant="subtitle2" component={RouterLink} to="/register">
                 Register now
               </Link>
@@ -101,7 +106,7 @@ function LoginPage() {
             <FTextField
               name="password"
               label="Password"
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               // icon an hien ky tu pw
               InputProps={{
                 endAdornment: (
@@ -143,7 +148,7 @@ function LoginPage() {
             variant="outlined"
             loading={isSubmitting}
             color="secondary"
-            sx={{ backgroundColor: "#8498b0" }}
+            sx={{ backgroundColor: '#8498b0' }}
           >
             Log in
           </LoadingButton>

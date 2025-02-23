@@ -5,7 +5,7 @@ import userReducer from "../features/user/userSlice";
 import commentReducer from "../features/comment/commentSlice";
 import friendReducer from "../features/friend/friendSlice";
 import groupReducer from "../features/group/groupSlice";
-import homeReducer from "../features/home/homeSlice";
+import homeReducer from "../features/home/homeSlice"; //
 
 //
 const rootReducer = combineReducers({
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   comment: commentReducer,
   friend: friendReducer,
   group: groupReducer,
-  home: homeReducer,
+  home: homeReducer, //
 });
 
 const store = configureStore({

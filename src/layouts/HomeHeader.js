@@ -1,68 +1,63 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, Link as RouterLink, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate, Link as RouterLink, useLocation } from 'react-router-dom';
 
-import { useTheme } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import { Badge, Stack, Divider, InputAdornment } from "@mui/material";
-import PublicIcon from "@mui/icons-material/Public";
-import AdsClickOutlinedIcon from "@mui/icons-material/AdsClickOutlined";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
-import Fade from "@mui/material/Fade";
-import PropTypes from "prop-types";
-import Fab from "@mui/material/Fab";
-import KeyboardDoubleArrowUpOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowUpOutlined";
-import SavedSearchIcon from "@mui/icons-material/SavedSearch";
-import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
-import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
-import CottageOutlinedIcon from "@mui/icons-material/CottageOutlined";
-import NightsStayOutlinedIcon from "@mui/icons-material/NightsStayOutlined";
+import { useTheme } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Tooltip from '@mui/material/Tooltip';
+import MenuItem from '@mui/material/MenuItem';
+import Fade from '@mui/material/Fade';
+import Fab from '@mui/material/Fab';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import { Badge, Stack, Divider, InputAdornment } from '@mui/material';
+import PublicIcon from '@mui/icons-material/Public';
+import KeyboardDoubleArrowUpOutlinedIcon from '@mui/icons-material/KeyboardDoubleArrowUpOutlined';
+import SavedSearchIcon from '@mui/icons-material/SavedSearch';
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
+import NightsStayOutlinedIcon from '@mui/icons-material/NightsStayOutlined';
+import PropTypes from 'prop-types';
 
-import useAuth from "../hooks/useAuth";
-import Aboutus from "../pages/AboutUs";
-import Projects from "../pages/Projects";
-import Domains from "../pages/Domains";
-import Startup from "../pages/Startup";
-import Contact from "../pages/Contact";
-import { ColorModeContext } from "../theme/index"; // dark/light
+import useAuth from '../hooks/useAuth';
+import Aboutus from '../pages/AboutUs';
+import Projects from '../pages/Projects';
+import Domains from '../pages/Domains';
+import Startup from '../pages/Startup';
+import Contact from '../pages/Contact';
+import { ColorModeContext } from '../theme/index'; // dark/light
 import {
   getDomainForSale,
   getDomainForStartup,
-} from "../features/home/homeSlice";
+} from '../features/home/homeSlice';
 
 // main menu
 const pages = [
-  {
-    label: "About us",
-    path: "about",
-    element: <Aboutus />,
-    icon: <AdsClickOutlinedIcon sx={{ color: "primary" }} />, // ?
-  },
-  { label: "Project", path: "project", element: <Projects /> },
-  { label: "Startup", path: "startup", element: <Startup /> },
-  { label: "Domain", path: "domain", element: <Domains /> },
-  { label: "Community", path: "blog" }, // cong ðong khoi nghiep & ho so doanh nghiep (friend=follow)
-  { label: "Contact us", path: "contact", element: <Contact /> },
+  { label: 'About us', path: 'about', element: <Aboutus /> },
+  { label: 'Project', path: 'project', element: <Projects /> },
+  { label: 'Startup', path: 'startup', element: <Startup /> },
+  { label: 'Domain', path: 'domain', element: <Domains /> },
+  { label: 'Community', path: 'blog' }, // cong ðong khoi nghiep & ho so doanh nghiep (friend=follow)
+  { label: 'Contact us', path: 'contact', element: <Contact /> },
 ];
 
 // avatar menu
 const settings = [
-  { label: "My Startup", path: "startup" },
-  { label: "My Domain", path: "domain" },
-  { label: "My Profile", path: "blog" },
-  { label: "My Group", path: "blog" }, // group
-  { label: "Setting", path: "account" },
+  { label: 'My Startup', path: 'startup' },
+  { label: 'My Domain', path: 'domain' },
+  { label: 'My Profile', path: 'blog' },
+  { label: 'My Group', path: 'blog' }, // group
+  { label: 'Setting', path: 'account' },
+  { label: 'Admin', path: 'admin' }, // admin login
 ];
 
 // go to top
@@ -77,12 +72,12 @@ function ScrollTop(props) {
 
   const handleClick = (event) => {
     const anchor = (event.target.ownerDocument || document).querySelector(
-      "#back-to-top-anchor"
+      '#back-to-top-anchor'
     );
 
     if (anchor) {
       anchor.scrollIntoView({
-        block: "center",
+        block: 'center',
       });
     }
   };
@@ -92,7 +87,7 @@ function ScrollTop(props) {
       <Box
         onClick={handleClick}
         role="presentation"
-        sx={{ position: "fixed", bottom: 30, right: 30 }}
+        sx={{ position: 'fixed', bottom: 30, right: 30 }}
       >
         {children}
       </Box>
@@ -107,14 +102,14 @@ ScrollTop.propTypes = {
 
 //
 function ResponsiveAppBar(props) {
-  const { user, logout } = useAuth();
+  const { user, logout } = useAuth(); // lam sao lay admin
   const navigate = useNavigate();
   const colorMode = React.useContext(ColorModeContext); // dark/light
   const theme = useTheme();
   // console.log(theme);
   const dispatch = useDispatch();
   const [page, setPage] = React.useState(0);
-  const [value, setValue] = useState(""); // search
+  const [value, setValue] = useState(''); // search
   // console.log(value);
   const location = useLocation();
   // console.log(location);
@@ -122,6 +117,9 @@ function ResponsiveAppBar(props) {
 
   const [anchorElNav, setAnchorElNav] = React.useState(null); // icon menu for responsive
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  // how to get roll of user
+  // const adminLogged = user.roles;
 
   // hamburger for tablet
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -153,7 +151,7 @@ function ResponsiveAppBar(props) {
     try {
       handleCloseNavMenu();
       await logout(() => {
-        navigate("/");
+        navigate('/');
       });
     } catch (error) {
       console.error(error);
@@ -193,25 +191,25 @@ function ResponsiveAppBar(props) {
         maxWidth="100%"
         maxHeight="64px"
         sx={{
-          backgroundColor: "#000",
+          backgroundColor: '#000',
           zIndex: (theme) => theme.zIndex.drawer + 1,
-          boxShadow: "none",
-          borderBottom: "1px solid #0A3161",
+          boxShadow: 'none',
+          borderBottom: '1px solid #0A3161',
         }}
       >
         <Container maxWidth="xl">
           <Toolbar
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
+              display: 'flex',
+              justifyContent: 'space-between',
             }}
             disableGutters
           >
             <Stack
               direction="row"
               sx={{
-                paddingLeft: "50px",
-                alignItems: "center",
+                paddingLeft: '50px',
+                alignItems: 'center',
               }}
               to="/"
             >
@@ -225,7 +223,7 @@ function ResponsiveAppBar(props) {
                 sx={{
                   mr: 2,
                   p: 0,
-                  display: { sm: "block", md: "block", lg: "none" },
+                  display: { sm: 'block', md: 'block', lg: 'none' },
                 }} // responsive hamburger
               >
                 <CottageOutlinedIcon />
@@ -235,9 +233,9 @@ function ResponsiveAppBar(props) {
               <IconButton sx={{ p: 0, mr: 2 }}>
                 <Avatar
                   sx={{
-                    width: "65px",
-                    height: "60px",
-                    borderRadius: "unset",
+                    width: '65px',
+                    height: '60px',
+                    borderRadius: 'unset',
                   }}
                   title="BizHolding"
                   src="./huongsac-logo.png"
@@ -254,12 +252,12 @@ function ResponsiveAppBar(props) {
                 component={RouterLink}
                 sx={{
                   mr: 2,
-                  display: { sm: "none", md: "none", lg: "block" }, // responsive company name
-                  fontFamily: "monospace",
+                  display: { sm: 'none', md: 'none', lg: 'block' }, // responsive company name
+                  fontFamily: 'monospace',
                   fontWeight: 700,
-                  letterSpacing: ".3rem",
-                  textDecoration: "none",
-                  color: "#B31942 ",
+                  letterSpacing: '.3rem',
+                  textDecoration: 'none',
+                  color: '#B31942 ',
                 }}
               >
                 BizHolding
@@ -270,8 +268,8 @@ function ResponsiveAppBar(props) {
             <Box
               sx={{
                 flexGrow: 1,
-                display: { xs: "none", sm: "none", md: "none", lg: "flex" }, // responsive main menu
-                paddingLeft: "50px",
+                display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' }, // responsive main menu
+                paddingLeft: '50px',
               }}
             >
               {pages.map((page, index) => (
@@ -280,21 +278,13 @@ function ResponsiveAppBar(props) {
                   onClick={handleCloseNavMenu}
                   sx={{
                     my: 2,
-                    color: "#fff",
-                    display: "block",
-                    textTransform: "none",
+                    color: '#fff',
+                    display: 'block',
+                    textTransform: 'none',
                     fontWeight: 450,
                   }}
                   to={`/${page.path}`}
                   component={RouterLink} // {pages.element}
-                  // icon for main menu ?
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start" color="#fff">
-                        {page.icon}
-                      </InputAdornment>
-                    ),
-                  }}
                 >
                   {page.label}
                 </Button>
@@ -310,11 +300,11 @@ function ResponsiveAppBar(props) {
                       <InputAdornment position="start">
                         <SavedSearchIcon
                           sx={{
-                            color: "#0A3161",
+                            color: '#0A3161',
                             margin: 0,
                             padding: 0,
-                            width: "30px",
-                            height: "30px",
+                            width: '30px',
+                            height: '30px',
                           }}
                         />
                       </InputAdornment>
@@ -322,10 +312,10 @@ function ResponsiveAppBar(props) {
                   }}
                   variant="standard"
                   label="Start your domain search!"
-                  style={{ color: "#0A3161" }}
+                  style={{ color: '#0A3161' }}
                   sx={{
-                    color: "secondary",
-                    width: "270px",
+                    color: 'secondary',
+                    width: '270px',
                   }}
                   onChange={(e) => setValue(e.target.value)}
                 />
@@ -336,17 +326,17 @@ function ResponsiveAppBar(props) {
             <Stack
               direction="row"
               sx={{
-                alignItems: "center",
-                justifyContent: "space-evenly",
-                paddingLeft: "20px",
-                paddingRight: "50px",
+                alignItems: 'center',
+                justifyContent: 'space-evenly',
+                paddingLeft: '20px',
+                paddingRight: '50px',
               }}
             >
               {/* dark/light */}
               <IconButton
                 sx={{
-                  marginTop: "5px",
-                  display: { sm: "none", md: "none", lg: "block" },
+                  marginTop: '5px',
+                  display: { sm: 'none', md: 'none', lg: 'block' },
                 }} // responsive dark/light
                 size="large"
                 aria-label="switch dark/light modes"
@@ -354,7 +344,7 @@ function ResponsiveAppBar(props) {
                 title="Dark/Light"
                 onClick={colorMode.toggleColorMode}
               >
-                {theme.palette.mode === "dark" ? (
+                {theme.palette.mode === 'dark' ? (
                   <NightsStayOutlinedIcon />
                 ) : (
                   <WbSunnyOutlinedIcon />
@@ -363,7 +353,7 @@ function ResponsiveAppBar(props) {
 
               {/* EN-VN */}
               <IconButton
-                sx={{ display: { sm: "none", md: "none", lg: "flex" } }} // responsive EN-VN
+                sx={{ display: { sm: 'none', md: 'none', lg: 'flex' } }} // responsive EN-VN
                 size="large"
                 aria-label="switch languages English/Vietnamese"
                 color="inherit"
@@ -374,7 +364,7 @@ function ResponsiveAppBar(props) {
 
               {/* EN-VN */}
               <IconButton
-                sx={{ display: { sm: "none", md: "none", lg: "flex" } }} // responsive EN-VN
+                sx={{ display: { sm: 'none', md: 'none', lg: 'flex' } }} // responsive EN-VN
                 size="large"
                 aria-label=""
                 color="inherit"
@@ -388,10 +378,10 @@ function ResponsiveAppBar(props) {
                 sx={{
                   flexGrow: 0,
                   display: {
-                    xs: "none",
-                    sm: "block",
-                    md: "block",
-                    lg: "block",
+                    xs: 'none',
+                    sm: 'block',
+                    md: 'block',
+                    lg: 'block',
                   }, // responsive avt menu
                 }}
               >
@@ -401,10 +391,10 @@ function ResponsiveAppBar(props) {
                     sx={{
                       p: 0,
                       display: {
-                        xs: "none",
-                        sm: "flex",
-                        md: "flex",
-                        lg: "block",
+                        xs: 'none',
+                        sm: 'flex',
+                        md: 'flex',
+                        lg: 'block',
                       },
                     }}
                   >
@@ -418,9 +408,9 @@ function ResponsiveAppBar(props) {
                       <Avatar
                         src={user?.avatarUrl}
                         sx={{
-                          width: "40px",
-                          height: "40px",
-                          border: "2px solid #B31942 ",
+                          width: '40px',
+                          height: '40px',
+                          border: '2px solid #B31942 ',
                         }}
                       />
                     </Badge>
@@ -428,17 +418,17 @@ function ResponsiveAppBar(props) {
                 </Tooltip>
 
                 <Menu
-                  sx={{ mt: "40px" }}
+                  sx={{ mt: '40px' }}
                   id="menu-appbar"
                   anchorEl={anchorElUser}
                   anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
+                    vertical: 'top',
+                    horizontal: 'right',
                   }}
                   keepMounted
                   transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
+                    vertical: 'top',
+                    horizontal: 'right',
                   }}
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
@@ -446,28 +436,28 @@ function ResponsiveAppBar(props) {
                   <Typography
                     textAlign="center"
                     sx={{
-                      fontWeight: "600",
-                      color: "#B31942",
-                      paddingBottom: "7px",
+                      fontWeight: '600',
+                      color: '#B31942',
+                      paddingBottom: '7px',
                     }}
                   >
                     {user?.name}
                   </Typography>
 
                   {/* hide if logout */}
-                  {user ? <Divider sx={{ backgroundColor: "#0A3161" }} /> : ""}
+                  {user ? <Divider sx={{ backgroundColor: '#0A3161' }} /> : ''}
 
                   {settings.map((setting, index) => (
                     <MenuItem
                       key={index}
                       onClick={
-                        setting.label === "Logout"
+                        setting.label === 'Logout'
                           ? handleLogout
                           : handleCloseUserMenu
                       }
                       to={`/${setting.path}`}
                       component={RouterLink}
-                      sx={{ color: "#0A3161" }}
+                      sx={{ color: '#0A3161' }}
                     >
                       <Typography textAlign="center">
                         {setting.label}
@@ -478,7 +468,7 @@ function ResponsiveAppBar(props) {
                   {/* if login - show logout, else login */}
                   {user ? (
                     <MenuItem onClick={handleLogout}>
-                      <Typography sx={{ color: "#0A3161" }} textAlign="center">
+                      <Typography sx={{ color: '#0A3161' }} textAlign="center">
                         Logout
                       </Typography>
                     </MenuItem>
@@ -488,11 +478,13 @@ function ResponsiveAppBar(props) {
                       to="/login"
                       component={RouterLink}
                     >
-                      <Typography sx={{ color: "#0A3161" }} textAlign="center">
+                      <Typography sx={{ color: '#0A3161' }} textAlign="center">
                         Login
                       </Typography>
                     </MenuItem>
                   )}
+
+                  {/* admin , if user.roles === 'admin'*/}
                 </Menu>
               </Box>
             </Stack>
@@ -503,14 +495,14 @@ function ResponsiveAppBar(props) {
         <ScrollTop {...props}>
           <Fab size="small" aria-label="scroll back to top">
             <KeyboardDoubleArrowUpOutlinedIcon
-              sx={{ color: "#0A3161", backgroundColor: "transparent" }}
+              sx={{ color: '#0A3161', backgroundColor: 'transparent' }}
             />
           </Fab>
         </ScrollTop>
       </AppBar>
 
       <Toolbar
-        sx={{ display: { sm: "block", md: "block", lg: "block" } }} // responsive blank page
+        sx={{ display: { sm: 'block', md: 'block', lg: 'block' } }} // responsive blank page
         id="back-to-top-anchor"
       />
 
@@ -519,18 +511,18 @@ function ResponsiveAppBar(props) {
         id="menu-appbar"
         anchorEl={anchorElNav}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "left",
+          vertical: 'top',
+          horizontal: 'left',
         }}
         keepMounted
         transformOrigin={{
-          vertical: "top",
-          horizontal: "left",
+          vertical: 'top',
+          horizontal: 'left',
         }}
         open={Boolean(anchorElNav)}
         onClose={handleCloseNavMenu}
         sx={{
-          display: { lg: "none" },
+          display: { lg: 'none' },
         }}
       >
         {pages.map((page, index) => (

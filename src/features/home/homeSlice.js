@@ -34,14 +34,16 @@ const slice = createSlice({
     // get domain for sale list
     getDomainForSaleSuccess(state, action) {
       state.isLoading = false;
-      state.error = action.payload;
+      // state.error = action.payload;
+      state.error = null;
 
       // console.log(action.payload);
+      const { domains, totalPages, currentPage } = action.payload;
+      // console.log("domain:", domainsForSale);
       const domainsForSale = action.payload;
       state.domainsForSale = domainsForSale;
-      // console.log("domain:", domainsForSale);
-      const { totalPages, currentPage } = action.payload;
       state.totalPages = totalPages;
+      state.currentPage = currentPage;
     },
 
     // startup list
@@ -53,9 +55,10 @@ const slice = createSlice({
       const domainForStartup = action.payload;
       state.domainForStartup = domainForStartup;
       // console.log("Startup:", domainForStartup);
-      const { totalPages, currentPage } = action.payload;
+      const { domains, totalPages, currentPage } = action.payload;
       state.totalPages = totalPages;
     },
+
     // project list
     getProjectSuccess(state, action) {
       state.isLoading = false;
